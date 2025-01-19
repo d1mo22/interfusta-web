@@ -13,14 +13,15 @@ export default function Home() {
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
-
 			<section className="relative h-screen flex items-center justify-center">
 				<video
 					autoPlay
 					muted
 					loop
 					playsInline
+					preload="auto"
 					className="absolute inset-0 w-full h-full object-cover"
+					poster="/thumbnail.jpg"
 				>
 					<source src="/video.mp4" type="video/mp4" />
 				</video>
