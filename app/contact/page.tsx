@@ -34,7 +34,7 @@ export default function ContactPage() {
 											htmlFor="lastName"
 											className="block text-sm font-medium text-gray-700 mb-1"
 										>
-											Apellidos
+											Apellido
 										</label>
 										<Input id="lastName" required />
 									</div>
