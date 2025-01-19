@@ -102,7 +102,7 @@ export default function ContactPage() {
 										<div className="ml-4">
 											<h3 className="font-semibold">Dirección</h3>
 											<p className="text-gray-600">
-												Passatge d'Enclar S/N
+												Passatge d&apos;Enclar S/N
 												<br />
 												Santa Coloma, AD500
 												<br />
