@@ -62,12 +62,12 @@ export default function PortfolioPage() {
 				</p>
 
 				<Tabs defaultValue="all" className="w-full">
-					<TabsList className="flex justify-center mb-8">
+					<TabsList className="flex flex-wrap justify-center mb-8 gap-2 w-full min-h-fit">
 						{categories.map((category) => (
 							<TabsTrigger
 								key={category.id}
 								value={category.id}
-								className="px-6"
+								className="px-4 py-2 text-sm sm:text-base"
 							>
 								{category.label}
 							</TabsTrigger>
