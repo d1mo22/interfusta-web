@@ -47,21 +47,13 @@ export function ImageGalleryModal({
 	return (
 		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent
-				className="max-w-4xl h-[80vh] flex items-center justify-center p-0"
+				className="max-w-4xl h-[80vh] flex items-center justify-center p-0 "
 				onKeyDown={handleKeyDown}
 			>
 				<DialogTitle className="sr-only">
 					Galería de imágenes del proyecto
 				</DialogTitle>
 				<div className="relative w-full h-full">
-					<Button
-						variant="ghost"
-						size="icon"
-						className="absolute top-2 right-2 z-10"
-						onClick={onClose}
-					>
-						<X className="h-4 w-4" />
-					</Button>
 					<div className="flex items-center justify-center h-full">
 						<Button
 							variant="ghost"
