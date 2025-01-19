@@ -114,7 +114,7 @@ export default function Home() {
 							<img
 								src="https://placehold.co/800x600"
 								alt="Proyecto destacado"
-								className="rounded-lg shadow-xl"
+								className="rounded-lg shadow-xl loading-lazy"
 							/>
 						</div>
 						<div>

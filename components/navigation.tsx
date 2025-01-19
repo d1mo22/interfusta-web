@@ -72,28 +72,28 @@ export function Navigation() {
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							Services
+							Servicios
 						</Link>
 						<Link
 							href="/portfolio"
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							Portfolio
+							Proyectos
 						</Link>
 						<Link
 							href="/about"
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							About
+							Sobre Nosotros
 						</Link>
 						<Link
 							href="/contact"
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							Contact
+							Contacto
 						</Link>
 					</div>
 				</div>

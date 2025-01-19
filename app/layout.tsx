@@ -6,8 +6,9 @@ import { Footer } from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Interfusta Andorra - Expert Carpentry Services",
-	description: "Professional woodworking and carpentry services in Andorra",
+	title: "Fusteria InterFusta - Servicios expertos de carpintería",
+	description:
+		"Servicios profesionales de carpintería y ebanistería en Andorra",
 	icons: {
 		icon: [
 			{
