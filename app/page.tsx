@@ -1,101 +1,170 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+	ChevronRight,
+	Paintbrush,
+	Ruler,
+	Drill,
+	CookingPot,
+} from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	return (
+		<div className="min-h-screen">
+			{/* Hero Section */}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+			<section className="relative h-screen flex items-center justify-center">
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="absolute inset-0 w-full h-full object-cover"
+				>
+					<source src="/video.mp4" type="video/mp4" />
+				</video>
+
+				{/* Capa de superposición oscura */}
+				<div className="absolute inset-0 bg-black/40" />
+
+				<div className="relative z-10 text-center px-4">
+					<h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+						Servicios expertos de carpintería en Andorra
+					</h1>
+					<p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto drop-shadow-lg">
+						Creando soluciones de madera hermosas y funcionales para su hogar y
+						negocio
+					</p>
+					<Link href="/portfolio">
+						<Button size="lg" className="bg-amber-800 hover:bg-amber-900">
+							Ver Nuestro Trabajo <ChevronRight className="ml-2" />
+						</Button>
+					</Link>
+				</div>
+			</section>
+
+			{/* Resumen de Servicios */}
+			<section className="py-20 bg-white">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<h2 className="text-3xl font-bold text-center mb-12">
+						Nuestros Servicios
+					</h2>
+					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+						{[
+							{
+								title: "Muebles a Medida",
+								description:
+									"Muebles personalizados diseñados y fabricados según sus especificaciones",
+								icon: Drill,
+							},
+							{
+								title: "Instalación de Cocinas",
+								description:
+									"Instalación profesional de gabinetes de cocina y personalización",
+								icon: CookingPot,
+							},
+							{
+								title: "Lacado y barnizado",
+								description:
+									"Acabados profesionales para proteger y embellecer sus muebles de madera",
+								icon: Paintbrush,
+							},
+							{
+								title: "Mediciones y Planificación",
+								description:
+									"Planificación detallada y mediciones precisas para su proyecto",
+								icon: Ruler,
+							},
+						].map((service) => (
+							<Card
+								key={service.title.toLowerCase().replace(/\s+/g, "-")}
+								className="border-none shadow-lg"
+							>
+								<CardContent className="pt-6">
+									<div className="rounded-full bg-amber-100 p-3 w-12 h-12 flex items-center justify-center mb-4">
+										<service.icon className="w-6 h-6 text-amber-800" />
+									</div>
+									<h3 className="text-xl font-semibold mb-2">
+										{service.title}
+									</h3>
+									<p className="text-gray-600">{service.description}</p>
+								</CardContent>
+							</Card>
+						))}
+					</div>
+					<div className="text-center mt-12">
+						<Link href="/services">
+							<Button variant="outline" size="lg">
+								Explorar Todos los Servicios
+							</Button>
+						</Link>
+					</div>
+				</div>
+			</section>
+
+			{/* Proyecto Destacado */}
+			<section className="py-20 bg-amber-50">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<h2 className="text-3xl font-bold text-center mb-12">
+						Proyecto Destacado
+					</h2>
+					<div className="grid md:grid-cols-2 gap-12 items-center">
+						<div>
+							<img
+								src="https://placehold.co/800x600"
+								alt="Proyecto destacado"
+								className="rounded-lg shadow-xl"
+							/>
+						</div>
+						<div>
+							<h3 className="text-2xl font-bold mb-4">
+								Renovación de Villa de Lujo
+							</h3>
+							<p className="text-gray-600 mb-6">
+								Transformamos completamente esta villa con muebles hechos a
+								medida, una cocina personalizada y detalles de madera
+								intrincados en todo el lugar. Nuestro equipo trabajó
+								estrechamente con el cliente para dar vida a su visión,
+								resultando en una impresionante muestra de nuestra artesanía.
+							</p>
+							<ul className="list-disc list-inside text-gray-600 mb-6">
+								<li>Gabinetes de cocina diseñados a medida</li>
+								<li>Mesa de comedor y sillas hechas a mano</li>
+								<li>Armarios empotrados para todas las habitaciones</li>
+								<li>Vigas de techo de madera y paneles de pared</li>
+							</ul>
+							<Link href="/portfolio">
+								<Button variant="outline" size="lg">
+									Ver todos los Proyectos
+								</Button>
+							</Link>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Call to Action */}
+			<section className="py-20 bg-amber-800 text-white">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+					<h2 className="text-3xl font-bold mb-4">
+						¿Listo para Comenzar tu Proyecto?
+					</h2>
+					<p className="text-xl mb-8 max-w-2xl mx-auto">
+						Hagamos realidad tu visión. Contáctanos hoy para una consulta y
+						presupuesto gratuito.
+					</p>
+					<Link href="/contact">
+						<Button
+							size="lg"
+							variant="secondary"
+							className="bg-white text-amber-800 hover:bg-gray-100"
+						>
+							Contáctanos
+						</Button>
+					</Link>
+				</div>
+			</section>
+		</div>
+	);
 }
