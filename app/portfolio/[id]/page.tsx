@@ -116,16 +116,21 @@ export default function ProjectDetails({
 					<h2 className="text-2xl font-semibold mb-4">Galería del Proyecto</h2>
 					<div className="grid md:grid-cols-3 gap-4">
 						{project.images.map((image, index) => (
-							// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-							<img
+							<div
 								key={`${project.id}-image-${index}`}
-								src={image || "/placeholder.svg"}
-								alt={`${project.title} - img ${index + 1}`}
-								width={400}
-								height={300}
-								className="rounded-lg shadow-md cursor-pointer hover:scale-105 transform transition-transform"
-								onClick={() => openGallery(index)}
-							/>
+								className="overflow-hidden rounded-lg shadow-md"
+							>
+								{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+								<img
+									key={`${project.id}-image-${index}`}
+									src={image || "/placeholder.svg"}
+									alt={`${project.title} - img ${index + 1}`}
+									width={400}
+									height={300}
+									className="rounded-lg cursor-pointer transition-transform duration-300 hover:scale-110"
+									onClick={() => openGallery(index)}
+								/>
+							</div>
 						))}
 					</div>
 				</div>
