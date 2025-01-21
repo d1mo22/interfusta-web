@@ -11,8 +11,8 @@ import type { Project, Image, Feature } from "@/app/types/database";
 
 export default async function ProjectDetails({
 	params,
-}: { params: { id: string } }) {
-	const id = Number.parseInt(params.id);
+}: { params: Promise<{ id: string }> }) {
+	const id = Number.parseInt((await params).id);
 	const project = (await getProjectDetails(id)) as Project;
 	const images = (await getImagesFromProject(id)) as Image[];
 	const features = (await getFeaturesFromProject(id)) as Feature[];
