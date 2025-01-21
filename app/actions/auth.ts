@@ -39,7 +39,8 @@ export async function login(formData: FormData) {
 		);
 
 		return { success: true };
-	} catch (error: unknown) {
+	} catch (error) {
+		console.error(error);
 		return { error: "Error al iniciar sesión" };
 	}
 }

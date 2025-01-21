@@ -2,53 +2,8 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getProjects, getCategories, getHeaderImages } from "../actions/data";
+import { getProjects, getCategories } from "../actions/data";
 
-// const categories = [
-// 	{ id: "all", label: "Todos los Proyectos" },
-// 	{ id: "furniture", label: "Muebles" },
-// 	{ id: "kitchens", label: "Cocinas" },
-// 	{ id: "outdoor", label: "Exterior" },
-// ];
-
-// const projects = [
-// 	{
-// 		id: "modern-kitchen-renovation",
-// 		title: "Renovación de una cocina moderna",
-// 		category: "kitchens",
-// 		description:
-// 			"Renovación completa de la cocina con armarios a medida e isla",
-// 		images: ["https://placehold.co/800x600"],
-// 	},
-// 	{
-// 		id: "dining-table-set",
-// 		title: "Juego de mesa de comedor",
-// 		category: "furniture",
-// 		description: "Mesa de comedor artesanal de roble con sillas a juego",
-// 		images: ["https://placehold.co/800x600"],
-// 	},
-// 	{
-// 		id: "garden-pergola",
-// 		title: "Pérgola de Jardín",
-// 		category: "outdoor",
-// 		description: "Pérgola de madera hecha a medida con asientos integrados",
-// 		images: ["https://placehold.co/800x600"],
-// 	},
-// 	{
-// 		id: "bedroom-wardrobe",
-// 		title: "Armario de dormitorio",
-// 		category: "furniture",
-// 		description: "Armario empotrado con puertas correderas e interior a medida",
-// 		images: ["https://placehold.co/800x600"],
-// 	},
-// 	{
-// 		id: "office-desk",
-// 		title: "Escritorio de oficina",
-// 		category: "furniture",
-// 		description: "Mesa de oficina ergonómica con gestión de cables integrada",
-// 		images: ["https://placehold.co/800x600"],
-// 	},
-// ];
 const categories = await getCategories();
 
 const projects = await getProjects();

@@ -17,6 +17,7 @@ export default function TestEnvPage() {
 					setConnectionStatus(`❌ Error: ${data.error}`);
 				}
 			} catch (error) {
+				console.log(error);
 				setConnectionStatus("❌ Error al probar conexión");
 			}
 		}

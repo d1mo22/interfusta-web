@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./auth";
 
-export async function createProject(formData: FormData) {
+export async function createProject() {
 	const user = await getCurrentUser();
 	if (!user || user.role !== "admin") {
 		return { error: "Unauthorized" };
@@ -16,7 +16,7 @@ export async function createProject(formData: FormData) {
 	return { success: true };
 }
 
-export async function updateProject(id: string, formData: FormData) {
+export async function updateProject(id: string) {
 	const user = await getCurrentUser();
 	if (!user || user.role !== "admin") {
 		return { error: "Unauthorized" };
