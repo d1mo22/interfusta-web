@@ -26,7 +26,7 @@ export default function NewProjectPage() {
 
 	async function handleSubmit(formData: FormData) {
 		formData.append("features", JSON.stringify(features));
-		const result = await createProject(formData);
+		const result = await createProject();
 
 		if (result.error) {
 			setError(result.error);

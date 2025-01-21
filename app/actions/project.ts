@@ -34,6 +34,7 @@ export async function updateProject(id: number) {
 export async function deleteProject(id: number) {
 	const user = await getCurrentUser();
 	const project = await getProjectDetails(id);
+	console.log(project);
 	if (!user || user.role !== "admin") {
 		return { error: "Unauthorized" };
 	}

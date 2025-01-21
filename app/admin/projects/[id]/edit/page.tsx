@@ -19,7 +19,7 @@ import { updateProject } from "@/app/actions/project";
 import { ChevronLeft, Plus, X } from "lucide-react";
 
 interface Project {
-	id: string;
+	id: number;
 	title: string;
 	category: string;
 	description: string;
@@ -44,7 +44,7 @@ export default function EditProjectPage({
 		// In a real application, fetch the project data from an API
 		// For now, we'll use dummy data
 		const dummyProject: Project = {
-			id: resolvedParams.id,
+			id: Number.parseInt(resolvedParams.id),
 			title: "Sample Project",
 			category: "furniture",
 			description: "Short description of the project",
@@ -60,7 +60,7 @@ export default function EditProjectPage({
 
 	async function handleSubmit(formData: FormData) {
 		formData.append("features", JSON.stringify(features));
-		const result = await updateProject(resolvedParams.id, formData);
+		const result = await updateProject(Number.parseInt(resolvedParams.id));
 
 		if (result.error) {
 			setError(result.error);

@@ -6,9 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Plus, Pencil, Trash } from "lucide-react";
 import { deleteProject } from "../actions/project";
+//import type { Project } from "../types/database";
 
 interface Project {
-	id: string;
+	id: number;
 	title: string;
 	category: string;
 	description: string;
@@ -18,7 +19,7 @@ interface Project {
 export default function AdminDashboard() {
 	const [projects, setProjects] = useState<Project[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const [isDeleting, setIsDeleting] = useState<string | null>(null);
+	const [isDeleting, setIsDeleting] = useState<number | null>(null);
 
 	useEffect(() => {
 		async function fetchProjects() {
@@ -26,7 +27,7 @@ export default function AdminDashboard() {
 			// For now, we'll use dummy data
 			const dummyProjects: Project[] = [
 				{
-					id: "1",
+					id: 1,
 					title: "Modern Kitchen Renovation",
 					category: "kitchens",
 					description:
@@ -34,7 +35,7 @@ export default function AdminDashboard() {
 					images: ["https://placehold.co/800x600"],
 				},
 				{
-					id: "2",
+					id: 2,
 					title: "Custom Dining Table",
 					category: "furniture",
 					description: "Handcrafted oak dining table with matching chairs",
@@ -48,7 +49,7 @@ export default function AdminDashboard() {
 		fetchProjects();
 	}, []);
 
-	async function handleDelete(id: string) {
+	async function handleDelete(id: number) {
 		setIsDeleting(id);
 		await deleteProject(id);
 		setProjects(projects.filter((project) => project.id !== id));
