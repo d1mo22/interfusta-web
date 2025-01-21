@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import {
 	ChevronRight,
 	Paintbrush,
@@ -38,7 +39,10 @@ export default function Home() {
 						negocio
 					</p>
 					<Link href="/portfolio">
-						<Button size="lg" className="bg-amber-800 hover:bg-amber-900">
+						<Button
+							size="lg"
+							className="bg-amber-800 hover:bg-amber-900 text-lg py-6 px-8"
+						>
 							Ver Nuestro Trabajo <ChevronRight className="ml-2" />
 						</Button>
 					</Link>
@@ -58,30 +62,39 @@ export default function Home() {
 								description:
 									"Muebles personalizados diseñados y fabricados según sus especificaciones",
 								icon: Drill,
+								image: "https://placehold.co/400x400",
 							},
 							{
 								title: "Instalación de Cocinas",
 								description:
 									"Instalación profesional de gabinetes de cocina y personalización",
 								icon: CookingPot,
+								image: "https://placehold.co/400x400",
 							},
 							{
 								title: "Lacado y barnizado",
 								description:
 									"Acabados profesionales para proteger y embellecer sus muebles de madera",
 								icon: Paintbrush,
+								image: "https://placehold.co/400x400",
 							},
 							{
 								title: "Mediciones y Planificación",
 								description:
 									"Planificación detallada y mediciones precisas para su proyecto",
 								icon: Ruler,
+								image: "https://placehold.co/400x400",
 							},
 						].map((service) => (
 							<Card
 								key={service.title.toLowerCase().replace(/\s+/g, "-")}
 								className="border-none shadow-lg"
 							>
+								<img
+									src={service.image || "https://placehold.co/400x400"}
+									alt={service.title}
+									className="w-full h-48 object-cover"
+								/>
 								<CardContent className="pt-6">
 									<div className="rounded-full bg-amber-100 p-3 w-12 h-12 flex items-center justify-center mb-4">
 										<service.icon className="w-6 h-6 text-amber-800" />

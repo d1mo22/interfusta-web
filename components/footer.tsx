@@ -13,10 +13,19 @@ export function Footer() {
 					</div>
 					<div>
 						<h3 className="text-xl font-bold mb-4">Contacto</h3>
-						<p className="text-gray-400">Email: interfusta@andorra.ad</p>
+						<p className="text-gray-400">
+							Email:{" "}
+							<a
+								href="mailto:interfusta@andorra.ad"
+								className="hover:underline"
+							>
+								interfusta@andorra.ad
+							</a>
+						</p>
 						<p className="text-gray-400">Teléfono: +376 804 440</p>
 						<p className="text-gray-400">
-							Dirección: Andorra la Vella, Andorra
+							Dirección: Passatge d&apos;Enclar S/N,
+							<br /> Santa Coloma, AD500, Andorra
 						</p>
 					</div>
 					<div>

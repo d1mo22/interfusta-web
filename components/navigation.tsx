@@ -20,6 +20,7 @@ export function Navigation() {
 								width={150}
 								height={50}
 								className="object-contain"
+								priority
 							/>
 						</Link>
 					</div>

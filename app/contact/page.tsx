@@ -87,7 +87,11 @@ export default function ContactPage() {
 										<Mail className="w-6 h-6 text-amber-800 mt-1" />
 										<div className="ml-4">
 											<h3 className="font-semibold">Email</h3>
-											<p className="text-gray-600">interfusta@andorra.ad</p>
+											<p className="text-gray-600 hover:underline">
+												<a href="mailto:interfusta@andorra.ad">
+													interfusta@andorra.ad
+												</a>
+											</p>
 										</div>
 									</div>
 									<div className="flex items-start">
