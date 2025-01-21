@@ -11,10 +11,11 @@ import type { Project, Image, Feature } from "@/app/types/database";
 
 export default async function ProjectDetails({
 	params,
-}: { params: { id: number } }) {
-	const project = (await getProjectDetails(params.id)) as Project;
-	const images = (await getImagesFromProject(params.id)) as Image[];
-	const features = (await getFeaturesFromProject(params.id)) as Feature[];
+}: { params: { id: string } }) {
+	const id = Number.parseInt(params.id);
+	const project = (await getProjectDetails(id)) as Project;
+	const images = (await getImagesFromProject(id)) as Image[];
+	const features = (await getFeaturesFromProject(id)) as Feature[];
 	const category_name = (await getCategory(project.category_id)).name as string;
 
 	if (!project) {
