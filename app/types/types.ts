@@ -10,6 +10,8 @@ export interface Project {
 		url: string;
 		alt_text: string;
 	};
+	last_update?: string;
+	updated_by?: string;
 }
 
 export interface User {
@@ -30,10 +32,21 @@ export interface Feature {
 	description: string;
 }
 
-export interface Image {
+export interface ImageData {
 	id: number;
 	project_id: number;
 	url: string;
 	alt_text: string;
 	order: number;
+}
+
+export interface ProjectDetails {
+	category_name: string;
+	fearures: Feature[];
+	images: ImageData[];
+}
+
+export interface ClientPortfolioProps {
+	initialProjects: Project[];
+	categories: Category[];
 }

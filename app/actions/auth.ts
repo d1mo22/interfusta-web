@@ -29,7 +29,7 @@ export async function login(formData: FormData) {
 			JSON.stringify({
 				id: user[0].id,
 				username: user[0].username,
-				role: user[0].role,
+				name: user[0].name,
 			}),
 			{
 				secure: true,

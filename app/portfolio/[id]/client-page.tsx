@@ -5,24 +5,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import { ImageGalleryModal } from "@/components/image-gallery-modal";
-import type { Project, Image, Feature } from "@/app/types/database";
+import { formatDate } from "@/app/lib/utils";
+import type { Project, ImageData, Feature } from "@/app/types/types";
 
 interface ClientPageProps {
 	project: Project;
-	images: Image[];
+	images: ImageData[];
 	features: Feature[];
 	category_name: string;
 }
-
-const formatDate = (date: string) => {
-	if (!date) return "";
-	const d = new Date(date);
-	return d.toLocaleDateString("es-ES", {
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	});
-};
 
 export default function ClientPage({
 	project,
@@ -121,7 +112,7 @@ export default function ClientPage({
 				</div>
 
 				<ImageGalleryModal
-					images={images.slice(1).map((image: Image) => image.url)}
+					images={images.slice(1).map((image: ImageData) => image.url)}
 					initialIndex={selectedImageIndex}
 					isOpen={isGalleryOpen}
 					onClose={() => setIsGalleryOpen(false)}

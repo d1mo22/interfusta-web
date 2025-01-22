@@ -1,22 +1,21 @@
 import { notFound } from "next/navigation";
-import ClientPage from "./clientPage";
-import {
-	getCategory,
-	getFeaturesFromProject,
-	getImagesFromProject,
-	getProjectDetails,
-} from "@/app/actions/data";
+import { unstable_cache } from "next/cache";
+import ClientPage from "./client-page";
+import { getProjectDetails } from "@/app/actions/data";
+import type { Project, ImageData, Feature } from "@/app/types/types";
 
-import type { Project, Image, Feature } from "@/app/types/database";
+const getCachedProjectDetails = unstable_cache(
+	async (id: number) => getProjectDetails(id),
+	["project-details"],
+	{ revalidate: 3600 }, // Cache por 1 hora
+);
 
 export default async function ProjectDetails({
 	params,
 }: { params: Promise<{ id: string }> }) {
 	const id = Number.parseInt((await params).id);
-	const project = (await getProjectDetails(id)) as Project;
-	const images = (await getImagesFromProject(id)) as Image[];
-	const features = (await getFeaturesFromProject(id)) as Feature[];
-	const category_name = (await getCategory(project.category_id)).name as string;
+
+	const project = await getCachedProjectDetails(id);
 
 	if (!project) {
 		notFound();
@@ -24,10 +23,10 @@ export default async function ProjectDetails({
 
 	return (
 		<ClientPage
-			project={project}
-			images={images}
-			features={features}
-			category_name={category_name}
+			project={project as Project}
+			images={project.images as ImageData[]}
+			features={project.features as Feature[]}
+			category_name={project.category_name}
 		/>
 	);
 }
