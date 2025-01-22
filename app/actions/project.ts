@@ -60,6 +60,8 @@ export async function updateProjectAction(formData: FormData) {
 
 		revalidatePath("/admin");
 		revalidatePath("/portfolio");
+		revalidatePath(`/admin/projects/${id}/edit`);
+		revalidatePath(`/portfolio/${id}`);
 		return { success: true };
 	} catch (error) {
 		console.error("Error updating project:", error);

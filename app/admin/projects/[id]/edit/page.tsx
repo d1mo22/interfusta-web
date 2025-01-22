@@ -10,7 +10,6 @@ import type { Category, Feature, Project } from "@/app/types/types";
 
 type Props = {
 	params: Promise<{ id: string }>;
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function EditProjectPage({ params }: Props) {

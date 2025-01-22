@@ -15,55 +15,31 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { ChevronLeft, Plus, X, CalendarIcon } from "lucide-react";
-import type { Project, Category, Feature } from "@/app/types/types";
+import { createProject } from "@/app/actions/project";
+import { CalendarIcon, ChevronLeft, Plus, X } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
+import type { Category } from "@/app/types/types";
 import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { format } from "date-fns";
-import { es } from "date-fns/locale";
 import { cn } from "@/lib/utils";
-import { AdminProjectsSkeleton } from "@/components/admin-projects-skeleton";
+import { es } from "date-fns/locale";
 
-interface EditProjectFormProps {
-	project: Project;
-	categories: Category[];
-	featuresData: Feature[];
-	updateProject: (
-		formData: FormData,
-	) => Promise<{ success?: boolean; error?: string }>;
-}
-
-export default function EditProjectForm({
-	project,
+export default function NewProjectForm({
 	categories,
-	featuresData,
-	updateProject,
-}: EditProjectFormProps) {
+}: { categories: Category[] }) {
 	const router = useRouter();
 	const [error, setError] = useState<string>("");
-	const [features, setFeatures] = useState<string[]>(
-		featuresData.map((f) => f.description),
-	);
+	const [features, setFeatures] = useState<string[]>([]);
 	const [newFeature, setNewFeature] = useState<string>("");
-	const [date, setDate] = useState<Date>(new Date(project.completion_date));
-
-	function addFeature() {
-		if (newFeature.trim()) {
-			setFeatures([...features, newFeature.trim()]);
-			setNewFeature("");
-		}
-	}
+	const [date, setDate] = useState<Date>(new Date());
 
 	async function handleSubmit(formData: FormData) {
-		// Agregamos el ID del proyecto y las características al formData
-		formData.append("id", project.id.toString());
 		formData.append("features", JSON.stringify(features));
-
-		const result = await updateProject(formData);
+		const result = await createProject();
 
 		if (result.error) {
 			setError(result.error);
@@ -73,12 +49,20 @@ export default function EditProjectForm({
 		}
 	}
 
-	function removeFeature(index: number) {
-		setFeatures(features.filter((_, i) => i !== index));
+	function addFeature() {
+		if (newFeature.trim()) {
+			setFeatures([...features, newFeature.trim()]);
+			setNewFeature("");
+		}
 	}
 
-	if (!project) {
-		return <AdminProjectsSkeleton />;
+	function addCategory() {
+		// Implementar lógica para añadir una nueva categoría
+		return;
+	}
+
+	function removeFeature(index: number) {
+		setFeatures(features.filter((_, i) => i !== index));
 	}
 
 	return (
@@ -92,68 +76,57 @@ export default function EditProjectForm({
 
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-2xl">Editar proyecto</CardTitle>
+						<CardTitle className="text-2xl">Añadir Nuevo Proyecto</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<form action={handleSubmit} className="space-y-6">
 							<div className="grid md:grid-cols-2 gap-6">
 								<div>
 									<label
-										htmlFor="project-title"
+										htmlFor="title"
 										className="block text-sm font-medium text-gray-700"
 									>
 										Título
 									</label>
-									<Input
-										id="project-title"
-										name="title"
-										defaultValue={project.title}
-										required
-										className="mt-1"
-									/>
+									<Input id="title" name="title" required className="mt-1" />
 								</div>
 								<div>
 									<label
-										htmlFor="project-category"
+										htmlFor="category"
 										className="block text-sm font-medium text-gray-700"
 									>
 										Categoría
 									</label>
-									<Select
-										name="project-category"
-										defaultValue={
-											categories.find((c) => c.id === project.category_id)?.name
-										}
-									>
-										<SelectTrigger>
-											<SelectValue placeholder="Select category" />
-										</SelectTrigger>
-										<SelectContent>
-											{categories
-												.filter(
-													(category) => category.name !== "Todos los Proyectos",
-												)
-												.map((category) => (
+									<div className="flex gap-2 mt-1">
+										<Select name="category">
+											<SelectTrigger>
+												<SelectValue placeholder="Selecciona una categoría" />
+											</SelectTrigger>
+											<SelectContent>
+												{categories.slice(1).map((category) => (
 													<SelectItem key={category.id} value={category.name}>
 														{category.name}
 													</SelectItem>
 												))}
-										</SelectContent>
-									</Select>
+											</SelectContent>
+										</Select>
+										<Button type="button" onClick={addCategory}>
+											<Plus className="h-4 w-4" />
+										</Button>
+									</div>
 								</div>
 							</div>
 
 							<div>
 								<label
-									htmlFor="project-description"
+									htmlFor="description"
 									className="block text-sm font-medium text-gray-700"
 								>
 									Descripción Corta
 								</label>
 								<Input
-									id="project-description"
+									id="description"
 									name="description"
-									defaultValue={project.description}
 									required
 									className="mt-1"
 								/>
@@ -161,15 +134,14 @@ export default function EditProjectForm({
 
 							<div>
 								<label
-									htmlFor="project-fullDescription"
+									htmlFor="fullDescription"
 									className="block text-sm font-medium text-gray-700"
 								>
 									Descripción Completa
 								</label>
 								<Textarea
-									id="project-fullDescription"
+									id="fullDescription"
 									name="fullDescription"
-									defaultValue={project.full_description}
 									required
 									className="mt-1"
 									rows={6}
@@ -178,14 +150,14 @@ export default function EditProjectForm({
 
 							<div>
 								<label
-									htmlFor="newFeature"
+									htmlFor="features"
 									className="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Características
 								</label>
 								<div className="flex gap-2 mb-2">
 									<Input
-										id="newFeature"
+										id="features"
 										value={newFeature}
 										onChange={(e) => setNewFeature(e.target.value)}
 										placeholder="Añadir una característica"
@@ -273,7 +245,6 @@ export default function EditProjectForm({
 									<Input
 										id="project-duration"
 										name="duration"
-										defaultValue={project.duration}
 										required
 										className="mt-1"
 									/>
@@ -290,7 +261,7 @@ export default function EditProjectForm({
 								<Link href="/admin">
 									<Button variant="outline">Cancelar</Button>
 								</Link>
-								<Button type="submit">Guardar cambios</Button>
+								<Button type="submit">Crear Proyecto</Button>
 							</div>
 						</form>
 					</CardContent>

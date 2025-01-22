@@ -111,8 +111,22 @@ export async function getUser(username: string): Promise<User> {
 	)[0] as User;
 }
 
-export async function getCategories() {
-	return (await sql`SELECT * FROM category ORDER BY id`) as Category[];
+export async function getCategories(): Promise<Category[]> {
+	try {
+		return (await sql`
+      SELECT id, name 
+      FROM category 
+      ORDER BY 
+        CASE 
+          WHEN name = 'Todos los Proyectos' THEN 0 
+          ELSE 1 
+        END,
+        id ASC
+    `) as Category[];
+	} catch (error) {
+		console.error("Error al obtener categorías:", error);
+		return [];
+	}
 }
 
 export async function getCategory(id: number) {
@@ -136,5 +150,5 @@ export async function getImagesFromProject(projectId: number) {
 }
 
 export async function getFeaturesFromProject(projectId: number) {
-	return await sql`SELECT * FROM feature WHERE project_id = ${projectId}`;
+	return await sql`SELECT * FROM feature WHERE project_id = ${projectId} FOR UPDATE`;
 }

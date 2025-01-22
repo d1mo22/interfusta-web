@@ -24,6 +24,16 @@ export const metadata = {
 			},
 		],
 	},
+	openGraph: {
+		title: "Fusteria InterFusta - Servicios expertos de carpintería",
+		description:
+			"Servicios profesionales de carpintería y ebanistería en Andorra",
+		images: [
+			{
+				url: "/logoDark.ico",
+			},
+		],
+	},
 };
 
 export default function RootLayout({
