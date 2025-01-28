@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,6 @@ import {
 	updateCategory,
 	deleteCategory,
 } from "@/app/actions/categories";
-import { getCategories } from "@/app/actions/data";
 import type { Category } from "@/types/types";
 
 export default function CategoryManagement({

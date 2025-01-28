@@ -9,6 +9,11 @@ import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+	//TODO: Change this to the actual URL
+	metadataBase: new URL(
+		process.env.NEXT_PUBLIC_BASE_URL ||
+			"https://interfusta-github-io.vercel.app/",
+	),
 	title: "Fusteria InterFusta - Servicios expertos de carpintería",
 	description:
 		"Servicios profesionales de carpintería y ebanistería en Andorra",

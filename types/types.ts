@@ -12,6 +12,7 @@ export interface Project {
 	};
 	last_update?: string;
 	updated_by?: string;
+	images?: ImageData[];
 }
 
 export interface User {
