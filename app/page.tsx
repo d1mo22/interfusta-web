@@ -48,9 +48,49 @@ export default function Home() {
 					</Link>
 				</div>
 			</section>
+			{/* Proyecto Destacado */}
+			<section className="py-20 bg-amber-50">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<h2 className="text-3xl font-bold text-center mb-12">
+						Proyecto Destacado
+					</h2>
+					<div className="grid md:grid-cols-2 gap-12 items-center">
+						<div>
+							<img
+								src="https://placehold.co/800x600"
+								alt="Proyecto destacado"
+								className="rounded-lg shadow-xl loading-lazy"
+							/>
+						</div>
+						<div>
+							<h3 className="text-2xl font-bold mb-4">
+								Renovación de Villa de Lujo
+							</h3>
+							<p className="text-gray-600 mb-6">
+								Transformamos completamente esta villa con muebles hechos a
+								medida, una cocina personalizada y detalles de madera
+								intrincados en todo el lugar. Nuestro equipo trabajó
+								estrechamente con el cliente para dar vida a su visión,
+								resultando en una impresionante muestra de nuestra artesanía.
+							</p>
+							<ul className="list-disc list-inside text-gray-600 mb-6">
+								<li>Gabinetes de cocina diseñados a medida</li>
+								<li>Mesa de comedor y sillas hechas a mano</li>
+								<li>Armarios empotrados para todas las habitaciones</li>
+								<li>Vigas de techo de madera y paneles de pared</li>
+							</ul>
+							<Link href="/portfolio">
+								<Button variant="outline" size="lg">
+									Ver todos los Proyectos
+								</Button>
+							</Link>
+						</div>
+					</div>
+				</div>
+			</section>
 
 			{/* Resumen de Servicios */}
-			<section className="py-20 bg-white">
+			<section className="py-20 bg-white ">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 className="text-3xl font-bold text-center mb-12">
 						Nuestros Servicios
@@ -113,47 +153,6 @@ export default function Home() {
 								Explorar Todos los Servicios
 							</Button>
 						</Link>
-					</div>
-				</div>
-			</section>
-
-			{/* Proyecto Destacado */}
-			<section className="py-20 bg-amber-50">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-3xl font-bold text-center mb-12">
-						Proyecto Destacado
-					</h2>
-					<div className="grid md:grid-cols-2 gap-12 items-center">
-						<div>
-							<img
-								src="https://placehold.co/800x600"
-								alt="Proyecto destacado"
-								className="rounded-lg shadow-xl loading-lazy"
-							/>
-						</div>
-						<div>
-							<h3 className="text-2xl font-bold mb-4">
-								Renovación de Villa de Lujo
-							</h3>
-							<p className="text-gray-600 mb-6">
-								Transformamos completamente esta villa con muebles hechos a
-								medida, una cocina personalizada y detalles de madera
-								intrincados en todo el lugar. Nuestro equipo trabajó
-								estrechamente con el cliente para dar vida a su visión,
-								resultando en una impresionante muestra de nuestra artesanía.
-							</p>
-							<ul className="list-disc list-inside text-gray-600 mb-6">
-								<li>Gabinetes de cocina diseñados a medida</li>
-								<li>Mesa de comedor y sillas hechas a mano</li>
-								<li>Armarios empotrados para todas las habitaciones</li>
-								<li>Vigas de techo de madera y paneles de pared</li>
-							</ul>
-							<Link href="/portfolio">
-								<Button variant="outline" size="lg">
-									Ver todos los Proyectos
-								</Button>
-							</Link>
-						</div>
 					</div>
 				</div>
 			</section>

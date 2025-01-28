@@ -26,7 +26,7 @@ export default function ClientPage({
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
 	const openGallery = (index: number) => {
-		setSelectedImageIndex(index);
+		setSelectedImageIndex(index + 1);
 		setIsGalleryOpen(true);
 	};
 
@@ -113,7 +113,7 @@ export default function ClientPage({
 				</div>
 
 				<ImageGalleryModal
-					images={images.slice(1).map((image: ImageData) => image.url)}
+					images={images.map((image: ImageData) => image.url)}
 					initialIndex={selectedImageIndex}
 					isOpen={isGalleryOpen}
 					onClose={() => setIsGalleryOpen(false)}
