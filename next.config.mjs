@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
+		domains: ["placehold.co", `${process.env.CLAUDFLARE_API}`],
 		remotePatterns: [
 			{
 				protocol: "https",
@@ -9,6 +10,13 @@ const nextConfig = {
 				pathname: "/**",
 			},
 		],
+	},
+	webpack: (config) => {
+		config.resolve.alias = {
+			...config.resolve.alias,
+			sharp$: false,
+		};
+		return config;
 	},
 };
 
