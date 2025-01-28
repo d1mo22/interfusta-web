@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Pagination } from "@/components/ui/pagination";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useRef } from "react";
-import type { ClientPortfolioProps, Project } from "@/app/types/types";
+import type { ClientPortfolioProps, Project } from "@/types/types";
 
 const ITEMS_PER_PAGE = 8;
 

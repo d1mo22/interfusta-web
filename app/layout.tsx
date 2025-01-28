@@ -3,6 +3,8 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+//import GoogleAnalytics from "@/components/google-analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,6 +50,7 @@ export default function RootLayout({
 				<main>
 					{children}
 					<SpeedInsights />
+					<Analytics />
 				</main>
 				<Footer />
 			</body>

@@ -1,8 +1,9 @@
 "use server";
 
-import { sql } from "@/app/lib/db";
+import { sql } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./auth";
+import { insertProjectImages } from "./data";
 
 export async function createProject() {
 	const user = await getCurrentUser();
@@ -23,7 +24,7 @@ export async function updateProjectAction(formData: FormData) {
 	const user = await getCurrentUser();
 
 	try {
-		const id = formData.get("id");
+		const id = Number(formData.get("id"));
 		const title = formData.get("title") as string;
 		const description = formData.get("description") as string;
 		const fullDescription = formData.get("fullDescription") as string;
@@ -31,6 +32,11 @@ export async function updateProjectAction(formData: FormData) {
 		const duration = formData.get("duration") as string;
 		const category = formData.get("project-category") as string;
 		const features = JSON.parse(formData.get("features") as string);
+		const newImages = JSON.parse(formData.get("newImages") as string);
+
+		if (newImages?.length > 0) {
+			await insertProjectImages(id, newImages);
+		}
 
 		// Actualizar el proyecto en la base de datos
 		await sql`

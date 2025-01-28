@@ -6,7 +6,7 @@ import {
 } from "@/app/actions/data";
 import { updateProjectAction } from "@/app/actions/project";
 import EditProjectForm from "./client-edit";
-import type { Category, Feature, Project } from "@/app/types/types";
+import type { Category, Feature, Project, ImageData } from "@/types/types";
 
 type Props = {
 	params: Promise<{ id: string }>;
@@ -29,6 +29,7 @@ export default async function EditProjectPage({ params }: Props) {
 			categories={categories as Category[]}
 			featuresData={features as Feature[]}
 			updateProject={updateProjectAction}
+			images={project.images as ImageData[]}
 		/>
 	);
 }

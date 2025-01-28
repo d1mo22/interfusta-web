@@ -1,5 +1,5 @@
-import { sql } from "@/app/lib/db";
-import type { Project, User, Category, ImageData } from "@/app/types/types";
+import { sql } from "@/lib/db";
+import type { Project, User, Category, ImageData } from "@/types/types";
 
 export async function getProjects() {
 	return (await sql`
@@ -116,12 +116,8 @@ export async function getCategories(): Promise<Category[]> {
 		return (await sql`
       SELECT id, name 
       FROM category 
-      ORDER BY 
-        CASE 
-          WHEN name = 'Todos los Proyectos' THEN 0 
-          ELSE 1 
-        END,
-        id ASC
+      WHERE name != 'Todos los Proyectos'
+      ORDER BY id ASC
     `) as Category[];
 	} catch (error) {
 		console.error("Error al obtener categorías:", error);
@@ -151,4 +147,25 @@ export async function getImagesFromProject(projectId: number) {
 
 export async function getFeaturesFromProject(projectId: number) {
 	return await sql`SELECT * FROM feature WHERE project_id = ${projectId} FOR UPDATE`;
+}
+
+export async function insertProjectImages(
+	projectId: number,
+	images: Array<{ url: string; altText: string }>,
+) {
+	try {
+		return await sql`
+      INSERT INTO image (project_id, url, alt_text, "order")
+      SELECT 
+        ${projectId},
+        url,
+        alt_text,
+        row_number() OVER () - 1
+      FROM json_to_recordset(${JSON.stringify(images)}) 
+      AS x(url text, alt_text text)
+    `;
+	} catch (error) {
+		console.error("Error al insertar imágenes:", error);
+		throw error;
+	}
 }

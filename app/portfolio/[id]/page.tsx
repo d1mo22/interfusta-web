@@ -2,12 +2,12 @@ import { notFound } from "next/navigation";
 import { unstable_cache } from "next/cache";
 import ClientPage from "./client-page";
 import { getProjectDetails } from "@/app/actions/data";
-import type { Project, ImageData, Feature } from "@/app/types/types";
+import type { Project, ImageData, Feature } from "@/types/types";
 
 const getCachedProjectDetails = unstable_cache(
 	async (id: number) => getProjectDetails(id),
 	["project-details"],
-	{ revalidate: 3600 }, // Cache por 1 hora
+	{ revalidate: 3600 },
 );
 
 export default async function ProjectDetails({

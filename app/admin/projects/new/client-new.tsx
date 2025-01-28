@@ -18,7 +18,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { createProject } from "@/app/actions/project";
 import { CalendarIcon, ChevronLeft, Plus, X } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
-import type { Category } from "@/app/types/types";
+import type { Category } from "@/types/types";
 import {
 	Popover,
 	PopoverContent,

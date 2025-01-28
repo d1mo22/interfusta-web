@@ -1,6 +1,6 @@
 "use server";
 
-import { sql } from "@/app/lib/db";
+import { sql } from "@/lib/db";
 import { cookies } from "next/headers";
 import bcrypt from "bcryptjs";
 

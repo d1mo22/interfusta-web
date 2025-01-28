@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Project } from "@/app/types/types";
+import type { Project } from "@/types/types";
 
 export function useProjectDelete() {
 	const [isDeleting, setIsDeleting] = useState<number | null>(null);

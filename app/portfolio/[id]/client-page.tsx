@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -5,8 +6,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import { ImageGalleryModal } from "@/components/image-gallery-modal";
-import { formatDate } from "@/app/lib/utils";
-import type { Project, ImageData, Feature } from "@/app/types/types";
+import { formatDate } from "@/lib/utils";
+import type { Project, ImageData, Feature } from "@/types/types";
 
 interface ClientPageProps {
 	project: Project;

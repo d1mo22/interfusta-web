@@ -4,11 +4,11 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Plus } from "lucide-react";
+import { Plus, Settings } from "lucide-react";
 import { ProjectCard } from "@/components/project-admin-card";
-import { useProjectDelete } from "@/app/hooks/useProjectDelete";
-import { formatDate } from "@/app/lib/utils";
-import type { ClientPortfolioProps, Project } from "../types/types";
+import { useProjectDelete } from "@/hooks/useProjectDelete";
+import { formatDate } from "@/lib/utils";
+import type { ClientPortfolioProps, Project } from "../../types/types";
 import { Pagination } from "@/components/ui/pagination";
 import {
 	Dialog,
@@ -50,16 +50,23 @@ export default function AdminDashboard({
 		<div className="min-h-screen pt-16 bg-gray-50" ref={projectsRef}>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 				{/* Header */}
-				<div className="flex justify-between items-center mb-8">
+				<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
 					<h1 className="text-3xl font-bold">Gestión de Proyectos</h1>
-					<Link href="/admin/projects/new">
-						<Button>
-							<Plus className="h-4 w-4 mr-2" />
-							Añadir Nuevo Proyecto
-						</Button>
-					</Link>
+					<div className="w-full sm:w-auto flex flex-col sm:flex-row gap-4">
+						<Link href="/admin/categories" className="w-full sm:w-auto">
+							<Button variant="outline" className="w-full">
+								<Settings className="h-4 w-4 mr-2" />
+								Gestionar Categorías
+							</Button>
+						</Link>
+						<Link href="/admin/projects/new" className="w-full sm:w-auto">
+							<Button className="w-full">
+								<Plus className="h-4 w-4 mr-2" />
+								Añadir Nuevo Proyecto
+							</Button>
+						</Link>
+					</div>
 				</div>
-
 				{/* Project List */}
 				{projects.length === 0 ? (
 					<Card>
