@@ -22,7 +22,7 @@ export default function Home() {
 					playsInline
 					preload="auto"
 					className="absolute inset-0 w-full h-full object-cover"
-					poster="/thumbnail.jpg"
+					poster="/thumbnail.webp"
 				>
 					<source src="/video.mp4" type="video/mp4" />
 				</video>
