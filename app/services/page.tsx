@@ -12,44 +12,44 @@ import {
 export default function ServicesPage() {
 	const services = [
 		{
-			title: "Muebles a Medida",
+			title: "Mobles a Mesura",
 			description:
-				"Diseñamos y fabricamos muebles a medida adaptados a sus necesidades y preferencias específicas. Desde elegantes mesas de comedor hasta armarios a medida, nuestros expertos artesanos harán realidad su visión.",
+				"Dissenyem i fabriquem mobles a mesura adaptats a les seves necessitats i preferències específiques. Des d'elegants taules de menjador fins a armaris a mesura, els nostres experts artesans faran realitat la seva visió.",
 			icon: Saw,
 			imageUrl: "https://placehold.co/600x400",
 		},
 		{
-			title: "Instalación de cocinas",
+			title: "Instal·lació de Cuines",
 			description:
-				"Transforme su cocina con nuestros servicios profesionales de instalación. Nos encargamos de todo, desde el montaje de armarios hasta las soluciones de almacenamiento personalizadas, garantizando una funcionalidad y estética perfectas..",
+				"Transformi la seva cuina amb els nostres serveis professionals d'instal·lació. Ens encarreguem de tot, des del muntatge d'armaris fins a les solucions d'emmagatzematge personalitzades, garantint una funcionalitat i estètica perfectes.",
 			icon: Tool,
 			imageUrl: "https://placehold.co/600x400",
 		},
 		{
-			title: "Lacado y barnizado",
+			title: "Lacatge i Vernissat",
 			description:
-				"Ofrecemos servicios profesionales de acabado para todo tipo de superficies de madera. Utilizamos técnicas especializadas de lacado y barnizado para proteger y realzar la belleza natural de sus muebles, garantizando un acabado duradero y elegante.",
+				"Oferim serveis professionals d'acabat per a tota mena de superfícies de fusta. Utilitzem tècniques especialitzades de lacatge i vernissat per a protegir i realçar la bellesa natural dels seus mobles, garantint un acabat durador i elegant.",
 			icon: Paintbrush,
 			imageUrl: "https://placehold.co/600x400",
 		},
 		{
-			title: "Estructuras de madera",
+			title: "Estructures de Fusta",
 			description:
-				"Cree impresionantes espacios al aire libre con nuestras estructuras de madera. Construimos pérgolas, cubiertas y elementos arquitectónicos que realzan la belleza y el valor de su propiedad.",
+				"Creï impressionants espais a l'aire lliure amb les nostres estructures de fusta. Construïm pèrgoles, cobertes i elements arquitectònics que realcen el valor de la seva propietat.",
 			icon: Hammer,
 			imageUrl: "https://placehold.co/600x400",
 		},
 		{
-			title: "Mediciones y Planificación",
+			title: "Mesuraments i Planificació",
 			description:
-				"Nuestro equipo de expertos proporciona mediciones precisas y servicios de planificación detallada para garantizar el éxito de su proyecto. Tenemos en cuenta todos los detalles antes de comenzar la construcción.",
+				"El nostre equip d'experts proporciona mesuraments precisos i serveis de planificació detallada per a garantir l'èxit del seu projecte. Tenim en compte tots els detalls abans de començar la construcció.",
 			icon: Ruler,
 			imageUrl: "https://placehold.co/600x400",
 		},
 		{
-			title: "Restauración",
+			title: "Restauració",
 			description:
-				"Dé una nueva vida a sus preciadas piezas de madera con nuestros servicios de restauración. Reparamos y repintamos cuidadosamente los muebles conservando su carácter original.",
+				"Doni una nova vida a les seves preuades peces de fusta amb els nostres serveis de restauració. Reparem i repintem acuradament els mobles conservant el seu caràcter original.",
 			icon: Wrench,
 			imageUrl: "https://placehold.co/600x400",
 		},
@@ -59,12 +59,11 @@ export default function ServicesPage() {
 		<div className="min-h-screen pt-16 bg-amber-50">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 				<h1 className="text-4xl font-bold text-center mb-4">
-					Nuestros Servicios
+					Els nostres serveis
 				</h1>
 				<p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-					Ofrecemos una amplia gama de servicios de carpintería, combinando
-					artesanía tradicional con técnicas modernas para resultados
-					excepcionales.
+					Oferim una àmplia gamma de serveis de fusteria, combinant artesania
+					tradicional amb tècniques modernes per a resultats excepcionals.
 				</p>
 
 				<div className="grid gap-12">

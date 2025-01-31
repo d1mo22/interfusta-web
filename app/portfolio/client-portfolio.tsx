@@ -8,6 +8,7 @@ import { Pagination } from "@/components/ui/pagination";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useRef } from "react";
 import type { ClientPortfolioProps, Project } from "@/types/types";
+import { ProjectImage } from "@/components/project-images";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -33,21 +34,23 @@ export default function PortfolioPage({
 
 	const handlePageChange = (newPage: number) => {
 		setCurrentPage(newPage);
-		scrollToTop();
+		setTimeout(() => {
+			scrollToTop();
+		}, 0);
 	};
 
 	return (
 		<div className="min-h-screen pt-16 bg-amber-50">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 				<h1 className="text-4xl font-bold text-center mb-4">
-					Nuestros Proyectos
+					Els nostres Projectes
 				</h1>
 				<p
 					className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto"
 					ref={projectsRef}
 				>
-					Explore nuestra colección de proyectos terminados, que muestran
-					nuestro compromiso con la calidad artesanal y la atención al detalle.
+					Explori la nostra col·lecció de projectes acabats, que mostren el
+					nostre compromís amb la qualitat artesanal i l&apos;atenció al detall.
 				</p>
 
 				<Tabs defaultValue="Todos los Proyectos" className="w-full">
@@ -69,6 +72,7 @@ export default function PortfolioPage({
 								{paginateProjects(
 									initialProjects.filter(
 										(project) =>
+											//TODO: Cambiar a Tots els Projectes
 											category.name === "Todos los Proyectos" ||
 											project.category_id === category.id,
 									),
@@ -77,10 +81,10 @@ export default function PortfolioPage({
 									<Card key={project.id} className="overflow-hidden">
 										<div className="relative h-64">
 											<Link href={`/portfolio/${project.id}`}>
-												<img
-													src={project.first_image.url}
-													alt={project.first_image.alt_text || project.title}
-													className="w-full h-full object-cover"
+												<ProjectImage
+													key={project.id}
+													fileName={project.first_image.url}
+													altText="Imagen del proyecto"
 												/>
 											</Link>
 										</div>
@@ -92,7 +96,7 @@ export default function PortfolioPage({
 												{project.description}
 											</p>
 											<Link href={`/portfolio/${project.id}`} prefetch>
-												<Button variant="outline">Ver Detalles</Button>
+												<Button variant="outline">Veure Detalls</Button>
 											</Link>
 										</CardContent>
 									</Card>

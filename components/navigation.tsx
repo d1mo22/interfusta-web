@@ -31,19 +31,19 @@ export function Navigation() {
 							href="/services"
 							className="text-gray-600 hover:text-gray-900"
 						>
-							Servicios
+							Serveis
 						</Link>
 						<Link
 							href="/portfolio"
 							className="text-gray-600 hover:text-gray-900"
 						>
-							Proyectos
+							Projectes
 						</Link>
 						<Link href="/about" className="text-gray-600 hover:text-gray-900">
-							Sobre Nosotros
+							Sobre Nosaltres
 						</Link>
 						<Link href="/contact" className="text-gray-600 hover:text-gray-900">
-							Contacto
+							Contacte
 						</Link>
 					</div>
 
@@ -73,28 +73,28 @@ export function Navigation() {
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							Servicios
+							Serveis
 						</Link>
 						<Link
 							href="/portfolio"
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							Proyectos
+							Projectes
 						</Link>
 						<Link
 							href="/about"
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							Sobre Nosotros
+							Sobre Nosaltres
 						</Link>
 						<Link
 							href="/contact"
 							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 							onClick={() => setIsOpen(false)}
 						>
-							Contacto
+							Contacte
 						</Link>
 					</div>
 				</div>

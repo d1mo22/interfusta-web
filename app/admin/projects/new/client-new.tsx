@@ -56,11 +56,6 @@ export default function NewProjectForm({
 		}
 	}
 
-	function addCategory() {
-		// Implementar lógica para añadir una nueva categoría
-		return;
-	}
-
 	function removeFeature(index: number) {
 		setFeatures(features.filter((_, i) => i !== index));
 	}
@@ -97,23 +92,18 @@ export default function NewProjectForm({
 									>
 										Categoría
 									</label>
-									<div className="flex gap-2 mt-1">
-										<Select name="category">
-											<SelectTrigger>
-												<SelectValue placeholder="Selecciona una categoría" />
-											</SelectTrigger>
-											<SelectContent>
-												{categories.slice(1).map((category) => (
-													<SelectItem key={category.id} value={category.name}>
-														{category.name}
-													</SelectItem>
-												))}
-											</SelectContent>
-										</Select>
-										<Button type="button" onClick={addCategory}>
-											<Plus className="h-4 w-4" />
-										</Button>
-									</div>
+									<Select name="category">
+										<SelectTrigger>
+											<SelectValue placeholder="Selecciona una categoría" />
+										</SelectTrigger>
+										<SelectContent>
+											{categories.slice(1).map((category) => (
+												<SelectItem key={category.id} value={category.name}>
+													{category.name}
+												</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
 								</div>
 							</div>
 

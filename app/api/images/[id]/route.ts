@@ -19,3 +19,33 @@ export async function DELETE(
 		);
 	}
 }
+
+export async function GET(request: NextRequest) {
+	try {
+		const { searchParams } = new URL(request.url);
+		const fileName = searchParams.get("key");
+
+		if (!fileName) {
+			return NextResponse.json(
+				{ success: false, error: "Nombre de archivo no proporcionado" },
+				{ status: 400 },
+			);
+		}
+
+		const publicUrl = `${process.env.NEXT_PUBLIC_R2_URL}/${fileName}`;
+
+		return NextResponse.json({
+			success: true,
+			url: publicUrl,
+		});
+	} catch (error) {
+		console.error("Error al obtener archivo: ", error);
+		return NextResponse.json(
+			{
+				success: false,
+				error: error instanceof Error ? error.message : "Error desconocido",
+			},
+			{ status: 500 },
+		);
+	}
+}

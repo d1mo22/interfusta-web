@@ -32,18 +32,18 @@ export default function Home() {
 
 				<div className="relative z-10 text-center px-4">
 					<h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-						Servicios expertos de carpintería en Andorra
+						Serveis experts de fusteria a Andorra
 					</h1>
 					<p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto drop-shadow-lg">
-						Creando soluciones de madera hermosas y funcionales para su hogar y
-						negocio
+						Creant solucions de fusta elegants i funcionals per a la seva llar i
+						negoci
 					</p>
 					<Link href="/portfolio">
 						<Button
 							size="lg"
 							className="bg-amber-800 hover:bg-amber-900 text-lg py-6 px-8"
 						>
-							Ver Nuestro Trabajo <ChevronRight className="ml-2" />
+							Veure el Nostre Treball <ChevronRight className="ml-2" />
 						</Button>
 					</Link>
 				</div>
@@ -52,7 +52,7 @@ export default function Home() {
 			<section className="py-20 bg-amber-50">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 className="text-3xl font-bold text-center mb-12">
-						Proyecto Destacado
+						Projecte Destacat
 					</h2>
 					<div className="grid md:grid-cols-2 gap-12 items-center">
 						<div>
@@ -64,24 +64,24 @@ export default function Home() {
 						</div>
 						<div>
 							<h3 className="text-2xl font-bold mb-4">
-								Renovación de Villa de Lujo
+								Renovació d&apos;una Vila de Luxe
 							</h3>
 							<p className="text-gray-600 mb-6">
-								Transformamos completamente esta villa con muebles hechos a
-								medida, una cocina personalizada y detalles de madera
-								intrincados en todo el lugar. Nuestro equipo trabajó
-								estrechamente con el cliente para dar vida a su visión,
-								resultando en una impresionante muestra de nuestra artesanía.
+								Transformem completament aquesta vila amb mobles fets a mida,
+								una cuina personalitzada i detalls de fusta intricats en tot el
+								lloc. El nostre equip va treballar estretament amb el client per
+								a donar vida a la seva visió, resultant en una impressionant
+								mostra de la nostra artesania.
 							</p>
 							<ul className="list-disc list-inside text-gray-600 mb-6">
-								<li>Gabinetes de cocina diseñados a medida</li>
-								<li>Mesa de comedor y sillas hechas a mano</li>
-								<li>Armarios empotrados para todas las habitaciones</li>
-								<li>Vigas de techo de madera y paneles de pared</li>
+								<li>Gabinets de cuina dissenyats a mesura</li>
+								<li>Mesa de menjador i cadires fetes a mà</li>
+								<li>Armaris de paret per a totes les habitacions</li>
+								<li>Bigues de sostre de fusta i panells de paret</li>
 							</ul>
 							<Link href="/portfolio">
 								<Button variant="outline" size="lg">
-									Ver todos los Proyectos
+									Veure tots els Projectes
 								</Button>
 							</Link>
 						</div>
@@ -93,35 +93,35 @@ export default function Home() {
 			<section className="py-20 bg-white ">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 className="text-3xl font-bold text-center mb-12">
-						Nuestros Servicios
+						Els nostres Serveis
 					</h2>
 					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 						{[
 							{
-								title: "Muebles a Medida",
+								title: "Mobles a Mesura",
 								description:
-									"Muebles personalizados diseñados y fabricados según sus especificaciones",
+									"Mobles personalitzats dissenyats i fabricats segons les seves especificacions",
 								icon: Drill,
 								image: "https://placehold.co/400x400",
 							},
 							{
-								title: "Instalación de Cocinas",
+								title: "Instal·lació de Cuines",
 								description:
-									"Instalación profesional de gabinetes de cocina y personalización",
+									"Instal·lació professional de gabinets de cuina i personalització",
 								icon: CookingPot,
 								image: "https://placehold.co/400x400",
 							},
 							{
-								title: "Lacado y barnizado",
+								title: "Lacatge i Vernissat",
 								description:
-									"Acabados profesionales para proteger y embellecer sus muebles de madera",
+									"Acabats professionals per a protegir i embellir els seus mobles de fusta",
 								icon: Paintbrush,
 								image: "https://placehold.co/400x400",
 							},
 							{
-								title: "Mediciones y Planificación",
+								title: "Mesuraments i Planificació",
 								description:
-									"Planificación detallada y mediciones precisas para su proyecto",
+									"Planificació detallada i mesuraments precisos per al seu projecte",
 								icon: Ruler,
 								image: "https://placehold.co/400x400",
 							},
@@ -150,7 +150,7 @@ export default function Home() {
 					<div className="text-center mt-12">
 						<Link href="/services">
 							<Button variant="outline" size="lg">
-								Explorar Todos los Servicios
+								Explorar Tots els Serveis
 							</Button>
 						</Link>
 					</div>
@@ -161,11 +161,11 @@ export default function Home() {
 			<section className="py-20 bg-amber-800 text-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 					<h2 className="text-3xl font-bold mb-4">
-						¿Listo para Comenzar tu Proyecto?
+						Llest per Començar el teu Projecte?
 					</h2>
 					<p className="text-xl mb-8 max-w-2xl mx-auto">
-						Hagamos realidad tu visión. Contáctanos hoy para una consulta y
-						presupuesto gratuito.
+						Fem realitat la teva visió. Contacta&apos;ns avui per a una consulta
+						i pressupost gratuït.
 					</p>
 					<Link href="/contact">
 						<Button
@@ -173,7 +173,7 @@ export default function Home() {
 							variant="secondary"
 							className="bg-white text-amber-800 hover:bg-gray-100"
 						>
-							Contáctanos
+							Contacta&apos;ns
 						</Button>
 					</Link>
 				</div>

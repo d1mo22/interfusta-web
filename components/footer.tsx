@@ -6,13 +6,13 @@ export function Footer() {
 					<div>
 						<h3 className="text-xl font-bold mb-4">Fusteria InterFusta</h3>
 						<p className="text-gray-400">
-							Servicios profesionales de carpintería con <br />
-							años de experiencia en la creación de
-							<br /> hermosas soluciones de madera.
+							Serveis professionals de fusteria amb <br />
+							anys d&apos;experiència en la creació de
+							<br /> elegants solucions de fusta.
 						</p>
 					</div>
 					<div>
-						<h3 className="text-xl font-bold mb-4">Contacto</h3>
+						<h3 className="text-xl font-bold mb-4">Contacte</h3>
 						<p className="text-gray-400">
 							Email:{" "}
 							<a
@@ -22,23 +22,23 @@ export function Footer() {
 								interfusta@andorra.ad
 							</a>
 						</p>
-						<p className="text-gray-400">Teléfono: +376 804 440</p>
+						<p className="text-gray-400">Telèfon: +376 804 440</p>
 						<p className="text-gray-400">
-							Dirección: Passatge d&apos;Enclar S/N,
+							Direcció: Passatge d&apos;Enclar S/N,
 							<br /> Santa Coloma, AD500, Andorra
 						</p>
 					</div>
 					<div>
-						<h3 className="text-xl font-bold mb-4">Horario</h3>
-						<p className="text-gray-400">Lunes - Viernes: 9:00 - 17:00</p>
-						<p className="text-gray-400">Sábado: 10:00 - 13:00</p>
-						<p className="text-gray-400">Domingo: Cerrado</p>
+						<h3 className="text-xl font-bold mb-4">Horari</h3>
+						<p className="text-gray-400">Dilluns - Divendres: 9:00 - 17:00</p>
+						<p className="text-gray-400">Dissabte: 10:00 - 13:00</p>
+						<p className="text-gray-400">Diumenge: Tancat</p>
 					</div>
 				</div>
 				<div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
 					<p>
-						&copy; {new Date().getFullYear()} Interfusta. Todos los derechos
-						reservados.
+						&copy; {new Date().getFullYear()} Interfusta. Tots els drets
+						reservats.
 					</p>
 				</div>
 			</div>

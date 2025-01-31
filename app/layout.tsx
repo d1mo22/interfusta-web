@@ -3,7 +3,8 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
+import Script from "next/script";
 //import GoogleAnalytics from "@/components/google-analytics";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,9 +15,8 @@ export const metadata = {
 		process.env.NEXT_PUBLIC_BASE_URL ||
 			"https://interfusta-github-io.vercel.app/",
 	),
-	title: "Fusteria InterFusta - Servicios expertos de carpintería",
-	description:
-		"Servicios profesionales de carpintería y ebanistería en Andorra",
+	title: "Fusteria InterFusta - Serveis experts de fusteria",
+	description: "Serveis professionals de fusteria i ebenisteria a Andorra",
 	icons: {
 		icon: [
 			{
@@ -32,9 +32,8 @@ export const metadata = {
 		],
 	},
 	openGraph: {
-		title: "Fusteria InterFusta - Servicios expertos de carpintería",
-		description:
-			"Servicios profesionales de carpintería y ebanistería en Andorra",
+		title: "Fusteria InterFusta - Serveis experts de fusteria",
+		description: "Serveis professionals de fusteria i ebenisteria a Andorra",
 		images: [
 			{
 				url: "/logoDark.ico",
@@ -49,14 +48,26 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="es">
+		<html lang="ca">
+			<head>
+				<Script
+					src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+					`}
+				</Script>
+			</head>
 			<body className={inter.className}>
 				<Navigation />
-				<main>
-					{children}
-					<SpeedInsights />
-					<Analytics />
-				</main>
+				<main>{children}</main>
+				<Analytics />
+				<SpeedInsights />
 				<Footer />
 			</body>
 		</html>

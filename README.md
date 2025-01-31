@@ -36,8 +36,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## TODO
-- Change the direction of the buisness
-- Images do not load from R2
 - Images do not erease from R2
 
 ## Future

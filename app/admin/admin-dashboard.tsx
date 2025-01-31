@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Plus, Settings } from "lucide-react";
 import { ProjectCard } from "@/components/project-admin-card";
-import { useProjectDelete } from "@/hooks/useProjectDelete";
+import { useProjectDelete } from "@/app/hooks/useProjectDelete";
 import { formatDate } from "@/lib/utils";
 import type { ClientPortfolioProps, Project } from "../../types/types";
 import { Pagination } from "@/components/ui/pagination";
@@ -43,7 +43,9 @@ export default function AdminDashboard({
 
 	const handlePageChange = (newPage: number) => {
 		setCurrentPage(newPage);
-		projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+		setTimeout(() => {
+			projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+		}, 0);
 	};
 
 	return (

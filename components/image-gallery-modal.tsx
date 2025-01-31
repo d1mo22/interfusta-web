@@ -2,7 +2,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+	Dialog,
+	DialogContent,
+	DialogTitle,
+	DialogDescription,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -54,6 +59,10 @@ export function ImageGalleryModal({
 				<DialogTitle className="sr-only">
 					Galería de imágenes del proyecto
 				</DialogTitle>
+				<DialogDescription className="sr-only">
+					Utilice las flechas izquierda y derecha para navegar entre las
+					imágenes
+				</DialogDescription>
 				<div className="relative w-full h-full">
 					<div className="flex items-center justify-center h-full">
 						<Button

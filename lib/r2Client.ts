@@ -1,5 +1,4 @@
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { S3Client } from "@aws-sdk/client-s3";
 
 export const r2Client = new S3Client({
 	region: "auto",
@@ -10,10 +9,14 @@ export const r2Client = new S3Client({
 	},
 });
 
-export async function getSignedImageUrl(key: string) {
-	const command = new GetObjectCommand({
-		Bucket: process.env.R2_BUCKET_NAME,
-		Key: key,
-	});
-	return getSignedUrl(r2Client, command, { expiresIn: 3600 });
+// export async function getSignedImageUrl(key: string) {
+// 	const command = new GetObjectCommand({
+// 		Bucket: process.env.R2_BUCKET_NAME,
+// 		Key: key,
+// 	});
+// 	return getSignedUrl(r2Client, command, { expiresIn: 3600 });
+// }
+
+export function getPublicUrl(key: string) {
+	return `${process.env.NEXT_PUBLIC_R2_URL}/${key}`;
 }

@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { r2Client, getSignedImageUrl } from "@/lib/r2Client";
+import { r2Client } from "@/lib/r2Client";
 import { PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 
 export async function POST(request: NextRequest) {
@@ -27,11 +27,12 @@ export async function POST(request: NextRequest) {
 		);
 
 		// Generar URL firmada
-		const signedUrl = await getSignedImageUrl(fileName);
+		const publicUrl = `${process.env.NEXT_PUBLIC_R2_URL}/${fileName}`;
+		//const signedUrl = await getSignedImageUrl(fileName);
 
 		return NextResponse.json({
 			success: true,
-			url: signedUrl,
+			url: publicUrl,
 			fileName,
 		});
 	} catch (error) {

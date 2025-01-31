@@ -4,10 +4,10 @@ import { Award, Clock, Users, Heart } from "lucide-react";
 
 export default function AboutPage() {
 	const stats = [
-		{ label: "Años de experiencia", value: "10+", icon: Clock },
-		{ label: "Proyectos realizados", value: "250+", icon: Award },
-		{ label: "Clientes satisfechos", value: "100+", icon: Heart },
-		{ label: "Miembros del equipo", value: "6", icon: Users },
+		{ label: "Anys d'experiència", value: "10+", icon: Clock },
+		{ label: "Projectes realitzats", value: "250+", icon: Award },
+		{ label: "Clients satisfets", value: "100+", icon: Heart },
+		{ label: "Membres de l'equipo", value: "6", icon: Users },
 	];
 
 	return (
@@ -16,18 +16,19 @@ export default function AboutPage() {
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid md:grid-cols-2 gap-12 items-center">
 						<div>
-							<h1 className="text-4xl font-bold mb-6">Sobre Interfusta</h1>
+							<h1 className="text-4xl font-bold mb-6">Sobre InterFusta</h1>
 							<p className="text-lg text-gray-600 mb-6">
-								Desde nuestra creación, Interfusta ha estado a la vanguardia de
-								los servicios de carpintería de primera calidad en Andorra.
-								Nuestro compromiso con la excelencia y la atención al detalle
-								nos ha convertido en un nombre de confianza en la industria.
+								Des de la nostra creació, Interfusta ha estat a
+								l&apos;avantguarda dels serveis de fusteria de primera qualitat
+								a Andorra. El nostre compromís amb l&apos;excel·lència i
+								l&apos;atenció al detall ens ha convertit en un nom de confiança
+								en la indústria.
 							</p>
 							<p className="text-lg text-gray-600">
-								Combinamos técnicas tradicionales de ebanistería con tecnología
-								moderna para crear piezas asombrosas que superan la prueba del
-								tiempo. Nuestro equipo de expertos artesanos aporta décadas de
-								experiencia combinada a cada proyecto.
+								Combinem tècniques tradicionals d&apos;ebenisteria amb
+								tecnologia moderna per a crear peces sorprenents que superen la
+								prova del temps. El nostre equip d&apos;experts artesans aporta
+								dècades d&apos;experiència combinada a cada projecte.
 							</p>
 						</div>
 						<div className="relative">
@@ -57,24 +58,24 @@ export default function AboutPage() {
 
 					<div className="mt-24">
 						<h2 className="text-3xl font-bold text-center mb-12">
-							Nuestros Valores
+							Els nostres Valors
 						</h2>
 						<div className="grid md:grid-cols-3 gap-8 ">
 							{[
 								{
-									title: "Artesanía de Calidad",
+									title: "Artesania de Qualitat",
 									description:
-										"Nos enorgullecemos de ofrecer una calidad excepcional en cada proyecto, utilizando los mejores materiales y técnicas.",
+										"Ens enorgullim d'oferir una qualitat excepcional en cada projecte, utilitzant els millors materials i tècniques",
 								},
 								{
-									title: "Satisfacción del Cliente",
+									title: "Satisfacció del Client",
 									description:
-										"Tu satisfacción es nuestra prioridad. Trabajamos estrechamente contigo para asegurar que tu visión se haga realidad.",
+										"La teva satisfacció és la nostra prioritat. Treballem estretament amb tu per a assegurar que la teva visió es faci realitat.",
 								},
 								{
-									title: "Sostenibilidad",
+									title: "Sostenibilitat",
 									description:
-										"Estamos comprometidos con prácticas sostenibles, utilizando materiales de origen responsable y minimizando los residuos.",
+										"Estem compromesos amb pràctiques sostenibles, utilitzant materials d'origen responsable i minimitzant els residus.",
 								},
 							].map((value) => (
 								<Card key={value.title}>
