@@ -37,6 +37,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## TODO
 - Images do not erease from R2
+- Images with signature URL
 
 ## Future
 - Make the page with more languages (e.g. Catalan, English, ...)
