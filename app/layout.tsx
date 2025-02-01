@@ -4,8 +4,7 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Script from "next/script";
-//import GoogleAnalytics from "@/components/google-analytics";
+//import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,20 +48,20 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="ca">
-			<head>
+			{/* <head>
 				<Script
-					src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+					src="https://www.googletagmanager.com/gtag/js?id=G-Q7C8FRW87N"
 					strategy="afterInteractive"
 				/>
 				<Script id="google-analytics" strategy="afterInteractive">
 					{`
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-						gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
-					`}
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-Q7C8FRW87N');
+				`}
 				</Script>
-			</head>
+			</head> */}
 			<body className={inter.className}>
 				<Navigation />
 				<main>{children}</main>

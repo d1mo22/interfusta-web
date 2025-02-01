@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
 			);
 		}
 
-		const publicUrl = `${process.env.NEXT_PUBLIC_R2_URL}/${fileName}`;
+		const publicUrl = `${process.env.R2_URL}/${fileName}`;
 
 		return NextResponse.json({
 			success: true,

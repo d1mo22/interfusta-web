@@ -18,5 +18,5 @@ export const r2Client = new S3Client({
 // }
 
 export function getPublicUrl(key: string) {
-	return `${process.env.NEXT_PUBLIC_R2_URL}/${key}`;
+	return `${process.env.R2_URL}/${key}`;
 }

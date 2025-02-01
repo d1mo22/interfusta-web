@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 		);
 
 		// Generar URL firmada
-		const publicUrl = `${process.env.NEXT_PUBLIC_R2_URL}/${fileName}`;
+		const publicUrl = `${process.env.R2_URL}/${fileName}`;
 		//const signedUrl = await getSignedImageUrl(fileName);
 
 		return NextResponse.json({
