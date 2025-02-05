@@ -346,7 +346,7 @@ export default function EditProjectForm({
 							</div>
 
 							<div>
-								<Label htmlFor="images">Project Images</Label>
+								<Label htmlFor="images">Imagenes del Proyecto</Label>
 								<div className="mt-2">
 									<Input
 										id="images"
