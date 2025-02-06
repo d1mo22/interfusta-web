@@ -28,7 +28,7 @@ export default function LoginPage() {
 			});
 		} catch (error) {
 			console.error(error);
-			setError("Error de autenticación");
+			setError("Error d'autenticació");
 		}
 	}
 

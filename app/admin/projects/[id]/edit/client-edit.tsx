@@ -125,7 +125,7 @@ export default function EditProjectForm({
 				const data = await response.json();
 				uploadedImages.push({
 					url: data.url,
-					altText: file.name,
+					altText: file.name.replace(/\.[^/.]+$/, ""),
 				});
 			}
 
@@ -154,17 +154,23 @@ export default function EditProjectForm({
 		setFeatures(features.filter((_, i) => i !== index));
 	}
 
+	function generateImageName(projectId: number, totalIndex: number) {
+		return `project-${projectId}-image-${totalIndex + 1}.webp`;
+	}
+
 	async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
 		const files = Array.from(e.target.files || []);
-
+		const totalImagesCount = existingImages.length + tempImages.length;
 		try {
-			for (const file of files) {
+			for (const [index, file] of files.entries()) {
 				const optimizedBlob = await optimizeImage(file);
-				const optimizedFile = new File(
-					[optimizedBlob],
-					file.name.replace(/\.[^/.]+$/, ".webp"),
-					{ type: "image/webp" },
+				const newImageName = generateImageName(
+					project.id,
+					totalImagesCount + index,
 				);
+				const optimizedFile = new File([optimizedBlob], newImageName, {
+					type: "image/webp",
+				});
 
 				// Crear URL temporal para preview
 				const previewUrl = URL.createObjectURL(optimizedFile);
@@ -195,7 +201,7 @@ export default function EditProjectForm({
 		} catch (error) {
 			console.error("Error:", error);
 			setError(
-				error instanceof Error ? error.message : "Error al eliminar imagen",
+				error instanceof Error ? error.message : "Error al eliminar la imatge",
 			);
 		}
 	}

@@ -154,14 +154,20 @@ export async function insertProjectImages(
 	images: Array<{ url: string; altText: string }>,
 ) {
 	try {
+		const formattedImages = images.map((image, index) => ({
+			url: image.url,
+			alt_text: image.altText,
+			order: index,
+		}));
+
 		return await sql`
       INSERT INTO image (project_id, url, alt_text, "order")
       SELECT 
         ${projectId},
         url,
         alt_text,
-        row_number() OVER () - 1
-      FROM json_to_recordset(${JSON.stringify(images)}) 
+        row_number() OVER ()
+      FROM json_to_recordset(${JSON.stringify(formattedImages)}) 
       AS x(url text, alt_text text)
     `;
 	} catch (error) {

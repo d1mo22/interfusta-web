@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { r2Client } from "@/lib/r2Client";
 import { PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { format } from "date-fns";
 
 export async function POST(request: NextRequest) {
 	try {
@@ -15,7 +16,7 @@ export async function POST(request: NextRequest) {
 		}
 
 		const buffer = await file.arrayBuffer();
-		const fileName = `${Date.now()}-${file.name}`;
+		const fileName = `${format(Date.now(), "dd-MM-yyyy|HH:mm:ss")}-${file.name}`;
 
 		await r2Client.send(
 			new PutObjectCommand({
@@ -26,9 +27,7 @@ export async function POST(request: NextRequest) {
 			}),
 		);
 
-		// Generar URL firmada
 		const publicUrl = `${process.env.R2_URL}/${fileName}`;
-		//const signedUrl = await getSignedImageUrl(fileName);
 
 		return NextResponse.json({
 			success: true,

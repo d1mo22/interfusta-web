@@ -1,3 +1,9 @@
+"use client";
+
+import { useState } from "react";
+import { createContact } from "@/app/actions/contact";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -5,6 +11,33 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export default function ContactPage() {
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+	const [success, setSuccess] = useState(false);
+
+	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+		setIsSubmitting(true);
+		setError(null);
+		setSuccess(false);
+
+		try {
+			const formData = new FormData(e.currentTarget);
+			const result = await createContact(formData);
+
+			if (result.error) {
+				setError(result.error);
+			} else {
+				setSuccess(true);
+				(e.target as HTMLFormElement).reset();
+			}
+		} catch (error) {
+			console.log(error);
+			setError("Error al enviar el missatge");
+		} finally {
+			setIsSubmitting(false);
+		}
+	}
 	return (
 		<div className="min-h-screen pt-16 bg-amber-50">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -24,7 +57,7 @@ export default function ContactPage() {
 							<h2 className="text-2xl font-bold mb-6">
 								Envia&apos;ns un missatge
 							</h2>
-							<form className="space-y-6">
+							<form className="space-y-6" onSubmit={handleSubmit}>
 								<div className="grid sm:grid-cols-2 gap-4">
 									<div>
 										<label
@@ -33,7 +66,7 @@ export default function ContactPage() {
 										>
 											Nom
 										</label>
-										<Input id="firstName" required />
+										<Input id="firstName" name="firstName" required />
 									</div>
 									<div>
 										<label
@@ -42,7 +75,7 @@ export default function ContactPage() {
 										>
 											Cognom
 										</label>
-										<Input id="lastName" required />
+										<Input id="lastName" name="lastName" required />
 									</div>
 								</div>
 								<div>
@@ -54,6 +87,7 @@ export default function ContactPage() {
 									</label>
 									<Input
 										id="email"
+										name="email"
 										type="email"
 										required
 										placeholder="interfusta@andorra.ad"
@@ -68,7 +102,8 @@ export default function ContactPage() {
 									</label>
 									<Input
 										id="phone"
-										type="phone"
+										name="phone"
+										type="tel"
 										required
 										placeholder="+376 804 440"
 									/>
@@ -82,17 +117,39 @@ export default function ContactPage() {
 									</label>
 									<Textarea
 										id="message"
+										name="message"
 										rows={6}
 										required
 										className="min-h-[150px] resize-y"
 										placeholder="Expliqui'ns en què podem ajudar-lo. Detalli el seu projecte o consulta..."
 									/>
 								</div>
+								{error && (
+									<Alert variant="destructive">
+										<AlertDescription>{error}</AlertDescription>
+									</Alert>
+								)}
+								{success && (
+									<Alert>
+										<AlertDescription>
+											Missatge enviat correctament. Ens posarem en contacte amb
+											vostè el més aviat possible.
+										</AlertDescription>
+									</Alert>
+								)}
 								<Button
 									type="submit"
 									className="w-full bg-amber-800 hover:bg-amber-900"
+									disabled={isSubmitting}
 								>
-									Enviar Missatge
+									{isSubmitting ? (
+										<>
+											<Loader className="mr-2 h-4 w-4 animate-spin" />
+											Enviant...
+										</>
+									) : (
+										"Enviar Missatge"
+									)}
 								</Button>
 							</form>
 						</CardContent>

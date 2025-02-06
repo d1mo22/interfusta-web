@@ -12,7 +12,7 @@ export async function login(formData: FormData) {
 		const user = await sql`SELECT * FROM users WHERE username = ${username}`;
 
 		if (!user.length) {
-			return { error: "Usuario no encontrado" };
+			return { error: "Usuari no trobat" };
 		}
 
 		const validPassword = await bcrypt.compare(
@@ -21,7 +21,7 @@ export async function login(formData: FormData) {
 		);
 
 		if (!validPassword) {
-			return { error: "Contraseña incorrecta" };
+			return { error: "Contrasenya incorrecta" };
 		}
 
 		(await cookies()).set(
@@ -41,12 +41,12 @@ export async function login(formData: FormData) {
 		return { success: true };
 	} catch (error) {
 		console.error(error);
-		return { error: "Error al iniciar sesión" };
+		return { error: "Error en iniciar sessió" };
 	}
 }
 
 export async function getCurrentUser() {
-	const userCookie = (await cookies()).get("user");
+	const userCookie = cookies().get("user");
 	if (!userCookie) return null;
 
 	try {
