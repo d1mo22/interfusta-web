@@ -53,7 +53,7 @@ export default function PortfolioPage({
 					nostre compromís amb la qualitat artesanal i l&apos;atenció al detall.
 				</p>
 
-				<Tabs defaultValue="Todos los Proyectos" className="w-full">
+				<Tabs defaultValue="Tots els Projectes" className="w-full">
 					<TabsList className="flex flex-wrap justify-center mb-8 gap-2 w-full min-h-fit">
 						{categories.map((category) => (
 							<TabsTrigger
@@ -72,8 +72,7 @@ export default function PortfolioPage({
 								{paginateProjects(
 									initialProjects.filter(
 										(project) =>
-											//TODO: Cambiar a Tots els Projectes
-											category.name === "Todos los Proyectos" ||
+											category.name === "Tots els Projectes" ||
 											project.category_id === category.id,
 									),
 									currentPage,
