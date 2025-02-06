@@ -1,25 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { login } from "@/app/actions/auth";
+import { Loader } from "lucide-react";
 
 export default function LoginPage() {
 	const router = useRouter();
 	const [error, setError] = useState<string>("");
+	const [isPending, startTransition] = useTransition();
 
 	async function handleSubmit(formData: FormData) {
-		const result = await login(formData);
+		try {
+			startTransition(async () => {
+				const result = await login(formData);
 
-		if (result.error) {
-			setError(result.error);
-		} else {
-			router.push("/admin");
-			router.refresh();
+				if (result.error) {
+					setError(result.error);
+				} else {
+					router.push("/admin");
+					router.refresh();
+				}
+			});
+		} catch (error) {
+			console.error(error);
+			setError("Error de autenticación");
 		}
 	}
 
@@ -67,8 +76,15 @@ export default function LoginPage() {
 									<AlertDescription>{error}</AlertDescription>
 								</Alert>
 							)}
-							<Button type="submit" className="w-full">
-								Login
+							<Button
+								type="submit"
+								className="w-full flex items-center justify-center gap-2"
+								disabled={isPending}
+							>
+								{isPending && (
+									<Loader className="h-4 w-4 animate-spin inline-block" />
+								)}
+								<span>{isPending ? "Autenticando..." : "Login"}</span>
 							</Button>
 						</form>
 					</CardContent>
