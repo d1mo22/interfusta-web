@@ -7,6 +7,7 @@ import {
 	CookingPot as Tool,
 	Paintbrush,
 	Wrench,
+	BrickWall,
 } from "lucide-react";
 
 export default function ServicesPage() {
@@ -16,14 +17,14 @@ export default function ServicesPage() {
 			description:
 				"Dissenyem i fabriquem mobles a mesura adaptats a les seves necessitats i preferències específiques. Des d'elegants taules de menjador fins a armaris a mesura, els nostres experts artesans faran realitat la seva visió.",
 			icon: Saw,
-			imageUrl: "https://placehold.co/600x400",
+			imageUrl: "/Medida-1.webp",
 		},
 		{
 			title: "Instal·lació de Cuines",
 			description:
 				"Transformi la seva cuina amb els nostres serveis professionals d'instal·lació. Ens encarreguem de tot, des del muntatge d'armaris fins a les solucions d'emmagatzematge personalitzades, garantint una funcionalitat i estètica perfectes.",
 			icon: Tool,
-			imageUrl: "https://placehold.co/600x400",
+			imageUrl: "/Cuina-2.webp",
 		},
 		{
 			title: "Lacatge i Vernissat",
@@ -33,25 +34,41 @@ export default function ServicesPage() {
 			imageUrl: "https://placehold.co/600x400",
 		},
 		{
+			title: "Disseny amb Corian",
+			description:
+				"Especialistes en el disseny i fabricació amb Corian, un material versàtil i durador perfecte per a encimeres, lavabos i superfícies decoratives. Creem dissenys únics i funcionals que s'adapten perfectament al seu espai.",
+			icon: BrickWall,
+			imageUrl: "/Corian.webp",
+		},
+		{
 			title: "Estructures de Fusta",
 			description:
 				"Creï impressionants espais a l'aire lliure amb les nostres estructures de fusta. Construïm pèrgoles, cobertes i elements arquitectònics que realcen el valor de la seva propietat.",
 			icon: Hammer,
-			imageUrl: "https://placehold.co/600x400",
+			imageUrl: "/Estructura-2.webp",
+		},
+
+		{
+			title: "Restauració",
+			description:
+				"Doni una nova vida a les seves preuades peces de fusta amb els nostres serveis de restauració. Reparem i repintem acuradament els mobles conservant el seu caràcter original.",
+			icon: Wrench,
+			imageUrl: "/Reforma-2.webp",
 		},
 		{
 			title: "Mesuraments i Planificació",
 			description:
 				"El nostre equip d'experts proporciona mesuraments precisos i serveis de planificació detallada per a garantir l'èxit del seu projecte. Tenim en compte tots els detalls abans de començar la construcció.",
 			icon: Ruler,
-			imageUrl: "https://placehold.co/600x400",
+			imageUrl: "/Planificacio-2.webp",
 		},
+
 		{
-			title: "Restauració",
+			title: "Finestres i balconeres",
 			description:
-				"Doni una nova vida a les seves preuades peces de fusta amb els nostres serveis de restauració. Reparem i repintem acuradament els mobles conservant el seu caràcter original.",
-			icon: Wrench,
-			imageUrl: "https://placehold.co/600x400",
+				"Dissenyem i fabriquem finestres i balconeres de fusta a mida, adaptades a les seves necessitats i preferències. Utilitzem fusta de qualitat i tècniques artesanals per a garantir un acabat durador i elegant.",
+			icon: Hammer,
+			imageUrl: "/Finestra.webp",
 		},
 	];
 

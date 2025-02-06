@@ -9,6 +9,7 @@ import {
 	Drill,
 	CookingPot,
 } from "lucide-react";
+import featuredProject from "@/data/featured-project.json";
 
 export default function Home() {
 	return (
@@ -57,27 +58,22 @@ export default function Home() {
 					<div className="grid md:grid-cols-2 gap-12 items-center">
 						<div>
 							<img
-								src="https://placehold.co/800x600"
-								alt="Proyecto destacado"
+								src={featuredProject.image.url}
+								alt={featuredProject.image.alt}
 								className="rounded-lg shadow-xl loading-lazy"
 							/>
 						</div>
 						<div>
 							<h3 className="text-2xl font-bold mb-4">
-								Renovació d&apos;una Vila de Luxe
+								{featuredProject.title}
 							</h3>
 							<p className="text-gray-600 mb-6">
-								Transformem completament aquesta vila amb mobles fets a mida,
-								una cuina personalitzada i detalls de fusta intricats en tot el
-								lloc. El nostre equip va treballar estretament amb el client per
-								a donar vida a la seva visió, resultant en una impressionant
-								mostra de la nostra artesania.
+								{featuredProject.description}
 							</p>
 							<ul className="list-disc list-inside text-gray-600 mb-6">
-								<li>Gabinets de cuina dissenyats a mesura</li>
-								<li>Mesa de menjador i cadires fetes a mà</li>
-								<li>Armaris de paret per a totes les habitacions</li>
-								<li>Bigues de sostre de fusta i panells de paret</li>
+								{featuredProject.features.map((feature: string) => (
+									<li key={feature}>{feature}</li>
+								))}
 							</ul>
 							<Link href="/portfolio">
 								<Button variant="outline" size="lg">
@@ -109,21 +105,21 @@ export default function Home() {
 								description:
 									"Instal·lació professional de gabinets de cuina i personalització",
 								icon: CookingPot,
-								image: "https://placehold.co/400x400",
+								image: "/Cuina-2.webp",
 							},
 							{
 								title: "Lacatge i Vernissat",
 								description:
 									"Acabats professionals per a protegir i embellir els seus mobles de fusta",
 								icon: Paintbrush,
-								image: "https://placehold.co/400x400",
+								image: "/Laca-1.webp",
 							},
 							{
 								title: "Mesuraments i Planificació",
 								description:
 									"Planificació detallada i mesuraments precisos per al seu projecte",
 								icon: Ruler,
-								image: "https://placehold.co/400x400",
+								image: "/Planificacio-1.webp",
 							},
 						].map((service) => (
 							<Card

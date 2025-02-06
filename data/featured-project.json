@@ -1,0 +1,14 @@
+{
+	"title": "Renovació d'una Vila de Luxe",
+	"description": "Transformem completament aquesta vila amb mobles fets a mida, una cuina personalitzada i detalls de fusta intricats en tot el lloc. El nostre equip va treballar estretament amb el client per a donar vida a la seva visió, resultant en una impressionant mostra de la nostra artesania.",
+	"features": [
+		"Gabinets de cuina dissenyats a mesura",
+		"Taula de menjador i cadires fetes a mà",
+		"Armaris de paret per a totes les habitacions",
+		"Bigues de sostre de fusta i panells de paret"
+	],
+	"image": {
+		"url": "https://placehold.co/800x600",
+		"alt": "Proyecto destacado"
+	}
+}
