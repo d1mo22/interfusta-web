@@ -37,8 +37,10 @@ export default function AdminDashboard({
 	} = useProjectDelete();
 
 	const paginateProjects = (projects: Project[], page: number) => {
+		const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
+
 		const startIndex = (page - 1) * ITEMS_PER_PAGE;
-		return projects.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+		return sortedProjects.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 	};
 
 	const handlePageChange = (newPage: number) => {

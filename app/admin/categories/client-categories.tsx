@@ -51,7 +51,6 @@ export default function CategoryManagement({
 				setError(result.error);
 			} else if (result.category) {
 				setEditingCategory(null);
-				// Actualizar el estado con la categoría actualizada
 				setCategories(
 					categories.map((cat) =>
 						cat.id === result.category?.id
@@ -68,7 +67,6 @@ export default function CategoryManagement({
 		if (result.error) {
 			setError(result.error);
 		} else {
-			// Actualizar el estado eliminando la categoría
 			setCategories(categories.filter((cat) => cat.id !== id));
 		}
 	}
@@ -78,23 +76,25 @@ export default function CategoryManagement({
 			<div className="max-w-4xl mx-auto px-4 py-12">
 				<Link href="/admin">
 					<Button variant="ghost" className="mb-6">
-						<ChevronLeft className="mr-2 h-4 w-4" /> Volver al Panel
+						<ChevronLeft className="mr-2 h-4 w-4" />
+						Tornar al Panell
 					</Button>
 				</Link>
 
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-2xl">Gestión de Categorías</CardTitle>
+						<CardTitle className="text-2xl">Gestió de Categories</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<form onSubmit={handleCreateCategory} className="flex gap-2 mb-6">
 							<Input
 								value={newCategory}
 								onChange={(e) => setNewCategory(e.target.value)}
-								placeholder="New category name"
+								placeholder="Nou nom de categoria"
 							/>
 							<Button type="submit">
-								<Plus className="h-4 w-4 mr-2" /> Añadir Categoría
+								<Plus className="h-4 w-4 mr-2" />
+								Afegir Categoria
 							</Button>
 						</form>
 
@@ -128,7 +128,7 @@ export default function CategoryManagement({
 													variant="outline"
 													onClick={() => setEditingCategory(null)}
 												>
-													Cancelar
+													Cancel·lar
 												</Button>
 											</form>
 										) : (
