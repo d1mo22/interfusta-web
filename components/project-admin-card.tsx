@@ -39,17 +39,17 @@ export function ProjectCard({
 						<p className="text-gray-600 text-sm">{project.description}</p>
 						<div className="space-y-1">
 							<p className="text-sm text-gray-500">
-								Categoría:{" "}
+								Categoria:{" "}
 								{categories.find((cat) => cat.id === project.category_id)?.name}
 							</p>
 							{project.last_update && (
 								<p className="text-sm text-gray-500">
-									Última modificación: {formatDate(project.last_update)}
+									Última modificació: {formatDate(project.last_update)}
 								</p>
 							)}
 							{project.updated_by && (
 								<p className="text-sm text-gray-500">
-									Modificado por: {project.updated_by}
+									Modificat per: {project.updated_by}
 								</p>
 							)}
 						</div>
@@ -78,7 +78,7 @@ export function ProjectCard({
 							) : (
 								<Trash className="h-4 w-4 mr-2" />
 							)}
-							{isDeleting ? "Eliminando..." : "Eliminar"}
+							{isDeleting ? "Eliminant..." : "Eliminar"}
 						</Button>
 					</div>
 				</div>

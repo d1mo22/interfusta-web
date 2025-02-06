@@ -209,13 +209,14 @@ export default function EditProjectForm({
 			<div className="max-w-4xl mx-auto px-4 py-12">
 				<Link href="/admin">
 					<Button variant="ghost" className="mb-6">
-						<ChevronLeft className="mr-2 h-4 w-4" /> Volver al Panel
+						<ChevronLeft className="mr-2 h-4 w-4" />
+						Tornar al Panell
 					</Button>
 				</Link>
 
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-2xl">Editar proyecto</CardTitle>
+						<CardTitle className="text-2xl">Editar projecte</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<form
@@ -232,7 +233,7 @@ export default function EditProjectForm({
 										htmlFor="project-title"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Título
+										Títol
 									</label>
 									<Input
 										id="project-title"
@@ -247,7 +248,7 @@ export default function EditProjectForm({
 										htmlFor="project-category"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Categoría
+										Categoria
 									</label>
 									<Select
 										name="project-category"
@@ -256,7 +257,7 @@ export default function EditProjectForm({
 										}
 									>
 										<SelectTrigger>
-											<SelectValue placeholder="Select category" />
+											<SelectValue placeholder="Selecciona una categoria" />
 										</SelectTrigger>
 										<SelectContent>
 											{categories
@@ -278,7 +279,7 @@ export default function EditProjectForm({
 									htmlFor="project-description"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Descripción Corta
+									Descripció Curta
 								</label>
 								<Input
 									id="project-description"
@@ -294,7 +295,7 @@ export default function EditProjectForm({
 									htmlFor="project-fullDescription"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Descripción Completa
+									Descripció Completa
 								</label>
 								<Textarea
 									id="project-fullDescription"
@@ -311,14 +312,14 @@ export default function EditProjectForm({
 									htmlFor="newFeature"
 									className="block text-sm font-medium text-gray-700 mb-2"
 								>
-									Características
+									Característiques
 								</label>
 								<div className="flex gap-2 mb-2">
 									<Input
 										id="newFeature"
 										value={newFeature}
 										onChange={(e) => setNewFeature(e.target.value)}
-										placeholder="Añadir una característica"
+										placeholder="Afegir una característica"
 									/>
 									<Button type="button" onClick={addFeature}>
 										<Plus className="h-4 w-4" />
@@ -346,7 +347,7 @@ export default function EditProjectForm({
 							</div>
 
 							<div>
-								<Label htmlFor="images">Imagenes del Proyecto</Label>
+								<Label htmlFor="images">Imatges del Projecte</Label>
 								<div className="mt-2">
 									<Input
 										id="images"
@@ -362,12 +363,12 @@ export default function EditProjectForm({
 												<Upload className="mx-auto h-12 w-12 text-gray-400" />
 												<div className="flex text-sm text-gray-600">
 													<span className="relative font-medium text-indigo-600 hover:text-indigo-500">
-														Upload images
+														Pujar imatges
 													</span>
-													<p className="pl-1">or drag and drop</p>
+													<p className="pl-1">o arrossegar i deixar anar</p>
 												</div>
 												<p className="text-xs text-gray-500">
-													PNG, JPG, GIF up to 10MB
+													PNG, JPG, GIF fins a 10MB
 												</p>
 											</div>
 										</div>
@@ -427,7 +428,7 @@ export default function EditProjectForm({
 										htmlFor="project-completionDate"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Fecha de Finalización
+										Data de Finalització
 									</label>
 									<Popover>
 										<PopoverTrigger asChild>
@@ -442,7 +443,7 @@ export default function EditProjectForm({
 												{date ? (
 													format(date, "PPP", { locale: es })
 												) : (
-													<span>Seleccionar fecha</span>
+													<span>Seleccionar data</span>
 												)}
 											</Button>
 										</PopoverTrigger>
@@ -474,7 +475,7 @@ export default function EditProjectForm({
 										htmlFor="project-duration"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Duración
+										Durada
 									</label>
 									<Input
 										id="project-duration"
@@ -495,14 +496,14 @@ export default function EditProjectForm({
 							<div className="flex justify-end gap-4">
 								<Link href="/admin">
 									<Button type="button" variant="outline" disabled={isLoading}>
-										Cancelar
+										Cancel·lar
 									</Button>
 								</Link>
 								<Button type="submit" disabled={isLoading}>
 									{isLoading ? (
 										<Loader className="mr-2 h-4 w-4 animate-spin" />
 									) : null}
-									{isLoading ? "Guardando..." : "Guardar cambios"}
+									{isLoading ? "Guardant..." : "Guardar canvis"}
 								</Button>
 							</div>
 						</form>

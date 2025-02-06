@@ -5,14 +5,53 @@ import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./auth";
 import { insertProjectImages } from "./data";
 
-export async function createProject() {
+export async function createProject(formData: FormData) {
 	const user = await getCurrentUser();
-	if (!user || user.role !== "admin") {
-		return { error: "Unauthorized" };
+
+	if (!user) {
+		return { error: "No autorizado" };
 	}
 
+	const title = formData.get("title") as string;
+	const category = formData.get("category") as string;
+	const description = formData.get("description") as string;
+	const fullDescription = formData.get("fullDescription") as string;
+	const completionDate = formData.get("completionDate") as string;
+	const duration = formData.get("duration") as string;
+	const features = JSON.parse(formData.get("features") as string);
+	const images = JSON.parse(formData.get("images") as string);
+
+	if (
+		!title ||
+		!category ||
+		!description ||
+		!fullDescription ||
+		!completionDate ||
+		!duration ||
+		!features
+	) {
+		return { error: "Todos los campos son requeridos" };
+	}
 	// This is where you would typically create a new project in the database
 	// For now, we'll just return success
+	await sql`
+	INSERT INTO project (title, description, full_description, completion_date, duration, category_id, updated_by, last_update)
+	VALUES (${title}, ${description}, ${fullDescription}, ${completionDate}, ${duration}, (SELECT id FROM category WHERE name = ${category}), ${user.name}, NOW())
+  `;
+	if (features) {
+		await sql`
+		INSERT INTO feature (project_id, description)
+		SELECT (SELECT id FROM project WHERE title = ${title}), unnest(${features}::text[])
+	`;
+	}
+
+	if (images) {
+		await insertProjectImages(
+			(await sql`SELECT id FROM project WHERE title = ${title}`)[0].id,
+			images,
+		);
+	}
+
 	revalidatePath("/admin");
 	revalidatePath("/portfolio");
 	return { success: true };

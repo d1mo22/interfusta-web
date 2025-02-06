@@ -53,18 +53,18 @@ export default function AdminDashboard({
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 				{/* Header */}
 				<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-					<h1 className="text-3xl font-bold">Gestión de Proyectos</h1>
+					<h1 className="text-3xl font-bold">Gestió de Projectes</h1>
 					<div className="w-full sm:w-auto flex flex-col sm:flex-row gap-4">
 						<Link href="/admin/categories" className="w-full sm:w-auto">
 							<Button variant="outline" className="w-full">
 								<Settings className="h-4 w-4 mr-2" />
-								Gestionar Categorías
+								Gestionar Categories
 							</Button>
 						</Link>
 						<Link href="/admin/projects/new" className="w-full sm:w-auto">
 							<Button className="w-full">
 								<Plus className="h-4 w-4 mr-2" />
-								Añadir Nuevo Proyecto
+								Afegir Nou Projecte
 							</Button>
 						</Link>
 					</div>
@@ -74,8 +74,7 @@ export default function AdminDashboard({
 					<Card>
 						<CardContent className="p-6 text-center">
 							<p>
-								No se han encontrado proyectos. Comienza añadiendo un nuevo
-								proyecto.
+								No s&apos;han trobat projectes. Comença afegint un nou projecte.
 							</p>
 						</CardContent>
 					</Card>
@@ -109,10 +108,10 @@ export default function AdminDashboard({
 			<Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
 				<DialogContent>
 					<DialogHeader>
-						<DialogTitle>Confirmar eliminación</DialogTitle>
+						<DialogTitle>Confirmar eliminació</DialogTitle>
 						<DialogDescription>
-							¿Estás seguro de que deseas eliminar el proyecto &quot;
-							{projectToDelete?.title}&quot;? Esta acción no se puede deshacer.
+							Estàs segur que desitges eliminar el projecte &quot;
+							{projectToDelete?.title}&quot;? Aquesta acció no es pot desfer.
 						</DialogDescription>
 					</DialogHeader>
 					<DialogFooter>
@@ -120,14 +119,14 @@ export default function AdminDashboard({
 							variant="outline"
 							onClick={() => setShowDeleteDialog(false)}
 						>
-							Cancelar
+							Cancel·lar
 						</Button>
 						<Button
 							variant="destructive"
 							onClick={handleDelete}
 							disabled={isDeleting !== null}
 						>
-							{isDeleting !== null ? "Eliminando..." : "Eliminar"}
+							{isDeleting !== null ? "Eliminant..." : "Eliminar"}
 						</Button>
 					</DialogFooter>
 				</DialogContent>

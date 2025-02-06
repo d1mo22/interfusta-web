@@ -145,7 +145,7 @@ export default function ContactPage() {
 												<br />
 												Dissabte: 10:00 - 13:00
 												<br />
-												Diumenge: Cerrado
+												Diumenge: Tancat
 											</p>
 										</div>
 									</div>

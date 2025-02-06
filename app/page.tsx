@@ -133,7 +133,7 @@ export default function Home() {
 								<img
 									src={service.image || "https://placehold.co/400x400"}
 									alt={service.title}
-									className="w-full h-48 object-cover"
+									className="w-full h-48 object-cover rounded-t-lg"
 								/>
 								<CardContent className="pt-6">
 									<div className="rounded-full bg-amber-100 p-3 w-12 h-12 flex items-center justify-center mb-4">

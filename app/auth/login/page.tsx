@@ -37,7 +37,9 @@ export default function LoginPage() {
 			<div className="max-w-md mx-auto px-4 py-12">
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-2xl text-center">Login</CardTitle>
+						<CardTitle className="text-2xl text-center">
+							Inicia sessió
+						</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<form action={handleSubmit} className="space-y-4">
@@ -46,7 +48,7 @@ export default function LoginPage() {
 									htmlFor="username"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Username
+									Nom d&apos;usuari
 								</label>
 								<Input
 									id="username"
@@ -61,7 +63,7 @@ export default function LoginPage() {
 									htmlFor="password"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Password
+									Contrasenya
 								</label>
 								<Input
 									id="password"
@@ -84,7 +86,7 @@ export default function LoginPage() {
 								{isPending && (
 									<Loader className="h-4 w-4 animate-spin inline-block" />
 								)}
-								<span>{isPending ? "Autenticando..." : "Login"}</span>
+								<span>{isPending ? "Autenticant..." : "Inicia sessió"}</span>
 							</Button>
 						</form>
 					</CardContent>

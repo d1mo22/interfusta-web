@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -16,7 +17,14 @@ import {
 } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { createProject } from "@/app/actions/project";
-import { CalendarIcon, ChevronLeft, Plus, X } from "lucide-react";
+import {
+	CalendarIcon,
+	ChevronLeft,
+	Loader,
+	Plus,
+	Upload,
+	X,
+} from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import type { Category } from "@/types/types";
 import {
@@ -27,6 +35,8 @@ import {
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { es } from "date-fns/locale";
+import { Label } from "@/components/ui/label";
+import { optimizeImage } from "@/lib/utils";
 
 export default function NewProjectForm({
 	categories,
@@ -36,17 +46,87 @@ export default function NewProjectForm({
 	const [features, setFeatures] = useState<string[]>([]);
 	const [newFeature, setNewFeature] = useState<string>("");
 	const [date, setDate] = useState<Date>(new Date());
+	const [tempImages, setTempImages] = useState<File[]>([]);
+	const [tempPreviews, setTempPreviews] = useState<string[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	async function handleSubmit(formData: FormData) {
-		formData.append("features", JSON.stringify(features));
-		const result = await createProject();
+		try {
+			setIsLoading(true);
 
-		if (result.error) {
-			setError(result.error);
-		} else {
-			router.push("/admin");
-			router.refresh();
+			// Subir imágenes a R2 y obtener URLs
+			const uploadedImages = [];
+			for (const file of tempImages) {
+				const formDataImage = new FormData();
+				formDataImage.append("file", file);
+
+				const response = await fetch("/api/upload", {
+					method: "POST",
+					body: formDataImage,
+				});
+
+				if (!response.ok) {
+					throw new Error("Error al subir imagen");
+				}
+
+				const data = await response.json();
+				uploadedImages.push({
+					url: data.url,
+					altText: file.name,
+				});
+			}
+
+			// Append all form data
+			formData.append("images", JSON.stringify(uploadedImages));
+			formData.append("features", JSON.stringify(features));
+
+			// Pasar formData a createProject
+			const result = await createProject(formData);
+
+			if (result.error) {
+				setError(result.error);
+			} else {
+				router.push("/admin");
+				router.refresh();
+			}
+		} catch (error) {
+			setError(error instanceof Error ? error.message : "Error desconocido");
+		} finally {
+			setIsLoading(false);
 		}
+	}
+
+	async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+		const files = Array.from(e.target.files || []);
+
+		try {
+			for (const file of files) {
+				const optimizedBlob = await optimizeImage(file);
+				const optimizedFile = new File(
+					[optimizedBlob],
+					file.name.replace(/\.[^/.]+$/, ".webp"),
+					{
+						type: "image/webp",
+					},
+				);
+
+				const previewUrl = URL.createObjectURL(optimizedFile);
+
+				setTempImages((prev) => [...prev, optimizedFile]);
+				setTempPreviews((prev) => [...prev, previewUrl]);
+			}
+		} catch (error) {
+			console.error("Error:", error);
+			setError(
+				error instanceof Error ? error.message : "Error al procesar la imagen",
+			);
+		}
+	}
+
+	function removeImage(index: number) {
+		URL.revokeObjectURL(tempPreviews[index]);
+		setTempImages(tempImages.filter((_, i) => i !== index));
+		setTempPreviews(tempPreviews.filter((_, i) => i !== index));
 	}
 
 	function addFeature() {
@@ -65,23 +145,30 @@ export default function NewProjectForm({
 			<div className="max-w-4xl mx-auto px-4 py-12">
 				<Link href="/admin">
 					<Button variant="ghost" className="mb-6">
-						<ChevronLeft className="mr-2 h-4 w-4" /> Volver al Panel
+						<ChevronLeft className="mr-2 h-4 w-4" /> Tornar al Panell
 					</Button>
 				</Link>
 
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-2xl">Añadir Nuevo Proyecto</CardTitle>
+						<CardTitle className="text-2xl">Afegir Nou Projecte</CardTitle>
 					</CardHeader>
 					<CardContent>
-						<form action={handleSubmit} className="space-y-6">
+						<form
+							onSubmit={async (e) => {
+								e.preventDefault();
+								const formData = new FormData(e.currentTarget);
+								await handleSubmit(formData);
+							}}
+							className="space-y-6"
+						>
 							<div className="grid md:grid-cols-2 gap-6">
 								<div>
 									<label
 										htmlFor="title"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Título
+										Títol
 									</label>
 									<Input id="title" name="title" required className="mt-1" />
 								</div>
@@ -90,11 +177,11 @@ export default function NewProjectForm({
 										htmlFor="category"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Categoría
+										Categoria
 									</label>
 									<Select name="category">
 										<SelectTrigger>
-											<SelectValue placeholder="Selecciona una categoría" />
+											<SelectValue placeholder="Selecciona una categoria" />
 										</SelectTrigger>
 										<SelectContent>
 											{categories.slice(1).map((category) => (
@@ -112,7 +199,7 @@ export default function NewProjectForm({
 									htmlFor="description"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Descripción Corta
+									Descripció Curta
 								</label>
 								<Input
 									id="description"
@@ -127,7 +214,7 @@ export default function NewProjectForm({
 									htmlFor="fullDescription"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Descripción Completa
+									Descripció Completa
 								</label>
 								<Textarea
 									id="fullDescription"
@@ -143,14 +230,14 @@ export default function NewProjectForm({
 									htmlFor="features"
 									className="block text-sm font-medium text-gray-700 mb-2"
 								>
-									Características
+									Característiques
 								</label>
 								<div className="flex gap-2 mb-2">
 									<Input
 										id="features"
 										value={newFeature}
 										onChange={(e) => setNewFeature(e.target.value)}
-										placeholder="Añadir una característica"
+										placeholder="Afegir una característica"
 									/>
 									<Button type="button" onClick={addFeature}>
 										<Plus className="h-4 w-4" />
@@ -177,13 +264,67 @@ export default function NewProjectForm({
 								</div>
 							</div>
 
+							<div>
+								<Label htmlFor="images">Imatges del Projecte</Label>
+								<div className="mt-2">
+									<Input
+										id="images"
+										type="file"
+										accept="image/*"
+										multiple
+										onChange={handleImageUpload}
+										className="hidden"
+									/>
+									<Label htmlFor="images" className="cursor-pointer">
+										<div className="flex items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg">
+											<div className="space-y-1 text-center">
+												<Upload className="mx-auto h-12 w-12 text-gray-400" />
+												<div className="flex text-sm text-gray-600">
+													<span className="relative font-medium text-indigo-600 hover:text-indigo-500">
+														Pujar imatges
+													</span>
+													<p className="pl-1">o arrossegar i deixar anar</p>
+												</div>
+												<p className="text-xs text-gray-500">
+													PNG, JPG, GIF fins a 10MB
+												</p>
+											</div>
+										</div>
+									</Label>
+								</div>
+								<div className="mt-4 flex flex-wrap gap-2">
+									{tempPreviews.map((preview, index) => (
+										<div
+											key={`new-image-${preview}-${Date.now()}`}
+											className="relative aspect-square w-20"
+										>
+											<img
+												src={preview}
+												// biome-ignore lint/a11y/noRedundantAlt: <explanation>
+												alt={`New project image ${index + 1}`}
+												className="rounded-lg object-cover w-full h-full"
+											/>
+											<Button
+												type="button"
+												variant="destructive"
+												size="sm"
+												className="absolute -top-1 -right-1 h-5 w-5 p-0"
+												onClick={() => removeImage(index)}
+											>
+												<X className="h-3 w-3" />
+											</Button>
+										</div>
+									))}
+								</div>
+							</div>
+
 							<div className="grid md:grid-cols-2 gap-6">
 								<div>
 									<label
 										htmlFor="project-completionDate"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Fecha de Finalización
+										Data de Finalització
 									</label>
 									<Popover>
 										<PopoverTrigger asChild>
@@ -198,7 +339,7 @@ export default function NewProjectForm({
 												{date ? (
 													format(date, "PPP", { locale: es })
 												) : (
-													<span>Seleccionar fecha</span>
+													<span>Seleccionar data</span>
 												)}
 											</Button>
 										</PopoverTrigger>
@@ -230,7 +371,7 @@ export default function NewProjectForm({
 										htmlFor="project-duration"
 										className="block text-sm font-medium text-gray-700"
 									>
-										Duración
+										Durada
 									</label>
 									<Input
 										id="project-duration"
@@ -249,9 +390,16 @@ export default function NewProjectForm({
 
 							<div className="flex justify-end gap-4">
 								<Link href="/admin">
-									<Button variant="outline">Cancelar</Button>
+									<Button variant="outline">Cancel·lar</Button>
 								</Link>
-								<Button type="submit">Crear Proyecto</Button>
+								<Button
+									type="submit"
+									disabled={isLoading}
+									className="flex items-center justify-center gap-2"
+								>
+									{isLoading && <Loader className="h-4 w-4 animate-spin" />}
+									{isLoading ? "Creant..." : "Crear Projecte"}
+								</Button>
 							</div>
 						</form>
 					</CardContent>
