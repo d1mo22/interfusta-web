@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,8 +13,16 @@ import {
 	CookingPot,
 } from "lucide-react";
 import featuredProject from "@/data/featured-project.json";
+import { ImageGalleryModal } from "@/components/image-gallery-modal";
 
 export default function Home() {
+	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+	const openGallery = (index: number) => {
+		setSelectedImageIndex(index);
+		setIsGalleryOpen(true);
+	};
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
@@ -75,6 +86,25 @@ export default function Home() {
 									<li key={feature}>{feature}</li>
 								))}
 							</ul>
+
+							{/* Añadir miniaturas */}
+							<div className="grid grid-cols-4 gap-2 mb-6">
+								{featuredProject.gallery.map((image, index) => (
+									<button
+										type="button"
+										key={`thumbnail-${image.alt}`}
+										className="overflow-hidden rounded-md cursor-pointer hover:opacity-80 transition-opacity"
+										onClick={() => openGallery(index)}
+									>
+										<img
+											src={image.url}
+											alt={image.alt}
+											className="w-full h-20 object-cover transition-transform duration-300 hover:scale-110"
+										/>
+									</button>
+								))}
+							</div>
+
 							<Link href="/portfolio">
 								<Button variant="outline" size="lg">
 									Veure tots els Projectes
@@ -83,6 +113,12 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
+				<ImageGalleryModal
+					images={featuredProject.gallery.map((img) => img.url)}
+					initialIndex={selectedImageIndex}
+					isOpen={isGalleryOpen}
+					onClose={() => setIsGalleryOpen(false)}
+				/>
 			</section>
 
 			{/* Resumen de Servicios */}

@@ -10,5 +10,23 @@
 	"image": {
 		"url": "/Projecte.webp",
 		"alt": "Projecte destacat"
-	}
+	},
+	"gallery": [
+		{
+			"url": "/Projecte-1.webp",
+			"alt": "Imagen 1 del proyecto destacado"
+		},
+		{
+			"url": "/Projecte-2.webp",
+			"alt": "Imagen 2 del proyecto destacado"
+		},
+		{
+			"url": "/Projecte-3.webp",
+			"alt": "Imagen 3 del proyecto destacado"
+		},
+		{
+			"url": "/Projecte-4.webp",
+			"alt": "Imagen 4 del proyecto destacado"
+		}
+	]
 }
