@@ -39,3 +39,8 @@ interfusta.github.io/
 ## 📄 Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+
+## TODO
+- [ ] Foto del equipo de trabajo
+- [ ] Añadir los proyectos de la empresa

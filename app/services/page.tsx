@@ -31,7 +31,7 @@ export default function ServicesPage() {
 			description:
 				"Oferim serveis professionals d'acabat per a tota mena de superfícies de fusta. Utilitzem tècniques especialitzades de lacatge i vernissat per a protegir i realçar la bellesa natural dels seus mobles, garantint un acabat durador i elegant.",
 			icon: Paintbrush,
-			imageUrl: "https://placehold.co/600x400",
+			imageUrl: "./Laca-1.webp",
 		},
 		{
 			title: "Disseny amb Corian",

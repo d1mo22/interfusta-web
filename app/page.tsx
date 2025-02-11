@@ -98,7 +98,7 @@ export default function Home() {
 								description:
 									"Mobles personalitzats dissenyats i fabricats segons les seves especificacions",
 								icon: Drill,
-								image: "https://placehold.co/400x400",
+								image: "/Medida-2.webp",
 							},
 							{
 								title: "Instal·lació de Cuines",
