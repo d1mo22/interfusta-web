@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import type { Project } from "@/types/types";
 
 export function useProjectDelete() {
-	const router = useRouter();
 	const [isDeleting, setIsDeleting] = useState<number | null>(null);
 	const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 	const [projectToDelete, setProjectToDelete] = useState<Project | null>(null);
@@ -29,8 +27,9 @@ export function useProjectDelete() {
 				throw new Error(data.error || "Error al eliminar el proyecto");
 			}
 
-			router.refresh();
-			router.push("/admin");
+			//router.refresh();
+			//router.push("/admin");
+			window.location.reload();
 		} catch (error) {
 			console.error("Error:", error);
 			alert("Error al eliminar el proyecto");
