@@ -33,7 +33,7 @@ export default function AboutPage() {
 						</div>
 						<div className="relative">
 							<img
-								src="https://placehold.co/800x600"
+								src="About.webp"
 								alt="Our workshop"
 								className="rounded-lg shadow-xl"
 							/>
