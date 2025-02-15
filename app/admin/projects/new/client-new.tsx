@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { es } from "date-fns/locale";
+import { ca } from "date-fns/locale";
 import { Label } from "@/components/ui/label";
 import { optimizeImage } from "@/lib/utils";
 
@@ -337,7 +337,7 @@ export default function NewProjectForm({
 											>
 												<CalendarIcon className="mr-2 h-4 w-4" />
 												{date ? (
-													format(date, "PPP", { locale: es })
+													format(date, "PPP", { locale: ca })
 												) : (
 													<span>Seleccionar data</span>
 												)}
@@ -355,7 +355,7 @@ export default function NewProjectForm({
 													input.value = newDate?.toISOString() || "";
 												}}
 												initialFocus
-												locale={es}
+												locale={ca}
 											/>
 										</PopoverContent>
 									</Popover>

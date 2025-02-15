@@ -32,7 +32,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { format } from "date-fns";
-import { es } from "date-fns/locale";
+import { ca } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { AdminProjectsSkeleton } from "@/components/admin-projects-skeleton";
 import { Label } from "@/components/ui/label";
@@ -447,7 +447,7 @@ export default function EditProjectForm({
 											>
 												<CalendarIcon className="mr-2 h-4 w-4" />
 												{date ? (
-													format(date, "PPP", { locale: es })
+													format(date, "PPP", { locale: ca })
 												) : (
 													<span>Seleccionar data</span>
 												)}
@@ -465,7 +465,7 @@ export default function EditProjectForm({
 													input.value = newDate?.toISOString() || "";
 												}}
 												initialFocus
-												locale={es}
+												locale={ca}
 											/>
 										</PopoverContent>
 									</Popover>
