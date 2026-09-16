@@ -1,0 +1,37 @@
+app/about/page.tsx
+  s_3fced262fbc4f9::t_b8d09a991c30bd 69,73
+app/contact/page.tsx
+  s_3fced262fbc4f9::t_7e1bbf051d39d5 140,152
+app/page.tsx
+  s_3fced262fbc4f9::t_332e657d21607d 71,86,135,218,238,245
+app/portfolio/[id]/client-page.tsx
+  s_3fced262fbc4f9::t_169fc0fc3bea3c 42,49,54,61,66-74,102
+app/portfolio/client-portfolio.tsx
+  s_3fced262fbc4f9::t_76a29042d15660 88,97-100,214
+components/footer.tsx
+  s_3fced262fbc4f9::t_26d306213f55f9 12
+components/image-gallery-modal.tsx
+  s_3fced262fbc4f9::t_eaa8c2909c5761 60,63-64,73,82,89
+components/project-details.tsx
+  s_3fced262fbc4f9::t_8b5b364ab2644c 5-7,9,11-22,26-31,34-41
+components/project-images.tsx
+  s_3fced262fbc4f9::t_fe2c8ef2571163 12
+components/projects-skeleton.tsx
+  s_3fced262fbc4f9::t_5379505a98242a 5-11,13-14,17,21-30,32,35-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "1ecac192484ec84c342cb01c9524ac5ee939b4d0",
+  "prompts": {},
+  "sessions": {
+    "s_3fced262fbc4f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_3fced262fbc4f9",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
