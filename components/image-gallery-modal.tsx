@@ -78,7 +78,7 @@ export function ImageGalleryModal({
 							alt={`Project img ${currentIndex + 1}`}
 							width={1200}
 							height={800}
-							className="max-w-full max-h-[80vh] object-contain"
+							className="max-w-full max-h-[80vh] object-contain transition-opacity duration-150"
 						/>
 						<Button
 							variant="ghost"
@@ -89,7 +89,7 @@ export function ImageGalleryModal({
 							<ChevronRight className="h-4 w-4" />
 						</Button>
 					</div>
-					<div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-2 py-1 rounded">
+					<div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#F6F5F2] bg-[#141312]/90 px-2 py-1 rounded">
 						{currentIndex + 1} / {images.length}
 					</div>
 				</div>

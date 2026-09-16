@@ -2,21 +2,25 @@
 "use client";
 
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Pagination } from "@/components/ui/pagination";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useRef } from "react";
-import type { ClientPortfolioProps, Project } from "@/types/types";
+import type { ClientPortfolioProps, Project, Category } from "@/types/types";
 import { ProjectImage } from "@/components/project-images";
+import { Grain } from "@/components/grain";
+import { SectionHeading } from "@/components/section-heading";
 
 const ITEMS_PER_PAGE = 8;
+const ALL_CATEGORY_NAME = "Todos los Proyectos";
 
 export default function PortfolioPage({
 	initialProjects,
 	categories,
 }: ClientPortfolioProps) {
 	const [currentPage, setCurrentPage] = useState(1);
+	const [activeCategory, setActiveCategory] = useState<Category | undefined>(
+		() =>
+			categories.find((category) => category.name === ALL_CATEGORY_NAME) ??
+			categories[0],
+	);
 	const projectsRef = useRef<HTMLDivElement>(null);
 
 	const paginateProjects = (projects: Project[], page: number) => {
@@ -39,92 +43,168 @@ export default function PortfolioPage({
 		}, 0);
 	};
 
+	const categoryName = (categoryId: number) =>
+		categories.find((category) => category.id === categoryId)?.name ?? "";
+
+	const projectYear = (project: Project) => {
+		const year = new Date(project.completion_date).getFullYear();
+		return Number.isNaN(year) ? null : year;
+	};
+
+	const filteredProjects = activeCategory
+		? initialProjects.filter(
+				(project) =>
+					activeCategory.name === ALL_CATEGORY_NAME ||
+					project.category_id === activeCategory.id,
+			)
+		: initialProjects;
+
+	const paginatedProjects = paginateProjects(filteredProjects, currentPage);
+	const [leadProject, ...restProjects] = paginatedProjects;
+
 	return (
-		<div className="min-h-screen pt-16 bg-amber-50">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-				<h1 className="text-4xl font-bold text-center mb-4">
-					Els nostres Projectes
-				</h1>
-				<p
-					className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto"
-					ref={projectsRef}
-				>
-					Explori la nostra col·lecció de projectes acabats, que mostren el
-					nostre compromís amb la qualitat artesanal i l&apos;atenció al detall.
-				</p>
+		<div className="bg-paper text-ink">
+			<Grain />
 
-				<Tabs defaultValue="Tots els Projectes" className="w-full">
-					<TabsList className="flex flex-wrap justify-center mb-8 gap-2 w-full min-h-fit">
-						{categories.map((category) => (
-							<TabsTrigger
-								key={category.id}
-								value={category.name}
-								className="px-4 py-2 text-sm sm:text-base"
-							>
-								{category.name}
-							</TabsTrigger>
-						))}
-					</TabsList>
+			<section className="pt-[104px] pb-[72px]">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
+					<SectionHeading
+						title={
+							<>
+								Els nostres <span className="text-brand">projectes</span>
+							</>
+						}
+						intro="Explori la nostra col·lecció de projectes acabats, que mostren el nostre compromís amb la qualitat artesanal i l'atenció al detall."
+					/>
+				</div>
+			</section>
 
-					{categories.map((category) => (
-						<TabsContent key={category.id} value={category.name}>
-							<div className="grid md:grid-cols-2 gap-8">
-								{paginateProjects(
-									initialProjects.filter(
-										(project) =>
-											category.name === "Tots els Projectes" ||
-											project.category_id === category.id,
-									),
-									currentPage,
-								).map((project) => (
-									<Card key={project.id} className="overflow-hidden">
-										<div className="relative h-64">
-											<Link href={`/portfolio/${project.id}`}>
-												<ProjectImage
-													key={project.id}
-													fileName={project.first_image.url}
-													altText="Imagen del proyecto"
-												/>
-											</Link>
-										</div>
-										<CardContent className="p-6">
-											<h3 className="text-xl font-bold mb-2">
-												{project.title}
-											</h3>
-											<p className="text-gray-600 mb-4">
-												{project.description}
-											</p>
-											<Link href={`/portfolio/${project.id}`} prefetch>
-												<Button variant="outline">Veure Detalls</Button>
-											</Link>
-										</CardContent>
-									</Card>
-								))}
-							</div>
-							{shouldShowPagination(
-								initialProjects.filter(
-									(project) =>
-										category.name === "Todos los Proyectos" ||
-										project.category_id === category.id,
-								),
-							) && (
-								<Pagination
-									currentPage={currentPage}
-									totalItems={
-										initialProjects.filter(
-											(project) =>
-												category.name === "Todos los Proyectos" ||
-												project.category_id === category.id,
-										).length
+			<section ref={projectsRef} className="pb-[136px]">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col gap-[72px]">
+					<div className="flex flex-wrap gap-8 py-[18px] border-y border-hairline">
+						{categories.map((category) => {
+							const isActive = activeCategory?.id === category.id;
+							return (
+								<button
+									key={category.id}
+									type="button"
+									onClick={() => setActiveCategory(category)}
+									className={
+										isActive
+											? "text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px] transition-colors duration-150"
+											: "text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 									}
-									itemsPerPage={ITEMS_PER_PAGE}
-									onPageChange={handlePageChange}
-								/>
+								>
+									{category.name === ALL_CATEGORY_NAME ? "Tots" : category.name}
+								</button>
+							);
+						})}
+					</div>
+
+					{paginatedProjects.length === 0 ? (
+						<p className="text-ink-muted">
+							No hi ha projectes en aquesta categoria.
+						</p>
+					) : (
+						<>
+							<article className="grid lg:grid-cols-[8fr_4fr] gap-16 items-end">
+								<div className="relative aspect-[3/2] overflow-hidden">
+									<Link href={`/portfolio/${leadProject.id}`}>
+										<ProjectImage
+											fileName={leadProject.first_image.url}
+											altText={leadProject.title}
+										/>
+									</Link>
+								</div>
+								<div className="flex flex-col gap-5">
+									{projectYear(leadProject) !== null && (
+										<span className="font-mono text-[13px] text-ink-muted">
+											{projectYear(leadProject)}
+										</span>
+									)}
+									<h2 className="h-display text-[44px]">
+										{leadProject.title}
+									</h2>
+									<span className="rule" />
+									<span className="text-[15px] text-ink-muted">
+										{categoryName(leadProject.category_id)}
+									</span>
+									<Link
+										href={`/portfolio/${leadProject.id}`}
+										prefetch
+										className="self-start underline decoration-brand decoration-2 underline-offset-[6px] font-medium hover:text-brand-ink"
+									>
+										Veure detalls
+									</Link>
+								</div>
+							</article>
+
+							{restProjects.length > 0 && (
+								<div className="grid md:grid-cols-3 gap-12">
+									{restProjects.map((project) => (
+										<article key={project.id} className="flex flex-col gap-4">
+											<div className="relative aspect-[4/5] overflow-hidden">
+												<Link href={`/portfolio/${project.id}`}>
+													<ProjectImage
+														fileName={project.first_image.url}
+														altText={project.title}
+													/>
+												</Link>
+											</div>
+											<div className="flex justify-between items-baseline gap-4">
+												<h2 className="h-display text-[26px]">
+													{project.title}
+												</h2>
+												{projectYear(project) !== null && (
+													<span className="font-mono text-[13px] text-ink-muted">
+														{projectYear(project)}
+													</span>
+												)}
+											</div>
+											<div className="flex justify-between items-center">
+												<span className="text-[15px] text-ink-muted">
+													{categoryName(project.category_id)}
+												</span>
+												<Link
+													href={`/portfolio/${project.id}`}
+													prefetch
+													className="text-[15px] underline decoration-brand decoration-2 underline-offset-[6px] font-medium hover:text-brand-ink"
+												>
+													Veure detalls
+												</Link>
+											</div>
+										</article>
+									))}
+								</div>
 							)}
-						</TabsContent>
-					))}
-				</Tabs>
-			</div>
+						</>
+					)}
+
+					{shouldShowPagination(filteredProjects) && (
+						<div className="border-t border-hairline pt-6 flex justify-center gap-7">
+							<button
+								type="button"
+								onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+								disabled={currentPage === 1}
+								className="font-mono text-[13px] text-ink-muted hover:text-ink transition-colors duration-150 disabled:opacity-40 disabled:pointer-events-none"
+							>
+								Anterior
+							</button>
+							<span className="font-mono text-[13px] text-brand font-medium">
+								{currentPage}
+							</span>
+							<button
+								type="button"
+								onClick={() => handlePageChange(currentPage + 1)}
+								disabled={filteredProjects.length <= currentPage * ITEMS_PER_PAGE}
+								className="font-mono text-[13px] text-ink-muted hover:text-ink transition-colors duration-150 disabled:opacity-40 disabled:pointer-events-none"
+							>
+								Següent
+							</button>
+						</div>
+					)}
+				</div>
+			</section>
 		</div>
 	);
 }
