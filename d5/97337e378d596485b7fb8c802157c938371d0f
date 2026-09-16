@@ -1,0 +1,21 @@
+docs/superpowers/plans/2026-09-16-workshop-editorial-plan.md
+  s_099fd6806ba867::t_45a5d3dfd8064d 1-106
+docs/superpowers/specs/2026-09-16-workshop-editorial-redesign.md
+  s_099fd6806ba867::t_a907c6b9b813b2 1-164
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "d597337e378d596485b7fb8c802157c938371d0f",
+  "prompts": {},
+  "sessions": {
+    "s_099fd6806ba867": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_099fd6806ba867",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
