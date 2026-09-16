@@ -65,8 +65,8 @@ export default function Home() {
 				>
 					<source src="/video.mp4" type="video/mp4" />
 				</video>
-				<div className="absolute inset-0 bg-[rgba(23,22,20,.34)]" />
-				<div className="absolute inset-x-0 bottom-[88px]">
+				<div className="absolute inset-0 z-[1] bg-[rgba(10,9,8,.5)]" />
+				<div className="absolute inset-x-0 bottom-[88px] z-[2]">
 					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 text-[#F6F5F2]">
 						<div className="flex flex-col gap-7 max-w-[900px]">
 							<span className="font-mono text-[13px] tracking-[.02em] font-medium text-brand motion-rise [animation-delay:0ms]">
@@ -83,7 +83,7 @@ export default function Home() {
 						</div>
 						<Link
 							href="/portfolio"
-							className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-[#171614] font-medium rounded-none hover:bg-[#C23100] hover:text-[#F6F5F2] motion-rise [animation-delay:180ms]"
+							className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-[#F6F5F2] font-semibold rounded-none hover:bg-[#C23100] hover:text-[#F6F5F2] motion-rise [animation-delay:180ms]"
 						>
 							Veure el nostre treball
 						</Link>

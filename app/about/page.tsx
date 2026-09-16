@@ -40,20 +40,27 @@ export default function AboutPage() {
 								Sobre <span className="text-brand">InterFusta</span>
 							</>
 						}
-						intro="Des de la nostra creació, Interfusta ha estat a l'avantguarda dels serveis de fusteria de primera qualitat a Andorra. El nostre compromís amb l'excel·lència i l'atenció al detall ens ha convertit en un nom de confiança en la indústria."
 					/>
 				</div>
 			</section>
 
 			<section className="pb-28">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid lg:grid-cols-[7fr_5fr] gap-16 items-start">
-					<p className="text-ink-muted text-xl">
-						Combinem tècniques tradicionals d&apos;ebenisteria amb tecnologia
-						moderna per a crear peces sorprenents que superen la prova del
-						temps. El nostre equip d&apos;experts artesans aporta dècades
-						d&apos;experiència combinada a cada projecte.
-					</p>
-					<div className="relative aspect-[4/5] w-full">
+					<div className="flex flex-col gap-6 text-ink-muted text-lg max-w-[60ch]">
+						<p className="text-xl text-ink">
+							Des de la nostra creació, Interfusta ha estat a l&apos;avantguarda
+							dels serveis de fusteria de primera qualitat a Andorra. El nostre
+							compromís amb l&apos;excel·lència i l&apos;atenció al detall ens
+							ha convertit en un nom de confiança en la indústria.
+						</p>
+						<p>
+							Combinem tècniques tradicionals d&apos;ebenisteria amb tecnologia
+							moderna per a crear peces sorprenents que superen la prova del
+							temps. El nostre equip d&apos;experts artesans aporta dècades
+							d&apos;experiència combinada a cada projecte.
+						</p>
+					</div>
+					<div className="relative aspect-[4/3] w-full">
 						<Image
 							src="/About.webp"
 							alt="El nostre taller"

@@ -12,7 +12,7 @@ import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
 
 const MAPS_URL =
-	"https://www.google.com/maps?q=Passatge%20d'Enclar%20S%2FN%2C%20Santa%20Coloma%2C%20AD500%2C%20Andorra";
+	"https://www.google.com/maps/search/?api=1&query=Fusteria+InterFusta+SL";
 
 const fieldClass =
 	"rounded-none border-0 border-b border-hairline bg-transparent px-0 h-[46px] text-base placeholder:text-ink-muted focus-visible:ring-0 focus-visible:border-brand shadow-none";
@@ -137,7 +137,7 @@ export default function ContactPage() {
 						<Button
 							type="submit"
 							disabled={isSubmitting}
-							className="btn-press rounded-none h-[54px] px-[30px] bg-brand text-[#171614] hover:bg-[#C23100] hover:text-[#F6F5F2] self-start"
+							className="btn-press rounded-none h-[54px] px-[30px] bg-brand text-[#F6F5F2] font-semibold hover:bg-[#C23100] hover:text-[#F6F5F2] self-start"
 						>
 							{isSubmitting ? (
 								<>

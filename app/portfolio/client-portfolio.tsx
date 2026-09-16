@@ -9,7 +9,13 @@ import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
 
 const ITEMS_PER_PAGE = 8;
-const ALL_CATEGORY_NAME = "Todos los Proyectos";
+
+function isAllCategory(name: string) {
+	const normalized = name.toLowerCase().trim();
+	return (
+		normalized === "tots els projectes" || normalized === "todos los proyectos"
+	);
+}
 
 export default function PortfolioPage({
 	initialProjects,
@@ -18,7 +24,7 @@ export default function PortfolioPage({
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeCategory, setActiveCategory] = useState<Category | undefined>(
 		() =>
-			categories.find((category) => category.name === ALL_CATEGORY_NAME) ??
+			categories.find((category) => isAllCategory(category.name)) ??
 			categories[0],
 	);
 	const projectsRef = useRef<HTMLDivElement>(null);
@@ -52,15 +58,15 @@ export default function PortfolioPage({
 	};
 
 	const orderedCategories = [...categories].sort((a, b) => {
-		if (a.name === ALL_CATEGORY_NAME) return -1;
-		if (b.name === ALL_CATEGORY_NAME) return 1;
+		if (isAllCategory(a.name)) return -1;
+		if (isAllCategory(b.name)) return 1;
 		return 0;
 	});
 
 	const filteredProjects = activeCategory
 		? initialProjects.filter(
 				(project) =>
-					activeCategory.name === ALL_CATEGORY_NAME ||
+					isAllCategory(activeCategory.name) ||
 					project.category_id === activeCategory.id,
 			)
 		: initialProjects;
@@ -104,7 +110,7 @@ export default function PortfolioPage({
 											: "text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 									}
 								>
-									{category.name === ALL_CATEGORY_NAME ? "Tots" : category.name}
+									{isAllCategory(category.name) ? "Tots" : category.name}
 								</button>
 							);
 						})}
