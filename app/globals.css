@@ -112,7 +112,7 @@
 		@apply block h-1 w-24 bg-brand;
 	}
 	.btn-press {
-		@apply transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.97];
+		@apply transition-[color,background-color,transform] duration-150 ease-out active:scale-[0.97];
 	}
 	.grain {
 		position: fixed;
