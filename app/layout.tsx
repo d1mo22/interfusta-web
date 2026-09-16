@@ -83,8 +83,14 @@ export default function RootLayout({
 			<body
 				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans`}
 			>
+				<a
+					href="#main"
+					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-brand focus:px-4 focus:py-2 focus:text-paper"
+				>
+					Ves al contingut
+				</a>
 				<Navigation />
-				<main>{children}</main>
+				<main id="main">{children}</main>
 				<Analytics />
 				<SpeedInsights />
 				<Footer />

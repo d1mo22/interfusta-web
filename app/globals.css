@@ -136,8 +136,20 @@
 			transform: translateY(12px);
 		}
 	}
+	.menu-enter {
+		animation: menu-in 180ms var(--ease-out) both;
+	}
+	@keyframes menu-in {
+		from {
+			opacity: 0;
+			transform: translateY(-4px);
+		}
+	}
 	@media (prefers-reduced-motion: reduce) {
 		.motion-rise {
+			animation-name: fade;
+		}
+		.menu-enter {
 			animation-name: fade;
 		}
 		@keyframes fade {

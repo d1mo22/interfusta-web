@@ -2,103 +2,84 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { Logo } from "@/components/logo";
+import { ThemeToggle } from "@/components/theme-toggle";
+
+const links = [
+	{ href: "/services", label: "Serveis" },
+	{ href: "/portfolio", label: "Projectes" },
+	{ href: "/about", label: "Sobre Nosaltres" },
+	{ href: "/contact", label: "Contacte" },
+];
 
 export function Navigation() {
 	const [isOpen, setIsOpen] = useState(false);
+	const pathname = usePathname();
+
+	function isActive(href: string) {
+		return pathname === href || pathname.startsWith(`${href}/`);
+	}
 
 	return (
-		<nav className="bg-white shadow-sm fixed w-full z-50">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between h-16">
-					<div className="flex items-center">
-						<Link href="/" className="text-xl font-bold text-gray-800">
-							<Image
-								src="/InterFusta-logo.svg"
-								alt="InterFusta Logo"
-								width={150}
-								height={50}
-								className="object-contain"
-								priority
-							/>
-						</Link>
-					</div>
+		<header className="fixed inset-x-0 top-0 z-40 h-16 bg-paper border-b border-hairline">
+			<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex items-center justify-between h-full">
+				<Link href="/" aria-label="InterFusta" className="text-ink">
+					<Logo />
+				</Link>
 
-					{/* Desktop Navigation */}
-					<div className="hidden md:flex items-center space-x-8">
+				<nav className="hidden lg:flex items-center gap-9">
+					{links.map((link) => (
 						<Link
-							href="/services"
-							className="text-gray-600 hover:text-gray-900"
+							key={link.href}
+							href={link.href}
+							className={
+								isActive(link.href)
+									? "text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px]"
+									: "text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+							}
 						>
-							Serveis
+							{link.label}
 						</Link>
-						<Link
-							href="/portfolio"
-							className="text-gray-600 hover:text-gray-900"
-						>
-							Projectes
-						</Link>
-						<Link href="/about" className="text-gray-600 hover:text-gray-900">
-							Sobre Nosaltres
-						</Link>
-						<Link href="/contact" className="text-gray-600 hover:text-gray-900">
-							Contacte
-						</Link>
+					))}
+					<div className="ml-3">
+						<ThemeToggle />
 					</div>
+				</nav>
 
-					{/* Mobile menu button */}
-					<div className="md:hidden flex items-center">
-						<button
-							type="button"
-							onClick={() => setIsOpen(!isOpen)}
-							className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
-						>
-							{isOpen ? (
-								<X className="h-6 w-6" />
-							) : (
-								<Menu className="h-6 w-6" />
-							)}
-						</button>
-					</div>
-				</div>
+				<button
+					type="button"
+					onClick={() => setIsOpen(!isOpen)}
+					className="lg:hidden inline-flex items-center justify-center p-2 text-ink"
+					aria-label={isOpen ? "Tancar menú" : "Obrir menú"}
+					aria-expanded={isOpen}
+				>
+					{isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+				</button>
 			</div>
 
-			{/* Mobile Navigation */}
 			{isOpen && (
-				<div className="md:hidden">
-					<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+				<div className="lg:hidden absolute inset-x-0 top-16 bg-paper border-b border-hairline divide-y divide-hairline menu-enter">
+					{links.map((link) => (
 						<Link
-							href="/services"
-							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+							key={link.href}
+							href={link.href}
 							onClick={() => setIsOpen(false)}
+							className={
+								isActive(link.href)
+									? "block px-6 py-4 text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px]"
+									: "block px-6 py-4 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+							}
 						>
-							Serveis
+							{link.label}
 						</Link>
-						<Link
-							href="/portfolio"
-							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-							onClick={() => setIsOpen(false)}
-						>
-							Projectes
-						</Link>
-						<Link
-							href="/about"
-							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-							onClick={() => setIsOpen(false)}
-						>
-							Sobre Nosaltres
-						</Link>
-						<Link
-							href="/contact"
-							className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-							onClick={() => setIsOpen(false)}
-						>
-							Contacte
-						</Link>
+					))}
+					<div className="px-6 py-4">
+						<ThemeToggle />
 					</div>
 				</div>
 			)}
-		</nav>
+		</header>
 	);
 }
