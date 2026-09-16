@@ -1,0 +1,19 @@
+app/page.tsx
+  s_ef81f3baef7b7d::t_6b48ea0540bea2 3-4,6,10-40,44,50,52-56,63,68-86,88-90,94-139,141-146,157-164,166-225,230-246
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "59517c12272843e030f92cac75dbfcee0529d04b",
+  "prompts": {},
+  "sessions": {
+    "s_ef81f3baef7b7d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_ef81f3baef7b7d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
