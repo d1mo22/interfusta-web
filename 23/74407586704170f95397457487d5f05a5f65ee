@@ -1,0 +1,31 @@
+app/globals.css
+  s_6ccd30cc3a4e04::t_68dffdfcedf609 139-147,152-154
+app/layout.tsx
+  s_6ccd30cc3a4e04::t_246730e9220830 86-91,93
+components/footer.tsx
+  s_6ccd30cc3a4e04::t_c3e309970437df 3-12,15-20,22-25,28-36,39-41
+components/logo.tsx
+  s_6ccd30cc3a4e04::t_69464290835dd9 1-36
+components/navigation.tsx
+  s_6ccd30cc3a4e04::t_e64a2b652dde81 5,7-15,19-23,26-30,32-33,35-41,43,45-47,49,51-59,63-64,66-67,69-73,75,77-79,83
+components/section-heading.tsx
+  s_6ccd30cc3a4e04::t_a638ec8ce5a002 1-18
+public/InterFusta-logo.svg
+  s_6ccd30cc3a4e04::t_622521f463cb7f 3,6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "2374407586704170f95397457487d5f05a5f65ee",
+  "prompts": {},
+  "sessions": {
+    "s_6ccd30cc3a4e04": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_6ccd30cc3a4e04",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
