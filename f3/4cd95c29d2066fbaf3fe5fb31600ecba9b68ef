@@ -1,0 +1,21 @@
+app/portfolio/client-portfolio.tsx
+  s_8f4e60779f2fc3::t_be1cd0a0cf4a84 54-59,91,199-217
+components/image-gallery-modal.tsx
+  s_8f4e60779f2fc3::t_3f7eb13e8e05e3 92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "f34cd95c29d2066fbaf3fe5fb31600ecba9b68ef",
+  "prompts": {},
+  "sessions": {
+    "s_8f4e60779f2fc3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_8f4e60779f2fc3",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
