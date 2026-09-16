@@ -1,116 +1,149 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-	ChevronRight,
-	Paintbrush,
-	Ruler,
-	Drill,
-	CookingPot,
-} from "lucide-react";
+import { Grain } from "@/components/grain";
 import featuredProject from "@/data/featured-project.json";
 import { ImageGalleryModal } from "@/components/image-gallery-modal";
+
+const services = [
+	{
+		title: "Mobles a mesura",
+		description:
+			"Mobles personalitzats dissenyats i fabricats segons les seves especificacions",
+		image: "/Medida-2.webp",
+		alt: "Mobles a mesura al taller",
+	},
+	{
+		title: "Instal·lació de cuines",
+		description:
+			"Instal·lació professional de gabinets de cuina i personalització",
+		image: "/Cuina-2.webp",
+		alt: "Instal·lació de cuines",
+	},
+	{
+		title: "Lacatge i vernissat",
+		description:
+			"Acabats professionals per a protegir i embellir els seus mobles de fusta",
+		image: "/Laca-1.webp",
+		alt: "Lacatge i vernissat",
+	},
+	{
+		title: "Mesuraments i planificació",
+		description:
+			"Planificació detallada i mesuraments precisos per al seu projecte",
+		image: "/Planificacio-1.webp",
+		alt: "Mesuraments i planificació",
+	},
+];
 
 export default function Home() {
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+	const [activeService, setActiveService] = useState(0);
 
 	const openGallery = (index: number) => {
 		setSelectedImageIndex(index);
 		setIsGalleryOpen(true);
 	};
+
 	return (
-		<div className="min-h-screen">
-			{/* Hero Section */}
-			<section className="relative h-screen flex items-center justify-center">
+		<div className="bg-paper text-ink">
+			<Grain />
+
+			{/* Hero */}
+			<section className="relative min-h-[100dvh] overflow-hidden bg-[#141312]">
 				<video
 					autoPlay
 					muted
 					loop
 					playsInline
 					preload="auto"
-					className="absolute inset-0 w-full h-full object-cover"
+					className="absolute inset-0 h-full w-full object-cover"
 					poster="/thumbnail.webp"
 				>
 					<source src="/video.mp4" type="video/mp4" />
 				</video>
-
-				{/* Capa de superposición oscura */}
-				<div className="absolute inset-0 bg-black/40" />
-
-				<div className="relative z-10 text-center px-4">
-					<h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-						Serveis experts de fusteria a Andorra
-					</h1>
-					<p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto drop-shadow-lg">
-						Creant solucions de fusta elegants i funcionals per a la seva llar i
-						negoci
-					</p>
-					<Link href="/portfolio">
-						<Button
-							size="lg"
-							className="bg-amber-800 hover:bg-amber-900 text-lg py-6 px-8"
+				<div className="absolute inset-0 bg-[rgba(23,22,20,.34)]" />
+				<div className="absolute inset-x-0 bottom-[88px]">
+					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 text-[#F6F5F2]">
+						<div className="flex flex-col gap-7 max-w-[900px] motion-rise">
+							<span className="font-mono text-[13px] tracking-[.02em] font-medium text-brand motion-rise [animation-delay:0ms]">
+								Fusteria a Santa Coloma, Andorra
+							</span>
+							<h1 className="h-page text-[#F6F5F2] motion-rise [animation-delay:60ms]">
+								Serveis experts de{" "}
+								<span className="text-brand">fusteria</span> a Andorra
+							</h1>
+							<p className="text-[21px] max-w-[44ch] opacity-90 motion-rise [animation-delay:120ms]">
+								Creant solucions de fusta elegants i funcionals per a la seva
+								llar i negoci
+							</p>
+						</div>
+						<Link
+							href="/portfolio"
+							className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-[#F6F5F2] font-medium rounded-none hover:bg-brand-ink motion-rise [animation-delay:180ms]"
 						>
-							Veure el Nostre Treball <ChevronRight className="ml-2" />
-						</Button>
-					</Link>
+							Veure el nostre treball
+						</Link>
+					</div>
 				</div>
 			</section>
-			{/* Proyecto Destacado */}
-			<section className="py-20 bg-amber-50">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-3xl font-bold text-center mb-12">
-						Projecte Destacat
-					</h2>
-					<div className="grid md:grid-cols-2 gap-12 items-center">
-						<div>
-							<img
-								src={featuredProject.image.url}
-								alt={featuredProject.image.alt}
-								className="rounded-lg shadow-xl loading-lazy"
-							/>
-						</div>
-						<div>
-							<h3 className="text-2xl font-bold mb-4">
-								{featuredProject.title}
-							</h3>
-							<p className="text-gray-600 mb-6">
-								{featuredProject.description}
-							</p>
-							<ul className="list-disc list-inside text-gray-600 mb-6">
-								{featuredProject.features.map((feature: string) => (
-									<li key={feature}>{feature}</li>
-								))}
-							</ul>
 
-							{/* Añadir miniaturas */}
-							<div className="grid grid-cols-4 gap-2 mb-6">
-								{featuredProject.gallery.map((image, index) => (
-									<button
-										type="button"
-										key={`thumbnail-${image.alt}`}
-										className="overflow-hidden rounded-md cursor-pointer hover:opacity-80 transition-opacity"
-										onClick={() => openGallery(index)}
-									>
-										<img
-											src={image.url}
-											alt={image.alt}
-											className="w-full h-20 object-cover transition-transform duration-300 hover:scale-110"
-										/>
-									</button>
-								))}
-							</div>
-
-							<Link href="/portfolio">
-								<Button variant="outline" size="lg">
-									Veure tots els Projectes
-								</Button>
-							</Link>
+			{/* Featured project */}
+			<section className="bg-stone pt-28 pb-32">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid lg:grid-cols-[8fr_4fr] items-end">
+					<div className="relative aspect-[4/3] w-full">
+						<Image
+							src={featuredProject.image.url}
+							alt={featuredProject.image.alt}
+							fill
+							className="object-cover"
+							sizes="(min-width: 1024px) 66vw, 100vw"
+						/>
+					</div>
+					<div className="bg-paper p-12 pb-0 lg:-ml-40 lg:-mb-16 relative z-[2] flex flex-col gap-6">
+						<span className="text-sm text-ink-muted">Projecte destacat</span>
+						<h2 className="h-display text-[44px]">
+							Renovació d&apos;una <span className="text-brand">vila</span> de
+							luxe
+						</h2>
+						<p className="text-ink-muted">{featuredProject.description}</p>
+						<ul className="border-b border-hairline">
+							{featuredProject.features.map((feature: string) => (
+								<li
+									key={feature}
+									className="py-3.5 border-t border-hairline first:border-t-0"
+								>
+									{feature}
+								</li>
+							))}
+						</ul>
+						<div className="grid grid-cols-4 gap-2.5">
+							{featuredProject.gallery.map((image, index) => (
+								<button
+									type="button"
+									key={image.url}
+									onClick={() => openGallery(index)}
+									className="relative aspect-[4/3] overflow-hidden"
+								>
+									<Image
+										src={image.url}
+										alt={image.alt}
+										fill
+										className="object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform duration-[400ms] ease-out"
+										sizes="(min-width: 1024px) 15vw, 25vw"
+									/>
+								</button>
+							))}
 						</div>
+						<Link
+							href="/portfolio"
+							className="self-start pb-12 underline decoration-brand decoration-2 underline-offset-[6px] font-medium hover:text-brand-ink"
+						>
+							Veure tots els projectes
+						</Link>
 					</div>
 				</div>
 				<ImageGalleryModal
@@ -121,92 +154,96 @@ export default function Home() {
 				/>
 			</section>
 
-			{/* Resumen de Servicios */}
-			<section className="py-20 bg-white ">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="text-3xl font-bold text-center mb-12">
-						Els nostres Serveis
-					</h2>
-					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{[
-							{
-								title: "Mobles a Mesura",
-								description:
-									"Mobles personalitzats dissenyats i fabricats segons les seves especificacions",
-								icon: Drill,
-								image: "/Medida-2.webp",
-							},
-							{
-								title: "Instal·lació de Cuines",
-								description:
-									"Instal·lació professional de gabinets de cuina i personalització",
-								icon: CookingPot,
-								image: "/Cuina-2.webp",
-							},
-							{
-								title: "Lacatge i Vernissat",
-								description:
-									"Acabats professionals per a protegir i embellir els seus mobles de fusta",
-								icon: Paintbrush,
-								image: "/Laca-1.webp",
-							},
-							{
-								title: "Mesuraments i Planificació",
-								description:
-									"Planificació detallada i mesuraments precisos per al seu projecte",
-								icon: Ruler,
-								image: "/Planificacio-1.webp",
-							},
-						].map((service) => (
-							<Card
-								key={service.title.toLowerCase().replace(/\s+/g, "-")}
-								className="border-none shadow-lg"
-							>
-								<img
-									src={service.image || "https://placehold.co/400x400"}
-									alt={service.title}
-									className="w-full h-48 object-cover rounded-t-lg"
-								/>
-								<CardContent className="pt-6">
-									<div className="rounded-full bg-amber-100 p-3 w-12 h-12 flex items-center justify-center mb-4">
-										<service.icon className="w-6 h-6 text-amber-800" />
-									</div>
-									<h3 className="text-xl font-semibold mb-2">
-										{service.title}
-									</h3>
-									<p className="text-gray-600">{service.description}</p>
-								</CardContent>
-							</Card>
-						))}
+			{/* Services */}
+			<section className="pt-32 pb-[136px]">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col gap-16">
+					<div className="flex flex-col gap-6">
+						<h2 className="h-page text-[80px]">
+							Els nostres <span className="text-brand">serveis</span>
+						</h2>
+						<span className="rule" />
 					</div>
-					<div className="text-center mt-12">
-						<Link href="/services">
-							<Button variant="outline" size="lg">
-								Explorar Tots els Serveis
-							</Button>
-						</Link>
+					<div className="grid lg:grid-cols-[5fr_7fr] gap-24 items-start">
+						<div className="flex flex-col">
+							{services.map((service, index) => {
+								const isActive = index === activeService;
+								return (
+									<Fragment key={service.title}>
+										<button
+											type="button"
+											onMouseEnter={() => setActiveService(index)}
+											onFocus={() => setActiveService(index)}
+											className="w-full text-left grid grid-cols-[1fr_auto] gap-6 py-[30px] border-t border-hairline first:border-t-0"
+										>
+											<div className="flex flex-col gap-2">
+												<h3
+													className={`h-display text-4xl ${
+														isActive ? "text-ink" : "text-ink-muted"
+													}`}
+												>
+													{service.title}
+												</h3>
+												<p className="text-ink-muted max-w-[44ch]">
+													{service.description}
+												</p>
+											</div>
+											<span
+												className={`mt-3.5 h-3.5 w-3.5 border ${
+													isActive
+														? "bg-brand border-brand"
+														: "border-hairline"
+												}`}
+											/>
+										</button>
+										<div className="lg:hidden relative aspect-[4/3] mb-6">
+											<Image
+												src={service.image}
+												alt={service.alt}
+												fill
+												className="object-cover"
+												sizes="100vw"
+											/>
+										</div>
+									</Fragment>
+								);
+							})}
+						</div>
+						<div className="hidden lg:block relative aspect-[4/3]">
+							{services.map((service, index) => (
+								<Image
+									key={service.image}
+									src={service.image}
+									alt={service.alt}
+									fill
+									className={`object-cover transition-[opacity,filter] duration-200 ${
+										index === activeService
+											? "opacity-100"
+											: "opacity-0 blur-[2px]"
+									}`}
+								/>
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Call to Action */}
-			<section className="py-20 bg-amber-800 text-white">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<h2 className="text-3xl font-bold mb-4">
-						Llest per Començar el teu Projecte?
-					</h2>
-					<p className="text-xl mb-8 max-w-2xl mx-auto">
-						Fem realitat la teva visió. Contacta&apos;ns avui per a una consulta
-						i pressupost gratuït.
-					</p>
-					<Link href="/contact">
-						<Button
-							size="lg"
-							variant="secondary"
-							className="bg-white text-amber-800 hover:bg-gray-100"
-						>
-							Contacta&apos;ns
-						</Button>
+			{/* CTA band */}
+			<section className="bg-brand text-[#F6F5F2] pt-28 pb-[120px]">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid lg:grid-cols-[8fr_4fr] items-end gap-16">
+					<div className="flex flex-col gap-6">
+						<h2 className="h-page text-[88px] text-[#F6F5F2]">
+							Llest per començar el teu projecte?
+						</h2>
+						<p className="text-xl max-w-[50ch] opacity-90">
+							Fem realitat la teva visió. Contacta&apos;ns avui per a una
+							consulta i pressupost gratuït.
+						</p>
+					</div>
+					<Link
+						href="/contact"
+						className="btn-press inline-flex h-[54px] items-center px-[30px] bg-[#F6F5F2] text-[#171614] font-medium rounded-none hover:text-brand-ink lg:justify-self-end"
+					>
+						Contacte
 					</Link>
 				</div>
 			</section>
