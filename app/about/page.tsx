@@ -66,11 +66,11 @@ export default function AboutPage() {
 			</section>
 
 			<section className="bg-stone py-24">
-				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid grid-cols-2 lg:grid-cols-4 divide-x divide-hairline">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid grid-cols-2 lg:grid-cols-4 gap-y-10 lg:divide-x divide-hairline">
 					{stats.map((stat) => (
 						<div
 							key={stat.label}
-							className="px-8 first:pl-0 flex flex-col gap-3"
+							className="px-8 lg:first:pl-0 flex flex-col gap-3"
 						>
 							<span className="font-display font-semibold text-[72px] leading-none tracking-[-0.03em] text-brand [font-variation-settings:'wdth'_80]">
 								{stat.value}

@@ -85,7 +85,7 @@ export default function PortfolioPage({
 				</div>
 			</section>
 
-			<section ref={projectsRef} className="pb-[136px]">
+			<section ref={projectsRef} className="pb-[136px] scroll-mt-20">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col gap-[72px]">
 					<div className="flex flex-wrap gap-8 py-[18px] border-y border-hairline">
 						{orderedCategories.map((category) => {
@@ -94,7 +94,10 @@ export default function PortfolioPage({
 								<button
 									key={category.id}
 									type="button"
-									onClick={() => setActiveCategory(category)}
+									onClick={() => {
+									setActiveCategory(category);
+									setCurrentPage(1);
+								}}
 									className={
 										isActive
 											? "text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px] transition-colors duration-150"
@@ -208,7 +211,7 @@ export default function PortfolioPage({
 									onClick={() => handlePageChange(page)}
 									className={
 										page === currentPage
-											? "font-mono text-[13px] text-brand font-medium"
+											? "font-mono text-[13px] text-brand-ink font-medium"
 											: "font-mono text-[13px] text-ink-muted hover:text-ink transition-colors duration-150"
 									}
 								>

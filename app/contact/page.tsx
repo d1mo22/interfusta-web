@@ -137,7 +137,7 @@ export default function ContactPage() {
 						<Button
 							type="submit"
 							disabled={isSubmitting}
-							className="btn-press rounded-none h-[54px] px-[30px] bg-brand text-[#F6F5F2] hover:bg-brand-ink self-start"
+							className="btn-press rounded-none h-[54px] px-[30px] bg-brand text-[#171614] hover:bg-[#C23100] hover:text-[#F6F5F2] self-start"
 						>
 							{isSubmitting ? (
 								<>
@@ -149,7 +149,7 @@ export default function ContactPage() {
 							)}
 						</Button>
 						{error && (
-							<p role="status" className="text-sm text-brand-ink">
+							<p role="alert" className="text-sm text-brand-ink">
 								{error}
 							</p>
 						)}

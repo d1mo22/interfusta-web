@@ -9,7 +9,7 @@ export function Footer() {
 						</h3>
 						<p className="text-ink-muted text-[15px] max-w-[36ch]">
 							Serveis professionals de fusteria amb anys d&apos;experiència en
-							la creació de elegants solucions de fusta.
+							la creació d&apos;elegants solucions de fusta.
 						</p>
 					</div>
 					<div className="flex flex-col gap-3">

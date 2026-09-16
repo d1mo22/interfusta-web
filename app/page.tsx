@@ -68,7 +68,7 @@ export default function Home() {
 				<div className="absolute inset-0 bg-[rgba(23,22,20,.34)]" />
 				<div className="absolute inset-x-0 bottom-[88px]">
 					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 text-[#F6F5F2]">
-						<div className="flex flex-col gap-7 max-w-[900px] motion-rise">
+						<div className="flex flex-col gap-7 max-w-[900px]">
 							<span className="font-mono text-[13px] tracking-[.02em] font-medium text-brand motion-rise [animation-delay:0ms]">
 								Fusteria a Santa Coloma, Andorra
 							</span>
@@ -83,7 +83,7 @@ export default function Home() {
 						</div>
 						<Link
 							href="/portfolio"
-							className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-[#F6F5F2] font-medium rounded-none hover:bg-brand-ink motion-rise [animation-delay:180ms]"
+							className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-[#171614] font-medium rounded-none hover:bg-[#C23100] hover:text-[#F6F5F2] motion-rise [animation-delay:180ms]"
 						>
 							Veure el nostre treball
 						</Link>
@@ -132,7 +132,7 @@ export default function Home() {
 										src={image.url}
 										alt={image.alt}
 										fill
-										className="object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform duration-[400ms] ease-out"
+										className="object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform [transition-duration:400ms] ease-out"
 										sizes="(min-width: 1024px) 15vw, 25vw"
 									/>
 								</button>
@@ -215,6 +215,7 @@ export default function Home() {
 									src={service.image}
 									alt={service.alt}
 									fill
+									sizes="(min-width: 1024px) 58vw, 100vw"
 									className={`object-cover transition-[opacity,filter] duration-200 ${
 										index === activeService
 											? "opacity-100"
@@ -234,14 +235,14 @@ export default function Home() {
 						<h2 className="h-page text-[88px] text-[#F6F5F2]">
 							Llest per començar el teu projecte?
 						</h2>
-						<p className="text-xl max-w-[50ch] opacity-90">
+						<p className="text-2xl max-w-[50ch]">
 							Fem realitat la teva visió. Contacta&apos;ns avui per a una
 							consulta i pressupost gratuït.
 						</p>
 					</div>
 					<Link
 						href="/contact"
-						className="btn-press inline-flex h-[54px] items-center px-[30px] bg-[#F6F5F2] text-[#171614] font-medium rounded-none hover:text-brand-ink lg:justify-self-end"
+						className="btn-press inline-flex h-[54px] items-center px-[30px] bg-[#F6F5F2] text-[#171614] font-medium rounded-none hover:text-[#C23100] lg:justify-self-end"
 					>
 						Contacte
 					</Link>
