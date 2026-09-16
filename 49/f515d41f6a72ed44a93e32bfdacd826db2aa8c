@@ -1,0 +1,19 @@
+app/globals.css
+  s_23e7e5694c6989::t_b832f4b2991b1e 115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "49f515d41f6a72ed44a93e32bfdacd826db2aa8c",
+  "prompts": {},
+  "sessions": {
+    "s_23e7e5694c6989": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_23e7e5694c6989",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
