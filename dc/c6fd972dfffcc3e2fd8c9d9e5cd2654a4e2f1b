@@ -1,0 +1,21 @@
+app/globals.css
+  s_eeb0c9ec760173::t_40266f7d47e6d6 148-159,161-165
+app/page.tsx
+  s_eeb0c9ec760173::t_3b490c9dff814f 45,97-98,104,107,144,167-177,187,189-200
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "dcc6fd972dfffcc3e2fd8c9d9e5cd2654a4e2f1b",
+  "prompts": {},
+  "sessions": {
+    "s_eeb0c9ec760173": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_eeb0c9ec760173",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
