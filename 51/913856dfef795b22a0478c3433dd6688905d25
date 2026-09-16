@@ -1,0 +1,65 @@
+app/about/page.tsx
+  s_588f71a1777040::t_e5463d7862f45e 1-3,5-35,37,39-47,54,61-70,75,77-79,81-89,91-93,95-125,127
+app/contact/contact-form.tsx
+  s_588f71a1777040::t_416c7004e7b303 1-116
+app/contact/page.tsx
+  s_588f71a1777040::t_847c339055d260 2,4-11,13,15-26,28-43,45-50,52-54,56-59,61-72,74-85,87-88,90-100,103
+app/globals.css
+  s_588f71a1777040::t_2dd42f6a70ad4b 13-21,49-57,90-256
+app/layout.tsx
+  s_588f71a1777040::t_dd716512a9adf5 1-2,6,11-30,33-37,54-56,61-64,68-116,125-132,143-148
+app/page.tsx
+  s_588f71a1777040::t_3981a9b1434158 1,3-5,8-44,46,48-50,58-59,63-83,87-102,104-126,128-129,131,135-138,141,146-158,160-161
+app/portfolio/[id]/client-page.tsx
+  s_588f71a1777040::t_9ae825e608d6a0 34,47,58,62,66,72,85,107
+app/portfolio/[id]/page.tsx
+  s_588f71a1777040::t_0bf5c33a16c22a 13-28
+app/portfolio/client-portfolio.tsx
+  s_588f71a1777040::t_38fcfb280e8bc0 43,49,94
+app/portfolio/page.tsx
+  s_588f71a1777040::t_ca5c4388bda8dc 4-12
+app/robots.ts
+  s_588f71a1777040::t_59d4aaeaa0c289 1-15
+app/services/page.tsx
+  s_588f71a1777040::t_439da72bfbbdce 1-3,5-10,12-61,63,65-76,78-109,111-135,137
+app/sitemap.ts
+  s_588f71a1777040::t_513f7b696cf914 1-31
+components/footer.tsx
+  s_588f71a1777040::t_a3eff4423fc896 1-10,13-45,48,53-64,68-75,78-85
+components/grain.tsx
+  s_588f71a1777040::t_1b863dcc63140d 1-3
+components/home/featured-gallery.tsx
+  s_588f71a1777040::t_6fdf6555b3b879 1-49
+components/home/services-list.tsx
+  s_588f71a1777040::t_50d161ea207cb7 1-75
+components/logo.tsx
+  s_588f71a1777040::t_51d4ec3687ee74 1-43
+components/navigation.tsx
+  s_588f71a1777040::t_bc6538990d35c8 3,5,7-15,19-23,26-30,32-51,53-64,70-71,73-74,76-78,80,82
+components/reveal.tsx
+  s_588f71a1777040::t_91ed96f01a4a54 1-53
+components/theme-script.tsx
+  s_588f71a1777040::t_4b42fd32f93d82 1-10
+components/theme-toggle.tsx
+  s_588f71a1777040::t_6814b5eee3bcb4 1-39
+package-lock.json
+  s_588f71a1777040::t_a62c964fdd40e0 2-12109
+tailwind.config.ts
+  s_588f71a1777040::t_c38869c9488bac 13-25,71-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "51913856dfef795b22a0478c3433dd6688905d25",
+  "prompts": {},
+  "sessions": {
+    "s_588f71a1777040": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_588f71a1777040",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
