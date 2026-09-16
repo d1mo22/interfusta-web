@@ -10,6 +10,22 @@ const getCachedProjectDetails = unstable_cache(
 	{ revalidate: 3600 },
 );
 
+export async function generateMetadata({
+	params,
+}: { params: Promise<{ id: string }> }) {
+	const id = Number.parseInt((await params).id);
+	const project = await getCachedProjectDetails(id);
+
+	if (!project) {
+		return { title: "Projecte" };
+	}
+
+	return {
+		title: project.title,
+		description: project.description?.slice(0, 160),
+	};
+}
+
 export default async function ProjectDetails({
 	params,
 }: { params: Promise<{ id: string }> }) {

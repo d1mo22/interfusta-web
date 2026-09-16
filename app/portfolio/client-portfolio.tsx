@@ -40,13 +40,13 @@ export default function PortfolioPage({
 	};
 
 	return (
-		<div className="min-h-screen pt-16 bg-amber-50">
+		<div className="min-h-screen pt-[72px] bg-paper">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 				<h1 className="text-4xl font-bold text-center mb-4">
 					Els nostres Projectes
 				</h1>
 				<p
-					className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto"
+					className="text-lg text-ink-muted text-center mb-12 max-w-3xl mx-auto"
 					ref={projectsRef}
 				>
 					Explori la nostra col·lecció de projectes acabats, que mostren el
@@ -91,7 +91,7 @@ export default function PortfolioPage({
 											<h3 className="text-xl font-bold mb-2">
 												{project.title}
 											</h3>
-											<p className="text-gray-600 mb-4">
+											<p className="text-ink-muted mb-4">
 												{project.description}
 											</p>
 											<Link href={`/portfolio/${project.id}`} prefetch>
