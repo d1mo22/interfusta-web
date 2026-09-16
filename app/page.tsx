@@ -42,6 +42,7 @@ export default function Home() {
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [activeService, setActiveService] = useState(0);
+	const [isServicesPaused, setIsServicesPaused] = useState(false);
 
 	const openGallery = (index: number) => {
 		setSelectedImageIndex(index);
@@ -93,17 +94,17 @@ export default function Home() {
 
 			{/* Featured project */}
 			<section className="bg-stone pt-28 pb-32">
-				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid lg:grid-cols-[8fr_4fr] items-end">
-					<div className="relative aspect-[4/3] w-full">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid lg:grid-cols-[7fr_5fr] gap-10 lg:gap-16 items-start">
+					<div className="relative aspect-[4/3] w-full lg:sticky lg:top-24">
 						<Image
 							src={featuredProject.image.url}
 							alt={featuredProject.image.alt}
 							fill
 							className="object-cover"
-							sizes="(min-width: 1024px) 66vw, 100vw"
+							sizes="(min-width: 1024px) 58vw, 100vw"
 						/>
 					</div>
-					<div className="bg-paper p-12 pb-0 lg:-ml-40 lg:-mb-16 relative z-[2] flex flex-col gap-6">
+					<div className="bg-paper p-8 lg:p-12 flex flex-col gap-6">
 						<span className="text-sm text-ink-muted">Projecte destacat</span>
 						<h2 className="h-display text-[44px]">
 							Renovació d&apos;una <span className="text-brand">vila</span> de
@@ -140,7 +141,7 @@ export default function Home() {
 						</div>
 						<Link
 							href="/portfolio"
-							className="self-start pb-12 underline decoration-brand decoration-2 underline-offset-[6px] font-medium hover:text-brand-ink"
+							className="self-start underline decoration-brand decoration-2 underline-offset-[6px] font-medium hover:text-brand-ink"
 						>
 							Veure tots els projectes
 						</Link>
@@ -163,7 +164,17 @@ export default function Home() {
 						</h2>
 						<span className="rule" />
 					</div>
-					<div className="grid lg:grid-cols-[5fr_7fr] gap-24 items-start">
+					<div
+						className="grid lg:grid-cols-[5fr_7fr] gap-24 items-center"
+						onMouseEnter={() => setIsServicesPaused(true)}
+						onMouseLeave={() => setIsServicesPaused(false)}
+						onFocus={() => setIsServicesPaused(true)}
+						onBlur={(e) => {
+							if (!e.currentTarget.contains(e.relatedTarget)) {
+								setIsServicesPaused(false);
+							}
+						}}
+					>
 						<div className="flex flex-col">
 							{services.map((service, index) => {
 								const isActive = index === activeService;
@@ -173,8 +184,20 @@ export default function Home() {
 											type="button"
 											onMouseEnter={() => setActiveService(index)}
 											onFocus={() => setActiveService(index)}
-											className="w-full text-left grid grid-cols-[1fr_auto] gap-6 py-[30px] border-t border-hairline first:border-t-0"
+											className="relative w-full text-left grid grid-cols-[1fr_auto] gap-6 py-[30px] border-t border-hairline first:border-t-0"
 										>
+											{isActive && (
+												// ponytail: the CSS animation is the timer; hidden below lg and stopped under reduced motion, which also stops rotation there
+												<span
+													aria-hidden
+													onAnimationEnd={() =>
+														setActiveService((current) => (current + 1) % services.length)
+													}
+													className={`service-progress hidden lg:block absolute inset-x-0 -bottom-px z-[1] h-px bg-brand ${
+														isServicesPaused ? "[animation-play-state:paused]" : ""
+													}`}
+												/>
+											)}
 											<div className="flex flex-col gap-2">
 												<h3
 													className={`h-display text-4xl ${

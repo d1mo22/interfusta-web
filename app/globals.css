@@ -145,7 +145,24 @@
 			transform: translateY(-4px);
 		}
 	}
+	/* Home services: the bar's animationend advances to the next service,
+	   so the visual countdown and the rotation can never drift apart. */
+	.service-progress {
+		transform: scaleX(0);
+		transform-origin: left;
+		animation: service-progress 5s linear forwards;
+	}
+	@keyframes service-progress {
+		to {
+			transform: scaleX(1);
+		}
+	}
 	@media (prefers-reduced-motion: reduce) {
+		/* No animation means no animationend, so auto-rotation is off too.
+		   (animation, not display: lg:block would win over display:none.) */
+		.service-progress {
+			animation: none;
+		}
 		.motion-rise {
 			animation-name: fade;
 		}
