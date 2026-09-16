@@ -1,0 +1,25 @@
+app/about/page.tsx
+  s_426443d8b0019f::t_ac453c77f5dac4 49-63
+app/contact/page.tsx
+  s_426443d8b0019f::t_74599d914b283f 15,140
+app/page.tsx
+  s_426443d8b0019f::t_49d9d976dd350c 68-69,86
+app/portfolio/client-portfolio.tsx
+  s_426443d8b0019f::t_2a5f63545c926f 12-18,27,61-62,69,113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "0c5241f64ccb465146757c828b5f1017f03e1dd8",
+  "prompts": {},
+  "sessions": {
+    "s_426443d8b0019f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_426443d8b0019f",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
