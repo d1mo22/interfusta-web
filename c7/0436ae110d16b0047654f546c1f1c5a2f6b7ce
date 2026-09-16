@@ -1,0 +1,19 @@
+app/contact/page.tsx
+  s_6100a50f1ef3ec::t_cb42acb07dd8b6 4,10-18,48,50-51,53-64,66-162,164-214,216
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "c70436ae110d16b0047654f546c1f1c5a2f6b7ce",
+  "prompts": {},
+  "sessions": {
+    "s_6100a50f1ef3ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_6100a50f1ef3ec",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
