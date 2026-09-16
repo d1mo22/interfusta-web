@@ -10,6 +10,19 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+  			paper: 'var(--paper)',
+  			stone: 'var(--stone)',
+  			ink: {
+  				DEFAULT: 'var(--ink)',
+  				muted: 'var(--ink-muted)'
+  			},
+  			hairline: 'var(--hairline)',
+  			brand: {
+  				DEFAULT: 'var(--brand)',
+  				ink: 'var(--brand-ink)'
+  			},
+  			'brand-hover': 'hsl(var(--brand-hover) / <alpha-value>)',
+  			'on-brand': 'hsl(var(--on-brand) / <alpha-value>)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -55,6 +68,14 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		fontFamily: {
+  			display: ['var(--font-bricolage)', 'ui-sans-serif', 'sans-serif'],
+  			sans: ['var(--font-geist-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace']
+  		},
+  		transitionTimingFunction: {
+  			out: 'var(--ease-out)'
   		}
   	}
   },

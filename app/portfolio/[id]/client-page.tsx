@@ -31,7 +31,7 @@ export default function ClientPage({
 	};
 
 	return (
-		<div className="min-h-screen pt-16 bg-amber-50">
+		<div className="min-h-screen pt-[72px] bg-paper">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 				<Link href="/portfolio">
 					<Button variant="ghost" className="mb-6">
@@ -44,7 +44,7 @@ export default function ClientPage({
 				<div className="grid md:grid-cols-2 gap-8 mb-12">
 					<div>
 						<img
-							src={images[0].url || "https://placehold.co/800x600"}
+							src={images[0].url}
 							alt={project.title}
 							width={800}
 							height={600}
@@ -55,21 +55,21 @@ export default function ClientPage({
 						<h2 className="text-2xl font-semibold mb-4">
 							Resumen del Proyecto
 						</h2>
-						<p className="text-gray-700 mb-6">{project.full_description}</p>
+						<p className="text-ink-muted mb-6">{project.full_description}</p>
 						<div className="grid grid-cols-2 gap-4">
 							<div>
 								<h3 className="font-semibold mb-2">Categoría</h3>
-								<p className="text-gray-600">{category_name}</p>
+								<p className="text-ink-muted">{category_name}</p>
 							</div>
 							<div>
 								<h3 className="font-semibold mb-2">Fecha de finalización</h3>
-								<p className="text-gray-600">
+								<p className="text-ink-muted">
 									{formatDate(project.completion_date)}
 								</p>
 							</div>
 							<div>
 								<h3 className="font-semibold mb-2">Duración</h3>
-								<p className="text-gray-600">{project.duration}</p>
+								<p className="text-ink-muted">{project.duration}</p>
 							</div>
 						</div>
 					</div>
@@ -82,7 +82,7 @@ export default function ClientPage({
 					<ul className="grid md:grid-cols-2 gap-4">
 						{features.map((feature) => (
 							<li key={`feature-${feature.id}`} className="flex items-center">
-								<span className="mr-2 text-amber-600">•</span>
+								<span className="mr-2 text-brand-ink">•</span>
 								{feature.description}
 							</li>
 						))}
@@ -104,7 +104,7 @@ export default function ClientPage({
 									alt={`${project.title} - img ${index + 1}`}
 									width={400}
 									height={300}
-									className="rounded-lg cursor-pointer transition-transform duration-300 hover:scale-110"
+									className="rounded-lg cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
 									onClick={() => openGallery(index)}
 								/>
 							</div>

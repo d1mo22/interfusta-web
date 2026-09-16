@@ -10,6 +10,15 @@
 
 @layer base {
 	:root {
+		color-scheme: light;
+		--paper: 0 0% 99%;
+		--ink: 0 0% 8%;
+		--ink-muted: 0 0% 38%;
+		--hairline: 0 0% 86%;
+		--brand: 15 98% 51%;
+		--brand-hover: 15 98% 45%;
+		--brand-ink: 15 100% 36%;
+		--on-brand: 0 0% 6%;
 		--background: 0 0% 100%;
 		--foreground: 0 0% 3.9%;
 		--card: 0 0% 100%;
@@ -37,6 +46,15 @@
 		--radius: 0.5rem;
 	}
 	.dark {
+		color-scheme: dark;
+		--paper: 0 0% 6%;
+		--ink: 0 0% 96%;
+		--ink-muted: 0 0% 64%;
+		--hairline: 0 0% 18%;
+		--brand: 15 98% 51%;
+		--brand-hover: 15 98% 58%;
+		--brand-ink: 18 100% 66%;
+		--on-brand: 0 0% 6%;
 		--background: 0 0% 3.9%;
 		--foreground: 0 0% 98%;
 		--card: 0 0% 3.9%;
@@ -69,6 +87,172 @@
 		@apply border-border;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-paper text-ink font-sans antialiased;
+	}
+	h1,
+	h2,
+	h3 {
+		@apply font-display;
+	}
+	:focus-visible {
+		outline: 2px solid hsl(var(--brand));
+		outline-offset: 2px;
+	}
+}
+
+/* Marketing tokens (public pages). Admin keeps the shadcn tokens above. */
+@layer base {
+	:root {
+		--paper: #F6F5F2;
+		--stone: #ECEAE5;
+		--ink: #171614;
+		--ink-muted: #6B6862;
+		--hairline: #D6D3CC;
+		--brand: #FC4108;
+		--brand-ink: #C23100;
+		--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	}
+	.dark {
+		--paper: #141312;
+		--stone: #1C1B19;
+		--ink: #F3F1EC;
+		--ink-muted: #A29F98;
+		--hairline: #2E2C29;
+		--brand: #FC4108;
+		--brand-ink: #FF8A5C;
+	}
+}
+
+@layer components {
+	.h-page {
+		@apply font-display font-semibold tracking-[-0.035em] leading-[0.96];
+		font-size: clamp(48px, 6.6vw, 96px);
+		font-variation-settings: 'wdth' 80;
+		text-wrap: balance;
+	}
+	.h-display {
+		@apply font-display font-medium tracking-[-0.025em] leading-none;
+		font-variation-settings: 'wdth' 88;
+		text-wrap: balance;
+	}
+	.rule {
+		@apply block h-1 w-24 bg-brand;
+	}
+	.btn-press {
+		@apply transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.97];
+	}
+	.grain {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 5;
+		opacity: .07;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+	.dark .grain {
+		opacity: .12;
+		mix-blend-mode: screen;
+	}
+	.motion-rise {
+		animation: rise 500ms var(--ease-out) both;
+	}
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.motion-rise {
+			animation-name: fade;
+		}
+		@keyframes fade {
+			from {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+@layer components {
+	.container-site {
+		@apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+	}
+	.btn {
+		@apply inline-flex h-12 items-center justify-center gap-2 px-6 text-sm font-medium tracking-tight rounded-none whitespace-nowrap transition-[background-color,color,transform,border-color] duration-200 ease-out active:translate-y-px active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none;
+	}
+	.btn-primary {
+		@apply bg-brand text-on-brand hover:bg-brand-hover;
+	}
+	.btn-secondary {
+		@apply border border-ink text-ink hover:bg-ink hover:text-paper;
+	}
+	.btn-inverse {
+		@apply border border-white text-white hover:bg-white hover:text-[hsl(0_0%_8%)];
+	}
+	.btn-on-brand {
+		@apply bg-on-brand text-[hsl(0_0%_98%)] hover:bg-[hsl(0_0%_16%)];
+	}
+	.eyebrow {
+		@apply text-xs font-medium uppercase tracking-[0.14em] text-brand-ink;
+	}
+	.field {
+		@apply block w-full bg-transparent border-0 border-b border-hairline rounded-none px-0 py-3 text-base text-ink placeholder:text-ink-muted/70 focus:border-brand focus:ring-0 focus:outline-none transition-colors duration-200;
+	}
+	.hairline-t {
+		@apply border-t border-hairline;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@keyframes rise {
+		from {
+			opacity: 0;
+			translate: 0 16px;
+		}
+		to {
+			opacity: 1;
+			translate: 0 0;
+		}
+	}
+	.rise {
+		animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+	.rise-1 {
+		animation-delay: 0.05s;
+	}
+	.rise-2 {
+		animation-delay: 0.15s;
+	}
+	.rise-3 {
+		animation-delay: 0.25s;
+	}
+	.rise-4 {
+		animation-delay: 0.35s;
+	}
+	.reveal {
+		opacity: 0;
+		translate: 0 16px;
+		transition:
+			opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+			translate 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.reveal.is-visible {
+		opacity: 1;
+		translate: 0 0;
+	}
+	@keyframes menu-in {
+		from {
+			opacity: 0;
+			translate: 0 -8px;
+		}
+		to {
+			opacity: 1;
+			translate: 0 0;
+		}
+	}
+	.menu-in {
+		animation: menu-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 	}
 }
