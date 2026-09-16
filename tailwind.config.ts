@@ -49,7 +49,26 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			paper: 'var(--paper)',
+  			stone: 'var(--stone)',
+  			ink: {
+  				DEFAULT: 'var(--ink)',
+  				muted: 'var(--ink-muted)'
+  			},
+  			hairline: 'var(--hairline)',
+  			brand: {
+  				DEFAULT: 'var(--brand)',
+  				ink: 'var(--brand-ink)'
   			}
+  		},
+  		fontFamily: {
+  			display: ['var(--font-bricolage)', 'ui-sans-serif', 'sans-serif'],
+  			sans: ['var(--font-geist-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace']
+  		},
+  		transitionTimingFunction: {
+  			out: 'var(--ease-out)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
