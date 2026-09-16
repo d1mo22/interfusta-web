@@ -51,6 +51,12 @@ export default function PortfolioPage({
 		return Number.isNaN(year) ? null : year;
 	};
 
+	const orderedCategories = [...categories].sort((a, b) => {
+		if (a.name === ALL_CATEGORY_NAME) return -1;
+		if (b.name === ALL_CATEGORY_NAME) return 1;
+		return 0;
+	});
+
 	const filteredProjects = activeCategory
 		? initialProjects.filter(
 				(project) =>
@@ -82,7 +88,7 @@ export default function PortfolioPage({
 			<section ref={projectsRef} className="pb-[136px]">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col gap-[72px]">
 					<div className="flex flex-wrap gap-8 py-[18px] border-y border-hairline">
-						{categories.map((category) => {
+						{orderedCategories.map((category) => {
 							const isActive = activeCategory?.id === category.id;
 							return (
 								<button
@@ -190,9 +196,25 @@ export default function PortfolioPage({
 							>
 								Anterior
 							</button>
-							<span className="font-mono text-[13px] text-brand font-medium">
-								{currentPage}
-							</span>
+							{Array.from(
+								{
+									length: Math.ceil(filteredProjects.length / ITEMS_PER_PAGE),
+								},
+								(_, index) => index + 1,
+							).map((page) => (
+								<button
+									key={page}
+									type="button"
+									onClick={() => handlePageChange(page)}
+									className={
+										page === currentPage
+											? "font-mono text-[13px] text-brand font-medium"
+											: "font-mono text-[13px] text-ink-muted hover:text-ink transition-colors duration-150"
+									}
+								>
+									{page}
+								</button>
+							))}
 							<button
 								type="button"
 								onClick={() => handlePageChange(currentPage + 1)}
