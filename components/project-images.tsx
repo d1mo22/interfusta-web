@@ -9,13 +9,7 @@ export function ProjectImage({
 	const { imageUrl, loading, error } = useImageUrl(fileName);
 
 	if (loading) {
-		return (
-			<div className="relative h-64">
-				{" "}
-				{/* Mismo tamaño que el contenedor padre */}
-				<Skeleton className="absolute inset-0 rounded-md" />
-			</div>
-		);
+		return <Skeleton className="h-full w-full rounded-none bg-stone" />;
 	}
 	if (error) return <div>Error: {error}</div>;
 	//console.log("URL de la imagen:", imageUrl);

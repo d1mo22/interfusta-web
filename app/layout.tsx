@@ -1,12 +1,29 @@
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeScript } from "@/components/theme-script";
 //import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"] });
+const bricolage = Bricolage_Grotesque({
+	subsets: ["latin", "latin-ext"],
+	axes: ["opsz", "wdth"],
+	variable: "--font-bricolage",
+	display: "swap",
+});
+
+const geistSans = localFont({
+	src: "./fonts/GeistVF.woff",
+	variable: "--font-geist-sans",
+});
+
+const geistMono = localFont({
+	src: "./fonts/GeistMonoVF.woff",
+	variable: "--font-geist-mono",
+});
 
 export const metadata = {
 	//TODO: Change this to the actual URL
@@ -47,9 +64,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="ca">
-			{/* <head>
-				<Script
+		<html lang="ca" suppressHydrationWarning>
+			<head>
+				<ThemeScript />
+				{/* <Script
 					src="https://www.googletagmanager.com/gtag/js?id=G-Q7C8FRW87N"
 					strategy="afterInteractive"
 				/>
@@ -60,11 +78,19 @@ export default function RootLayout({
 					gtag('js', new Date());
 					gtag('config', 'G-Q7C8FRW87N');
 				`}
-				</Script>
-			</head> */}
-			<body className={inter.className}>
+				</Script> */}
+			</head>
+			<body
+				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans`}
+			>
+				<a
+					href="#main"
+					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-brand focus:px-4 focus:py-2 focus:text-paper"
+				>
+					Ves al contingut
+				</a>
 				<Navigation />
-				<main>{children}</main>
+				<main id="main">{children}</main>
 				<Analytics />
 				<SpeedInsights />
 				<Footer />

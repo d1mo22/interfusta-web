@@ -57,11 +57,11 @@ export function ImageGalleryModal({
 				onKeyDown={handleKeyDown}
 			>
 				<DialogTitle className="sr-only">
-					Galería de imágenes del proyecto
+					Galeria d&apos;imatges del projecte
 				</DialogTitle>
 				<DialogDescription className="sr-only">
-					Utilice las flechas izquierda y derecha para navegar entre las
-					imágenes
+					Utilitzeu les fletxes esquerra i dreta per navegar entre les
+					imatges
 				</DialogDescription>
 				<div className="relative w-full h-full">
 					<div className="flex items-center justify-center h-full">
@@ -70,6 +70,7 @@ export function ImageGalleryModal({
 							size="icon"
 							className="absolute left-2 z-10"
 							onClick={handlePrevious}
+							aria-label="Imatge anterior"
 						>
 							<ChevronLeft className="h-4 w-4" />
 						</Button>
@@ -85,11 +86,12 @@ export function ImageGalleryModal({
 							size="icon"
 							className="absolute right-2 z-10"
 							onClick={handleNext}
+							aria-label="Imatge següent"
 						>
 							<ChevronRight className="h-4 w-4" />
 						</Button>
 					</div>
-					<div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-2 py-1 rounded">
+					<div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#F6F5F2] bg-[#141312]/90 px-2 py-1 rounded-none">
 						{currentIndex + 1} / {images.length}
 					</div>
 				</div>
