@@ -1,22 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 export function ThemeToggle() {
-	const [isDark, setIsDark] = useState<boolean | null>(null);
-
-	useEffect(() => {
-		// eslint-disable-next-line react-hooks/set-state-in-effect -- reads DOM state unavailable during SSR
-		setIsDark(document.documentElement.classList.contains("dark"));
-	}, []);
-
 	function toggle() {
-		const next = !isDark;
+		const next = !document.documentElement.classList.contains("dark");
 		document.documentElement.classList.toggle("dark", next);
 		localStorage.setItem("theme", next ? "dark" : "light");
-		setIsDark(next);
 	}
 
+	// ThemeScript sets .dark on <html> before first paint, so the dark: variant
+	// highlights the right label on the server-rendered HTML with no flash.
 	return (
 		<button
 			type="button"
@@ -24,13 +16,9 @@ export function ThemeToggle() {
 			onClick={toggle}
 			className="font-mono text-[13px] tracking-[.02em]"
 		>
-			<span className={isDark === false ? "text-ink" : "text-ink-muted"}>
-				Clar
-			</span>
+			<span className="text-ink dark:text-ink-muted">Clar</span>
 			<span className="text-ink-muted">/</span>
-			<span className={isDark === true ? "text-ink" : "text-ink-muted"}>
-				Fosc
-			</span>
+			<span className="text-ink-muted dark:text-ink">Fosc</span>
 		</button>
 	);
 }
