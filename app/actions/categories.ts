@@ -5,7 +5,7 @@ import { sql } from "@/lib/db";
 import { getCurrentUser } from "./auth";
 
 export async function createCategory(categoryData: { name: string }) {
-	if (!(await getCurrentUser())) return { error: "No autorizado" };
+	if (!(await getCurrentUser())) return { error: "No autoritzat" };
 
 	try {
 		const [newCategory] = await sql`
@@ -19,7 +19,7 @@ export async function createCategory(categoryData: { name: string }) {
 		return { success: true, category: newCategory };
 	} catch (error) {
 		console.error("Error al crear categoría:", error);
-		return { error: "Error al crear la categoría" };
+		return { error: "No s'ha pogut crear la categoria" };
 	}
 }
 
@@ -27,7 +27,7 @@ export async function updateCategory(
 	id: number,
 	categoryData: { name: string },
 ) {
-	if (!(await getCurrentUser())) return { error: "No autorizado" };
+	if (!(await getCurrentUser())) return { error: "No autoritzat" };
 
 	try {
 		const [updatedCategory] = await sql`
@@ -38,7 +38,7 @@ export async function updateCategory(
 	`;
 
 		if (!updatedCategory) {
-			return { error: "Categoría no encontrada" };
+			return { error: "No s'ha trobat la categoria" };
 		}
 
 		revalidatePath("/admin/categories");
@@ -46,12 +46,12 @@ export async function updateCategory(
 		return { success: true, category: updatedCategory };
 	} catch (error) {
 		console.error("Error al actualizar categoría:", error);
-		return { error: "Error al actualizar la categoría" };
+		return { error: "No s'ha pogut canviar el nom" };
 	}
 }
 
 export async function deleteCategory(id: number) {
-	if (!(await getCurrentUser())) return { error: "No autorizado" };
+	if (!(await getCurrentUser())) return { error: "No autoritzat" };
 
 	try {
 		// Verificar si hay proyectos usando esta categoría
@@ -61,7 +61,7 @@ export async function deleteCategory(id: number) {
 
 		if (projectCount.count > 0) {
 			return {
-				error: "No se puede eliminar: Hay proyectos usando esta categoría",
+				error: "No es pot eliminar: hi ha projectes en aquesta categoria",
 			};
 		}
 
@@ -72,7 +72,7 @@ export async function deleteCategory(id: number) {
 	`;
 
 		if (!deletedCategory) {
-			return { error: "Categoría no encontrada" };
+			return { error: "No s'ha trobat la categoria" };
 		}
 
 		revalidatePath("/admin/categories");
@@ -80,6 +80,6 @@ export async function deleteCategory(id: number) {
 		return { success: true };
 	} catch (error) {
 		console.error("Error al eliminar categoría:", error);
-		return { error: "Error al eliminar la categoría" };
+		return { error: "No s'ha pogut eliminar la categoria" };
 	}
 }

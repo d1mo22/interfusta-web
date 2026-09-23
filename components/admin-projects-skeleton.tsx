@@ -1,76 +1,21 @@
-import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+const block = "animate-pulse bg-stone";
 
 export function AdminProjectsSkeleton() {
 	return (
-		<div className="min-h-screen pt-16 bg-gray-50">
-			<div className="max-w-4xl mx-auto px-4 py-12">
-				<Skeleton className="h-10 w-32 mb-6" />
-
-				<Card>
-					<CardHeader>
-						<Skeleton className="h-8 w-48" />
-					</CardHeader>
-					<CardContent className="space-y-6">
-						{/* Grid de título y categoría */}
-						<div className="grid md:grid-cols-2 gap-6">
-							<div className="space-y-2">
-								<Skeleton className="h-5 w-20" />
-								<Skeleton className="h-10 w-full" />
-							</div>
-							<div className="space-y-2">
-								<Skeleton className="h-5 w-24" />
-								<Skeleton className="h-10 w-full" />
-							</div>
-						</div>
-
-						{/* Descripción corta */}
-						<div className="space-y-2">
-							<Skeleton className="h-5 w-32" />
-							<Skeleton className="h-10 w-full" />
-						</div>
-
-						{/* Descripción completa */}
-						<div className="space-y-2">
-							<Skeleton className="h-5 w-36" />
-							<Skeleton className="h-32 w-full" />
-						</div>
-
-						{/* Features */}
-						<div className="space-y-2">
-							<Skeleton className="h-5 w-24" />
-							<div className="flex gap-2">
-								<Skeleton className="h-10 flex-grow" />
-								<Skeleton className="h-10 w-10" />
-							</div>
-							{[1, 2, 3].map((i) => (
-								<div key={i} className="flex items-center gap-2">
-									<Skeleton className="h-10 flex-grow" />
-									<Skeleton className="h-8 w-8" />
-								</div>
-							))}
-						</div>
-
-						{/* Grid de fecha y duración */}
-						<div className="grid md:grid-cols-2 gap-6">
-							<div className="space-y-2">
-								<Skeleton className="h-5 w-32" />
-								<Skeleton className="h-10 w-full" />
-							</div>
-							<div className="space-y-2">
-								<Skeleton className="h-5 w-24" />
-								<Skeleton className="h-10 w-full" />
-							</div>
-						</div>
-
-						{/* Botones */}
-						<div className="flex justify-end gap-4">
-							<Skeleton className="h-10 w-24" />
-							<Skeleton className="h-10 w-32" />
-						</div>
-					</CardContent>
-				</Card>
+		<div
+			className="max-w-[1280px] mx-auto px-6 lg:px-20 pt-8 pb-16"
+			aria-busy
+			aria-label="Carregant"
+		>
+			<div className={`${block} h-5 w-28`} />
+			<div className="mt-9 grid grid-cols-5 gap-1.5">
+				{[0, 1, 2, 3, 4].map((i) => (
+					<div key={i} className={`${block} h-1`} />
+				))}
 			</div>
+			<div className={`${block} h-12 w-2/3 max-w-lg mt-14`} />
+			<div className={`${block} h-4 w-80 max-w-full mt-4`} />
+			<div className={`${block} h-64 mt-10`} />
 		</div>
 	);
 }

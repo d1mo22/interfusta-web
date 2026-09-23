@@ -1,5 +1,5 @@
 import ClientPage from "./client-portfolio";
-import { getPortfolioData } from "../actions/data";
+import { getPortfolioData } from "@/app/actions/data";
 
 export const metadata = {
 	title: "Projectes",

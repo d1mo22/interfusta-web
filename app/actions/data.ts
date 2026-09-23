@@ -1,5 +1,5 @@
 import { sql } from "@/lib/db";
-import type { Project, User, Category, ImageData } from "@/types/types";
+import type { Project, User, Category } from "@/types/types";
 
 export async function getProjects() {
 	return (await sql`
@@ -75,7 +75,7 @@ export async function getProjectDetails(id: number) {
             'id', f.id,
             'description', f.description,
             'project_id', f.project_id
-          )
+          ) ORDER BY f.id
         )
         FROM feature f
         WHERE f.project_id = p.id
@@ -133,45 +133,10 @@ export async function getAllImages() {
 	return await sql`SELECT * FROM image`;
 }
 
-/**
- * This function gets the header images
- * @returns an array of images
- */
-export async function getHeaderImages() {
-	return (await sql`SELECT * FROM image WHERE "order" = 0`) as ImageData[];
-}
-
 export async function getImagesFromProject(projectId: number) {
 	return await sql`SELECT * FROM image WHERE project_id = ${projectId}`;
 }
 
 export async function getFeaturesFromProject(projectId: number) {
 	return await sql`SELECT * FROM feature WHERE project_id = ${projectId} FOR UPDATE`;
-}
-
-export async function insertProjectImages(
-	projectId: number,
-	images: Array<{ url: string; altText: string }>,
-) {
-	try {
-		const formattedImages = images.map((image, index) => ({
-			url: image.url,
-			alt_text: image.altText,
-			order: index,
-		}));
-
-		return await sql`
-      INSERT INTO image (project_id, url, alt_text, "order")
-      SELECT 
-        ${projectId},
-        url,
-        alt_text,
-        row_number() OVER ()
-      FROM json_to_recordset(${JSON.stringify(formattedImages)}) 
-      AS x(url text, alt_text text)
-    `;
-	} catch (error) {
-		console.error("Error al insertar imágenes:", error);
-		throw error;
-	}
 }

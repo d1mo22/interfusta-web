@@ -15,39 +15,24 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
+// Scales down to fit MAX_EDGE (never crops, never upscales) and re-encodes as
+// WebP (JPEG on Safari), so a 12 MB phone photo uploads as a few hundred KB.
+const MAX_EDGE = 1920;
+
 export async function optimizeImage(file: File): Promise<Blob> {
-	const url = URL.createObjectURL(file);
-	const img = new Image();
-	img.src = url;
-
-	await new Promise((resolve) => {
-		img.onload = resolve;
-	});
-
+	const bitmap = await createImageBitmap(file);
+	const scale = Math.min(1, MAX_EDGE / Math.max(bitmap.width, bitmap.height));
 	const canvas = document.createElement("canvas");
-	canvas.width = 800;
-	canvas.height = 600;
-	const ctx = canvas.getContext("2d");
+	canvas.width = Math.round(bitmap.width * scale);
+	canvas.height = Math.round(bitmap.height * scale);
+	canvas.getContext("2d")?.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+	bitmap.close();
 
-	// Calcular proporciones
-	const scale = Math.max(800 / img.width, 600 / img.height);
-	const scaledWidth = img.width * scale;
-	const scaledHeight = img.height * scale;
-
-	// Centrar imagen
-	const x = (800 - scaledWidth) / 2;
-	const y = (600 - scaledHeight) / 2;
-
-	// Fondo blanco
-	if (ctx) {
-		ctx.fillStyle = "#FFFFFF";
-		ctx.fillRect(0, 0, 800, 600);
-		ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
-	}
-
-	URL.revokeObjectURL(url);
-
-	return new Promise((resolve) => {
-		canvas.toBlob((blob) => resolve(blob as Blob), "image/webp", 0.8);
-	});
+	const encode = (type: string, quality: number) =>
+		new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, type, quality));
+	// Safari can't encode WebP and silently hands back a PNG; use JPEG there.
+	const webp = await encode("image/webp", 0.82);
+	const blob = webp?.type === "image/webp" ? webp : await encode("image/jpeg", 0.85);
+	if (!blob) throw new Error("No s'ha pogut processar la foto");
+	return blob;
 }
