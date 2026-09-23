@@ -1,0 +1,21 @@
+proxy.ts
+  s_2205ac236c046f::t_760534a63ea244 5
+tsconfig.json
+  s_2205ac236c046f::t_0aa85a3a87ed02 17,35-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "987ca5002537de4182f31c5cd42e11faeb6c1998",
+  "prompts": {},
+  "sessions": {
+    "s_2205ac236c046f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_2205ac236c046f",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
