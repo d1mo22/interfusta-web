@@ -3,9 +3,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import { ImageGalleryModal } from "@/components/image-gallery-modal";
+import { Grain } from "@/components/grain";
 import { formatDate } from "@/lib/utils";
 import type { Project, ImageData, Feature } from "@/types/types";
 
@@ -31,94 +31,93 @@ export default function ClientPage({
 	};
 
 	return (
-		<div className="min-h-screen pt-16 bg-amber-50">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-				<Link href="/portfolio">
-					<Button variant="ghost" className="mb-6">
-						<ChevronLeft className="mr-2 h-4 w-4" /> Volver a los Proyectos
-					</Button>
-				</Link>
+		<div className="bg-paper text-ink">
+			<Grain />
+			<section className="pt-[104px] pb-[136px]">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col gap-12">
+					<Link
+						href="/portfolio"
+						className="inline-flex items-center gap-2 text-[15px] text-ink-muted hover:text-ink w-fit"
+					>
+						<ChevronLeft className="size-4" /> Torna als projectes
+					</Link>
 
-				<h1 className="text-4xl font-bold mb-6">{project.title}</h1>
+					<h1 className="h-page">{project.title}</h1>
 
-				<div className="grid md:grid-cols-2 gap-8 mb-12">
-					<div>
-						<img
-							src={images[0].url || "https://placehold.co/800x600"}
-							alt={project.title}
-							width={800}
-							height={600}
-							className="rounded-lg shadow-lg"
-						/>
-					</div>
-					<div>
-						<h2 className="text-2xl font-semibold mb-4">
-							Resumen del Proyecto
-						</h2>
-						<p className="text-gray-700 mb-6">{project.full_description}</p>
-						<div className="grid grid-cols-2 gap-4">
-							<div>
-								<h3 className="font-semibold mb-2">Categoría</h3>
-								<p className="text-gray-600">{category_name}</p>
-							</div>
-							<div>
-								<h3 className="font-semibold mb-2">Fecha de finalización</h3>
-								<p className="text-gray-600">
-									{formatDate(project.completion_date)}
-								</p>
-							</div>
-							<div>
-								<h3 className="font-semibold mb-2">Duración</h3>
-								<p className="text-gray-600">{project.duration}</p>
-							</div>
+					<div className="grid grid-cols-3 gap-8 border-y border-hairline py-5">
+						<div className="flex flex-col gap-2">
+							<span className="text-sm text-ink-muted">Categoria</span>
+							<span>{category_name}</span>
+						</div>
+						<div className="flex flex-col gap-2">
+							<span className="text-sm text-ink-muted">
+								Data de finalització
+							</span>
+							<span className="font-mono">
+								{formatDate(project.completion_date)}
+							</span>
+						</div>
+						<div className="flex flex-col gap-2">
+							<span className="text-sm text-ink-muted">Durada</span>
+							<span className="font-mono">{project.duration}</span>
 						</div>
 					</div>
-				</div>
 
-				<div className="mb-12">
-					<h2 className="text-2xl font-semibold mb-4">
-						Características del Proyecto
-					</h2>
-					<ul className="grid md:grid-cols-2 gap-4">
+					{images[0]?.url && (
+						<div className="relative aspect-[3/2] w-full overflow-hidden">
+							<img
+								src={images[0].url}
+								alt={project.title}
+								className="w-full h-full object-cover"
+							/>
+						</div>
+					)}
+
+					<p className="text-ink-muted max-w-[65ch]">
+						{project.full_description}
+					</p>
+
+					<ul className="border-b border-hairline">
 						{features.map((feature) => (
-							<li key={`feature-${feature.id}`} className="flex items-center">
-								<span className="mr-2 text-amber-600">•</span>
+							<li
+								key={`feature-${feature.id}`}
+								className="py-3.5 border-t border-hairline"
+							>
 								{feature.description}
 							</li>
 						))}
 					</ul>
-				</div>
 
-				<div className="mb-12">
-					<h2 className="text-2xl font-semibold mb-4">Galería del Proyecto</h2>
-					<div className="grid md:grid-cols-3 gap-4">
+					<div className="grid md:grid-cols-3 gap-6">
 						{images.slice(1).map((image, index) => (
 							<div
 								key={`${project.id}-image-${index}`}
-								className="overflow-hidden rounded-lg shadow-md"
+								className="overflow-hidden"
 							>
-								{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
-								<img
-									key={`${project.id}-image-${index}`}
-									src={image.url || "/placeholder.svg"}
-									alt={`${project.title} - img ${index + 1}`}
-									width={400}
-									height={300}
-									className="rounded-lg cursor-pointer transition-transform duration-300 hover:scale-110"
+								<button
+									type="button"
 									onClick={() => openGallery(index)}
-								/>
+									aria-label={`Obre la imatge ${index + 1} de ${project.title}`}
+									className="block w-full cursor-pointer appearance-none border-0 bg-transparent p-0 text-left"
+								>
+									<img
+										src={image.url || "/placeholder.svg"}
+										alt={`${project.title} - img ${index + 1}`}
+										className="w-full aspect-[4/5] object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform [transition-duration:400ms] ease-out"
+									/>
+								</button>
 							</div>
 						))}
 					</div>
-				</div>
 
-				<ImageGalleryModal
-					images={images.map((image: ImageData) => image.url)}
-					initialIndex={selectedImageIndex}
-					isOpen={isGalleryOpen}
-					onClose={() => setIsGalleryOpen(false)}
-				/>
-			</div>
+					<ImageGalleryModal
+						images={images.map((image: ImageData) => image.url)}
+						initialIndex={selectedImageIndex}
+						isOpen={isGalleryOpen}
+						onClose={() => setIsGalleryOpen(false)}
+					/>
+				</div>
+			</section>
 		</div>
 	);
 }

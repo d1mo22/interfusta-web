@@ -1,45 +1,44 @@
 export function Footer() {
 	return (
-		<footer className="bg-gray-900 text-white py-12">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="grid md:grid-cols-3 gap-8">
-					<div>
-						<h3 className="text-xl font-bold mb-4">Fusteria InterFusta</h3>
-						<p className="text-gray-400">
-							Serveis professionals de fusteria amb <br />
-							anys d&apos;experiència en la creació de
-							<br /> elegants solucions de fusta.
+		<footer className="bg-stone pt-[72px] pb-10">
+			<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
+				<div className="grid grid-cols-1 md:grid-cols-[5fr_4fr_3fr] gap-12">
+					<div className="flex flex-col gap-5">
+						<h3 className="h-display text-[30px]">
+							Fusteria <span className="text-brand">InterFusta</span>
+						</h3>
+						<p className="text-ink-muted text-[15px] max-w-[36ch]">
+							Serveis professionals de fusteria amb anys d&apos;experiència en
+							la creació d&apos;elegants solucions de fusta.
 						</p>
 					</div>
-					<div>
-						<h3 className="text-xl font-bold mb-4">Contacte</h3>
-						<p className="text-gray-400">
-							Email:{" "}
-							<a
-								href="mailto:interfusta@andorra.ad"
-								className="hover:underline"
-							>
-								interfusta@andorra.ad
-							</a>
+					<div className="flex flex-col gap-3">
+						<span className="text-ink-muted text-sm">Contacte</span>
+						<p className="font-mono text-sm leading-[1.9]">
+							interfusta@interfusta.ad
+							<br />
+							+376 804 440
 						</p>
-						<p className="text-gray-400">Telèfon: +376 804 440</p>
-						<p className="text-gray-400">
-							Direcció: Passatge d&apos;Enclar S/N,
-							<br /> Santa Coloma, AD500, Andorra
+						<p className="font-mono text-sm">
+							Passatge d&apos;Enclar S/N
+							<br />
+							Santa Coloma, AD500, Andorra
 						</p>
 					</div>
-					<div>
-						<h3 className="text-xl font-bold mb-4">Horari</h3>
-						<p className="text-gray-400">Dilluns - Divendres: 9:00 - 17:00</p>
-						<p className="text-gray-400">Dissabte: 10:00 - 13:00</p>
-						<p className="text-gray-400">Diumenge: Tancat</p>
+					<div className="flex flex-col gap-3">
+						<span className="text-ink-muted text-sm">Horari</span>
+						<p className="font-mono text-sm leading-[1.9]">
+							Dilluns - Divendres 9:00 - 17:00
+							<br />
+							Dissabte 10:00 - 13:00
+							<br />
+							Diumenge tancat
+						</p>
 					</div>
 				</div>
-				<div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-					<p>
-						&copy; {new Date().getFullYear()} Interfusta. Tots els drets
-						reservats.
-					</p>
+				<div className="border-t border-hairline mt-16 pt-5 text-sm text-ink-muted flex justify-between">
+					<span>&copy; {new Date().getFullYear()} Interfusta. Tots els drets reservats.</span>
+					<span>Santa Coloma, Andorra</span>
 				</div>
 			</div>
 		</footer>

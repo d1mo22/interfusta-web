@@ -72,3 +72,162 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+/* Marketing tokens (public pages). Admin keeps the shadcn tokens above. */
+@layer base {
+	:root {
+		--paper: #F6F5F2;
+		--stone: #ECEAE5;
+		--ink: #171614;
+		--ink-muted: #6B6862;
+		--hairline: #D6D3CC;
+		--brand: #FC4108;
+		--brand-ink: #C23100;
+		--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	}
+	.dark {
+		--paper: #141312;
+		--stone: #1C1B19;
+		--ink: #F3F1EC;
+		--ink-muted: #A29F98;
+		--hairline: #2E2C29;
+		--brand: #FC4108;
+		--brand-ink: #FF8A5C;
+	}
+}
+
+@layer base {
+	:focus-visible {
+		outline: 2px solid var(--brand);
+		outline-offset: 2px;
+	}
+	/* On brand-coloured backgrounds a brand outline disappears; swap to paper. */
+	.bg-brand:focus-visible,
+	.bg-brand :focus-visible {
+		outline-color: var(--paper);
+	}
+}
+
+@layer components {
+	.h-page {
+		@apply font-display font-semibold tracking-[-0.035em] leading-[0.96];
+		font-size: clamp(48px, 6.6vw, 96px);
+		font-variation-settings: 'wdth' 80;
+		text-wrap: balance;
+	}
+	.h-display {
+		@apply font-display font-medium tracking-[-0.025em] leading-none;
+		font-variation-settings: 'wdth' 88;
+		text-wrap: balance;
+	}
+	.rule {
+		@apply block h-1 w-24 bg-brand;
+	}
+	.btn-press {
+		@apply transition-[color,background-color,transform] duration-150 ease-out active:scale-[0.97];
+	}
+	.grain {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 5;
+		opacity: .07;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+	.dark .grain {
+		opacity: .12;
+		mix-blend-mode: screen;
+	}
+	.motion-rise {
+		animation: rise 500ms var(--ease-out) both;
+	}
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+	}
+	.menu-enter {
+		animation: menu-in 180ms var(--ease-out) both;
+	}
+	@keyframes menu-in {
+		from {
+			opacity: 0;
+			transform: translateY(-4px);
+		}
+	}
+	/* Home services: the bar's animationend advances to the next service,
+	   so the visual countdown and the rotation can never drift apart. */
+	.service-progress {
+		transform: scaleX(0);
+		transform-origin: left;
+		animation: service-progress 5s linear forwards;
+	}
+	@keyframes service-progress {
+		to {
+			transform: scaleX(1);
+		}
+	}
+	/* Error sheet (404/500): outlined digits, tree-ring draw-in, dimension fade-in. */
+	.num-outline {
+		fill: none;
+		stroke: var(--ink);
+		stroke-width: 1.5;
+		font-weight: 700;
+		font-size: 300px;
+		letter-spacing: -0.05em;
+		font-variation-settings: 'wdth' 80;
+	}
+	.ring-path {
+		fill: none;
+		stroke: var(--ink);
+		stroke-width: 1.1;
+		stroke-dasharray: 1;
+		stroke-dashoffset: 1;
+		animation: ring-draw 1.8s var(--ease-out) forwards;
+	}
+	.ring-path--bark {
+		stroke-width: 3.2;
+	}
+	@keyframes ring-draw {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+	.dim-fade {
+		opacity: 0;
+		animation: dim-fade-in 0.6s var(--ease-out) forwards;
+	}
+	@keyframes dim-fade-in {
+		to {
+			opacity: 1;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		/* No animation means no animationend, so auto-rotation is off too.
+		   (animation, not display: lg:block would win over display:none.) */
+		.service-progress {
+			animation: none;
+		}
+		.motion-rise {
+			animation-name: fade;
+		}
+		.menu-enter {
+			animation-name: fade;
+		}
+		.ring-path {
+			animation: none;
+			stroke-dashoffset: 0;
+		}
+		.dim-fade {
+			animation: none;
+			opacity: 1;
+		}
+		@keyframes fade {
+			from {
+				opacity: 0;
+			}
+		}
+	}
+}

@@ -24,7 +24,7 @@ export async function createContact(formData: FormData) {
 		// Intentar enviar email
 		const { data, error } = await resend.emails.send({
 			from: "Interfusta-Web <no-reply@interfustaandorra.com>",
-			to: "interfusta@andorra.ad",
+			to: "interfusta@interfusta.ad",
 			subject: `Nova consulta de ${nom} ${cognom}`,
 			react: ContactNotification({
 				firstName: nom as string,
