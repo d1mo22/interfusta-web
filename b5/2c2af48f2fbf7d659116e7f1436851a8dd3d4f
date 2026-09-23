@@ -1,0 +1,35 @@
+app/(admin)/admin/projects/project-wizard.tsx
+  s_e3bc5e5d444eab::t_44cc79b38fd1e7 132,146,171-176,217-221,231,320,376-427
+app/(site)/contact/page.tsx
+  s_e3bc5e5d444eab::t_da80cb8a2e823f 78-79,149-150,153-167,170-177,216,227,235-345
+app/(site)/error.tsx
+  s_e3bc5e5d444eab::t_62324ccf8b597a 5,23
+app/actions/contact.ts
+  s_e3bc5e5d444eab::t_f321bd3ec219a1 17
+app/actions/project.ts
+  s_e3bc5e5d444eab::t_9e34aa1216000d 140,142
+app/global-error.tsx
+  s_e3bc5e5d444eab::t_a9efb933e2ab7a 4,38
+components/server-error.tsx
+  s_e3bc5e5d444eab::t_5b0edda46612cd 1-56
+components/theme-toggle.tsx
+  s_e3bc5e5d444eab::t_0565687228eabb 5,10-11,19,21
+components/ui/button.tsx
+  s_e3bc5e5d444eab::t_6bec3d4ba37c2f 57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "b52c2af48f2fbf7d659116e7f1436851a8dd3d4f",
+  "prompts": {},
+  "sessions": {
+    "s_e3bc5e5d444eab": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_e3bc5e5d444eab",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
