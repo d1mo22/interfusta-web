@@ -1,0 +1,19 @@
+components/error-sheet.tsx
+  s_93970fad85bc0c::t_580d50875feb14 189
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "815f40210354f860802ad198a3882fd6cf2b2ae7",
+  "prompts": {},
+  "sessions": {
+    "s_93970fad85bc0c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_93970fad85bc0c",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
