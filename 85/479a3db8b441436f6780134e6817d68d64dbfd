@@ -1,0 +1,33 @@
+app/about/page.tsx
+  s_6e6f1ddb20cfb3::t_43e7be47fbf0b4 103-111,113-115
+app/actions/contact.ts
+  s_6e6f1ddb20cfb3::t_0764f6c0707244 27
+app/contact/page.tsx
+  s_6e6f1ddb20cfb3::t_058d795f705ddd 17-49,55-75,79-98,110-111,143,154-160,162-166,176-182,184-188,201-206,208-212,224-228,230-234,247-251,253-257,262,286,294,299,302,305,309,317
+app/layout.tsx
+  s_6e6f1ddb20cfb3::t_38deaa0dc52ec7 11
+app/page.tsx
+  s_6e6f1ddb20cfb3::t_316b254624cd18 57,69,71,74,76,87,255,258,268
+components/footer.tsx
+  s_6e6f1ddb20cfb3::t_0fddab3dc8c5a1 18
+components/image-gallery-modal.tsx
+  s_6e6f1ddb20cfb3::t_0c2db3009079ff 94
+tailwind.config.ts
+  s_6e6f1ddb20cfb3::t_c0ec11b0346b74 62-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "85479a3db8b441436f6780134e6817d68d64dbfd",
+  "prompts": {},
+  "sessions": {
+    "s_6e6f1ddb20cfb3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_6e6f1ddb20cfb3",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
