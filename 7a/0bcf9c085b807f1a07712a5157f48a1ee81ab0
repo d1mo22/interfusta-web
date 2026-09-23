@@ -1,0 +1,25 @@
+app/(site)/services/[slug]/page.tsx
+  s_5786ef4050c76e::t_6e9054f87a8543 1-393
+app/(site)/services/page.tsx
+  s_5786ef4050c76e::t_462b564b64c2a2 2,5,64-68,70-73,81
+app/sitemap.ts
+  s_5786ef4050c76e::t_0d4aa75faf3484 3,16-19,44
+data/services.ts
+  s_5786ef4050c76e::t_577ea622d40418 1-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "7a0bcf9c085b807f1a07712a5157f48a1ee81ab0",
+  "prompts": {},
+  "sessions": {
+    "s_5786ef4050c76e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_5786ef4050c76e",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
