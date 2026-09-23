@@ -19,7 +19,7 @@ export function Footer() {
 							<br />
 							+376 804 440
 						</p>
-						<p className="text-[15px]">
+						<p className="font-mono text-sm">
 							Passatge d&apos;Enclar S/N
 							<br />
 							Santa Coloma, AD500, Andorra
