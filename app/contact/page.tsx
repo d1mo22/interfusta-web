@@ -12,7 +12,7 @@ import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
 
 const MAPS_URL =
-	"https://www.google.com/maps/search/?api=1&query=Fusteria+InterFusta+SL";
+	"https://www.google.com/maps?q=Fusteria+InterFusta+SL&ftid=0x12a5f58f12d8ead7:0x4b992abc827fc509";
 
 const fieldClass = (hasError: boolean) =>
 	`rounded-none border-0 border-b ${
@@ -328,7 +328,7 @@ export default function ContactPage() {
 								href={MAPS_URL}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="underline decoration-brand decoration-2 underline-offset-[6px] mt-7 self-start"
+								className="underline decoration-brand decoration-2 underline-offset-[6px] pt-7 self-start"
 							>
 								Obrir a Google Maps
 							</a>
