@@ -31,7 +31,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
 					El responsable del tractament de les dades recollides a través
 					d&apos;aquest lloc web és{" "}
 					<strong className="text-ink">Fusteria InterFusta SL</strong>{" "}
-					(NRT: [PLACEHOLDER: número de registre tributari]), amb domicili a
+					(NRT: L-715485-U), amb domicili a
 					Passatge d&apos;Enclar S/N, Santa Coloma, AD500, Andorra.
 				</p>
 				<p>
