@@ -4,16 +4,19 @@ import AdminDashboard from "./admin-dashboard";
 export default async function AdminPage({
 	searchParams,
 }: {
-	searchParams: { desat?: string };
+	searchParams: Promise<{ desat?: string }>;
 }) {
-	const { projects, categories } = await getPortfolioData();
+	const [{ desat }, { projects, categories }] = await Promise.all([
+		searchParams,
+		getPortfolioData(),
+	]);
 
 	return (
 		<AdminDashboard
 			// json_agg returns null, not [], on an empty table
 			projects={projects ?? []}
 			categories={categories ?? []}
-			savedId={Number(searchParams.desat) || undefined}
+			savedId={Number(desat) || undefined}
 		/>
 	);
 }

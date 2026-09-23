@@ -7,9 +7,9 @@ import type { Feature, ImageData } from "@/types/types";
 export default async function EditProjectPage({
 	params,
 }: {
-	params: { id: string };
+	params: Promise<{ id: string }>;
 }) {
-	const id = Number.parseInt(params.id);
+	const id = Number.parseInt((await params).id);
 	if (Number.isNaN(id)) notFound();
 
 	const [project, categories] = await Promise.all([
