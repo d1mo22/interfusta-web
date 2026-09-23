@@ -1,0 +1,19 @@
+app/(site)/privacitat/page.tsx
+  s_5d69f12f99ea16::t_11f24d679dd5ef 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "138bf67d41e90b8911655c6999106e2797c5d3f7",
+  "prompts": {},
+  "sessions": {
+    "s_5d69f12f99ea16": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_5d69f12f99ea16",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
