@@ -1,0 +1,19 @@
+components/footer.tsx
+  s_6155c561b35edb::t_be26a1ad8bae94 16,29,39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "8419441507c5eec87de1cb98836530fe225a0270",
+  "prompts": {},
+  "sessions": {
+    "s_6155c561b35edb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_6155c561b35edb",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
