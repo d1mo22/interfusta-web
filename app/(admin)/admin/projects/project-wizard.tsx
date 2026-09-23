@@ -27,6 +27,11 @@ import {
 import { optimizeImage } from "@/lib/utils";
 import type { Category } from "@/types/types";
 
+// Andorra's calendar day, not the machine's: the server runs in UTC and must
+// render the same date the browser hydrates with, or they disagree after midnight.
+const today = () =>
+	new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Andorra" }); // en-CA = yyyy-MM-dd
+
 type Photo = {
 	key: string;
 	src: string; // R2 url for saved photos, local blob preview for new ones
@@ -118,16 +123,18 @@ export default function ProjectWizard({
 	const [step, setStep] = useState(isEdit ? REVIEW : 0);
 	const [reached, setReached] = useState(isEdit ? REVIEW : 0);
 	const [showErrors, setShowErrors] = useState(false);
-	const [draft, setDraft] = useState<Draft>(
-		initial ?? {
-			title: "",
-			categoryId: null,
-			description: "",
-			fullDescription: "",
-			completionDate: format(new Date(), "yyyy-MM-dd"),
-			duration: "",
-			features: [],
-		},
+	const [draft, setDraft] = useState<Draft>(() =>
+		initial
+			? { ...initial, features: [...new Set(initial.features)] }
+			: {
+					title: "",
+					categoryId: null,
+					description: "",
+					fullDescription: "",
+					completionDate: today(),
+					duration: "",
+					features: [],
+				},
 	);
 	const [photos, setPhotos] = useState<Photo[]>(() =>
 		(initial?.photos ?? []).map((p) => ({
@@ -254,8 +261,8 @@ export default function ProjectWizard({
 
 	function addFeature() {
 		const f = newFeature.trim();
-		if (!f) return;
-		set("features", [...draft.features, f]);
+		// Features double as list keys, so they must be unique.
+		if (f && !draft.features.includes(f)) set("features", [...draft.features, f]);
 		setNewFeature("");
 	}
 
@@ -780,10 +787,9 @@ function DetailsStep({
 			</Field>
 			{draft.features.length > 0 && (
 				<ul className="flex flex-wrap gap-2">
-					{draft.features.map((f, i) => (
+					{draft.features.map((f) => (
 						<li
-							// biome-ignore lint/suspicious/noArrayIndexKey: duplicates allowed
-							key={`${f}-${i}`}
+							key={f}
 							className="inline-flex items-center bg-stone pl-3.5 text-[15px]"
 						>
 							{f}
@@ -792,7 +798,7 @@ function DetailsStep({
 								onClick={() =>
 									set(
 										"features",
-										draft.features.filter((_, j) => j !== i),
+										draft.features.filter((x) => x !== f),
 									)
 								}
 								className="btn-icon size-9"
@@ -816,7 +822,7 @@ function DetailsStep({
 					id="completionDate"
 					type="date"
 					value={draft.completionDate}
-					max={format(new Date(), "yyyy-MM-dd")}
+					max={today()}
 					onChange={(e) => set("completionDate", e.target.value)}
 					aria-invalid={!!errors.completionDate}
 					className="field font-mono"
