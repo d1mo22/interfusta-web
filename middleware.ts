@@ -1,22 +1,22 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { SESSION_COOKIE, verifySession } from "@/lib/session";
 
-export function middleware(request: NextRequest) {
-	const user = request.cookies.get("user");
-	const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
+export async function middleware(request: NextRequest) {
+	const user = await verifySession(
+		request.cookies.get(SESSION_COOKIE)?.value,
+	);
+	if (user) return NextResponse.next();
 
-	if (isAdminRoute) {
-		if (!user?.value) {
-			return NextResponse.redirect(new URL("/auth/login", request.url));
-		}
+	// Las rutas /api solo exigen sesión para operaciones de escritura
+	if (request.nextUrl.pathname.startsWith("/api")) {
+		if (request.method === "GET") return NextResponse.next();
+		return NextResponse.json({ error: "No autorizado" }, { status: 401 });
 	}
 
-	return NextResponse.next();
+	return NextResponse.redirect(new URL("/auth/login", request.url));
 }
 
 export const config = {
-	matcher: [
-		"/admin",
-		"/admin/:path*", // Añadimos esta línea para incluir todas las rutas que empiezan con /admin/
-	],
+	matcher: ["/admin", "/admin/:path*", "/api/:path*"],
 };

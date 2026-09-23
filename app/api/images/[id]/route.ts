@@ -1,10 +1,15 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { sql } from "@/lib/db";
+import { getCurrentUser } from "@/app/actions/auth";
 
 export async function DELETE(
 	request: NextRequest,
 	{ params }: { params: { id: string } },
 ) {
+	if (!(await getCurrentUser())) {
+		return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+	}
+
 	try {
 		const imageId = Number.parseInt(params.id);
 

@@ -61,6 +61,7 @@ export async function updateProjectAction(formData: FormData) {
 	"use server";
 
 	const user = await getCurrentUser();
+	if (!user) return { error: "No autorizado" };
 
 	try {
 		const id = Number(formData.get("id"));
@@ -116,6 +117,8 @@ export async function updateProjectAction(formData: FormData) {
 
 export async function deleteProject(id: number) {
 	"use server";
+
+	if (!(await getCurrentUser())) return { error: "No autorizado" };
 
 	try {
 		await sql`DELETE FROM image WHERE project_id = ${id}`;
