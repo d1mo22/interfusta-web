@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
 	return (
 		<footer className="bg-stone pt-[72px] pb-10">
@@ -46,9 +48,17 @@ export function Footer() {
 						</p>
 					</div>
 				</div>
-				<div className="border-t border-hairline mt-16 pt-5 text-sm text-ink-muted flex justify-between">
+				<div className="border-t border-hairline mt-16 pt-5 text-sm text-ink-muted flex flex-wrap items-center justify-between gap-4">
 					<span>&copy; {new Date().getFullYear()} Fusteria InterFusta. Tots els drets reservats.</span>
-					<span>Santa Coloma, Andorra</span>
+					<div className="flex items-center gap-4">
+						<Link
+							href="/privacitat"
+							className="hover:text-ink transition-colors duration-150"
+						>
+							Política de privacitat
+						</Link>
+						<span>Santa Coloma, Andorra</span>
+					</div>
 				</div>
 			</div>
 		</footer>

@@ -6,7 +6,14 @@ const siteUrl = (
 	process.env.NEXT_PUBLIC_BASE_URL || "https://www.interfustaandorra.com/"
 ).replace(/\/$/, "");
 
-const staticPaths = ["", "/about", "/contact", "/services", "/portfolio"];
+const staticPaths = [
+	"",
+	"/about",
+	"/contact",
+	"/services",
+	"/portfolio",
+	"/privacitat",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const staticRoutes: MetadataRoute.Sitemap = staticPaths.map((path) => ({

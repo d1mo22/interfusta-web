@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { createContact } from "@/app/actions/contact";
 import { Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -270,6 +271,17 @@ export default function ContactPage() {
 								"Enviar missatge"
 							)}
 						</Button>
+						<p className="text-[13px] text-ink-muted">
+							En enviar aquest formulari, accepta el tractament de les seves
+							dades tal com es descriu a la nostra{" "}
+							<Link
+								href="/privacitat"
+								className="underline underline-offset-2 hover:text-ink"
+							>
+								política de privacitat
+							</Link>
+							.
+						</p>
 						{error && (
 							<p role="alert" className="text-sm text-brand-ink">
 								{error}
