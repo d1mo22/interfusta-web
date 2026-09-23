@@ -1,0 +1,21 @@
+app/global-error.tsx
+  s_95efb17aae611c::t_bdbd61650d8165 27-31,36
+app/layout.tsx
+  s_95efb17aae611c::t_cc92a85ecc7545 50-54,59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "418b7bf6b7f49fbb9baac1d468b36bef79722513",
+  "prompts": {},
+  "sessions": {
+    "s_95efb17aae611c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_95efb17aae611c",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
