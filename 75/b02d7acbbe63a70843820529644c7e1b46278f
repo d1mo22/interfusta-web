@@ -1,0 +1,19 @@
+public/google6794e0afaeac6a21.html
+  s_ef5068286ca299::t_b66507b48fa2e4 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "75b02d7acbbe63a70843820529644c7e1b46278f",
+  "prompts": {},
+  "sessions": {
+    "s_ef5068286ca299": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_ef5068286ca299",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
