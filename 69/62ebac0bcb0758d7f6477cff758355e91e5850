@@ -1,0 +1,27 @@
+app/contact/page.tsx
+  s_8c8d5e13125485::t_de2c650b3430d7 262
+app/error.tsx
+  s_8c8d5e13125485::t_60b27f04460630 57
+app/global-error.tsx
+  s_8c8d5e13125485::t_2ee1d5bbff9049 68
+app/not-found.tsx
+  s_8c8d5e13125485::t_1059448b29c42a 38
+app/page.tsx
+  s_8c8d5e13125485::t_16f6c8a0b443b6 87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "6962ebac0bcb0758d7f6477cff758355e91e5850",
+  "prompts": {},
+  "sessions": {
+    "s_8c8d5e13125485": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_8c8d5e13125485",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
