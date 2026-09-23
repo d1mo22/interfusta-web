@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { ErrorSheet } from "@/components/error-sheet";
 import { ThemeScript } from "@/components/theme-script";
-import { bricolage, geistSans, geistMono } from "./fonts";
+import { BricolageFontLinks } from "@/components/bricolage-font-links";
+import { geistSans, geistMono } from "./fonts";
 import "./globals.css";
 
 // Next.js requires global-error.tsx to render its own <html>/<body>: it
@@ -26,9 +27,10 @@ export default function GlobalError({
 		<html lang="ca" suppressHydrationWarning>
 			<head>
 				<ThemeScript />
+				<BricolageFontLinks />
 			</head>
 			<body
-				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans bg-paper text-ink`}
+				className={`${geistSans.variable} ${geistMono.variable} font-sans bg-paper text-ink`}
 			>
 				<section className="pt-[104px] pb-[120px] min-h-dvh flex items-center">
 					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 w-full">

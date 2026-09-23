@@ -59,7 +59,7 @@
   --color-scrim: rgba(20, 19, 18, 0.72);
   --color-scrim-soft: rgba(10, 9, 8, 0.5);
 
-  --font-display: var(--font-bricolage), ui-sans-serif, sans-serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, sans-serif;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 

@@ -2,7 +2,8 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeScript } from "@/components/theme-script";
-import { bricolage, geistSans, geistMono } from "./fonts";
+import { BricolageFontLinks } from "@/components/bricolage-font-links";
+import { geistSans, geistMono } from "./fonts";
 
 export const metadata = {
 	metadataBase: new URL(
@@ -49,9 +50,10 @@ export default function RootLayout({
 		<html lang="ca" suppressHydrationWarning>
 			<head>
 				<ThemeScript />
+				<BricolageFontLinks />
 			</head>
 			<body
-				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans`}
+				className={`${geistSans.variable} ${geistMono.variable} font-sans`}
 			>
 				<a
 					href="#main"
