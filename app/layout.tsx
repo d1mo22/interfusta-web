@@ -57,7 +57,7 @@ export default function RootLayout({
 			>
 				<a
 					href="#main"
-					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-brand focus:px-4 focus:py-2 focus:text-paper"
+					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-brand focus:px-4 focus:py-2 focus:text-on-dark-ink"
 				>
 					Ves al contingut
 				</a>

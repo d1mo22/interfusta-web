@@ -106,7 +106,7 @@ export default function AboutPage() {
 								key={value.title}
 								className="grid lg:grid-cols-[80px_5fr_6fr] gap-4 lg:gap-16 py-10 border-t border-hairline items-start"
 							>
-								<span className="font-mono text-[13px] tracking-[.02em] font-medium text-brand">
+								<span className="font-mono text-[13px] tracking-[.02em] font-medium text-brand-ink">
 									{String(index + 1).padStart(2, "0")}
 								</span>
 								<h3 className="h-display text-[30px]">{value.title}</h3>

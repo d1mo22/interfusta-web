@@ -65,7 +65,7 @@ export default function GlobalError({
 									<button
 										type="button"
 										onClick={() => reset()}
-										className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-[#F6F5F2] font-semibold rounded-none hover:bg-[#C23100] hover:text-[#F6F5F2]"
+										className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-on-dark-ink font-semibold rounded-none hover:bg-on-dark-ink hover:text-on-dark"
 									>
 										Torna-ho a provar
 									</button>
