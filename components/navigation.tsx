@@ -52,7 +52,7 @@ export function Navigation() {
 						className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 					>
 						<Phone className="h-4 w-4" aria-hidden />
-						<span className="font-mono text-sm">{PHONE_NUMBER}</span>
+						<span>{PHONE_NUMBER}</span>
 					</a>
 					<div className="ml-3">
 						<ThemeToggle />
@@ -93,7 +93,7 @@ export function Navigation() {
 							className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 						>
 							<Phone className="h-4 w-4" aria-hidden />
-							<span className="font-mono text-sm">{PHONE_NUMBER}</span>
+							<span>{PHONE_NUMBER}</span>
 						</a>
 						<ThemeToggle />
 					</div>
