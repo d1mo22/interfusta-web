@@ -1,0 +1,19 @@
+components/navigation.tsx
+  s_3827bc244fbbbb::t_b45f0b5fb31b10 55,96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "32ccac5d70f67949df73dca2643c16e21107b9cf",
+  "prompts": {},
+  "sessions": {
+    "s_3827bc244fbbbb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_3827bc244fbbbb",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
