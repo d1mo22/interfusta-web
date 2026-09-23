@@ -1,0 +1,19 @@
+app/fonts.ts
+  s_8cac6551f4a8da::t_cc92b0c817d9a6 6-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "a610fd238bb5e3234f42cdd046858f5b56535d74",
+  "prompts": {},
+  "sessions": {
+    "s_8cac6551f4a8da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_8cac6551f4a8da",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
