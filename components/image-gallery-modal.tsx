@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
 	Dialog,
 	DialogContent,
@@ -75,11 +75,12 @@ export function ImageGalleryModal({
 						>
 							<ChevronLeft className="h-4 w-4" />
 						</Button>
-						<img
+						<Image
 							src={images[currentIndex] || "/placeholder.svg"}
 							alt={`Project img ${currentIndex + 1}`}
 							width={1200}
 							height={800}
+							sizes="(min-width: 1024px) 900px, 100vw"
 							className="max-w-full max-h-[80vh] object-contain"
 						/>
 						<Button
