@@ -1,0 +1,47 @@
+app/(site)/about/page.tsx
+  s_b4d6ef9fa8ed1d::t_2696ca251f36f4 9-23
+app/(site)/contact/layout.tsx
+  s_b4d6ef9fa8ed1d::t_0bc776816a5730 5-19
+app/(site)/contact/page.tsx
+  s_b4d6ef9fa8ed1d::t_04b7aa15938995 201,223
+app/(site)/page.tsx
+  s_b4d6ef9fa8ed1d::t_2b29eaaec2713b 3,46-51,65,70,74
+app/(site)/portfolio/[id]/page.tsx
+  s_b4d6ef9fa8ed1d::t_284f9a30cb4746 15-24
+app/(site)/portfolio/client-portfolio.tsx
+  s_b4d6ef9fa8ed1d::t_b9dc3dd84beea2 14,125-128,161-164
+app/(site)/portfolio/page.tsx
+  s_b4d6ef9fa8ed1d::t_9b94ed4bbe8edc 8-22
+app/(site)/services/page.tsx
+  s_b4d6ef9fa8ed1d::t_f5ae1435588b8d 9-23,100
+app/layout.tsx
+  s_b4d6ef9fa8ed1d::t_9989af8a392286 7-12,14,19,36,47-101,111-116
+app/robots.ts
+  s_b4d6ef9fa8ed1d::t_63cd623cbcaa73 1-16
+app/sitemap.ts
+  s_b4d6ef9fa8ed1d::t_8b5ffc73307f61 1-40
+components/footer.tsx
+  s_b4d6ef9fa8ed1d::t_ef579befec1ada 18-23,25-30,50
+components/navigation.tsx
+  s_b4d6ef9fa8ed1d::t_7e182155661a2a 6,17-19,31,49-56,89-97
+lib/utils.ts
+  s_b4d6ef9fa8ed1d::t_6e67629e9ae774 7
+next.config.mjs
+  s_b4d6ef9fa8ed1d::t_d830255996def3 6-10,12,25-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "39da66b638cbb091895c99c80fddf2e43d1833b1",
+  "prompts": {},
+  "sessions": {
+    "s_b4d6ef9fa8ed1d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_b4d6ef9fa8ed1d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
