@@ -308,7 +308,7 @@ export default function ContactPage() {
 							</div>
 							<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-on-dark-line">
 								<span className="text-sm opacity-70">Adreça</span>
-								<span className="text-base">
+								<span className="font-mono text-sm">
 									Passatge d&apos;Enclar S/N
 									<br />
 									Santa Coloma, AD500, Andorra
