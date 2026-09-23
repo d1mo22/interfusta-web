@@ -47,7 +47,7 @@ export default function ClientPage({
 					<div className="grid grid-cols-3 gap-8 border-y border-hairline py-5">
 						<div className="flex flex-col gap-2">
 							<span className="text-sm text-ink-muted">Categoria</span>
-							<span>{category_name}</span>
+							<span className="font-mono">{category_name}</span>
 						</div>
 						<div className="flex flex-col gap-2">
 							<span className="text-sm text-ink-muted">
