@@ -67,6 +67,9 @@ const jsonLd = {
 				"@type": "Country",
 				name: "Andorra",
 			},
+			sameAs: [
+				"https://www.google.com/maps?q=Fusteria+InterFusta+SL&ftid=0x12a5f58f12d8ead7:0x4b992abc827fc509",
+			],
 			openingHoursSpecification: [
 				{
 					"@type": "OpeningHoursSpecification",

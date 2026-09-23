@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+const MAPS_URL =
+	"https://www.google.com/maps?q=Fusteria+InterFusta+SL&ftid=0x12a5f58f12d8ead7:0x4b992abc827fc509";
+
 export function Footer() {
 	return (
 		<footer className="bg-stone pt-[72px] pb-10">
@@ -31,11 +34,16 @@ export function Footer() {
 								+376 804 440
 							</a>
 						</p>
-						<p className="font-mono text-sm">
+						<a
+							href={MAPS_URL}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="font-mono text-sm hover:text-ink transition-colors duration-150"
+						>
 							Passatge d&apos;Enclar S/N
 							<br />
 							Santa Coloma, AD500, Andorra
-						</p>
+						</a>
 					</div>
 					<div className="flex flex-col gap-3">
 						<span className="text-ink-muted text-sm">Horari</span>

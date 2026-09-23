@@ -348,6 +348,18 @@ export default function ContactPage() {
 					</aside>
 				</div>
 			</section>
+
+			<section className="pb-[136px]">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
+					<iframe
+						src={`${MAPS_URL}&output=embed`}
+						title="Ubicació de Fusteria InterFusta a Google Maps"
+						className="w-full h-[420px] border-0 grayscale-[20%]"
+						loading="lazy"
+						referrerPolicy="no-referrer-when-downgrade"
+					/>
+				</div>
+			</section>
 		</div>
 	);
 }
