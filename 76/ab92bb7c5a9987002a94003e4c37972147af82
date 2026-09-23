@@ -1,0 +1,33 @@
+app/about/page.tsx
+  s_33b47944ef0364::t_95834836e9117b 5-10
+app/contact/layout.tsx
+  s_33b47944ef0364::t_dc6e600068c225 1-13
+app/globals.css
+  s_33b47944ef0364::t_87659e2b0943c8 99-110
+app/layout.tsx
+  s_33b47944ef0364::t_562b57b08f63a9 34-37,58-60
+app/portfolio/[id]/client-page.tsx
+  s_33b47944ef0364::t_01917922502314 97-98,100-108
+app/portfolio/[id]/page.tsx
+  s_33b47944ef0364::t_e0cfb3306ec854 1,14-39,45
+app/portfolio/page.tsx
+  s_33b47944ef0364::t_720b80b8b16818 4-9
+app/services/page.tsx
+  s_33b47944ef0364::t_63fbafb027e216 5-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "76ab92bb7c5a9987002a94003e4c37972147af82",
+  "prompts": {},
+  "sessions": {
+    "s_33b47944ef0364": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_33b47944ef0364",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
