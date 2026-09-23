@@ -1,9 +1,23 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { r2Client } from "@/lib/r2Client";
 import { PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
-import { format } from "date-fns";
+import { getCurrentUser } from "@/app/actions/auth";
+
+// Solo imágenes; la extensión la decide el servidor, nunca el nombre del cliente
+const IMAGE_TYPES: Record<string, string> = {
+	"image/jpeg": "jpg",
+	"image/png": "png",
+	"image/webp": "webp",
+	"image/avif": "avif",
+	"image/gif": "gif",
+};
+
+const unauthorized = () =>
+	NextResponse.json({ success: false, error: "No autorizado" }, { status: 401 });
 
 export async function POST(request: NextRequest) {
+	if (!(await getCurrentUser())) return unauthorized();
+
 	try {
 		const formData = await request.formData();
 		const file = formData.get("file") as File;
@@ -15,8 +29,16 @@ export async function POST(request: NextRequest) {
 			);
 		}
 
+		const ext = IMAGE_TYPES[file.type];
+		if (!ext) {
+			return NextResponse.json(
+				{ success: false, error: "Tipo de archivo no permitido" },
+				{ status: 400 },
+			);
+		}
+
 		const buffer = await file.arrayBuffer();
-		const fileName = `${format(Date.now(), "dd-MM-yyyy|HH:mm:ss")}-${file.name}`;
+		const fileName = `${Date.now()}-${crypto.randomUUID()}.${ext}`;
 
 		await r2Client.send(
 			new PutObjectCommand({
@@ -47,6 +69,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+	if (!(await getCurrentUser())) return unauthorized();
+
 	try {
 		const { searchParams } = new URL(request.url);
 		const fileName = searchParams.get("key");

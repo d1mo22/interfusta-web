@@ -3,6 +3,12 @@
 import { sql } from "@/lib/db";
 import { cookies } from "next/headers";
 import bcrypt from "bcryptjs";
+import {
+	SESSION_COOKIE,
+	SESSION_MAX_AGE,
+	signSession,
+	verifySession,
+} from "@/lib/session";
 
 export async function login(formData: FormData) {
 	const username = formData.get("username");
@@ -25,8 +31,8 @@ export async function login(formData: FormData) {
 		}
 
 		(await cookies()).set(
-			"user",
-			JSON.stringify({
+			SESSION_COOKIE,
+			await signSession({
 				id: user[0].id,
 				username: user[0].username,
 				name: user[0].name,
@@ -35,6 +41,8 @@ export async function login(formData: FormData) {
 				secure: true,
 				httpOnly: true,
 				sameSite: "strict",
+				path: "/",
+				maxAge: SESSION_MAX_AGE,
 			},
 		);
 
@@ -46,12 +54,5 @@ export async function login(formData: FormData) {
 }
 
 export async function getCurrentUser() {
-	const userCookie = cookies().get("user");
-	if (!userCookie) return null;
-
-	try {
-		return JSON.parse(userCookie.value);
-	} catch {
-		return null;
-	}
+	return verifySession(cookies().get(SESSION_COOKIE)?.value);
 }

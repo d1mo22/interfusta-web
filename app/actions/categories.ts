@@ -2,8 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { sql } from "@/lib/db";
+import { getCurrentUser } from "./auth";
 
 export async function createCategory(categoryData: { name: string }) {
+	if (!(await getCurrentUser())) return { error: "No autorizado" };
+
 	try {
 		const [newCategory] = await sql`
       INSERT INTO category (name)
@@ -24,6 +27,8 @@ export async function updateCategory(
 	id: number,
 	categoryData: { name: string },
 ) {
+	if (!(await getCurrentUser())) return { error: "No autorizado" };
+
 	try {
 		const [updatedCategory] = await sql`
 	  UPDATE category 
@@ -46,6 +51,8 @@ export async function updateCategory(
 }
 
 export async function deleteCategory(id: number) {
+	if (!(await getCurrentUser())) return { error: "No autorizado" };
+
 	try {
 		// Verificar si hay proyectos usando esta categoría
 		const [projectCount] = await sql`
