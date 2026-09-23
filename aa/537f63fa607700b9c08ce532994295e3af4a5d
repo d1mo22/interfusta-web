@@ -1,0 +1,19 @@
+lib/session.check.ts
+  s_a4c3f894667dfc::t_a724d32d2bdb62 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "aa537f63fa607700b9c08ce532994295e3af4a5d",
+  "prompts": {},
+  "sessions": {
+    "s_a4c3f894667dfc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_a4c3f894667dfc",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
