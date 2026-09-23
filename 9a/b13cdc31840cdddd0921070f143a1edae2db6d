@@ -1,0 +1,23 @@
+app/(admin)/admin/projects/project-wizard.tsx
+  s_6e32ffc3bb0d69::t_336cddf0cf978a 30-34,126-137,264-265,790,792,801,825
+app/(site)/home-client.tsx
+  s_6e32ffc3bb0d69::t_54df08970fdfee 3,41-42,48-52,56-58
+components/theme-script.tsx
+  s_6e32ffc3bb0d69::t_949a807e35571c 1-4,6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "9ab13cdc31840cdddd0921070f143a1edae2db6d",
+  "prompts": {},
+  "sessions": {
+    "s_6e32ffc3bb0d69": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_6e32ffc3bb0d69",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
