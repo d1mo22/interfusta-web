@@ -20,7 +20,7 @@ export function ProjectSkeleton() {
 
 				{/* Lead Project Skeleton */}
 				<div className="grid lg:grid-cols-[8fr_4fr] gap-16 items-end">
-					<Skeleton className="aspect-[3/2] w-full rounded-none bg-stone" />
+					<Skeleton className="aspect-3/2 w-full rounded-none bg-stone" />
 					<div className="flex flex-col gap-5">
 						<Skeleton className="h-4 w-16 rounded-none bg-stone" />
 						<Skeleton className="h-10 w-3/4 rounded-none bg-stone" />
@@ -33,7 +33,7 @@ export function ProjectSkeleton() {
 					{[...Array(6)].map((_, index) => (
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						<div key={index} className="flex flex-col gap-4">
-							<Skeleton className="aspect-[4/5] w-full rounded-none bg-stone" />
+							<Skeleton className="aspect-4/5 w-full rounded-none bg-stone" />
 							<Skeleton className="h-6 w-3/4 rounded-none bg-stone" />
 							<Skeleton className="h-4 w-1/2 rounded-none bg-stone" />
 						</div>

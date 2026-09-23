@@ -98,7 +98,7 @@ export default function ServicesPage() {
 								{service.title}
 							</h2>
 							<p className="text-ink-muted pt-2.5">{service.description}</p>
-							<div className="relative aspect-[4/3] w-full">
+							<div className="relative aspect-4/3 w-full">
 								<Image
 									src={service.imageUrl}
 									alt={service.title}

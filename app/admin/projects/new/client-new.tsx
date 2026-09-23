@@ -250,7 +250,7 @@ export default function NewProjectForm({
 											key={`${feature}-${index}`}
 											className="flex items-center gap-2 bg-gray-50 p-2 rounded"
 										>
-											<span className="flex-grow">{feature}</span>
+											<span className="grow">{feature}</span>
 											<Button
 												type="button"
 												variant="ghost"

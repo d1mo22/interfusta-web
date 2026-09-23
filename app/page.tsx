@@ -54,7 +54,7 @@ export default function Home() {
 			<Grain />
 
 			{/* Hero */}
-			<section className="relative min-h-[100dvh] overflow-hidden bg-night">
+			<section className="relative min-h-dvh overflow-hidden bg-night">
 				<video
 					autoPlay
 					muted
@@ -66,8 +66,8 @@ export default function Home() {
 				>
 					<source src="/video.mp4" type="video/mp4" />
 				</video>
-				<div className="absolute inset-0 z-[1] bg-scrim-soft" />
-				<div className="absolute inset-x-0 bottom-[88px] z-[2]">
+				<div className="absolute inset-0 z-1 bg-scrim-soft" />
+				<div className="absolute inset-x-0 bottom-[88px] z-2">
 					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 text-on-dark">
 						<div className="flex flex-col gap-7 max-w-[900px]">
 							<span className="font-mono text-[13px] tracking-[.02em] font-medium text-brand motion-rise [animation-delay:0ms]">
@@ -95,7 +95,7 @@ export default function Home() {
 			{/* Featured project */}
 			<section className="bg-stone pt-28 pb-32">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid lg:grid-cols-[7fr_5fr] gap-10 lg:gap-16 items-start">
-					<div className="relative aspect-[4/3] w-full lg:sticky lg:top-24">
+					<div className="relative aspect-4/3 w-full lg:sticky lg:top-24">
 						<Image
 							src={featuredProject.image.url}
 							alt={featuredProject.image.alt}
@@ -127,13 +127,13 @@ export default function Home() {
 									type="button"
 									key={image.url}
 									onClick={() => openGallery(index)}
-									className="relative aspect-[4/3] overflow-hidden"
+									className="relative aspect-4/3 overflow-hidden"
 								>
 									<Image
 										src={image.url}
 										alt={image.alt}
 										fill
-										className="object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform [transition-duration:400ms] ease-out"
+										className="object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform duration-400 ease-out"
 										sizes="(min-width: 1024px) 15vw, 25vw"
 									/>
 								</button>
@@ -193,7 +193,7 @@ export default function Home() {
 													onAnimationEnd={() =>
 														setActiveService((current) => (current + 1) % services.length)
 													}
-													className={`service-progress hidden lg:block absolute inset-x-0 -bottom-px z-[1] h-px bg-brand ${
+													className={`service-progress hidden lg:block absolute inset-x-0 -bottom-px z-1 h-px bg-brand ${
 														isServicesPaused ? "[animation-play-state:paused]" : ""
 													}`}
 												/>
@@ -218,7 +218,7 @@ export default function Home() {
 												}`}
 											/>
 										</button>
-										<div className="lg:hidden relative aspect-[4/3] mb-6">
+										<div className="lg:hidden relative aspect-4/3 mb-6">
 											<Image
 												src={service.image}
 												alt={service.alt}
@@ -231,7 +231,7 @@ export default function Home() {
 								);
 							})}
 						</div>
-						<div className="hidden lg:block relative aspect-[4/3]">
+						<div className="hidden lg:block relative aspect-4/3">
 							{services.map((service, index) => (
 								<Image
 									key={service.image}

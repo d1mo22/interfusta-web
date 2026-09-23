@@ -111,7 +111,7 @@ export default function CategoryManagement({
 										{editingCategory && editingCategory.id === category.id ? (
 											<form
 												onSubmit={handleUpdateCategory}
-												className="flex-grow flex gap-2"
+												className="grow flex gap-2"
 											>
 												<Input
 													value={editingCategory.name}

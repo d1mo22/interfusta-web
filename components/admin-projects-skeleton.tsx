@@ -40,12 +40,12 @@ export function AdminProjectsSkeleton() {
 						<div className="space-y-2">
 							<Skeleton className="h-5 w-24" />
 							<div className="flex gap-2">
-								<Skeleton className="h-10 flex-grow" />
+								<Skeleton className="h-10 grow" />
 								<Skeleton className="h-10 w-10" />
 							</div>
 							{[1, 2, 3].map((i) => (
 								<div key={i} className="flex items-center gap-2">
-									<Skeleton className="h-10 flex-grow" />
+									<Skeleton className="h-10 grow" />
 									<Skeleton className="h-8 w-8" />
 								</div>
 							))}

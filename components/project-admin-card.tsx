@@ -25,7 +25,7 @@ export function ProjectCard({
 			<CardContent className="p-4 sm:p-6">
 				<div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
 					{/* Imagen */}
-					<div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0">
+					<div className="relative w-full sm:w-48 h-48 sm:h-32 shrink-0">
 						<img
 							src={project.first_image.url || "/placeholder.svg"}
 							alt={project.title}
@@ -34,7 +34,7 @@ export function ProjectCard({
 					</div>
 
 					{/* Contenido */}
-					<div className="flex-grow space-y-2">
+					<div className="grow space-y-2">
 						<h2 className="text-xl font-bold">{project.title}</h2>
 						<p className="text-gray-600 text-sm">{project.description}</p>
 						<div className="space-y-1">

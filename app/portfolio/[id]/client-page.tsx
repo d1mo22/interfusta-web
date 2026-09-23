@@ -64,7 +64,7 @@ export default function ClientPage({
 					</div>
 
 					{images[0]?.url && (
-						<div className="relative aspect-[3/2] w-full overflow-hidden">
+						<div className="relative aspect-3/2 w-full overflow-hidden">
 							<img
 								src={images[0].url}
 								alt={project.title}
@@ -103,7 +103,7 @@ export default function ClientPage({
 									<img
 										src={image.url || "/placeholder.svg"}
 										alt={`${project.title} - img ${index + 1}`}
-										className="w-full aspect-[4/5] object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform [transition-duration:400ms] ease-out"
+										className="w-full aspect-4/5 object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform duration-400 ease-out"
 									/>
 								</button>
 							</div>

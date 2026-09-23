@@ -14,13 +14,13 @@ export function AdminDashboardSkeleton() {
 				<div className="grid gap-6">
 					{[...Array(4)].map((_, index) => (
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-						<div key={index} className="bg-white rounded-lg p-6 shadow-sm">
+						<div key={index} className="bg-white rounded-lg p-6 shadow-xs">
 							<div className="flex items-start gap-6">
 								{/* Thumbnail Skeleton */}
-								<Skeleton className="h-32 w-48 rounded-lg flex-shrink-0" />
+								<Skeleton className="h-32 w-48 rounded-lg shrink-0" />
 
 								{/* Content Skeleton */}
-								<div className="flex-grow space-y-4">
+								<div className="grow space-y-4">
 									<Skeleton className="h-7 w-3/4" />
 									<Skeleton className="h-4 w-full" />
 									<Skeleton className="h-4 w-1/4" />

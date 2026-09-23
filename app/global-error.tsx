@@ -30,7 +30,7 @@ export default function GlobalError({
 			<body
 				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans bg-paper text-ink`}
 			>
-				<section className="pt-[104px] pb-[120px] min-h-[100dvh] flex items-center">
+				<section className="pt-[104px] pb-[120px] min-h-dvh flex items-center">
 					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 w-full">
 						<ErrorSheet
 							code="500"

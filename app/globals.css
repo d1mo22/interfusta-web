@@ -1,11 +1,201 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
-@layer utilities {
-	.text-balance {
-		text-wrap: balance;
-	}
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-paper: var(--paper);
+  --color-stone: var(--stone);
+
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-hairline: var(--hairline);
+
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-deep: #c23100;
+
+  --color-on-dark: #f6f5f2;
+  --color-on-dark-ink: #171614;
+  --color-on-dark-line: rgba(246, 245, 242, 0.22);
+
+  --color-night: #141312;
+
+  --color-scrim: rgba(20, 19, 18, 0.72);
+  --color-scrim-soft: rgba(10, 9, 8, 0.5);
+
+  --font-display: var(--font-bricolage), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility h-page {
+  @apply font-display font-semibold tracking-[-0.035em] leading-[0.96];
+  font-size: clamp(48px, 6.6vw, 96px);
+  font-variation-settings: 'wdth' 80;
+  text-wrap: balance;
+}
+
+@utility h-display {
+  @apply font-display font-medium tracking-tight leading-none;
+  font-variation-settings: 'wdth' 88;
+  text-wrap: balance;
+}
+
+@utility rule {
+  @apply block h-1 w-24 bg-brand;
+}
+
+@utility btn-press {
+  @apply transition-[color,background-color,transform] duration-150 ease-out active:scale-[0.97];
+}
+
+@utility grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  .dark & {
+    opacity: 0.12;
+    mix-blend-mode: screen;
+  }
+}
+
+@utility dark {
+  & .grain {
+    opacity: 0.12;
+    mix-blend-mode: screen;
+  }
+}
+
+@utility motion-rise {
+  animation: rise 500ms var(--ease-out) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation-name: fade;
+  }
+}
+
+@utility menu-enter {
+  animation: menu-in 180ms var(--ease-out) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation-name: fade;
+  }
+}
+
+@utility service-progress {
+  /* Home services: the bar's animationend advances to the next service,
+	   so the visual countdown and the rotation can never drift apart. */
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: service-progress 5s linear forwards;
+  @media (prefers-reduced-motion: reduce) {
+    /* No animation means no animationend, so auto-rotation is off too.
+		   (animation, not display: lg:block would win over display:none.) */
+    animation: none;
+  }
+}
+
+@utility num-outline {
+  /* Error sheet (404/500): outlined digits, tree-ring draw-in, dimension fade-in. */
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  font-weight: 700;
+  font-size: 300px;
+  letter-spacing: -0.05em;
+  font-variation-settings: 'wdth' 80;
+}
+
+@utility ring-path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ring-draw 1.8s var(--ease-out) forwards;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility ring-path--bark {
+  stroke-width: 3.2;
+}
+
+@utility dim-fade {
+  opacity: 0;
+  animation: dim-fade-in 0.6s var(--ease-out) forwards;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 @layer base {
@@ -83,7 +273,6 @@
 		--hairline: #D6D3CC;
 		--brand: #FC4108;
 		--brand-ink: #C23100;
-		--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 	}
 	.dark {
 		--paper: #141312;
@@ -109,47 +298,11 @@
 }
 
 @layer components {
-	.h-page {
-		@apply font-display font-semibold tracking-[-0.035em] leading-[0.96];
-		font-size: clamp(48px, 6.6vw, 96px);
-		font-variation-settings: 'wdth' 80;
-		text-wrap: balance;
-	}
-	.h-display {
-		@apply font-display font-medium tracking-[-0.025em] leading-none;
-		font-variation-settings: 'wdth' 88;
-		text-wrap: balance;
-	}
-	.rule {
-		@apply block h-1 w-24 bg-brand;
-	}
-	.btn-press {
-		@apply transition-[color,background-color,transform] duration-150 ease-out active:scale-[0.97];
-	}
-	.grain {
-		position: fixed;
-		inset: 0;
-		pointer-events: none;
-		z-index: 5;
-		opacity: .07;
-		mix-blend-mode: multiply;
-		background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-	}
-	.dark .grain {
-		opacity: .12;
-		mix-blend-mode: screen;
-	}
-	.motion-rise {
-		animation: rise 500ms var(--ease-out) both;
-	}
 	@keyframes rise {
 		from {
 			opacity: 0;
 			transform: translateY(12px);
 		}
-	}
-	.menu-enter {
-		animation: menu-in 180ms var(--ease-out) both;
 	}
 	@keyframes menu-in {
 		from {
@@ -157,47 +310,15 @@
 			transform: translateY(-4px);
 		}
 	}
-	/* Home services: the bar's animationend advances to the next service,
-	   so the visual countdown and the rotation can never drift apart. */
-	.service-progress {
-		transform: scaleX(0);
-		transform-origin: left;
-		animation: service-progress 5s linear forwards;
-	}
 	@keyframes service-progress {
 		to {
 			transform: scaleX(1);
 		}
 	}
-	/* Error sheet (404/500): outlined digits, tree-ring draw-in, dimension fade-in. */
-	.num-outline {
-		fill: none;
-		stroke: var(--ink);
-		stroke-width: 1.5;
-		font-weight: 700;
-		font-size: 300px;
-		letter-spacing: -0.05em;
-		font-variation-settings: 'wdth' 80;
-	}
-	.ring-path {
-		fill: none;
-		stroke: var(--ink);
-		stroke-width: 1.1;
-		stroke-dasharray: 1;
-		stroke-dashoffset: 1;
-		animation: ring-draw 1.8s var(--ease-out) forwards;
-	}
-	.ring-path--bark {
-		stroke-width: 3.2;
-	}
 	@keyframes ring-draw {
 		to {
 			stroke-dashoffset: 0;
 		}
-	}
-	.dim-fade {
-		opacity: 0;
-		animation: dim-fade-in 0.6s var(--ease-out) forwards;
 	}
 	@keyframes dim-fade-in {
 		to {
@@ -205,25 +326,6 @@
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		/* No animation means no animationend, so auto-rotation is off too.
-		   (animation, not display: lg:block would win over display:none.) */
-		.service-progress {
-			animation: none;
-		}
-		.motion-rise {
-			animation-name: fade;
-		}
-		.menu-enter {
-			animation-name: fade;
-		}
-		.ring-path {
-			animation: none;
-			stroke-dashoffset: 0;
-		}
-		.dim-fade {
-			animation: none;
-			opacity: 1;
-		}
 		@keyframes fade {
 			from {
 				opacity: 0;
