@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { ImageGalleryModal } from "@/components/image-gallery-modal";
@@ -67,10 +67,13 @@ export default function ClientPage({
 
 					{images[0]?.url && (
 						<div className="relative aspect-3/2 w-full overflow-hidden">
-							<img
+							<Image
 								src={images[0].url}
 								alt={project.title}
-								className="w-full h-full object-cover"
+								fill
+								priority
+								sizes="(min-width: 1280px) 1120px, 100vw"
+								className="object-cover"
 							/>
 						</div>
 					)}
@@ -102,9 +105,12 @@ export default function ClientPage({
 									aria-label={`Obre la imatge ${index + 1} de ${project.title}`}
 									className="block w-full cursor-pointer appearance-none border-0 bg-transparent p-0 text-left"
 								>
-									<img
+									<Image
 										src={image.url || "/placeholder.svg"}
 										alt={`${project.title} - img ${index + 1}`}
+										width={800}
+										height={1000}
+										sizes="(min-width: 768px) 33vw, 100vw"
 										className="w-full aspect-4/5 object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform duration-400 ease-out"
 									/>
 								</button>

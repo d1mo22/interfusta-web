@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import type { ClientPortfolioProps, Project, Category } from "@/types/types";
@@ -121,10 +122,13 @@ export default function PortfolioPage({
 							<article className="grid lg:grid-cols-[8fr_4fr] gap-16 items-end">
 								<div className="relative aspect-3/2 overflow-hidden">
 									<Link href={`/portfolio/${leadProject.id}`}>
-										<img
+										<Image
 											src={leadProject.first_image.url}
 											alt={leadProject.title}
-											className="w-full h-full object-cover"
+											fill
+											priority
+											sizes="(min-width: 1024px) 60vw, 100vw"
+											className="object-cover"
 										/>
 									</Link>
 								</div>
@@ -157,10 +161,12 @@ export default function PortfolioPage({
 										<article key={project.id} className="flex flex-col gap-4">
 											<div className="relative aspect-4/5 overflow-hidden">
 												<Link href={`/portfolio/${project.id}`}>
-													<img
+													<Image
 														src={project.first_image.url}
 														alt={project.title}
-														className="w-full h-full object-cover"
+														fill
+														sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+														className="object-cover"
 													/>
 												</Link>
 											</div>
