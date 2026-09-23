@@ -1,0 +1,19 @@
+app/(site)/home-client.tsx
+  s_a642df761db2f3::t_324fc2e2e764a6 46,50,52-56,80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "91008c829ed22a80679cea62a072c6cec9bad0bb",
+  "prompts": {},
+  "sessions": {
+    "s_a642df761db2f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_a642df761db2f3",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
