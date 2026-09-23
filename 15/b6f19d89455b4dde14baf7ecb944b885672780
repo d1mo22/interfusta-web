@@ -1,0 +1,25 @@
+app/(site)/contact/page.tsx
+  s_9ae5981ca6af4f::t_610b837fe57869 5,274-284
+app/(site)/privacitat/page.tsx
+  s_9ae5981ca6af4f::t_7d85a1a8139340 1-205
+app/sitemap.ts
+  s_9ae5981ca6af4f::t_75e512cfd63f30 9-16
+components/footer.tsx
+  s_9ae5981ca6af4f::t_78f5da6bc391d3 1-2,51,53-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "15b6f19d89455b4dde14baf7ecb944b885672780",
+  "prompts": {},
+  "sessions": {
+    "s_9ae5981ca6af4f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_9ae5981ca6af4f",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
