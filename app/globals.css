@@ -127,13 +127,6 @@
   }
 }
 
-@utility dark {
-  & .grain {
-    opacity: 0.12;
-    mix-blend-mode: screen;
-  }
-}
-
 @utility motion-rise {
   animation: rise 500ms var(--ease-out) both;
   @media (prefers-reduced-motion: reduce) {
@@ -298,6 +291,30 @@
 }
 
 @layer components {
+	/* Admin primitives. .field is the contact form's underline input. */
+	.field {
+		@apply w-full h-12 rounded-none border-0 border-b border-hairline bg-transparent px-0 text-base text-ink placeholder:text-ink-muted transition-[border-color,box-shadow] duration-150;
+	}
+	.field:focus-visible {
+		outline: none;
+		border-color: var(--brand);
+		box-shadow: 0 1px 0 0 var(--brand);
+	}
+	.field[aria-invalid="true"] {
+		border-color: var(--brand-ink);
+	}
+	.btn {
+		@apply btn-press inline-flex items-center justify-center gap-2 h-12 px-6 text-[15px] font-semibold whitespace-nowrap disabled:opacity-50 disabled:pointer-events-none;
+	}
+	.btn-primary {
+		@apply bg-brand text-on-dark hover:bg-brand-deep;
+	}
+	.btn-quiet {
+		@apply border border-hairline text-ink hover:border-ink;
+	}
+	.btn-icon {
+		@apply btn-press inline-flex items-center justify-center size-10 shrink-0 text-ink-muted hover:text-ink hover:bg-stone disabled:opacity-30 disabled:pointer-events-none;
+	}
 	@keyframes rise {
 		from {
 			opacity: 0;

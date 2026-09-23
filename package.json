@@ -31,7 +31,6 @@
 		"next": "^16.3.6",
 		"pg-pool": "^3.7.0",
 		"react": "^19.3.0",
-		"react-day-picker": "^10.0.1",
 		"react-dom": "^19.3.0",
 		"react-email": "^6.9.5",
 		"resend": "^6.28.1",
