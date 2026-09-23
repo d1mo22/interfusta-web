@@ -3,8 +3,7 @@
 import { useEffect } from "react";
 import { ServerError } from "@/components/server-error";
 import { ThemeScript } from "@/components/theme-script";
-import { BricolageFontLinks } from "@/components/bricolage-font-links";
-import { geistSans, geistMono } from "./fonts";
+import { bricolage, geistSans, geistMono } from "./fonts";
 import "./globals.css";
 
 // Next.js requires global-error.tsx to render its own <html>/<body>: it
@@ -26,11 +25,10 @@ export default function GlobalError({
 		<html
 			lang="ca"
 			suppressHydrationWarning
-			className={`${geistSans.variable} ${geistMono.variable}`}
+			className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable}`}
 		>
 			<head>
 				<ThemeScript />
-				<BricolageFontLinks />
 			</head>
 			<body className="font-sans bg-paper text-ink">
 				<section className="pt-[104px] pb-[120px] min-h-dvh flex items-center">
