@@ -31,7 +31,10 @@ export const metadata = {
 		process.env.NEXT_PUBLIC_BASE_URL ||
 			"https://interfusta-github-io.vercel.app/",
 	),
-	title: "Fusteria InterFusta - Serveis experts de fusteria",
+	title: {
+		default: "Fusteria InterFusta - Serveis experts de fusteria",
+		template: "%s | InterFusta",
+	},
 	description: "Serveis professionals de fusteria i ebenisteria a Andorra",
 	icons: {
 		icon: [
@@ -52,7 +55,9 @@ export const metadata = {
 		description: "Serveis professionals de fusteria i ebenisteria a Andorra",
 		images: [
 			{
-				url: "/logoDark.ico",
+				url: "/thumbnail.webp",
+				width: 1280,
+				height: 720,
 			},
 		],
 	},

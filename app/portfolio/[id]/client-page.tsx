@@ -94,14 +94,18 @@ export default function ClientPage({
 								key={`${project.id}-image-${index}`}
 								className="overflow-hidden"
 							>
-								{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
-								<img
-									key={`${project.id}-image-${index}`}
-									src={image.url || "/placeholder.svg"}
-									alt={`${project.title} - img ${index + 1}`}
-									className="w-full aspect-[4/5] object-cover cursor-pointer md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform [transition-duration:400ms] ease-out"
+								<button
+									type="button"
 									onClick={() => openGallery(index)}
-								/>
+									aria-label={`Obre la imatge ${index + 1} de ${project.title}`}
+									className="block w-full cursor-pointer appearance-none border-0 bg-transparent p-0 text-left"
+								>
+									<img
+										src={image.url || "/placeholder.svg"}
+										alt={`${project.title} - img ${index + 1}`}
+										className="w-full aspect-[4/5] object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform [transition-duration:400ms] ease-out"
+									/>
+								</button>
 							</div>
 						))}
 					</div>

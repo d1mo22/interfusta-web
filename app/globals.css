@@ -96,6 +96,18 @@
 	}
 }
 
+@layer base {
+	:focus-visible {
+		outline: 2px solid var(--brand);
+		outline-offset: 2px;
+	}
+	/* On brand-coloured backgrounds a brand outline disappears; swap to paper. */
+	.bg-brand:focus-visible,
+	.bg-brand :focus-visible {
+		outline-color: var(--paper);
+	}
+}
+
 @layer components {
 	.h-page {
 		@apply font-display font-semibold tracking-[-0.035em] leading-[0.96];

@@ -2,6 +2,12 @@ import Image from "next/image";
 import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
 
+export const metadata = {
+	title: "Serveis",
+	description:
+		"Mobles a mida, cuines, lacatge, Corian i estructures de fusta. Descobreix tots els serveis de fusteria de Fusteria InterFusta a Andorra.",
+};
+
 const services = [
 	{
 		title: "Mobles a mesura",

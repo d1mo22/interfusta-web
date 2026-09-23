@@ -2,6 +2,12 @@ import Image from "next/image";
 import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
 
+export const metadata = {
+	title: "Sobre Nosaltres",
+	description:
+		"Coneix l'equip i la trajectòria de Fusteria InterFusta, especialistes en fusteria i ebenisteria a Andorra.",
+};
+
 const stats = [
 	{ label: "Anys d'experiència", value: "10+" },
 	{ label: "Projectes realitzats", value: "250+" },
