@@ -5,13 +5,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeScript } from "@/components/theme-script";
 import { bricolage, geistSans, geistMono } from "./fonts";
-//import Script from "next/script";
 
 export const metadata = {
-	//TODO: Change this to the actual URL
 	metadataBase: new URL(
-		process.env.NEXT_PUBLIC_BASE_URL ||
-			"https://interfusta-github-io.vercel.app/",
+		process.env.NEXT_PUBLIC_BASE_URL || "https://www.interfustaandorra.com/",
 	),
 	title: {
 		default: "Fusteria InterFusta - Serveis experts de fusteria",
@@ -54,18 +51,6 @@ export default function RootLayout({
 		<html lang="ca" suppressHydrationWarning>
 			<head>
 				<ThemeScript />
-				{/* <Script
-					src="https://www.googletagmanager.com/gtag/js?id=G-Q7C8FRW87N"
-					strategy="afterInteractive"
-				/>
-				<Script id="google-analytics" strategy="afterInteractive">
-					{`
-					window.dataLayer = window.dataLayer || [];
-					function gtag(){dataLayer.push(arguments);}
-					gtag('js', new Date());
-					gtag('config', 'G-Q7C8FRW87N');
-				`}
-				</Script> */}
 			</head>
 			<body
 				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans`}

@@ -59,7 +59,18 @@ const config: Config = {
   			hairline: 'var(--hairline)',
   			brand: {
   				DEFAULT: 'var(--brand)',
-  				ink: 'var(--brand-ink)'
+  				ink: 'var(--brand-ink)',
+  				deep: '#C23100'
+  			},
+  			'on-dark': {
+  				DEFAULT: '#F6F5F2',
+  				ink: '#171614',
+  				line: 'rgba(246,245,242,.22)'
+  			},
+  			night: '#141312',
+  			scrim: {
+  				DEFAULT: 'rgba(20,19,18,.72)',
+  				soft: 'rgba(10,9,8,.5)'
   			}
   		},
   		fontFamily: {

@@ -100,11 +100,19 @@ export default function AboutPage() {
 						Els nostres <span className="text-brand">valors</span>
 					</h2>
 					<span className="rule" />
-					<div className="grid lg:grid-cols-3 gap-16 pt-16">
-						{values.map((value) => (
-							<div key={value.title} className="flex flex-col gap-4">
+					<div className="flex flex-col border-b border-hairline">
+						{values.map((value, index) => (
+							<div
+								key={value.title}
+								className="grid lg:grid-cols-[80px_5fr_6fr] gap-4 lg:gap-16 py-10 border-t border-hairline items-start"
+							>
+								<span className="font-mono text-[13px] tracking-[.02em] font-medium text-brand">
+									{String(index + 1).padStart(2, "0")}
+								</span>
 								<h3 className="h-display text-[30px]">{value.title}</h3>
-								<p className="text-ink-muted">{value.description}</p>
+								<p className="text-ink-muted max-w-[50ch]">
+									{value.description}
+								</p>
 							</div>
 						))}
 					</div>

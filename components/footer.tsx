@@ -15,7 +15,7 @@ export function Footer() {
 					<div className="flex flex-col gap-3">
 						<span className="text-ink-muted text-sm">Contacte</span>
 						<p className="font-mono text-sm leading-[1.9]">
-							interfusta@andorra.ad
+							interfusta@interfusta.ad
 							<br />
 							+376 804 440
 						</p>

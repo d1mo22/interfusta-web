@@ -91,7 +91,7 @@ export function ImageGalleryModal({
 							<ChevronRight className="h-4 w-4" />
 						</Button>
 					</div>
-					<div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#F6F5F2] bg-[#141312]/90 px-2 py-1 rounded-none">
+					<div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-on-dark bg-night/90 px-2 py-1 rounded-none">
 						{currentIndex + 1} / {images.length}
 					</div>
 				</div>
