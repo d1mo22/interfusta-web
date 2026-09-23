@@ -1,0 +1,19 @@
+docs/seo-todo.md
+  s_3dc8273be2188e::t_5f7c0aebffd16a 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "72f31b99fde4adba7c95960f144e606a74bd228c",
+  "prompts": {},
+  "sessions": {
+    "s_3dc8273be2188e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_3dc8273be2188e",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
