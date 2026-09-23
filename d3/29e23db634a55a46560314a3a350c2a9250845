@@ -1,0 +1,19 @@
+app/(site)/page.tsx
+  s_7e2f95e9e16c7a::t_7a568772cbc46a 50-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "d329e23db634a55a46560314a3a350c2a9250845",
+  "prompts": {},
+  "sessions": {
+    "s_7e2f95e9e16c7a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_7e2f95e9e16c7a",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
