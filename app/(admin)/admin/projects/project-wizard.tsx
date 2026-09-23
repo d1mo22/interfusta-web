@@ -129,7 +129,7 @@ export default function ProjectWizard({
 			features: [],
 		},
 	);
-	const [photos, setPhotos] = useState<Photo[]>(
+	const [photos, setPhotos] = useState<Photo[]>(() =>
 		(initial?.photos ?? []).map((p) => ({
 			key: `saved-${p.id}`,
 			src: p.url,
@@ -143,6 +143,7 @@ export default function ProjectWizard({
 	const [dirty, setDirty] = useState(false);
 	const headingRef = useRef<HTMLHeadingElement>(null);
 	const firstRender = useRef(true);
+	const blobUrls = useRef(new Set<string>());
 
 	const errors = showErrors ? stepErrors(step, draft, photos) : {};
 	const uploading = photos.filter((p) => p.status === "uploading").length;
@@ -166,6 +167,12 @@ export default function ProjectWizard({
 		window.addEventListener("beforeunload", warn);
 		return () => window.removeEventListener("beforeunload", warn);
 	}, [dirty, saving]);
+
+	// Local photo previews pin the whole file in memory until revoked.
+	useEffect(() => {
+		const urls = blobUrls.current;
+		return () => urls.forEach((url) => URL.revokeObjectURL(url));
+	}, []);
 
 	function set<K extends keyof Draft>(key: K, value: Draft[K]) {
 		setDraft((d) => ({ ...d, [key]: value }));
@@ -207,12 +214,11 @@ export default function ProjectWizard({
 	async function addFiles(files: File[]) {
 		const added: Photo[] = files
 			.filter((f) => f.type.startsWith("image/"))
-			.map((file) => ({
-				key: crypto.randomUUID(),
-				src: URL.createObjectURL(file),
-				file,
-				status: "uploading",
-			}));
+			.map((file) => {
+				const src = URL.createObjectURL(file);
+				blobUrls.current.add(src);
+				return { key: crypto.randomUUID(), src, file, status: "uploading" };
+			});
 		if (!added.length) return;
 		setPhotos((ps) => [...ps, ...added]);
 		setDirty(true);
@@ -222,7 +228,7 @@ export default function ProjectWizard({
 	}
 
 	function removePhoto(photo: Photo) {
-		if (photo.src.startsWith("blob:")) URL.revokeObjectURL(photo.src);
+		if (blobUrls.current.delete(photo.src)) URL.revokeObjectURL(photo.src);
 		// Never saved, so nothing else points at the file. Saved photos are only
 		// deleted server-side, after the project saves without them.
 		if (photo.id == null && photo.url) {
@@ -311,44 +317,7 @@ export default function ProjectWizard({
 					{isEdit ? `Editant «${initial.title}»` : "Nou projecte"}
 				</p>
 
-				{/* Progress */}
-				<ol className="mt-3 grid grid-cols-5 gap-1.5">
-					{STEPS.map((s, i) => (
-						<li key={s.label}>
-							<button
-								type="button"
-								onClick={() => goTo(i)}
-								disabled={i > reached}
-								aria-current={i === step ? "step" : undefined}
-								aria-label={`Pas ${i + 1}: ${s.label}`}
-								className="block w-full text-left pt-2 disabled:cursor-default group"
-							>
-								<span
-									className={`block h-1 transition-colors duration-300 ${
-										i === step ? "bg-brand" : i <= reached ? "bg-ink" : "bg-hairline"
-									}`}
-								/>
-								<span
-									className={`hidden sm:block mt-2 text-[13px] transition-colors ${
-										i === step
-											? "text-ink"
-											: i <= reached
-												? "text-ink-muted group-hover:text-ink"
-												: "text-ink-muted opacity-60"
-									}`}
-								>
-									<span className="font-mono">{i + 1}</span> {s.label}
-								</span>
-							</button>
-						</li>
-					))}
-				</ol>
-				<p className="sm:hidden mt-2 text-[13px] text-ink-muted">
-					<span className="font-mono">
-						{step + 1}/{STEPS.length}
-					</span>{" "}
-					· {STEPS[step].label}
-				</p>
+				<Progress step={step} reached={reached} goTo={goTo} />
 
 				<div key={step} className="motion-rise mt-10">
 					<h1
@@ -401,6 +370,58 @@ export default function ProjectWizard({
 				goTo={goTo}
 			/>
 		</form>
+	);
+}
+
+function Progress({
+	step,
+	reached,
+	goTo,
+}: {
+	step: number;
+	reached: number;
+	goTo: (step: number) => void;
+}) {
+	return (
+		<>
+		<ol className="mt-3 grid grid-cols-5 gap-1.5">
+			{STEPS.map((s, i) => (
+				<li key={s.label}>
+					<button
+						type="button"
+						onClick={() => goTo(i)}
+						disabled={i > reached}
+						aria-current={i === step ? "step" : undefined}
+						aria-label={`Pas ${i + 1}: ${s.label}`}
+						className="block w-full text-left pt-2 disabled:cursor-default group"
+					>
+						<span
+							className={`block h-1 transition-colors duration-300 ${
+								i === step ? "bg-brand" : i <= reached ? "bg-ink" : "bg-hairline"
+							}`}
+						/>
+						<span
+							className={`hidden sm:block mt-2 text-[13px] transition-colors ${
+								i === step
+									? "text-ink"
+									: i <= reached
+										? "text-ink-muted group-hover:text-ink"
+										: "text-ink-muted opacity-60"
+							}`}
+						>
+							<span className="font-mono">{i + 1}</span> {s.label}
+						</span>
+					</button>
+				</li>
+			))}
+		</ol>
+		<p className="sm:hidden mt-2 text-[13px] text-ink-muted">
+			<span className="font-mono">
+				{step + 1}/{STEPS.length}
+			</span>{" "}
+			· {STEPS[step].label}
+		</p>
+		</>
 	);
 }
 

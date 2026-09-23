@@ -13,16 +13,8 @@ export async function createContact(formData: FormData) {
 		const telefon = formData.get("phone");
 		const missatge = formData.get("message");
 
-		console.log("Datos del formulario:", {
-			nom,
-			cognom,
-			email,
-			telefon,
-			missatge,
-		});
-
 		// Intentar enviar email
-		const { data, error } = await resend.emails.send({
+		const { error } = await resend.emails.send({
 			from: "Interfusta-Web <no-reply@interfustaandorra.com>",
 			to: "interfusta@interfusta.ad",
 			subject: `Nova consulta de ${nom} ${cognom}`,
@@ -40,7 +32,6 @@ export async function createContact(formData: FormData) {
 			throw new Error(error.message);
 		}
 
-		console.log("Email enviado:", data);
 		return { success: true };
 	} catch (error) {
 		console.error("Error completo:", error);

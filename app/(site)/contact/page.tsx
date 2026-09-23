@@ -75,6 +75,8 @@ export default function ContactPage() {
 		});
 	}
 
+	const handlers = { onBlur: handleBlur, onChange: handleChange };
+
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const form = e.currentTarget;
@@ -144,119 +146,35 @@ export default function ContactPage() {
 						noValidate
 					>
 						<div className="grid md:grid-cols-2 gap-8">
-							<div className="flex flex-col gap-2">
-								<Label htmlFor="firstName" className="text-sm font-medium">
-									Nom
-								</Label>
-								<Input
-									id="firstName"
-									name="firstName"
-									required
-									onBlur={handleBlur}
-									onChange={handleChange}
-									aria-invalid={!!errors.firstName}
-									aria-describedby={
-										errors.firstName ? "firstName-error" : undefined
-									}
-									className={fieldClass(!!errors.firstName)}
-								/>
-								{errors.firstName && (
-									<p id="firstName-error" className="text-brand-ink text-[13px]">
-										{errors.firstName}
-									</p>
-								)}
-							</div>
-							<div className="flex flex-col gap-2">
-								<Label htmlFor="lastName" className="text-sm font-medium">
-									Cognom
-								</Label>
-								<Input
-									id="lastName"
-									name="lastName"
-									required
-									onBlur={handleBlur}
-									onChange={handleChange}
-									aria-invalid={!!errors.lastName}
-									aria-describedby={
-										errors.lastName ? "lastName-error" : undefined
-									}
-									className={fieldClass(!!errors.lastName)}
-								/>
-								{errors.lastName && (
-									<p id="lastName-error" className="text-brand-ink text-[13px]">
-										{errors.lastName}
-									</p>
-								)}
-							</div>
+							<ContactField name="firstName" label="Nom" error={errors.firstName} {...handlers} />
+							<ContactField name="lastName" label="Cognom" error={errors.lastName} {...handlers} />
 						</div>
 						<div className="grid md:grid-cols-2 gap-8">
-							<div className="flex flex-col gap-2">
-								<Label htmlFor="email" className="text-sm font-medium">
-									Email
-								</Label>
-								<Input
-									id="email"
-									name="email"
-									type="email"
-									required
-									placeholder="el.teu@email.com"
-									onBlur={handleBlur}
-									onChange={handleChange}
-									aria-invalid={!!errors.email}
-									aria-describedby={errors.email ? "email-error" : undefined}
-									className={fieldClass(!!errors.email)}
-								/>
-								{errors.email && (
-									<p id="email-error" className="text-brand-ink text-[13px]">
-										{errors.email}
-									</p>
-								)}
-							</div>
-							<div className="flex flex-col gap-2">
-								<Label htmlFor="phone" className="text-sm font-medium">
-									Telèfon
-								</Label>
-								<Input
-									id="phone"
-									name="phone"
-									type="tel"
-									required
-									placeholder="+376 XXX XXX"
-									onBlur={handleBlur}
-									onChange={handleChange}
-									aria-invalid={!!errors.phone}
-									aria-describedby={errors.phone ? "phone-error" : undefined}
-									className={fieldClass(!!errors.phone)}
-								/>
-								{errors.phone && (
-									<p id="phone-error" className="text-brand-ink text-[13px]">
-										{errors.phone}
-									</p>
-								)}
-							</div>
-						</div>
-						<div className="flex flex-col gap-2">
-							<Label htmlFor="message" className="text-sm font-medium">
-								Missatge
-							</Label>
-							<Textarea
-								id="message"
-								name="message"
-								rows={6}
-								required
-								placeholder="Expliqui'ns en què podem ajudar-lo. Detalli el seu projecte o consulta..."
-								onBlur={handleBlur}
-								onChange={handleChange}
-								aria-invalid={!!errors.message}
-								aria-describedby={errors.message ? "message-error" : undefined}
-								className={`${fieldClass(!!errors.message)} min-h-[150px] pt-2.5`}
+							<ContactField
+								name="email"
+								label="Email"
+								type="email"
+								placeholder="el.teu@email.com"
+								error={errors.email}
+								{...handlers}
 							/>
-							{errors.message && (
-								<p id="message-error" className="text-brand-ink text-[13px]">
-									{errors.message}
-								</p>
-							)}
+							<ContactField
+								name="phone"
+								label="Telèfon"
+								type="tel"
+								placeholder="+376 XXX XXX"
+								error={errors.phone}
+								{...handlers}
+							/>
 						</div>
+						<ContactField
+							name="message"
+							label="Missatge"
+							multiline
+							placeholder="Expliqui'ns en què podem ajudar-lo. Detalli el seu projecte o consulta..."
+							error={errors.message}
+							{...handlers}
+						/>
 						<Button
 							type="submit"
 							disabled={isSubmitting}
@@ -295,57 +213,7 @@ export default function ContactPage() {
 						)}
 					</form>
 
-					<aside className="relative overflow-hidden min-h-[560px] flex flex-col justify-end text-on-dark">
-						<Image
-							src="/thumbnail.webp"
-							alt="Andorra la Vella"
-							fill
-							className="object-cover"
-							sizes="(min-width: 1024px) 40vw, 100vw"
-						/>
-						<div className="absolute inset-0 bg-scrim" />
-						<div className="relative p-10">
-							<h2 className="h-display text-[30px] mb-6">
-								El <span className="text-brand">taller</span>
-							</h2>
-							<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-on-dark-line">
-								<span className="text-sm opacity-70">Email</span>
-								<span className="font-mono text-sm">
-									interfusta@interfusta.ad
-								</span>
-							</div>
-							<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-on-dark-line">
-								<span className="text-sm opacity-70">Telèfon</span>
-								<span className="font-mono text-sm">+376 804 440</span>
-							</div>
-							<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-on-dark-line">
-								<span className="text-sm opacity-70">Adreça</span>
-								<span className="font-mono text-sm">
-									Passatge d&apos;Enclar S/N
-									<br />
-									Santa Coloma, AD500, Andorra
-								</span>
-							</div>
-							<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-b border-on-dark-line">
-								<span className="text-sm opacity-70">Horari</span>
-								<span className="font-mono text-sm leading-[1.8]">
-									Dilluns - Divendres 9:00 - 17:00
-									<br />
-									Dissabte 10:00 - 13:00
-									<br />
-									Diumenge tancat
-								</span>
-							</div>
-							<a
-								href={MAPS_URL}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="block underline decoration-brand decoration-2 underline-offset-[6px] pt-7 self-start"
-							>
-								Obrir a Google Maps
-							</a>
-						</div>
-					</aside>
+					<WorkshopCard />
 				</div>
 			</section>
 
@@ -356,10 +224,122 @@ export default function ContactPage() {
 						title="Ubicació de Fusteria InterFusta a Google Maps"
 						className="w-full h-[420px] border-0 grayscale-[20%]"
 						loading="lazy"
+						sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
 						referrerPolicy="no-referrer-when-downgrade"
 					/>
 				</div>
 			</section>
 		</div>
+	);
+}
+
+type FieldHandlers = {
+	onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+	onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+};
+
+function ContactField({
+	name,
+	label,
+	error,
+	multiline,
+	type,
+	placeholder,
+	onBlur,
+	onChange,
+}: FieldHandlers & {
+	name: FieldName;
+	label: string;
+	error?: string;
+	multiline?: boolean;
+	type?: string;
+	placeholder?: string;
+}) {
+	const props = {
+		id: name,
+		name,
+		required: true,
+		placeholder,
+		onBlur,
+		onChange,
+		"aria-invalid": !!error,
+		"aria-describedby": error ? `${name}-error` : undefined,
+	};
+	return (
+		<div className="flex flex-col gap-2">
+			<Label htmlFor={name} className="text-sm font-medium">
+				{label}
+			</Label>
+			{multiline ? (
+				<Textarea
+					{...props}
+					rows={6}
+					className={`${fieldClass(!!error)} min-h-[150px] pt-2.5`}
+				/>
+			) : (
+				<Input {...props} type={type} className={fieldClass(!!error)} />
+			)}
+			{error && (
+				<p id={`${name}-error`} className="text-brand-ink text-[13px]">
+					{error}
+				</p>
+			)}
+		</div>
+	);
+}
+
+function WorkshopCard() {
+	return (
+		<aside className="relative overflow-hidden min-h-[560px] flex flex-col justify-end text-on-dark">
+			<Image
+				src="/thumbnail.webp"
+				alt="Andorra la Vella"
+				fill
+				className="object-cover"
+				sizes="(min-width: 1024px) 40vw, 100vw"
+			/>
+			<div className="absolute inset-0 bg-scrim" />
+			<div className="relative p-10">
+				<h2 className="h-display text-[30px] mb-6">
+					El <span className="text-brand">taller</span>
+				</h2>
+				<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-on-dark-line">
+					<span className="text-sm opacity-70">Email</span>
+					<span className="font-mono text-sm">
+						interfusta@interfusta.ad
+					</span>
+				</div>
+				<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-on-dark-line">
+					<span className="text-sm opacity-70">Telèfon</span>
+					<span className="font-mono text-sm">+376 804 440</span>
+				</div>
+				<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-on-dark-line">
+					<span className="text-sm opacity-70">Adreça</span>
+					<span className="font-mono text-sm">
+						Passatge d&apos;Enclar S/N
+						<br />
+						Santa Coloma, AD500, Andorra
+					</span>
+				</div>
+				<div className="grid grid-cols-[96px_1fr] gap-6 py-[18px] border-t border-b border-on-dark-line">
+					<span className="text-sm opacity-70">Horari</span>
+					<span className="font-mono text-sm leading-[1.8]">
+						Dilluns - Divendres 9:00 - 17:00
+						<br />
+						Dissabte 10:00 - 13:00
+						<br />
+						Diumenge tancat
+					</span>
+				</div>
+				<a
+					href={MAPS_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="block underline decoration-brand decoration-2 underline-offset-[6px] pt-7 self-start"
+				>
+					Obrir a Google Maps
+				</a>
+			</div>
+		</aside>
 	);
 }

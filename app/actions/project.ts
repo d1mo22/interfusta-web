@@ -137,8 +137,9 @@ export async function updateProject(
 		]);
 
 		// Files go only after the rows are safely gone.
+		const kept = new Set(urls);
 		await deleteR2Urls(
-			current.map((r) => r.url as string).filter((u) => !urls.includes(u)),
+			current.map((r) => r.url as string).filter((u) => !kept.has(u)),
 		);
 		revalidate(id);
 		return { id };
