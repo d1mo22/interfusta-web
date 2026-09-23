@@ -259,7 +259,7 @@ export default function ContactPage() {
 						<Button
 							type="submit"
 							disabled={isSubmitting}
-							className="btn-press rounded-none h-[54px] px-[30px] bg-brand text-on-dark-ink font-semibold hover:bg-on-dark-ink hover:text-on-dark self-start"
+							className="btn-press rounded-none h-[54px] px-[30px] bg-brand text-on-dark text-[19px] font-bold hover:bg-brand-deep hover:text-on-dark self-start"
 						>
 							{isSubmitting ? (
 								<>

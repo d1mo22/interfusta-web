@@ -35,7 +35,7 @@ export default function NotFound() {
 							<div className="flex flex-wrap items-center gap-7 pt-2">
 								<Link
 									href="/"
-									className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-on-dark-ink font-semibold rounded-none hover:bg-on-dark-ink hover:text-on-dark"
+									className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-on-dark text-[19px] font-bold rounded-none hover:bg-brand-deep hover:text-on-dark"
 								>
 									Torna a l&apos;inici
 								</Link>
