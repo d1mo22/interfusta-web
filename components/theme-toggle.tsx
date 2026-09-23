@@ -6,6 +6,7 @@ export function ThemeToggle() {
 	const [isDark, setIsDark] = useState<boolean | null>(null);
 
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect -- reads DOM state unavailable during SSR
 		setIsDark(document.documentElement.classList.contains("dark"));
 	}, []);
 

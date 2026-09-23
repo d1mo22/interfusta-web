@@ -81,7 +81,7 @@ export default function AboutPage() {
 							d&apos;experiència combinada a cada projecte.
 						</p>
 					</div>
-					<div className="relative aspect-[4/3] w-full">
+					<div className="relative aspect-4/3 w-full">
 						<Image
 							src="/About.webp"
 							alt="El nostre taller"

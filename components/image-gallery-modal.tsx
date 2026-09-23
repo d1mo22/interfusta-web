@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
 	Dialog,
 	DialogContent,
@@ -25,10 +25,11 @@ export function ImageGalleryModal({
 	onClose,
 }: ImageGalleryModalProps) {
 	const [currentIndex, setCurrentIndex] = useState(initialIndex);
-
-	useEffect(() => {
+	const [prevInitialIndex, setPrevInitialIndex] = useState(initialIndex);
+	if (initialIndex !== prevInitialIndex) {
+		setPrevInitialIndex(initialIndex);
 		setCurrentIndex(initialIndex);
-	}, [initialIndex]);
+	}
 
 	const handlePrevious = () => {
 		setCurrentIndex((prevIndex) =>

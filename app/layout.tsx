@@ -2,7 +2,8 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeScript } from "@/components/theme-script";
-import { bricolage, geistSans, geistMono } from "./fonts";
+import { BricolageFontLinks } from "@/components/bricolage-font-links";
+import { geistSans, geistMono } from "./fonts";
 
 const siteUrl = (
 	process.env.NEXT_PUBLIC_BASE_URL || "https://www.interfustaandorra.com/"
@@ -108,9 +109,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="ca" suppressHydrationWarning>
+		<html
+			lang="ca"
+			suppressHydrationWarning
+			className={`${geistSans.variable} ${geistMono.variable}`}
+		>
 			<head>
 				<ThemeScript />
+				<BricolageFontLinks />
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
@@ -118,9 +124,7 @@ export default function RootLayout({
 					}}
 				/>
 			</head>
-			<body
-				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans`}
-			>
+			<body className="font-sans">
 				<a
 					href="#main"
 					className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-brand focus:px-4 focus:py-2 focus:text-on-dark-ink"

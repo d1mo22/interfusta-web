@@ -69,7 +69,7 @@ export default function ServicesPage() {
 							<p className="text-ink-muted pt-2.5">{service.description}</p>
 							<Link
 								href={`/services/${service.slug}`}
-								className="relative aspect-[4/3] w-full block"
+								className="relative aspect-4/3 w-full block"
 							>
 								<Image
 									src={service.imageUrl}

@@ -1,15 +1,14 @@
-import { Bricolage_Grotesque } from "next/font/google";
 import localFont from "next/font/local";
 
 // Shared between app/layout.tsx (the normal root layout) and
 // app/global-error.tsx (which must render its own <html>/<body> and so
 // can't rely on the layout's font setup).
-export const bricolage = Bricolage_Grotesque({
-	subsets: ["latin", "latin-ext"],
-	axes: ["opsz", "wdth"],
-	variable: "--font-bricolage",
-	display: "swap",
-});
+//
+// Bricolage Grotesque (the display font) isn't loaded here - see
+// components/bricolage-font-links.tsx for why (Vercel preview protection
+// breaks a same-origin self-hosted font's CORS fetch, and next/font/google's
+// build-time fetch is unreliable under Turbopack). It's fetched at runtime
+// from Google Fonts via a <link> in both HTML shells instead.
 
 export const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",

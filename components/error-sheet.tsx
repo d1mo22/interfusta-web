@@ -71,7 +71,7 @@ const DIM_TOP_HALF_SPAN = 129;
 
 type Slot =
 	| { type: "digit"; ch: string; x: number }
-	| { type: "ring"; center: number; ringIndex: number };
+	| { type: "ring-3"; center: number; ringIndex: number };
 
 /**
  * Lays characters out left to right: "0" becomes a ring slot, anything else
@@ -88,7 +88,7 @@ function layoutCode(code: string): Slot[] {
 		if (ch === "0") {
 			const center: number =
 				lastRingCenter === null ? FIRST_RING_CENTER_X : lastRingCenter + RING_SPACING;
-			slots.push({ type: "ring", center, ringIndex });
+			slots.push({ type: "ring-3", center, ringIndex });
 			lastRingCenter = center;
 			ringIndex += 1;
 		} else {
@@ -103,7 +103,7 @@ function layoutCode(code: string): Slot[] {
 function computeGeometry(slots: Slot[]) {
 	const last = slots[slots.length - 1];
 	const contentRight =
-		last.type === "ring" ? last.center + RING_RADIUS : last.x + DIGIT_VISUAL_WIDTH;
+		last.type === "ring-3" ? last.center + RING_RADIUS : last.x + DIGIT_VISUAL_WIDTH;
 	const heightDimX = contentRight + 20;
 	const viewBoxMaxX = heightDimX + 20;
 	const widthDimX2 = viewBoxMaxX - 60;
@@ -153,7 +153,7 @@ export function ErrorSheet({
 	const slots = layoutCode(code);
 	const { heightDimX, viewBoxMaxX, widthDimX2 } = computeGeometry(slots);
 	const viewBoxWidth = viewBoxMaxX - VIEW_MIN_X;
-	const ringCenters = slots.filter((s): s is Extract<Slot, { type: "ring" }> => s.type === "ring");
+	const ringCenters = slots.filter((s): s is Extract<Slot, { type: "ring-3" }> => s.type === "ring-3");
 	const featuredRingCenter =
 		ringCenters.length > 0 ? ringCenters[ringCenters.length - 1].center : null;
 	const widthDimMidX = widthDimX2 / 2;
@@ -186,7 +186,7 @@ export function ErrorSheet({
 										key={ri}
 										d={ring.d}
 										pathLength={1}
-										className={`ring-path${ring.isBark ? " ring-path--bark" : ""}`}
+										className={ring.isBark ? "ring-path ring-path--bark" : "ring-path"}
 										style={{ animationDelay: `${ring.delayS}s` }}
 									/>
 								),

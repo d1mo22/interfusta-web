@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
@@ -120,7 +119,7 @@ export default function PortfolioPage({
 					) : (
 						<>
 							<article className="grid lg:grid-cols-[8fr_4fr] gap-16 items-end">
-								<div className="relative aspect-[3/2] overflow-hidden">
+								<div className="relative aspect-3/2 overflow-hidden">
 									<Link href={`/portfolio/${leadProject.id}`}>
 										<img
 											src={leadProject.first_image.url}
@@ -156,7 +155,7 @@ export default function PortfolioPage({
 								<div className="grid md:grid-cols-3 gap-12">
 									{restProjects.map((project) => (
 										<article key={project.id} className="flex flex-col gap-4">
-											<div className="relative aspect-[4/5] overflow-hidden">
+											<div className="relative aspect-4/5 overflow-hidden">
 												<Link href={`/portfolio/${project.id}`}>
 													<img
 														src={project.first_image.url}
