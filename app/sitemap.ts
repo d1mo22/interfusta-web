@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import type { Project } from "@/types/types";
+import { services } from "@/data/services";
 
 const siteUrl = (
 	process.env.NEXT_PUBLIC_BASE_URL || "https://www.interfustaandorra.com/"
@@ -10,6 +11,10 @@ const staticPaths = ["", "/about", "/contact", "/services", "/portfolio"];
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const staticRoutes: MetadataRoute.Sitemap = staticPaths.map((path) => ({
 		url: `${siteUrl}${path}`,
+	}));
+
+	const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+		url: `${siteUrl}/services/${service.slug}`,
 	}));
 
 	// The DB call is wrapped in try/catch so a missing DATABASE_URL (e.g. in
@@ -36,5 +41,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			: {}),
 	}));
 
-	return [...staticRoutes, ...projectRoutes];
+	return [...staticRoutes, ...serviceRoutes, ...projectRoutes];
 }
