@@ -405,7 +405,7 @@ export default function EditProjectForm({
 									{/* Nuevas imágenes */}
 									{tempPreviews.map((preview, index) => (
 										<div
-											key={`new-image-${preview}-${Date.now()}`}
+											key={`new-image-${preview}`}
 											className="relative aspect-square w-20"
 										>
 											<img

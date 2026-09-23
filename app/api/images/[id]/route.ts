@@ -4,14 +4,15 @@ import { getCurrentUser } from "@/app/actions/auth";
 
 export async function DELETE(
 	request: NextRequest,
-	{ params }: { params: { id: string } },
+	{ params }: { params: Promise<{ id: string }> },
 ) {
 	if (!(await getCurrentUser())) {
 		return NextResponse.json({ error: "No autorizado" }, { status: 401 });
 	}
 
 	try {
-		const imageId = Number.parseInt(params.id);
+		const { id } = await params;
+		const imageId = Number.parseInt(id);
 
 		await sql`DELETE FROM image WHERE id = ${imageId}`;
 

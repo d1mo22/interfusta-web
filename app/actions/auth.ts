@@ -54,5 +54,5 @@ export async function login(formData: FormData) {
 }
 
 export async function getCurrentUser() {
-	return verifySession(cookies().get(SESSION_COOKIE)?.value);
+	return verifySession((await cookies()).get(SESSION_COOKIE)?.value);
 }

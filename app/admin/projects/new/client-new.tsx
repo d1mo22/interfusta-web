@@ -295,7 +295,7 @@ export default function NewProjectForm({
 								<div className="mt-4 flex flex-wrap gap-2">
 									{tempPreviews.map((preview, index) => (
 										<div
-											key={`new-image-${preview}-${Date.now()}`}
+											key={`new-image-${preview}`}
 											className="relative aspect-square w-20"
 										>
 											<img
