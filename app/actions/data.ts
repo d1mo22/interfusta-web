@@ -26,7 +26,7 @@ export async function getPortfolioData() {
       SELECT json_agg(
         json_build_object(
         'id', p.id,
-        'title', p.title,
+        'title', trim(p.title),
         'description', p.description,
         'full_description', p.full_description,
         'completion_date', p.completion_date,
