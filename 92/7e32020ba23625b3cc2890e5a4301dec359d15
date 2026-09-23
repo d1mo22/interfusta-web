@@ -1,0 +1,25 @@
+.gitignore
+  s_d232271aba0020::t_3b73b09f05f18b 41
+app/(site)/contact/page.tsx
+  s_d232271aba0020::t_a8e1434974e0b2 351-362
+app/layout.tsx
+  s_d232271aba0020::t_47f667d366fabf 70-72
+components/footer.tsx
+  s_d232271aba0020::t_960cc62ce981f5 3-5,37-42,46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "927e32020ba23625b3cc2890e5a4301dec359d15",
+  "prompts": {},
+  "sessions": {
+    "s_d232271aba0020": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_d232271aba0020",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
