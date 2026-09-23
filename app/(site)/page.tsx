@@ -91,7 +91,7 @@ export default function Home() {
 						</div>
 						<Link
 							href="/portfolio"
-							className="btn-press inline-flex h-[54px] items-center px-[30px] bg-brand text-on-dark text-[19px] font-bold rounded-none hover:bg-brand-deep hover:text-on-dark motion-rise [animation-delay:180ms]"
+							className="btn-press inline-flex h-[54px] items-center whitespace-nowrap px-[30px] bg-brand text-on-dark text-[19px] font-bold rounded-none hover:bg-brand-deep hover:text-on-dark motion-rise [animation-delay:180ms]"
 						>
 							Veure el nostre treball
 						</Link>
