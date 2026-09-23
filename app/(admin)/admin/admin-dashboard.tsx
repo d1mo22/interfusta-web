@@ -54,14 +54,19 @@ export default function AdminDashboard({
 	async function confirmDelete() {
 		if (!toDelete) return;
 		setIsDeleting(true);
-		const result = await deleteProject(toDelete.id);
-		setIsDeleting(false);
-		if (result.error) {
-			setDeleteError(result.error);
-			return;
+		try {
+			const result = await deleteProject(toDelete.id);
+			if (result.error) {
+				setDeleteError(result.error);
+				return;
+			}
+			setToDelete(null);
+			router.refresh();
+		} catch {
+			setDeleteError("No s'ha pogut eliminar el projecte");
+		} finally {
+			setIsDeleting(false);
 		}
-		setToDelete(null);
-		router.refresh();
 	}
 
 	return (
