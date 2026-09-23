@@ -1,0 +1,33 @@
+app/actions/auth.ts
+  s_10dfb9d62376b2::t_f498b46ca24283 6-11,34-35,44-45,57
+app/actions/categories.ts
+  s_10dfb9d62376b2::t_399bc96361bd2b 5,8-9,30-31,54-55
+app/actions/project.ts
+  s_10dfb9d62376b2::t_95469e40150cce 64,121-122
+app/api/images/[id]/route.ts
+  s_10dfb9d62376b2::t_42c91b0cfbed30 3,9-12
+app/api/upload/route.ts
+  s_10dfb9d62376b2::t_3a3a1b8efc609d 4-16,19-20,32-39,41,72-73
+lib/session.check.ts
+  s_10dfb9d62376b2::t_8be4c307e6b8bf 1-16
+lib/session.ts
+  s_10dfb9d62376b2::t_e8b1fc40bc1574 1-65
+middleware.ts
+  s_10dfb9d62376b2::t_69003a68c6e207 3,5-9,11-14,17,21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "3c17bf96186847002fb9e73fec8a95e97ec4412a",
+  "prompts": {},
+  "sessions": {
+    "s_10dfb9d62376b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_10dfb9d62376b2",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
