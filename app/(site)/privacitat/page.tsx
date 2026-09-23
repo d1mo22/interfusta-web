@@ -126,9 +126,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
 		title: "6. Durant quant de temps conservem les dades",
 		body: (
 			<p>
-				[PLACEHOLDER: definir i confirmar durant quant de temps es conserven
-				els correus electrònics rebuts a través del formulari abans de
-				suprimir-los.]
+				Conservem les dades que ens facilita a través del formulari només el temps necessari per a respondre a la seva consulta i, si escau, gestionar el projecte que en derivi. Si no es formalitza cap projecte, suprimim el correu en un termini màxim de 2 anys des de l&apos;última comunicació. Si es formalitza un encàrrec, conservarem les dades durant el temps que exigeixin les obligacions legals (per exemple, les fiscals i comptables).
 			</p>
 		),
 	},
@@ -158,8 +156,8 @@ const sections: { title: string; body: React.ReactNode }[] = [
 			<p>
 				Podem actualitzar aquesta política de privacitat per a reflectir
 				canvis en com tractem les seves dades. Li recomanem revisar-la
-				periòdicament. Darrera actualització: [PLACEHOLDER: data de
-				publicació].
+				periòdicament. Darrera actualització: 23 de setembre
+				de 2026.
 			</p>
 		),
 	},
