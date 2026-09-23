@@ -328,7 +328,7 @@ export default function ContactPage() {
 								href={MAPS_URL}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="underline decoration-brand decoration-2 underline-offset-[6px] pt-7 self-start"
+								className="block underline decoration-brand decoration-2 underline-offset-[6px] pt-7 self-start"
 							>
 								Obrir a Google Maps
 							</a>
