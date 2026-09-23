@@ -1,0 +1,21 @@
+package-lock.json
+  s_bd4faa9bb2728d::t_c82ee0ad8c8a34 30,50,1736-1738,1742-1744,1816-1818,1832-1834,1864-1866,5842-5844,5848,8167-8169,8172,8187-8195,8217-8219,8233-8235,8249-8251,8265-8267,8281-8283,8297-8299
+package.json
+  s_bd4faa9bb2728d::t_6fa9616260d8fa 31,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "01651bfb661bce37c9a72054f71d658c6b91b3ec",
+  "prompts": {},
+  "sessions": {
+    "s_bd4faa9bb2728d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_bd4faa9bb2728d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
