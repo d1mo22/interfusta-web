@@ -464,7 +464,7 @@ export default function EditProjectForm({
 													) as HTMLInputElement;
 													input.value = newDate?.toISOString() || "";
 												}}
-												initialFocus
+												autoFocus
 												locale={ca}
 											/>
 										</PopoverContent>
