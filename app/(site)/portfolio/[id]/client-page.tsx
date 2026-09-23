@@ -46,11 +46,13 @@ export default function ClientPage({
 
 					<div className="grid grid-cols-3 gap-8 border-y border-hairline py-5">
 						<div className="flex flex-col gap-2">
-							<span className="text-sm text-ink-muted">Categoria</span>
-							<span>{category_name}</span>
+							<span className="font-mono text-sm text-ink-muted">
+								Categoria
+							</span>
+							<span className="font-mono">{category_name}</span>
 						</div>
 						<div className="flex flex-col gap-2">
-							<span className="text-sm text-ink-muted">
+							<span className="font-mono text-sm text-ink-muted">
 								Data de finalització
 							</span>
 							<span className="font-mono">
@@ -58,13 +60,13 @@ export default function ClientPage({
 							</span>
 						</div>
 						<div className="flex flex-col gap-2">
-							<span className="text-sm text-ink-muted">Durada</span>
+							<span className="font-mono text-sm text-ink-muted">Durada</span>
 							<span className="font-mono">{project.duration}</span>
 						</div>
 					</div>
 
 					{images[0]?.url && (
-						<div className="relative aspect-[3/2] w-full overflow-hidden">
+						<div className="relative aspect-3/2 w-full overflow-hidden">
 							<img
 								src={images[0].url}
 								alt={project.title}
@@ -103,7 +105,7 @@ export default function ClientPage({
 									<img
 										src={image.url || "/placeholder.svg"}
 										alt={`${project.title} - img ${index + 1}`}
-										className="w-full aspect-[4/5] object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform [transition-duration:400ms] ease-out"
+										className="w-full aspect-4/5 object-cover md:[@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.02] transition-transform duration-400 ease-out"
 									/>
 								</button>
 							</div>

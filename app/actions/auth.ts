@@ -55,10 +55,10 @@ export async function login(formData: FormData) {
 }
 
 export async function getCurrentUser() {
-	return verifySession(cookies().get(SESSION_COOKIE)?.value);
+	return verifySession((await cookies()).get(SESSION_COOKIE)?.value);
 }
 
 export async function logout() {
-	cookies().delete(SESSION_COOKIE);
+	(await cookies()).delete(SESSION_COOKIE);
 	redirect("/auth/login");
 }

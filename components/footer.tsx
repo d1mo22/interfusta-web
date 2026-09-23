@@ -13,7 +13,7 @@ export function Footer() {
 						</p>
 					</div>
 					<div className="flex flex-col gap-3">
-						<span className="text-ink-muted text-sm">Contacte</span>
+						<span className="font-mono text-ink-muted text-sm">Contacte</span>
 						<p className="font-mono text-sm leading-[1.9]">
 							interfusta@interfusta.ad
 							<br />
@@ -26,7 +26,7 @@ export function Footer() {
 						</p>
 					</div>
 					<div className="flex flex-col gap-3">
-						<span className="text-ink-muted text-sm">Horari</span>
+						<span className="font-mono text-ink-muted text-sm">Horari</span>
 						<p className="font-mono text-sm leading-[1.9]">
 							Dilluns - Divendres 9:00 - 17:00
 							<br />
@@ -36,7 +36,7 @@ export function Footer() {
 						</p>
 					</div>
 				</div>
-				<div className="border-t border-hairline mt-16 pt-5 text-sm text-ink-muted flex justify-between">
+				<div className="border-t border-hairline mt-16 pt-5 font-mono text-sm text-ink-muted flex justify-between">
 					<span>&copy; {new Date().getFullYear()} Interfusta. Tots els drets reservats.</span>
 					<span>Santa Coloma, Andorra</span>
 				</div>

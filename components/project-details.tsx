@@ -23,7 +23,7 @@ export function ProjectDetailsSkeleton() {
 					</div>
 				</div>
 
-				<Skeleton className="aspect-[3/2] w-full rounded-none bg-stone" />
+				<Skeleton className="aspect-3/2 w-full rounded-none bg-stone" />
 
 				<div className="flex flex-col gap-3 max-w-[65ch]">
 					<Skeleton className="h-4 w-full rounded-none bg-stone" />
@@ -36,7 +36,7 @@ export function ProjectDetailsSkeleton() {
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						<Skeleton
 							key={index}
-							className="aspect-[4/5] w-full rounded-none bg-stone"
+							className="aspect-4/5 w-full rounded-none bg-stone"
 						/>
 					))}
 				</div>
