@@ -51,7 +51,7 @@ export function Navigation() {
 						aria-label={`Truca'ns al ${PHONE_NUMBER}`}
 						className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 					>
-						<Phone className="h-4 w-4" aria-hidden />
+						<Phone className="h-3.5 w-3.5" aria-hidden />
 						<span>{PHONE_NUMBER}</span>
 					</a>
 					<div className="ml-3">
@@ -92,7 +92,7 @@ export function Navigation() {
 							aria-label={`Truca'ns al ${PHONE_NUMBER}`}
 							className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 						>
-							<Phone className="h-4 w-4" aria-hidden />
+							<Phone className="h-3.5 w-3.5" aria-hidden />
 							<span>{PHONE_NUMBER}</span>
 						</a>
 						<ThemeToggle />
