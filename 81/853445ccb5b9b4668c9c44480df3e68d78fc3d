@@ -1,0 +1,19 @@
+app/actions/data.ts
+  s_217cc46a1ddf1d::t_5f35e577084852 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "81853445ccb5b9b4668c9c44480df3e68d78fc3d",
+  "prompts": {},
+  "sessions": {
+    "s_217cc46a1ddf1d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_217cc46a1ddf1d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
