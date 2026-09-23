@@ -43,13 +43,17 @@ export default function Home() {
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [activeService, setActiveService] = useState(0);
 	const [isServicesPaused, setIsServicesPaused] = useState(false);
-	const [videoMounted, setVideoMounted] = useState(false);
+	const [videoSrc, setVideoSrc] = useState<string | null>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
 
 	useEffect(() => {
-		// ponytail: post-hydration mount flag keeps the 31MB video source off the LCP path
+		// ponytail: chosen after hydration so the video stays off the LCP path; phones get a ~1MB copy
 		// eslint-disable-next-line react-hooks/set-state-in-effect
-		setVideoMounted(true);
+		setVideoSrc(
+			window.matchMedia("(max-width: 767px)").matches
+				? "/video-mobile.mp4"
+				: "/video.mp4",
+		);
 	}, []);
 
 	const openGallery = (index: number) => {
@@ -73,7 +77,7 @@ export default function Home() {
 					className="absolute inset-0 h-full w-full object-cover"
 					poster="/thumbnail.webp"
 				>
-					{videoMounted && <source src="/video.mp4" type="video/mp4" />}
+					{videoSrc && <source src={videoSrc} type="video/mp4" />}
 				</video>
 				<div className="absolute inset-0 z-1 bg-scrim-soft" />
 				<div className="absolute inset-x-0 bottom-[88px] z-2">
