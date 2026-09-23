@@ -1,0 +1,63 @@
+app/(admin)/admin/admin-dashboard.tsx
+  s_e375efe5d8cfb1::t_d56daccfd60fbe 1,4,6-9,16-17,19-21,24,26-38,40-52,54-65,68-79,81-140,142-161,164-261,263-285,287-293,295-298
+app/(admin)/admin/admin-nav.tsx
+  s_e375efe5d8cfb1::t_92e1523e0a09f9 1-2,4-8,10-13,15-16,18-26,28-33,35-42,44,46-64,66-68,70-71
+app/(admin)/admin/categories/client-categories.tsx
+  s_e375efe5d8cfb1::t_ff595f1df30b45 4,19-21,23,25-31,34,36-42,45-47,49-50,54-60,62-76,78-82,84-161
+app/(admin)/admin/layout.tsx
+  s_e375efe5d8cfb1::t_0be89613498ef4 1,3-7,9-12
+app/(admin)/admin/page.tsx
+  s_e375efe5d8cfb1::t_d581b77fc6d1e5 1,4-8,11-18
+app/(admin)/admin/projects/[id]/edit/page.tsx
+  s_e375efe5d8cfb1::t_8db1b922b58259 2-5,7-13,15-16,19,22-37
+app/(admin)/admin/projects/new/page.tsx
+  s_e375efe5d8cfb1::t_f16e428f6e2b45 2,5
+app/(admin)/admin/projects/project-wizard.tsx
+  s_e375efe5d8cfb1::t_ce6be6d388381d 4,6-8,10-11,13-14,17-19,23-26,28,30-109,111-115,117-156,158-174,177-187,189-194,196-232,234-235,238-246,249-250,252-291,295-298,301-302,304-310,312-314,316-363,365-383,385-391,393-411,413-521,523,525-530,532-572,574,576-587,589-599,601-650,652-654,656-657,659-727,730,732-753,755-762,764-792,794-795,797-800,802-804,807,809-812,814-862,864-895,900-917
+app/(admin)/auth/login/page.tsx
+  s_e375efe5d8cfb1::t_42e70f761f90c1 5,7-8,12,15-25,29-79
+app/(admin)/layout.tsx
+  s_e375efe5d8cfb1::t_da0168692fe43c 1-16
+app/(site)/layout.tsx
+  s_e375efe5d8cfb1::t_602139e655c1e4 1-12
+app/(site)/portfolio/page.tsx
+  s_e375efe5d8cfb1::t_463b3ae94b0faf 2
+app/actions/auth.ts
+  s_e375efe5d8cfb1::t_442e873ad6470a 5,60-64
+app/actions/categories.ts
+  s_e375efe5d8cfb1::t_9a36be5f531764 8,22,30,41,49,54,64,75,83
+app/actions/data.ts
+  s_e375efe5d8cfb1::t_246b6b5ac4af42 2,78
+app/actions/project.ts
+  s_e375efe5d8cfb1::t_41b1173a6f5d11 6-38,40-55,57-58,61,64,66-71,74-94,98-149,151-152,155-165
+app/globals.css
+  s_e375efe5d8cfb1::t_021b5dfa6b255d 294-317
+app/layout.tsx
+  s_e375efe5d8cfb1::t_caa02a18ba10d2 62-63
+app/not-found.tsx
+  s_e375efe5d8cfb1::t_f0463f5bcd0503 4-5,12-13,15-54,58-61
+components/admin-projects-skeleton.tsx
+  s_e375efe5d8cfb1::t_6740cb8ede50da 1,5-14,16-18
+components/admin-skeleton.tsx
+  s_e375efe5d8cfb1::t_250923007f04ae 1,5-12,14-29
+lib/r2Client.ts
+  s_e375efe5d8cfb1::t_0e39d0e213a51a 1,23-40
+lib/utils.ts
+  s_e375efe5d8cfb1::t_01b91d607856e1 18-20,22-24,26-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "73a4365c15f0cafbd4079bc4fc0625003bfdcf6b",
+  "prompts": {},
+  "sessions": {
+    "s_e375efe5d8cfb1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_e375efe5d8cfb1",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
