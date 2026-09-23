@@ -1,29 +1,11 @@
-import { Bricolage_Grotesque } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeScript } from "@/components/theme-script";
+import { bricolage, geistSans, geistMono } from "./fonts";
 //import Script from "next/script";
-
-const bricolage = Bricolage_Grotesque({
-	subsets: ["latin", "latin-ext"],
-	axes: ["opsz", "wdth"],
-	variable: "--font-bricolage",
-	display: "swap",
-});
-
-const geistSans = localFont({
-	src: "./fonts/GeistVF.woff",
-	variable: "--font-geist-sans",
-});
-
-const geistMono = localFont({
-	src: "./fonts/GeistMonoVF.woff",
-	variable: "--font-geist-mono",
-});
 
 export const metadata = {
 	//TODO: Change this to the actual URL

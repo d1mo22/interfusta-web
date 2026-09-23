@@ -169,6 +169,41 @@
 			transform: scaleX(1);
 		}
 	}
+	/* Error sheet (404/500): outlined digits, tree-ring draw-in, dimension fade-in. */
+	.num-outline {
+		fill: none;
+		stroke: var(--ink);
+		stroke-width: 1.5;
+		font-weight: 700;
+		font-size: 300px;
+		letter-spacing: -0.05em;
+		font-variation-settings: 'wdth' 80;
+	}
+	.ring-path {
+		fill: none;
+		stroke: var(--ink);
+		stroke-width: 1.1;
+		stroke-dasharray: 1;
+		stroke-dashoffset: 1;
+		animation: ring-draw 1.8s var(--ease-out) forwards;
+	}
+	.ring-path--bark {
+		stroke-width: 3.2;
+	}
+	@keyframes ring-draw {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+	.dim-fade {
+		opacity: 0;
+		animation: dim-fade-in 0.6s var(--ease-out) forwards;
+	}
+	@keyframes dim-fade-in {
+		to {
+			opacity: 1;
+		}
+	}
 	@media (prefers-reduced-motion: reduce) {
 		/* No animation means no animationend, so auto-rotation is off too.
 		   (animation, not display: lg:block would win over display:none.) */
@@ -180,6 +215,14 @@
 		}
 		.menu-enter {
 			animation-name: fade;
+		}
+		.ring-path {
+			animation: none;
+			stroke-dashoffset: 0;
+		}
+		.dim-fade {
+			animation: none;
+			opacity: 1;
 		}
 		@keyframes fade {
 			from {
