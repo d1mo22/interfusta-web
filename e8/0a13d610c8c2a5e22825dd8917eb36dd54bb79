@@ -1,0 +1,25 @@
+app/(admin)/admin/admin-dashboard.tsx
+  s_7ac02927df6676::t_ae452f48827593 57-68
+app/(admin)/admin/page.tsx
+  s_7ac02927df6676::t_20dde8469c86a9 7,9-12,19
+app/(admin)/admin/projects/[id]/edit/page.tsx
+  s_7ac02927df6676::t_40ae09392f57e7 10,12
+app/(admin)/admin/projects/project-wizard.tsx
+  s_7ac02927df6676::t_f38b06ac61621f 365-372,375,377-386,388-393,395-408,410-529,531-532,534-586,588-649,651-757,759-786,788-816,818,820-821,823,825,828-920,924-989
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "e80a13d610c8c2a5e22825dd8917eb36dd54bb79",
+  "prompts": {},
+  "sessions": {
+    "s_7ac02927df6676": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_7ac02927df6676",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
