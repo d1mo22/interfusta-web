@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState, useEffect, useRef } from "react";
+import { Fragment, useState, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Grain } from "@/components/grain";
@@ -38,23 +38,24 @@ const services = [
 	},
 ];
 
+const noSubscribe = () => () => {};
+
 export default function Home() {
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [activeService, setActiveService] = useState(0);
 	const [isServicesPaused, setIsServicesPaused] = useState(false);
-	const [videoSrc, setVideoSrc] = useState<string | null>(null);
-	const videoRef = useRef<HTMLVideoElement>(null);
-
-	useEffect(() => {
-		// ponytail: chosen after hydration so the video stays off the LCP path; phones get a ~1MB copy
-		// eslint-disable-next-line react-hooks/set-state-in-effect
-		setVideoSrc(
+	// ponytail: null on the server and during hydration, so the video stays off
+	// the LCP path; picked right after. Phones get a ~1MB copy.
+	const videoSrc = useSyncExternalStore(
+		noSubscribe,
+		() =>
 			window.matchMedia("(max-width: 767px)").matches
 				? "/video-mobile.mp4"
 				: "/video.mp4",
-		);
-	}, []);
+		() => null,
+	);
+	const videoRef = useRef<HTMLVideoElement>(null);
 
 	const openGallery = (index: number) => {
 		setSelectedImageIndex(index);
