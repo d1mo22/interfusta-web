@@ -2,8 +2,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeScript } from "@/components/theme-script";
-import { BricolageFontLinks } from "@/components/bricolage-font-links";
-import { geistSans, geistMono } from "./fonts";
+import { bricolage, geistSans, geistMono } from "./fonts";
 
 const siteUrl = (
 	process.env.NEXT_PUBLIC_BASE_URL || "https://www.interfustaandorra.com/"
@@ -112,11 +111,10 @@ export default function RootLayout({
 		<html
 			lang="ca"
 			suppressHydrationWarning
-			className={`${geistSans.variable} ${geistMono.variable}`}
+			className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable}`}
 		>
 			<head>
 				<ThemeScript />
-				<BricolageFontLinks />
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
