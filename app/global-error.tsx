@@ -24,14 +24,16 @@ export default function GlobalError({
 	}, [error]);
 
 	return (
-		<html lang="ca" suppressHydrationWarning>
+		<html
+			lang="ca"
+			suppressHydrationWarning
+			className={`${geistSans.variable} ${geistMono.variable}`}
+		>
 			<head>
 				<ThemeScript />
 				<BricolageFontLinks />
 			</head>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} font-sans bg-paper text-ink`}
-			>
+			<body className="font-sans bg-paper text-ink">
 				<section className="pt-[104px] pb-[120px] min-h-dvh flex items-center">
 					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 w-full">
 						<ErrorSheet
