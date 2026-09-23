@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ["placehold.co", `${process.env.CLAUDFLARE_API}`],
 		remotePatterns: [
 			{
+				// Public Cloudflare R2 bucket URLs (see lib/r2Client.ts /
+				// lib/uploadImage.ts: process.env.R2_URL / NEXT_PUBLIC_R2_URL).
+				// The account-specific "pub-<hash>" subdomain isn't hardcoded
+				// anywhere in the repo (no .env.example committed), so this
+				// matches Cloudflare's public-bucket hostname pattern generically.
 				protocol: "https",
-				hostname: "placehold.co",
+				hostname: "*.r2.dev",
 				port: "",
 				pathname: "/**",
 			},
@@ -17,6 +21,23 @@ const nextConfig = {
 			sharp$: false,
 		};
 		return config;
+	},
+	async headers() {
+		return [
+			{
+				source: "/:path*",
+				headers: [
+					{
+						key: "X-Content-Type-Options",
+						value: "nosniff",
+					},
+					{
+						key: "Referrer-Policy",
+						value: "strict-origin-when-cross-origin",
+					},
+				],
+			},
+		];
 	},
 };
 

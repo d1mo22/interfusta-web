@@ -15,9 +15,19 @@ export function Footer() {
 					<div className="flex flex-col gap-3">
 						<span className="text-ink-muted text-sm">Contacte</span>
 						<p className="font-mono text-sm leading-[1.9]">
-							interfusta@interfusta.ad
+							<a
+								href="mailto:interfusta@interfusta.ad"
+								className="hover:text-ink transition-colors duration-150"
+							>
+								interfusta@interfusta.ad
+							</a>
 							<br />
-							+376 804 440
+							<a
+								href="tel:+376804440"
+								className="hover:text-ink transition-colors duration-150"
+							>
+								+376 804 440
+							</a>
 						</p>
 						<p className="font-mono text-sm">
 							Passatge d&apos;Enclar S/N
@@ -37,7 +47,7 @@ export function Footer() {
 					</div>
 				</div>
 				<div className="border-t border-hairline mt-16 pt-5 text-sm text-ink-muted flex justify-between">
-					<span>&copy; {new Date().getFullYear()} Interfusta. Tots els drets reservats.</span>
+					<span>&copy; {new Date().getFullYear()} Fusteria InterFusta. Tots els drets reservats.</span>
 					<span>Santa Coloma, Andorra</span>
 				</div>
 			</div>

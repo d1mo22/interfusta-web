@@ -4,7 +4,6 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
 import type { ClientPortfolioProps, Project, Category } from "@/types/types";
-import { ProjectImage } from "@/components/project-images";
 import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
 
@@ -12,9 +11,7 @@ const ITEMS_PER_PAGE = 8;
 
 function isAllCategory(name: string) {
 	const normalized = name.toLowerCase().trim();
-	return (
-		normalized === "tots els projectes" || normalized === "todos los proyectos"
-	);
+	return normalized === "tots els projectes";
 }
 
 export default function PortfolioPage({
@@ -125,9 +122,10 @@ export default function PortfolioPage({
 							<article className="grid lg:grid-cols-[8fr_4fr] gap-16 items-end">
 								<div className="relative aspect-[3/2] overflow-hidden">
 									<Link href={`/portfolio/${leadProject.id}`}>
-										<ProjectImage
-											fileName={leadProject.first_image.url}
-											altText={leadProject.title}
+										<img
+											src={leadProject.first_image.url}
+											alt={leadProject.title}
+											className="w-full h-full object-cover"
 										/>
 									</Link>
 								</div>
@@ -160,9 +158,10 @@ export default function PortfolioPage({
 										<article key={project.id} className="flex flex-col gap-4">
 											<div className="relative aspect-[4/5] overflow-hidden">
 												<Link href={`/portfolio/${project.id}`}>
-													<ProjectImage
-														fileName={project.first_image.url}
-														altText={project.title}
+													<img
+														src={project.first_image.url}
+														alt={project.title}
+														className="w-full h-full object-cover"
 													/>
 												</Link>
 											</div>

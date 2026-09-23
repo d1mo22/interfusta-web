@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Grain } from "@/components/grain";
@@ -43,6 +43,12 @@ export default function Home() {
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [activeService, setActiveService] = useState(0);
 	const [isServicesPaused, setIsServicesPaused] = useState(false);
+	const [videoMounted, setVideoMounted] = useState(false);
+	const videoRef = useRef<HTMLVideoElement>(null);
+
+	useEffect(() => {
+		setVideoMounted(true);
+	}, []);
 
 	const openGallery = (index: number) => {
 		setSelectedImageIndex(index);
@@ -56,15 +62,16 @@ export default function Home() {
 			{/* Hero */}
 			<section className="relative min-h-[100dvh] overflow-hidden bg-night">
 				<video
+					ref={videoRef}
 					autoPlay
 					muted
 					loop
 					playsInline
-					preload="auto"
+					preload="metadata"
 					className="absolute inset-0 h-full w-full object-cover"
 					poster="/thumbnail.webp"
 				>
-					<source src="/video.mp4" type="video/mp4" />
+					{videoMounted && <source src="/video.mp4" type="video/mp4" />}
 				</video>
 				<div className="absolute inset-0 z-[1] bg-scrim-soft" />
 				<div className="absolute inset-x-0 bottom-[88px] z-[2]">

@@ -6,6 +6,21 @@ export const metadata = {
 	title: "Sobre Nosaltres",
 	description:
 		"Coneix l'equip i la trajectòria de Fusteria InterFusta, especialistes en fusteria i ebenisteria a Andorra.",
+	alternates: {
+		canonical: "/about",
+	},
+	openGraph: {
+		title: "Sobre Nosaltres",
+		description:
+			"Coneix l'equip i la trajectòria de Fusteria InterFusta, especialistes en fusteria i ebenisteria a Andorra.",
+		images: [
+			{
+				url: "/thumbnail.webp",
+				width: 1280,
+				height: 720,
+			},
+		],
+	},
 };
 
 const stats = [

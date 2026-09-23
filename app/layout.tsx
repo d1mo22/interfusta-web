@@ -4,15 +4,19 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeScript } from "@/components/theme-script";
 import { bricolage, geistSans, geistMono } from "./fonts";
 
+const siteUrl = (
+	process.env.NEXT_PUBLIC_BASE_URL || "https://www.interfustaandorra.com/"
+).replace(/\/$/, "");
+
+const description = "Serveis professionals de fusteria i ebenisteria a Andorra";
+
 export const metadata = {
-	metadataBase: new URL(
-		process.env.NEXT_PUBLIC_BASE_URL || "https://www.interfustaandorra.com/",
-	),
+	metadataBase: new URL(siteUrl),
 	title: {
 		default: "Fusteria InterFusta - Serveis experts de fusteria",
 		template: "%s | InterFusta",
 	},
-	description: "Serveis professionals de fusteria i ebenisteria a Andorra",
+	description,
 	icons: {
 		icon: [
 			{
@@ -29,7 +33,7 @@ export const metadata = {
 	},
 	openGraph: {
 		title: "Fusteria InterFusta - Serveis experts de fusteria",
-		description: "Serveis professionals de fusteria i ebenisteria a Andorra",
+		description,
 		images: [
 			{
 				url: "/thumbnail.webp",
@@ -38,6 +42,61 @@ export const metadata = {
 			},
 		],
 	},
+};
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "HomeAndConstructionBusiness",
+			"@id": `${siteUrl}/#business`,
+			name: "Fusteria InterFusta",
+			url: siteUrl,
+			description,
+			telephone: "+376 804 440",
+			email: "interfusta@interfusta.ad",
+			image: `${siteUrl}/thumbnail.webp`,
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "Passatge d'Enclar S/N",
+				addressLocality: "Santa Coloma",
+				postalCode: "AD500",
+				addressCountry: "AD",
+			},
+			areaServed: {
+				"@type": "Country",
+				name: "Andorra",
+			},
+			openingHoursSpecification: [
+				{
+					"@type": "OpeningHoursSpecification",
+					dayOfWeek: [
+						"Monday",
+						"Tuesday",
+						"Wednesday",
+						"Thursday",
+						"Friday",
+					],
+					opens: "09:00",
+					closes: "17:00",
+				},
+				{
+					"@type": "OpeningHoursSpecification",
+					dayOfWeek: "Saturday",
+					opens: "10:00",
+					closes: "13:00",
+				},
+			],
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${siteUrl}/#website`,
+			url: siteUrl,
+			name: "Fusteria InterFusta",
+			publisher: { "@id": `${siteUrl}/#business` },
+			inLanguage: "ca-AD",
+		},
+	],
 };
 
 export default function RootLayout({
@@ -49,6 +108,12 @@ export default function RootLayout({
 		<html lang="ca" suppressHydrationWarning>
 			<head>
 				<ThemeScript />
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+					}}
+				/>
 			</head>
 			<body
 				className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} font-sans`}

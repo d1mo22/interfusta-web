@@ -198,7 +198,7 @@ export default function ContactPage() {
 									name="email"
 									type="email"
 									required
-									placeholder="interfusta@interfusta.ad"
+									placeholder="el.teu@email.com"
 									onBlur={handleBlur}
 									onChange={handleChange}
 									aria-invalid={!!errors.email}
@@ -220,7 +220,7 @@ export default function ContactPage() {
 									name="phone"
 									type="tel"
 									required
-									placeholder="+376 804 440"
+									placeholder="+376 XXX XXX"
 									onBlur={handleBlur}
 									onChange={handleChange}
 									aria-invalid={!!errors.phone}

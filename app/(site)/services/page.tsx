@@ -6,6 +6,21 @@ export const metadata = {
 	title: "Serveis",
 	description:
 		"Mobles a mida, cuines, lacatge, Corian i estructures de fusta. Descobreix tots els serveis de fusteria de Fusteria InterFusta a Andorra.",
+	alternates: {
+		canonical: "/services",
+	},
+	openGraph: {
+		title: "Serveis",
+		description:
+			"Mobles a mida, cuines, lacatge, Corian i estructures de fusta. Descobreix tots els serveis de fusteria de Fusteria InterFusta a Andorra.",
+		images: [
+			{
+				url: "/thumbnail.webp",
+				width: 1280,
+				height: 720,
+			},
+		],
+	},
 };
 
 const services = [
@@ -82,6 +97,7 @@ export default function ServicesPage() {
 					src="/Cuina-2.webp"
 					alt="Cuina a mida amb illa de fusta"
 					fill
+					priority
 					className="object-cover"
 					sizes="100vw"
 				/>
