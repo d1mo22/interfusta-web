@@ -1,0 +1,77 @@
+AGENTS.md
+  s_6b85e6ae3a2782::t_a54ecf34f63d80 1-9
+CLAUDE.md
+  s_6b85e6ae3a2782::t_fc1503b7943d66 1
+app/about/page.tsx
+  s_6b85e6ae3a2782::t_5b2056820361e1 69
+app/admin/categories/client-categories.tsx
+  s_6b85e6ae3a2782::t_2ef8e1a6135b52 114
+app/admin/projects/[id]/edit/client-edit.tsx
+  s_6b85e6ae3a2782::t_897f5d2863e2f0 341
+app/admin/projects/new/client-new.tsx
+  s_6b85e6ae3a2782::t_a78bcf3862aae9 253
+app/global-error.tsx
+  s_6b85e6ae3a2782::t_6ef8492162c276 33
+app/globals.css
+  s_6b85e6ae3a2782::t_797c87419c941d 1-2,4-198
+app/page.tsx
+  s_6b85e6ae3a2782::t_f8511cba655520 57,69-70,98,130,136,196,221,234
+app/portfolio/[id]/client-page.tsx
+  s_6b85e6ae3a2782::t_4aab928cc6977e 67,106
+app/portfolio/client-portfolio.tsx
+  s_6b85e6ae3a2782::t_3eec6f0829981d 125,160
+app/services/page.tsx
+  s_6b85e6ae3a2782::t_04ecb444b6fedc 101
+components/admin-projects-skeleton.tsx
+  s_6b85e6ae3a2782::t_bc5ff99642accf 43,48
+components/admin-skeleton.tsx
+  s_6b85e6ae3a2782::t_1bab1db67b0825 17,20,23
+components/error-sheet.tsx
+  s_6b85e6ae3a2782::t_2d0387e9f5df3a 74,91,106,156
+components/project-admin-card.tsx
+  s_6b85e6ae3a2782::t_11c745c89d48ac 28,37
+components/project-details.tsx
+  s_6b85e6ae3a2782::t_45f2933da1049c 26,39
+components/projects-skeleton.tsx
+  s_6b85e6ae3a2782::t_658cbed84ecde1 23,36
+components/ui/button.tsx
+  s_6b85e6ae3a2782::t_a84bbef247c77e 8,13,15,17,19
+components/ui/calendar.tsx
+  s_6b85e6ae3a2782::t_fdcdcf1bfad264 42,44-45
+components/ui/card.tsx
+  s_6b85e6ae3a2782::t_d10e4f25af332a 12
+components/ui/dialog.tsx
+  s_6b85e6ae3a2782::t_819cc6470fb1eb 47
+components/ui/input.tsx
+  s_6b85e6ae3a2782::t_d3caf757102f79 11
+components/ui/popover.tsx
+  s_6b85e6ae3a2782::t_2048f9a449a844 24
+components/ui/select.tsx
+  s_6b85e6ae3a2782::t_4165edfa8201d1 22,78,91,121
+components/ui/tabs.tsx
+  s_6b85e6ae3a2782::t_115e529fde0c52 32,47
+components/ui/textarea.tsx
+  s_6b85e6ae3a2782::t_ddf62f61187d34 12
+package-lock.json
+  s_6b85e6ae3a2782::t_48d138b5e029ff 39,43,53,62,2000-2010,2271,2285,2295,3510-3780,4779,5329,5517-5530,5645,6604,6621,6654,6728,6867,7054,7217,7470,7537,7592,7643,7885-7888,7891,8058-8066,8068-8102,8105-8106,8109-8317,8386-8395,8461,8471,9097,9284,9382,9480,10686,10697,11517,11537-11540,11542-11546,11549,11552-11553,11560,11577,11595,11608,11736-11744
+package.json
+  s_6b85e6ae3a2782::t_17206c6eec272e 40,44,54
+postcss.config.mjs
+  s_6b85e6ae3a2782::t_0e584e913f4d1b 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "02b930e46e327b347fee4338f461659f00a2d1a2",
+  "prompts": {},
+  "sessions": {
+    "s_6b85e6ae3a2782": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_6b85e6ae3a2782",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
