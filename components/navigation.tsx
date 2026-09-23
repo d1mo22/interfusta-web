@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -13,6 +13,9 @@ const links = [
 	{ href: "/about", label: "Sobre Nosaltres" },
 	{ href: "/contact", label: "Contacte" },
 ];
+
+const PHONE_NUMBER = "+376 804 440";
+const PHONE_HREF = "tel:+376804440";
 
 export function Navigation() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +28,7 @@ export function Navigation() {
 	return (
 		<header className="fixed inset-x-0 top-0 z-40 h-16 bg-paper border-b border-hairline">
 			<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex items-center justify-between h-full">
-				<Link href="/" aria-label="InterFusta" className="text-ink">
+				<Link href="/" aria-label="Fusteria InterFusta" className="text-ink">
 					<Logo />
 				</Link>
 
@@ -43,6 +46,14 @@ export function Navigation() {
 							{link.label}
 						</Link>
 					))}
+					<a
+						href={PHONE_HREF}
+						aria-label={`Truca'ns al ${PHONE_NUMBER}`}
+						className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+					>
+						<Phone className="h-3.5 w-3.5" aria-hidden />
+						<span>{PHONE_NUMBER}</span>
+					</a>
 					<div className="ml-3">
 						<ThemeToggle />
 					</div>
@@ -75,7 +86,15 @@ export function Navigation() {
 							{link.label}
 						</Link>
 					))}
-					<div className="px-6 py-4">
+					<div className="px-6 py-4 flex items-center justify-between">
+						<a
+							href={PHONE_HREF}
+							aria-label={`Truca'ns al ${PHONE_NUMBER}`}
+							className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+						>
+							<Phone className="h-3.5 w-3.5" aria-hidden />
+							<span>{PHONE_NUMBER}</span>
+						</a>
 						<ThemeToggle />
 					</div>
 				</div>

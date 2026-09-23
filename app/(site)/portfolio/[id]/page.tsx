@@ -12,7 +12,16 @@ const getCachedProjectDetails = unstable_cache(
 );
 
 // Memoised per-request so the page and generateMetadata share one lookup.
-const getProject = cache(async (id: number) => getCachedProjectDetails(id));
+// Trimmed here so a stray leading/trailing space in the stored title doesn't
+// leak into <title>, og:title, or the alt text derived from it downstream.
+const getProject = cache(async (id: number) => {
+	const project = await getCachedProjectDetails(id);
+	if (!project) return project;
+	// Spreading an `any`-typed value narrows the inferred object literal type
+	// to just the explicit keys, so cast back to keep the rest of `project`'s
+	// (implicitly `any`) shape visible to callers below.
+	return { ...project, title: project.title.trim() } as typeof project;
+});
 
 export async function generateMetadata({
 	params,

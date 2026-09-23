@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 export const formatDate = (date: string) => {
 	if (!date) return "";
 	const d = new Date(date);
-	return d.toLocaleDateString("es-ES", {
+	return d.toLocaleDateString("ca-ES", {
 		year: "numeric",
 		month: "long",
 		day: "numeric",

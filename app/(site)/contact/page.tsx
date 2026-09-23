@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { createContact } from "@/app/actions/contact";
 import { Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -198,7 +199,7 @@ export default function ContactPage() {
 									name="email"
 									type="email"
 									required
-									placeholder="interfusta@interfusta.ad"
+									placeholder="el.teu@email.com"
 									onBlur={handleBlur}
 									onChange={handleChange}
 									aria-invalid={!!errors.email}
@@ -220,7 +221,7 @@ export default function ContactPage() {
 									name="phone"
 									type="tel"
 									required
-									placeholder="+376 804 440"
+									placeholder="+376 XXX XXX"
 									onBlur={handleBlur}
 									onChange={handleChange}
 									aria-invalid={!!errors.phone}
@@ -270,6 +271,17 @@ export default function ContactPage() {
 								"Enviar missatge"
 							)}
 						</Button>
+						<p className="text-[13px] text-ink-muted">
+							En enviar aquest formulari, accepta el tractament de les seves
+							dades tal com es descriu a la nostra{" "}
+							<Link
+								href="/privacitat"
+								className="underline underline-offset-2 hover:text-ink"
+							>
+								política de privacitat
+							</Link>
+							.
+						</p>
 						{error && (
 							<p role="alert" className="text-sm text-brand-ink">
 								{error}
@@ -334,6 +346,18 @@ export default function ContactPage() {
 							</a>
 						</div>
 					</aside>
+				</div>
+			</section>
+
+			<section className="pb-[136px]">
+				<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
+					<iframe
+						src={`${MAPS_URL}&output=embed`}
+						title="Ubicació de Fusteria InterFusta a Google Maps"
+						className="w-full h-[420px] border-0 grayscale-[20%]"
+						loading="lazy"
+						referrerPolicy="no-referrer-when-downgrade"
+					/>
 				</div>
 			</section>
 		</div>

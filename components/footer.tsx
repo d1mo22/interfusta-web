@@ -1,3 +1,8 @@
+import Link from "next/link";
+
+const MAPS_URL =
+	"https://www.google.com/maps?q=Fusteria+InterFusta+SL&ftid=0x12a5f58f12d8ead7:0x4b992abc827fc509";
+
 export function Footer() {
 	return (
 		<footer className="bg-stone pt-[72px] pb-10">
@@ -15,15 +20,30 @@ export function Footer() {
 					<div className="flex flex-col gap-3">
 						<span className="font-mono text-ink-muted text-sm">Contacte</span>
 						<p className="font-mono text-sm leading-[1.9]">
-							interfusta@interfusta.ad
+							<a
+								href="mailto:interfusta@interfusta.ad"
+								className="hover:text-ink transition-colors duration-150"
+							>
+								interfusta@interfusta.ad
+							</a>
 							<br />
-							+376 804 440
+							<a
+								href="tel:+376804440"
+								className="hover:text-ink transition-colors duration-150"
+							>
+								+376 804 440
+							</a>
 						</p>
-						<p className="font-mono text-sm">
+						<a
+							href={MAPS_URL}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="font-mono text-sm hover:text-ink transition-colors duration-150"
+						>
 							Passatge d&apos;Enclar S/N
 							<br />
 							Santa Coloma, AD500, Andorra
-						</p>
+						</a>
 					</div>
 					<div className="flex flex-col gap-3">
 						<span className="font-mono text-ink-muted text-sm">Horari</span>
@@ -36,9 +56,17 @@ export function Footer() {
 						</p>
 					</div>
 				</div>
-				<div className="border-t border-hairline mt-16 pt-5 font-mono text-sm text-ink-muted flex justify-between">
-					<span>&copy; {new Date().getFullYear()} Interfusta. Tots els drets reservats.</span>
-					<span>Santa Coloma, Andorra</span>
+				<div className="border-t border-hairline mt-16 pt-5 font-mono text-sm text-ink-muted flex flex-wrap items-center justify-between gap-4">
+					<span>&copy; {new Date().getFullYear()} Fusteria InterFusta. Tots els drets reservats.</span>
+					<div className="flex items-center gap-4">
+						<Link
+							href="/privacitat"
+							className="hover:text-ink transition-colors duration-150"
+						>
+							Política de privacitat
+						</Link>
+						<span>Santa Coloma, Andorra</span>
+					</div>
 				</div>
 			</div>
 		</footer>

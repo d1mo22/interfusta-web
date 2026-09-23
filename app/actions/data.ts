@@ -115,8 +115,8 @@ export async function getCategories(): Promise<Category[]> {
 	try {
 		return (await sql`
       SELECT id, name 
-      FROM category 
-      WHERE name != 'Todos los Proyectos'
+      FROM category
+      WHERE lower(trim(name)) NOT IN ('tots els projectes', 'todos los proyectos')
       ORDER BY id ASC
     `) as Category[];
 	} catch (error) {
