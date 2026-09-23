@@ -186,7 +186,7 @@ export function ErrorSheet({
 										key={ri}
 										d={ring.d}
 										pathLength={1}
-										className={`ring-path${ring.isBark ? " ring-path--bark" : ""}`}
+										className={ring.isBark ? "ring-path ring-path--bark" : "ring-path"}
 										style={{ animationDelay: `${ring.delayS}s` }}
 									/>
 								),
