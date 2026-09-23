@@ -1,6 +1,4 @@
 import "./globals.css";
-import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeScript } from "@/components/theme-script";
@@ -61,11 +59,10 @@ export default function RootLayout({
 				>
 					Ves al contingut
 				</a>
-				<Navigation />
-				<main id="main">{children}</main>
+				{/* Each route group, (site) and (admin), brings its own chrome and <main id="main">. */}
+				{children}
 				<Analytics />
 				<SpeedInsights />
-				<Footer />
 			</body>
 		</html>
 	);

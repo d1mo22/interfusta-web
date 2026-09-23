@@ -2,6 +2,7 @@
 
 import { sql } from "@/lib/db";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
 import {
 	SESSION_COOKIE,
@@ -55,4 +56,9 @@ export async function login(formData: FormData) {
 
 export async function getCurrentUser() {
 	return verifySession(cookies().get(SESSION_COOKIE)?.value);
+}
+
+export async function logout() {
+	cookies().delete(SESSION_COOKIE);
+	redirect("/auth/login");
 }

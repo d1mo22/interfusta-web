@@ -1,4 +1,4 @@
-import { S3Client } from "@aws-sdk/client-s3";
+import { DeleteObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
 export const r2Client = new S3Client({
 	region: "auto",
@@ -19,4 +19,22 @@ export const r2Client = new S3Client({
 
 export function getPublicUrl(key: string) {
 	return `${process.env.R2_URL}/${key}`;
+}
+
+// ponytail: best-effort. A failed delete leaves an orphaned file in the bucket
+// (cents); failing the save over it would lose the worker's changes.
+export async function deleteR2Urls(urls: string[]) {
+	const prefix = `${process.env.R2_URL}/`;
+	await Promise.allSettled(
+		urls
+			.filter((u) => u.startsWith(prefix))
+			.map((u) =>
+				r2Client.send(
+					new DeleteObjectCommand({
+						Bucket: process.env.R2_BUCKET_NAME,
+						Key: u.slice(prefix.length),
+					}),
+				),
+			),
+	);
 }
