@@ -1,0 +1,25 @@
+app/fonts.ts
+  s_fba9a4106f2cff::t_4f950f7c1cbdc3 7-19
+app/global-error.tsx
+  s_fba9a4106f2cff::t_3ccd9276d824fd 6,28
+app/globals.css
+  s_fba9a4106f2cff::t_82036af7bbe798 62
+app/layout.tsx
+  s_fba9a4106f2cff::t_aeed421068836c 5,114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "75f75d07f3c901fb134c1301ada4a6f1c5c3a144",
+  "prompts": {},
+  "sessions": {
+    "s_fba9a4106f2cff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_fba9a4106f2cff",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
