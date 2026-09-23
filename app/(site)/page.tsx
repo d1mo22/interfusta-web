@@ -47,6 +47,8 @@ export default function Home() {
 	const videoRef = useRef<HTMLVideoElement>(null);
 
 	useEffect(() => {
+		// ponytail: post-hydration mount flag keeps the 31MB video source off the LCP path
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setVideoMounted(true);
 	}, []);
 
