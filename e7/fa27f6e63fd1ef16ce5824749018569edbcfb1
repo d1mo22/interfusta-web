@@ -1,0 +1,29 @@
+messages/ca.json
+  s_28c6ef69a78a4f::t_9e18b8c024b98b 1-476
+messages/en.json
+  s_28c6ef69a78a4f::t_629423eaddb5e3 1-476
+messages/es.json
+  s_28c6ef69a78a4f::t_d7768876bda83f 1-476
+messages/fr.json
+  s_28c6ef69a78a4f::t_a590f5deb55edc 1-476
+messages/pt.json
+  s_28c6ef69a78a4f::t_d5e50f915aa15a 1-476
+scripts/translate-messages.ts
+  s_28c6ef69a78a4f::t_bf5b9dca53e5ea 1-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "e7fa27f6e63fd1ef16ce5824749018569edbcfb1",
+  "prompts": {},
+  "sessions": {
+    "s_28c6ef69a78a4f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_28c6ef69a78a4f",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
