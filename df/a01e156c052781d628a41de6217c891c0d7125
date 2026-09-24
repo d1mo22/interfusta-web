@@ -1,0 +1,19 @@
+scripts/translate-backfill.ts
+  s_e298c188f3e347::t_9fc9345f922edf 1-120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "dfa01e156c052781d628a41de6217c891c0d7125",
+  "prompts": {},
+  "sessions": {
+    "s_e298c188f3e347": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_e298c188f3e347",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
