@@ -1,0 +1,27 @@
+app/[lang]/not-found.tsx
+  s_26792eaf92ecc0::t_b1e3d4c0dd27a5 2,10
+app/global-not-found.tsx
+  s_26792eaf92ecc0::t_86bd30d75fa312 1-32
+components/not-found-content.tsx
+  s_26792eaf92ecc0::t_361ec43bcd1963 1-62
+next.config.mjs
+  s_26792eaf92ecc0::t_5590c1d26a12c8 26-31
+proxy.ts
+  s_26792eaf92ecc0::t_8f45c9287d0ee5 4-6,9-16,28-52,54-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "5201fd8a0f4256222d23c802cf14ac2031497943",
+  "prompts": {},
+  "sessions": {
+    "s_26792eaf92ecc0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_26792eaf92ecc0",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
