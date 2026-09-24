@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import { cache } from "react";
 import { notFound } from "next/navigation";
 import { unstable_cache } from "next/cache";
 import ClientPage from "./client-page";
 import { getProjectDetails } from "@/app/actions/data";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, getLocale } from "@/lib/i18n";
+import { alternates, OG_IMAGE, ogLocale } from "@/lib/i18n-config";
 import type { Project, ImageData, Feature } from "@/types/types";
 
 const getCachedProjectDetails = unstable_cache(
@@ -26,9 +28,9 @@ const getProject = cache(async (id: number) => {
 
 export async function generateMetadata({
 	params,
-}: { params: Promise<{ id: string }> }) {
+}: { params: Promise<{ id: string }> }): Promise<Metadata> {
 	const id = Number.parseInt((await params).id);
-	const project = await getProject(id);
+	const [project, lang] = await Promise.all([getProject(id), getLocale()]);
 
 	if (!project) {
 		return {};
@@ -39,10 +41,13 @@ export async function generateMetadata({
 	return {
 		title: project.title,
 		description: project.description,
+		alternates: alternates(lang, `/portfolio/${id}`),
 		openGraph: {
 			title: project.title,
 			description: project.description,
-			images: image ? [{ url: image.url }] : undefined,
+			locale: ogLocale(lang),
+			// Projects without photos still carry the site share image.
+			images: image ? [{ url: image.url }] : [OG_IMAGE],
 		},
 	};
 }
@@ -52,7 +57,7 @@ export default async function ProjectDetails({
 }: { params: Promise<{ id: string }> }) {
 	const id = Number.parseInt((await params).id);
 
-	const [project, dict] = await Promise.all([getProject(id), getDictionary()]);
+	const [project, lang, dict] = await Promise.all([getProject(id), getLocale(), getDictionary()]);
 
 	if (!project) {
 		notFound();
@@ -64,6 +69,8 @@ export default async function ProjectDetails({
 			images={project.images as ImageData[]}
 			features={project.features as Feature[]}
 			category_name={project.category_name}
+			lang={lang}
+			dict={dict.project}
 			galleryDict={dict.gallery}
 		/>
 	);

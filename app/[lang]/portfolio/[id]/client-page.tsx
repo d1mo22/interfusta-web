@@ -9,12 +9,15 @@ import { Grain } from "@/components/grain";
 import { formatDate } from "@/lib/utils";
 import type { Project, ImageData, Feature } from "@/types/types";
 import type { Dictionary } from "@/lib/i18n";
+import { fill, localeHref, type Locale } from "@/lib/i18n-config";
 
 interface ClientPageProps {
 	project: Project;
 	images: ImageData[];
 	features: Feature[];
 	category_name: string;
+	lang: Locale;
+	dict: Dictionary["project"];
 	galleryDict: Dictionary["gallery"];
 }
 
@@ -23,6 +26,8 @@ export default function ClientPage({
 	images,
 	features,
 	category_name,
+	lang,
+	dict,
 	galleryDict,
 }: ClientPageProps) {
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -39,10 +44,10 @@ export default function ClientPage({
 			<section className="pt-[104px] pb-[136px]">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col gap-12">
 					<Link
-						href="/portfolio"
+						href={localeHref(lang, "/portfolio")}
 						className="inline-flex items-center gap-2 text-[15px] text-ink-muted hover:text-ink w-fit"
 					>
-						<ChevronLeft className="size-4" /> Torna als projectes
+						<ChevronLeft className="size-4" /> {dict.back}
 					</Link>
 
 					<h1 className="h-page">{project.title}</h1>
@@ -50,20 +55,20 @@ export default function ClientPage({
 					<div className="grid grid-cols-3 gap-8 border-y border-hairline py-5">
 						<div className="flex flex-col gap-2">
 							<span className="font-mono text-sm text-ink-muted">
-								Categoria
+								{dict.category}
 							</span>
 							<span className="font-mono">{category_name}</span>
 						</div>
 						<div className="flex flex-col gap-2">
 							<span className="font-mono text-sm text-ink-muted">
-								Data de finalització
+								{dict.completed}
 							</span>
 							<span className="font-mono">
-								{formatDate(project.completion_date)}
+								{formatDate(project.completion_date, lang)}
 							</span>
 						</div>
 						<div className="flex flex-col gap-2">
-							<span className="font-mono text-sm text-ink-muted">Durada</span>
+							<span className="font-mono text-sm text-ink-muted">{dict.duration}</span>
 							<span className="font-mono">{project.duration}</span>
 						</div>
 					</div>
@@ -105,12 +110,12 @@ export default function ClientPage({
 								<button
 									type="button"
 									onClick={() => openGallery(index)}
-									aria-label={`Obre la imatge ${index + 1} de ${project.title}`}
+									aria-label={fill(dict.openImage, { n: index + 1, title: project.title })}
 									className="block w-full cursor-pointer appearance-none border-0 bg-transparent p-0 text-left"
 								>
 									<Image
 										src={image.url || "/placeholder.svg"}
-										alt={`${project.title} - img ${index + 1}`}
+										alt={fill(dict.imageAlt, { n: index + 1, title: project.title })}
 										width={800}
 										height={1000}
 										sizes="(min-width: 768px) 33vw, 100vw"

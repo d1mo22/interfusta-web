@@ -6,6 +6,8 @@ import { useState, useRef } from "react";
 import type { ClientPortfolioProps, Project, Category } from "@/types/types";
 import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
+import { Accent } from "@/components/accent";
+import { localeHref } from "@/lib/i18n-config";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -17,6 +19,8 @@ function isAllCategory(name: string) {
 export default function PortfolioPage({
 	initialProjects,
 	categories,
+	lang,
+	dict,
 }: ClientPortfolioProps) {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeCategory, setActiveCategory] = useState<Category | undefined>(
@@ -78,12 +82,8 @@ export default function PortfolioPage({
 			<section className="pt-[104px] pb-[72px]">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
 					<SectionHeading
-						title={
-							<>
-								Els nostres <span className="text-brand">projectes</span>
-							</>
-						}
-						intro="Explori la nostra col·lecció de projectes acabats, que mostren el nostre compromís amb la qualitat artesanal i l'atenció al detall."
+						title={<Accent text={dict.title} />}
+						intro={dict.intro}
 					/>
 				</div>
 			</section>
@@ -107,7 +107,7 @@ export default function PortfolioPage({
 											: "text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 									}
 								>
-									{isAllCategory(category.name) ? "Tots" : category.name}
+									{isAllCategory(category.name) ? dict.all : category.name}
 								</button>
 							);
 						})}
@@ -115,13 +115,13 @@ export default function PortfolioPage({
 
 					{paginatedProjects.length === 0 ? (
 						<p className="text-ink-muted">
-							No hi ha projectes en aquesta categoria.
+							{dict.empty}
 						</p>
 					) : (
 						<>
 							<article className="grid lg:grid-cols-[8fr_4fr] gap-16 items-end">
 								<div className="relative aspect-3/2 overflow-hidden">
-									<Link href={`/portfolio/${leadProject.id}`}>
+									<Link href={localeHref(lang, `/portfolio/${leadProject.id}`)}>
 										<Image
 											src={leadProject.first_image.url}
 											alt={leadProject.title}
@@ -146,11 +146,11 @@ export default function PortfolioPage({
 										{categoryName(leadProject.category_id)}
 									</span>
 									<Link
-										href={`/portfolio/${leadProject.id}`}
+										href={localeHref(lang, `/portfolio/${leadProject.id}`)}
 										prefetch
 										className="self-start underline decoration-brand decoration-2 underline-offset-[6px] font-medium hover:text-brand-ink"
 									>
-										Veure detalls
+										{dict.details}
 									</Link>
 								</div>
 							</article>
@@ -160,7 +160,7 @@ export default function PortfolioPage({
 									{restProjects.map((project) => (
 										<article key={project.id} className="flex flex-col gap-4">
 											<div className="relative aspect-4/5 overflow-hidden">
-												<Link href={`/portfolio/${project.id}`}>
+												<Link href={localeHref(lang, `/portfolio/${project.id}`)}>
 													<Image
 														src={project.first_image.url}
 														alt={project.title}
@@ -185,11 +185,11 @@ export default function PortfolioPage({
 													{categoryName(project.category_id)}
 												</span>
 												<Link
-													href={`/portfolio/${project.id}`}
+													href={localeHref(lang, `/portfolio/${project.id}`)}
 													prefetch
 													className="text-[15px] underline decoration-brand decoration-2 underline-offset-[6px] font-medium hover:text-brand-ink"
 												>
-													Veure detalls
+													{dict.details}
 												</Link>
 											</div>
 										</article>
@@ -207,7 +207,7 @@ export default function PortfolioPage({
 								disabled={currentPage === 1}
 								className="font-mono text-[13px] text-ink-muted hover:text-ink transition-colors duration-150 disabled:opacity-40 disabled:pointer-events-none"
 							>
-								Anterior
+								{dict.previous}
 							</button>
 							{Array.from(
 								{
@@ -234,7 +234,7 @@ export default function PortfolioPage({
 								disabled={filteredProjects.length <= currentPage * ITEMS_PER_PAGE}
 								className="font-mono text-[13px] text-ink-muted hover:text-ink transition-colors duration-150 disabled:opacity-40 disabled:pointer-events-none"
 							>
-								Següent
+								{dict.next}
 							</button>
 						</div>
 					)}
