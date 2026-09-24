@@ -1,0 +1,23 @@
+db/migrations/001_i18n.sql
+  s_a4dbc839812a6a::t_a3950ab8203546 1-6
+lib/translate.check.ts
+  s_a4dbc839812a6a::t_ac82c0611ae500 3,59-135
+lib/translate.ts
+  s_a4dbc839812a6a::t_c922520e91b2b8 65-130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "9c7394f2b7d64c9b944ab0171d9132f2400484bc",
+  "prompts": {},
+  "sessions": {
+    "s_a4dbc839812a6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_a4dbc839812a6a",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
