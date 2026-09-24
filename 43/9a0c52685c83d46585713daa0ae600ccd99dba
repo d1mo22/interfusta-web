@@ -1,0 +1,25 @@
+app/actions/data.ts
+  s_4afd2dc13cd05a::t_936ceec61cf16c 33-35,37,50,54,72,93-97,102
+lib/translate.check.ts
+  s_4afd2dc13cd05a::t_5f2cc41d05fd44 112-123
+lib/translate.ts
+  s_4afd2dc13cd05a::t_76fc9f7974d9e1 77-78,93-97
+scripts/translate-backfill.ts
+  s_4afd2dc13cd05a::t_e6a77d13085c06 135,156,187
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "439a0c52685c83d46585713daa0ae600ccd99dba",
+  "prompts": {},
+  "sessions": {
+    "s_4afd2dc13cd05a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_4afd2dc13cd05a",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
