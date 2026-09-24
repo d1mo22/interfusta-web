@@ -11,11 +11,6 @@ import { localeHref } from "@/lib/i18n-config";
 
 const ITEMS_PER_PAGE = 8;
 
-function isAllCategory(name: string) {
-	const normalized = name.toLowerCase().trim();
-	return normalized === "tots els projectes";
-}
-
 export default function PortfolioPage({
 	initialProjects,
 	categories,
@@ -25,7 +20,7 @@ export default function PortfolioPage({
 	const [currentPage, setCurrentPage] = useState(1);
 	const [activeCategory, setActiveCategory] = useState<Category | undefined>(
 		() =>
-			categories.find((category) => isAllCategory(category.name)) ??
+			categories.find((category) => category.is_all) ??
 			categories[0],
 	);
 	const projectsRef = useRef<HTMLDivElement>(null);
@@ -59,15 +54,15 @@ export default function PortfolioPage({
 	};
 
 	const orderedCategories = [...categories].sort((a, b) => {
-		if (isAllCategory(a.name)) return -1;
-		if (isAllCategory(b.name)) return 1;
+		if (a.is_all) return -1;
+		if (b.is_all) return 1;
 		return 0;
 	});
 
 	const filteredProjects = activeCategory
 		? initialProjects.filter(
 				(project) =>
-					isAllCategory(activeCategory.name) ||
+					activeCategory.is_all ||
 					project.category_id === activeCategory.id,
 			)
 		: initialProjects;
@@ -107,7 +102,7 @@ export default function PortfolioPage({
 											: "text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 									}
 								>
-									{isAllCategory(category.name) ? dict.all : category.name}
+									{category.is_all ? dict.all : category.name}
 								</button>
 							);
 						})}

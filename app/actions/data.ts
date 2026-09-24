@@ -1,5 +1,7 @@
 import { sql } from "@/lib/db";
 import type { Project, User, Category } from "@/types/types";
+import { TARGETS, type Locale } from "@/lib/i18n-config";
+import { PROJECT_FIELDS } from "@/lib/translate";
 
 export async function getProjects() {
 	return (await sql`
@@ -18,30 +20,45 @@ export async function getProjects() {
 	`) as Project[];
 }
 
-export async function getPortfolioData() {
+// `lang` picks the translation; anything untranslated falls back to Catalan.
+// The admin calls it without `lang` and gets plain Catalan.
+export async function getPortfolioData(lang: Locale = "ca") {
 	const data = await sql`
-    SELECT 
+    SELECT
     json_build_object(
       'projects', (
       SELECT json_agg(
         json_build_object(
         'id', p.id,
-        'title', trim(p.title),
-        'description', p.description,
-        'full_description', p.full_description,
+        'title', trim(COALESCE(tr.t ->> 'title', p.title)),
+        'description', COALESCE(tr.t ->> 'description', p.description),
+        'full_description', COALESCE(tr.t ->> 'full_description', p.full_description),
         'completion_date', p.completion_date,
-        'duration', p.duration,
+        'duration', COALESCE(tr.t ->> 'duration', p.duration),
         'category_id', p.category_id,
         'first_image', json_build_object(
           'url', i.url,
           'alt_text', i.alt_text
         ),
         'last_update', p.last_update,
-        'updated_by', p.updated_by
+        'updated_by', p.updated_by,
+        -- For the admin badge: some field or feature lacks a translation in some language.
+        'translation_pending', (
+          EXISTS (
+            SELECT 1
+            FROM unnest(${[...TARGETS]}::text[]) l, unnest(${[...PROJECT_FIELDS]}::text[]) f
+            WHERE COALESCE(p.translations -> l ->> f, '') = ''
+          ) OR EXISTS (
+            SELECT 1
+            FROM feature fe, unnest(${[...TARGETS]}::text[]) l
+            WHERE fe.project_id = p.id AND COALESCE(fe.translations -> l ->> 'description', '') = ''
+          )
+        )
         )
         ORDER BY p.id ASC
       )
       FROM project p
+      CROSS JOIN LATERAL (SELECT p.translations -> ${lang}::text AS t) tr
       LEFT JOIN (
         SELECT DISTINCT ON (project_id) *
         FROM image
@@ -52,7 +69,9 @@ export async function getPortfolioData() {
       SELECT json_agg(
         json_build_object(
         'id', c.id,
-        'name', c.name
+        'name', COALESCE(c.translations -> ${lang}::text ->> 'name', c.name),
+        -- Matched on the Catalan column so the "all" filter works in every language.
+        'is_all', lower(trim(c.name)) = 'tots els projectes'
         )
         ORDER BY c.id
       )
@@ -64,23 +83,31 @@ export async function getPortfolioData() {
 	return data[0].portfolio_data;
 }
 
-export async function getProjectDetails(id: number) {
+export async function getProjectDetails(id: number, lang: Locale = "ca") {
+	// json_agg over zero rows is NULL, not []. COALESCE keeps features and
+	// images arrays for a project with no features or photos, so the detail
+	// page's images[0] / images.slice(1) / features.map don't throw.
 	const [project] = await sql`
-    SELECT 
-      p.*,
-      c.name as category_name,
-      (
+    SELECT
+      p.id, p.completion_date, p.category_id, p.last_update, p.updated_by, p.translations,
+      COALESCE(tr.t ->> 'title', p.title) AS title,
+      COALESCE(tr.t ->> 'description', p.description) AS description,
+      COALESCE(tr.t ->> 'full_description', p.full_description) AS full_description,
+      COALESCE(tr.t ->> 'duration', p.duration) AS duration,
+      COALESCE(c.translations -> ${lang}::text ->> 'name', c.name) AS category_name,
+      COALESCE((
         SELECT json_agg(
           json_build_object(
             'id', f.id,
-            'description', f.description,
-            'project_id', f.project_id
+            'description', COALESCE(f.translations -> ${lang}::text ->> 'description', f.description),
+            'project_id', f.project_id,
+            'translations', f.translations
           ) ORDER BY f.id
         )
         FROM feature f
         WHERE f.project_id = p.id
-      ) as features,
-      (
+      ), '[]'::json) as features,
+      COALESCE((
         SELECT json_agg(
           json_build_object(
             'id', i.id,
@@ -92,11 +119,11 @@ export async function getProjectDetails(id: number) {
         )
         FROM image i
         WHERE i.project_id = p.id
-      ) as images
+      ), '[]'::json) as images
     FROM project p
+    CROSS JOIN LATERAL (SELECT p.translations -> ${lang}::text AS t) tr
     LEFT JOIN category c ON p.category_id = c.id
     WHERE p.id = ${id}
-    GROUP BY p.id, c.id, c.name
   `;
 	return project;
 }
