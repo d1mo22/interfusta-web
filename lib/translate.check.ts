@@ -139,6 +139,28 @@ assert.deepStrictEqual(missingFields({ es: { title: "x" } }, ["title"]), ["title
 assert.deepStrictEqual(missingFields(null, ["title"]), ["title"]);
 assert.deepStrictEqual(missingFields(every({ title: "x" }), ["title"]), []);
 
+// A hand SQL edit can put a non-string value in the stored jsonb; missingFields
+// must treat that as missing rather than throwing on `.trim()`
+assert.deepStrictEqual(
+	missingFields({ es: { title: 5 as unknown as string } }, ["title"]),
+	["title"],
+);
+assert.deepStrictEqual(
+	missingFields({ es: { title: null as unknown as string } }, ["title"]),
+	["title"],
+);
+// Same guard inside mergeTranslations: a non-string stored value is not
+// "already filled", so a pending fresh value overwrites it instead of being skipped
+assert.deepStrictEqual(
+	mergeTranslations(
+		{ es: { title: 5 as unknown as string }, fr: {}, en: {}, pt: {} },
+		every({ title: "Nuevo" }),
+		[],
+		["title"],
+	),
+	every({ title: "Nuevo" }),
+);
+
 // sanitizeTranslations: the admin's trust boundary
 assert.deepStrictEqual(
 	sanitizeTranslations(

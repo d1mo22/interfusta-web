@@ -53,6 +53,12 @@ export default function TranslationsEditor({
 		setFeatureTr(byId(features));
 	}
 
+	// Unsaved changes since the last server sync (`prev`): retry must never
+	// overwrite these with a refresh, since that would silently discard them.
+	const dirty =
+		JSON.stringify(project) !== JSON.stringify(prev.initial ?? {}) ||
+		JSON.stringify(featureTr) !== JSON.stringify(byId(prev.features));
+
 	const setField = (field: ProjectField, value: string) =>
 		setProject((p) => ({ ...p, [lang]: { ...p[lang], [field]: value } }));
 	const setFeature = (id: number, value: string) =>
@@ -92,15 +98,18 @@ export default function TranslationsEditor({
 			{pending && (
 				<div className="flex flex-wrap items-center justify-between gap-4 border border-hairline p-4">
 					<p className="text-[15px]">Falten traduccions. A la web es mostra el text en català.</p>
-					<button
-						type="button"
-						className="btn btn-quiet h-10 px-4"
-						disabled={busy !== null}
-						onClick={() => run("retry")}
-					>
-						{busy === "retry" && <Loader className="size-4 mr-2 animate-spin" />}
-						Retradueix el que falta
-					</button>
+					<div className="flex items-center gap-3">
+						{dirty && <span className="text-[13px] text-ink-muted">Desa primer els canvis.</span>}
+						<button
+							type="button"
+							className="btn btn-quiet h-10 px-4"
+							disabled={busy !== null || dirty}
+							onClick={() => run("retry")}
+						>
+							{busy === "retry" && <Loader className="size-4 mr-2 animate-spin" />}
+							Retradueix el que falta
+						</button>
+					</div>
 				</div>
 			)}
 
@@ -131,57 +140,59 @@ export default function TranslationsEditor({
 				aria-labelledby={`tr-tab-${lang}`}
 				className="flex flex-col gap-8"
 			>
-				{FIELDS.map((field) => {
-					const props = {
-						id: `tr-${lang}-${field}`,
-						lang,
-						value: project[lang]?.[field] ?? "",
-						className: "rounded-none",
-					};
-					return (
-						<div key={field} className="flex flex-col gap-2">
-							<label htmlFor={props.id} className="text-sm font-medium">
-								{FIELD_LABELS[field]}
-							</label>
-							<p lang="ca" className="text-[13px] text-ink-muted whitespace-pre-line">
-								{catalan[field]}
-							</p>
-							{LONG.includes(field) ? (
-								<Textarea
-									{...props}
-									rows={field === "full_description" ? 8 : 3}
-									onChange={(e) => setField(field, e.target.value)}
-								/>
-							) : (
-								<Input {...props} onChange={(e) => setField(field, e.target.value)} />
-							)}
-						</div>
-					);
-				})}
-
-				{features.length > 0 && (
-					<fieldset className="flex flex-col gap-4">
-						<legend className="text-sm font-medium mb-2">Característiques</legend>
-						{features.map((f) => (
-							<div key={f.id} className="flex flex-col gap-1">
-								<label
-									htmlFor={`tr-${lang}-f${f.id}`}
-									lang="ca"
-									className="text-[13px] text-ink-muted"
-								>
-									{f.description}
+				<fieldset disabled={busy !== null} className="contents">
+					{FIELDS.map((field) => {
+						const props = {
+							id: `tr-${lang}-${field}`,
+							lang,
+							value: project[lang]?.[field] ?? "",
+							className: "rounded-none",
+						};
+						return (
+							<div key={field} className="flex flex-col gap-2">
+								<label htmlFor={props.id} className="text-sm font-medium">
+									{FIELD_LABELS[field]}
 								</label>
-								<Input
-									id={`tr-${lang}-f${f.id}`}
-									lang={lang}
-									value={featureTr[f.id]?.[lang]?.description ?? ""}
-									onChange={(e) => setFeature(f.id, e.target.value)}
-									className="rounded-none"
-								/>
+								<p lang="ca" className="text-[13px] text-ink-muted whitespace-pre-line">
+									{catalan[field]}
+								</p>
+								{LONG.includes(field) ? (
+									<Textarea
+										{...props}
+										rows={field === "full_description" ? 8 : 3}
+										onChange={(e) => setField(field, e.target.value)}
+									/>
+								) : (
+									<Input {...props} onChange={(e) => setField(field, e.target.value)} />
+								)}
 							</div>
-						))}
-					</fieldset>
-				)}
+						);
+					})}
+
+					{features.length > 0 && (
+						<fieldset className="flex flex-col gap-4">
+							<legend className="text-sm font-medium mb-2">Característiques</legend>
+							{features.map((f) => (
+								<div key={f.id} className="flex flex-col gap-1">
+									<label
+										htmlFor={`tr-${lang}-f${f.id}`}
+										lang="ca"
+										className="text-[13px] text-ink-muted"
+									>
+										{f.description}
+									</label>
+									<Input
+										id={`tr-${lang}-f${f.id}`}
+										lang={lang}
+										value={featureTr[f.id]?.[lang]?.description ?? ""}
+										onChange={(e) => setFeature(f.id, e.target.value)}
+										className="rounded-none"
+									/>
+								</div>
+							))}
+						</fieldset>
+					)}
+				</fieldset>
 			</div>
 
 			<div className="flex items-center gap-4">

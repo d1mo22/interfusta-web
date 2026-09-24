@@ -67,6 +67,11 @@ export async function translateFields<K extends string>(
 export const PROJECT_FIELDS = ["title", "description", "full_description", "duration"] as const;
 export type ProjectField = (typeof PROJECT_FIELDS)[number];
 
+// True when `v` is a non-blank string. Stored jsonb should only ever hold
+// strings, but a hand SQL edit can put anything in it, so treat non-string
+// values as blank rather than crashing on `.trim()`.
+const filled = (v: unknown): v is string => typeof v === "string" && v.trim() !== "";
+
 // Fresh machine output replaces only the fields whose Catalan changed, so a
 // hand-corrected translation survives edits to other fields. If translating
 // failed (fresh = null), the changed fields are dropped instead: the site then
@@ -94,7 +99,7 @@ export function mergeTranslations<K extends string>(
 						typeof v === "string" &&
 						v.trim() !== "" &&
 						(changed.includes(k as K) ||
-							(pending.includes(k as K) && !stored[k as K]?.trim())),
+							(pending.includes(k as K) && !filled(stored[k as K]))),
 				),
 			);
 			return [t, { ...kept, ...applied }];
@@ -102,11 +107,14 @@ export function mergeTranslations<K extends string>(
 	) as FieldTranslations<K>;
 }
 
-// Fields that lack a non-blank translation in at least one language.
+// Fields that lack a non-blank translation in at least one language. Stored
+// jsonb can hold a non-string value if it was ever hand-edited with SQL
+// (this project's own workflow does that routinely); treat that as missing
+// rather than throwing.
 export const missingFields = <K extends string>(
 	t: FieldTranslations<K> | null | undefined,
 	fields: readonly K[],
-): K[] => fields.filter((f) => TARGETS.some((l) => !t?.[l]?.[f]?.trim()));
+): K[] => fields.filter((f) => TARGETS.some((l) => !filled(t?.[l]?.[f])));
 
 // A stored row: its Catalan columns plus the `translations` jsonb.
 export type TranslatedRow<K extends string> = Partial<Record<K, string | null>> & {

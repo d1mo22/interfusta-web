@@ -231,7 +231,7 @@ export async function updateProjectTranslations(
 	);
 
 	try {
-		const [updated] = await sql.transaction([
+		const [updated, ...featureResults] = await sql.transaction([
 			sql`
 				UPDATE project
 				SET translations = ${JSON.stringify(project)}::jsonb, last_update = NOW(), updated_by = ${user.name}
@@ -243,11 +243,19 @@ export async function updateProjectTranslations(
 					UPDATE feature
 					SET translations = ${JSON.stringify(sanitizeTranslations(f.translations, ["description"]))}::jsonb
 					WHERE id = ${f.id} AND project_id = ${id}
+					RETURNING id
 				`,
 			),
 		]);
 		if (!updated.length) return { error: "No s'ha trobat el projecte" };
 		revalidate();
+		// A feature id the browser was holding no longer exists (the Projecte
+		// wizard re-creates every feature row on save): that UPDATE matched
+		// nothing, so report it instead of a false "desat" for a discarded edit.
+		if (featureResults.some((rows) => !rows.length))
+			return {
+				error: "Algunes característiques han canviat. Recarrega la pàgina i torna-ho a provar.",
+			};
 		return { id };
 	} catch (e) {
 		console.error("Error saving translations:", e);
