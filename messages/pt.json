@@ -1,7 +1,7 @@
 {
 	"meta": {
 		"title": "Fusteria InterFusta - Serviços especializados de carpintaria",
-		"description": "Serviços profissionais de carpintaria e carpintaria em Andorra"
+		"description": "Serviços profissionais de carpintaria e marcenaria em Andorra"
 	},
 	"skipLink": "Saltar para o conteúdo",
 	"nav": {
@@ -381,7 +381,7 @@
 		"category": "Categoria",
 		"completed": "Data de fim",
 		"duration": "Duração",
-		"openImage": "Open {title} image {n}",
+		"openImage": "Abrir a imagem {n} de {title}",
 		"imageAlt": "{title} - imagem {n}"
 	},
 	"gallery": {

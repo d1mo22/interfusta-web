@@ -1,7 +1,7 @@
 {
 	"meta": {
 		"title": "Fusteria InterFusta - Services d’experts en menuiserie",
-		"description": "Services professionnels de menuiserie et de menuiserie en Andorre"
+		"description": "Services professionnels de menuiserie et d’ébénisterie en Andorre"
 	},
 	"skipLink": "Passer au contenu",
 	"nav": {
@@ -381,7 +381,7 @@
 		"category": "Catégorie",
 		"completed": "Date de fin",
 		"duration": "Durée",
-		"openImage": "Open {title} image {n}",
+		"openImage": "Ouvrir l’image {n} de {title}",
 		"imageAlt": "{title} - image {n}"
 	},
 	"gallery": {
