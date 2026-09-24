@@ -4,6 +4,16 @@ import { sql } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./auth";
 import { deleteR2Urls } from "@/lib/r2Client";
+import { TARGETS } from "@/lib/i18n-config";
+import {
+	PROJECT_FIELDS,
+	mergeTranslations,
+	missingFields,
+	translateFields,
+	translateTexts,
+	type FieldTranslations,
+	type ProjectField,
+} from "@/lib/translate";
 
 export type ProjectInput = {
 	title: string;
@@ -62,6 +72,86 @@ function revalidate() {
 	revalidatePath("/admin");
 }
 
+const fieldsOf = (p: ProjectInput): Record<ProjectField, string> => ({
+	title: p.title.trim(),
+	description: p.description.trim(),
+	full_description: p.fullDescription.trim(),
+	duration: p.duration.trim(),
+});
+
+const pick = <K extends string>(src: Record<K, string>, keys: readonly K[]) =>
+	Object.fromEntries(keys.map((k) => [k, src[k]])) as Partial<Record<K, string>>;
+
+type FeatureRow = {
+	description: string;
+	translations: FieldTranslations<"description"> | null;
+};
+
+type ProjectRow = Record<ProjectField, string> & {
+	translations: FieldTranslations<ProjectField> | null;
+};
+
+// What to send to Azure for one row. `changed`: the Catalan differs from the
+// stored row (or there is none); these get fresh translations, or are dropped
+// if translating fails. `pending`: Catalan unchanged but some language is
+// missing; only the gaps are filled, so hand fixes stay. See mergeTranslations.
+function translationPlan<K extends string>(
+	fields: Record<K, string>,
+	old: (Partial<Record<K, string>> & { translations: FieldTranslations<K> | null }) | undefined,
+	keys: readonly K[],
+) {
+	const changed = keys.filter((k) => !old || fields[k] !== old[k]);
+	const pending = keys.filter(
+		(k) => !changed.includes(k) && missingFields(old?.translations, [k]).length > 0,
+	);
+	return { changed, pending };
+}
+
+// Project translations after saving `fields` over `old` (undefined when new).
+// translate* never throw; a failure just leaves fields pending.
+async function projectTranslations(
+	fields: Record<ProjectField, string>,
+	old: ProjectRow | undefined,
+): Promise<FieldTranslations<ProjectField>> {
+	const { changed, pending } = translationPlan(fields, old, PROJECT_FIELDS);
+	const todo = [...changed, ...pending];
+	const fresh = todo.length ? await translateFields(pick(fields, todo)) : null;
+	return mergeTranslations(old?.translations, fresh, changed, pending);
+}
+
+// One translation object per feature, in order. Features are matched to the
+// stored ones by their Catalan text: a match keeps its translations (hand
+// edits included) and only fills missing languages; a new or edited text is
+// translated from scratch. Everything that needs Azure goes in one request.
+async function featureTranslations(
+	features: string[],
+	old: FeatureRow[],
+): Promise<FieldTranslations<"description">[]> {
+	const byText = new Map<string, FeatureRow>();
+	for (const f of old) {
+		const seen = byText.get(f.description);
+		// With duplicate texts, prefer the fully translated row.
+		if (!seen || missingFields(seen.translations, ["description"]).length > 0)
+			byText.set(f.description, f);
+	}
+	const plans = features.map((d) => {
+		const row = byText.get(d);
+		return { d, row, ...translationPlan({ description: d }, row, ["description"] as const) };
+	});
+	const todo = [
+		...new Set(plans.filter((p) => p.changed.length || p.pending.length).map((p) => p.d)),
+	];
+	const result = todo.length ? await translateTexts(todo) : null;
+	return plans.map(({ d, row, changed, pending }) => {
+		const i = todo.indexOf(d);
+		const fresh =
+			result && i >= 0
+				? Object.fromEntries(TARGETS.map((t) => [t, { description: result[t][i] }]))
+				: null;
+		return mergeTranslations(row?.translations, fresh, changed, pending);
+	});
+}
+
 export async function createProject(p: ProjectInput): Promise<Result> {
 	const user = await getCurrentUser();
 	if (!user) return { error: "No autoritzat" };
@@ -71,19 +161,26 @@ export async function createProject(p: ProjectInput): Promise<Result> {
 	const urls = resolveUrls(p.images, new Map());
 	if (!urls) return { error: "Alguna foto no s'ha pujat bé" };
 
+	const fields = fieldsOf(p);
+	const [translations, featureTr] = await Promise.all([
+		projectTranslations(fields, undefined),
+		featureTranslations(p.features, []),
+	]);
+
 	try {
 		// One statement so a failure never leaves a project without its photos.
 		const [{ id }] = await sql`
 			WITH p AS (
-				INSERT INTO project (title, description, full_description, completion_date, duration, category_id, updated_by, last_update)
-				VALUES (${p.title.trim()}, ${p.description.trim()}, ${p.fullDescription.trim()}, ${p.completionDate}, ${p.duration.trim()}, ${p.categoryId}, ${user.name}, NOW())
+				INSERT INTO project (title, description, full_description, completion_date, duration, category_id, updated_by, last_update, translations)
+				VALUES (${fields.title}, ${fields.description}, ${fields.full_description}, ${p.completionDate}, ${fields.duration}, ${p.categoryId}, ${user.name}, NOW(), ${JSON.stringify(translations)}::jsonb)
 				RETURNING id
 			), f AS (
-				INSERT INTO feature (project_id, description)
-				SELECT p.id, unnest(${p.features}::text[]) FROM p
+				INSERT INTO feature (project_id, description, translations)
+				SELECT p.id, x.d, x.t
+				FROM p, unnest(${p.features}::text[], ${featureTr.map((t) => JSON.stringify(t))}::jsonb[]) AS x(d, t)
 			), i AS (
 				INSERT INTO image (project_id, url, alt_text, "order")
-				SELECT p.id, t.url, ${p.title.trim()}, t.ord - 1
+				SELECT p.id, t.url, ${fields.title}, t.ord - 1
 				FROM p, unnest(${urls}::text[]) WITH ORDINALITY AS t(url, ord)
 			)
 			SELECT id FROM p
@@ -107,32 +204,51 @@ export async function updateProject(
 	if (error) return { error };
 
 	try {
-		const current = await sql`SELECT id, url FROM image WHERE project_id = ${id}`;
+		const [old] = (await sql`
+			SELECT title, description, full_description, duration, translations
+			FROM project WHERE id = ${id}
+		`) as ProjectRow[];
+		if (!old) return { error: "No s'ha trobat el projecte" };
+		const [current, oldFeatures] = await Promise.all([
+			sql`SELECT id, url FROM image WHERE project_id = ${id}`,
+			sql`SELECT description, translations FROM feature WHERE project_id = ${id}`,
+		]);
 		const urls = resolveUrls(
 			p.images,
 			new Map(current.map((r) => [r.id as number, r.url as string])),
 		);
 		if (!urls) return { error: "Alguna foto no s'ha pujat bé" };
 
+		const fields = fieldsOf(p);
+		const [translations, featureTr] = await Promise.all([
+			projectTranslations(fields, old),
+			featureTranslations(p.features, oldFeatures as FeatureRow[]),
+		]);
+
 		await sql.transaction([
 			sql`
 				UPDATE project SET
-					title = ${p.title.trim()},
-					description = ${p.description.trim()},
-					full_description = ${p.fullDescription.trim()},
+					title = ${fields.title},
+					description = ${fields.description},
+					full_description = ${fields.full_description},
 					completion_date = ${p.completionDate},
-					duration = ${p.duration.trim()},
+					duration = ${fields.duration},
 					category_id = ${p.categoryId},
+					translations = ${JSON.stringify(translations)}::jsonb,
 					last_update = NOW(),
 					updated_by = ${user.name}
 				WHERE id = ${id}
 			`,
 			sql`DELETE FROM feature WHERE project_id = ${id}`,
-			sql`INSERT INTO feature (project_id, description) SELECT ${id}, unnest(${p.features}::text[])`,
+			sql`
+				INSERT INTO feature (project_id, description, translations)
+				SELECT ${id}, x.d, x.t
+				FROM unnest(${p.features}::text[], ${featureTr.map((t) => JSON.stringify(t))}::jsonb[]) AS x(d, t)
+			`,
 			sql`DELETE FROM image WHERE project_id = ${id}`,
 			sql`
 				INSERT INTO image (project_id, url, alt_text, "order")
-				SELECT ${id}, t.url, ${p.title.trim()}, t.ord - 1
+				SELECT ${id}, t.url, ${fields.title}, t.ord - 1
 				FROM unnest(${urls}::text[]) WITH ORDINALITY AS t(url, ord)
 			`,
 		]);
