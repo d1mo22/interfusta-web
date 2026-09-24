@@ -393,58 +393,58 @@
 	},
 	"privacy": {
 		"metaTitle": "Política de privacidad",
-		"metaDescription": "Cómo Fusteria InterFusta recopila, utiliza y protege los datos personales que nos proporcionas a través de este sitio web.",
+		"metaDescription": "Cómo Fusteria InterFusta recopila, utiliza y protege los datos personales que nos proporciona a través de este sitio web.",
 		"title": "Política de *privacidad*",
-		"intro": "Cómo recopilamos, utilizamos y protegemos los datos personales que nos proporcionas a través de este sitio web.",
+		"intro": "Cómo recopilamos, utilizamos y protegemos los datos personales que nos proporciona a través de este sitio web.",
 		"sections": [
 			{
 				"title": "1. Responsable del tratamiento",
 				"paragraphs": [
 					"El responsable del tratamiento de los datos recogidos a través de este sitio web es {company} (NRT: L-715485-U), con sede social en Passatge d'Enclar S/N, Santa Coloma, AD500, Andorra.",
-					"Para cualquier pregunta relacionada con la privacidad de tus datos, puedes contactarnos en {email} o por teléfono {phone}."
+					"Para cualquier pregunta relacionada con la privacidad de sus datos, puede contactarnos en {email} o por teléfono {phone}."
 				]
 			},
 			{
 				"title": "2. Qué datos recopilamos",
 				"paragraphs": [
-					"A través del formulario de contacto de este sitio web te pedimos tu nombre, apellido(s), dirección de correo electrónico, número de teléfono y el mensaje que deseas enviarnos. Proporcionar estos datos es voluntario, pero necesario para que podamos responder a tu consulta."
+					"A través del formulario de contacto de este sitio web le pedimos su nombre, apellido(s), dirección de correo electrónico, número de teléfono y el mensaje que desea enviarnos. Proporcionar estos datos es voluntario, pero necesario para que podamos responder a su consulta."
 				]
 			},
 			{
 				"title": "3. Para qué propósito los utilizamos",
 				"paragraphs": [
-					"Utilizamos los datos que nos proporcionas únicamente para responder a tu consulta o solicitud de presupuesto, y para comunicarnos contigo sobre tu proyecto. No utilizamos estos datos para otros fines comerciales ni los transferimos a terceros con fines publicitarios."
+					"Utilizamos los datos que nos proporciona únicamente para responder a su consulta o solicitud de presupuesto, y para comunicarnos con usted sobre su proyecto. No utilizamos estos datos para otros fines comerciales ni los transferimos a terceros con fines publicitarios."
 				]
 			},
 			{
 				"title": "4. Base legal",
 				"paragraphs": [
-					"La base legal para el tratamiento de tus datos es el consentimiento que nos das cuando rellenas y envías voluntariamente el formulario de contacto."
+					"La base legal para el tratamiento de sus datos es el consentimiento que nos da cuando rellena y envía voluntariamente el formulario de contacto."
 				]
 			},
 			{
 				"title": "5. Con quién compartimos datos",
 				"paragraphs": [
-					"Cuando envías el formulario de contacto, los datos se transmiten a través del servicio externo {resend}, que se encarga de enviarnos un correo electrónico con el contenido de tu mensaje a {inbox}. Tus datos no se almacenan en ninguna base de datos propia de este sitio web: solo están en este correo y en los registros técnicos del proveedor de envío.",
+					"Cuando envía el formulario de contacto, los datos se transmiten a través del servicio externo {resend}, que se encarga de enviarnos un correo electrónico con el contenido de su mensaje a {inbox}. Sus datos no se almacenan en ninguna base de datos propia de este sitio web: solo están en este correo y en los registros técnicos del proveedor de envío.",
 					"Este sitio web también utiliza Vercel Analytics y Vercel Speed Insights para entender, de forma agregada y no identificativa, cómo se utiliza el sitio web y cómo podemos mejorar su rendimiento."
 				]
 			},
 			{
 				"title": "6. Cuánto tiempo conservamos los datos",
 				"paragraphs": [
-					"Conservamos los datos que nos proporcionas a través del formulario solo el tiempo necesario para responder a tu consulta y, cuando corresponda, gestionar el proyecto que de ella derive. Si no se formaliza ningún proyecto, eliminaremos el correo electrónico en un plazo máximo de 2 años desde la última comunicación. Si se formaliza un encargo, conservaremos los datos durante el tiempo requerido por obligaciones legales (por ejemplo, impuestos y contabilidad)."
+					"Conservamos los datos que nos proporciona a través del formulario solo el tiempo necesario para responder a su consulta y, cuando corresponda, gestionar el proyecto que de ella derive. Si no se formaliza ningún proyecto, eliminaremos el correo electrónico en un plazo máximo de 2 años desde la última comunicación. Si se formaliza un encargo, conservaremos los datos durante el tiempo requerido por obligaciones legales (por ejemplo, impuestos y contabilidad)."
 				]
 			},
 			{
-				"title": "7. Tus derechos",
+				"title": "7. Sus derechos",
 				"paragraphs": [
-					"Tienes derecho a acceder a tus datos personales, corregirlos si son inexactos, solicitar su eliminación y oponerte o solicitar la limitación de su tratamiento. Puedes ejercer estos derechos enviándonos un correo electrónico a {email}. Si crees que no hemos procesado correctamente tus datos, también tienes derecho a presentar una reclamación ante la Agencia Andorrana de Protección de Datos (APDA)."
+					"Tiene derecho a acceder a sus datos personales, corregirlos si son inexactos, solicitar su eliminación y oponerse o solicitar la limitación de su tratamiento. Puede ejercer estos derechos enviándonos un correo electrónico a {email}. Si considera que no hemos tratado correctamente sus datos, también tiene derecho a presentar una reclamación ante la Agencia Andorrana de Protección de Datos (APDA)."
 				]
 			},
 			{
 				"title": "8. Cambios en esta política",
 				"paragraphs": [
-					"Podemos actualizar esta política de privacidad para reflejar cambios en el tratamiento de tus datos. Recomendamos que la revises periódicamente. Última actualización: 23 de septiembre de 2026."
+					"Podemos actualizar esta política de privacidad para reflejar cambios en el tratamiento de sus datos. Le recomendamos que la revise periódicamente. Última actualización: 23 de septiembre de 2026."
 				]
 			}
 		]
