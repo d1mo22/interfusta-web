@@ -1,0 +1,19 @@
+app/sitemap.ts
+  s_67acfb84d5d042::t_ce236d885cf112 4-5,7,9,11-20,22,24,42-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "78e8f602eb609834c9e31d9df58569a7d0e22c3b",
+  "prompts": {},
+  "sessions": {
+    "s_67acfb84d5d042": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_67acfb84d5d042",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
