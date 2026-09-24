@@ -1,0 +1,23 @@
+app/[lang]/about/page.tsx
+  s_8715eb045dd556::t_dabbcc44c038c6 1,5-7,9-12,14-15,17-19,27,34-35,40,68,72
+app/[lang]/privacitat/page.tsx
+  s_8715eb045dd556::t_46eae1caf38c35 1,4-7,9-12,14-35,37-38,45,52,59-63
+components/rich-text.tsx
+  s_8715eb045dd556::t_6bc647686de9a7 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "65f90ae922af8b167d58849918f874125d20e268",
+  "prompts": {},
+  "sessions": {
+    "s_8715eb045dd556": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_8715eb045dd556",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
