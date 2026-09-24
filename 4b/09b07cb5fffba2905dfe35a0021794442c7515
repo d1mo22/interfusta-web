@@ -1,0 +1,23 @@
+app/[lang]/services/[slug]/page.tsx
+  s_20f8313709e43d::t_2a6e4ecd3501d5 1,7-9,11-12,21-26,34-41,50,57,68,70-71,79,82,92,101-102,104,107,116,118-141
+app/[lang]/services/page.tsx
+  s_20f8313709e43d::t_b20a5c3ebb86e1 1,4,8-9,11-18,27-28,36,46-51,53-76
+data/services.ts
+  s_20f8313709e43d::t_225df8ffef3951 1-7,9,11,14,16,18,21,23,26,28,31,33,36,38,41,43,46,48,51,53,57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4b09b07cb5fffba2905dfe35a0021794442c7515",
+  "prompts": {},
+  "sessions": {
+    "s_20f8313709e43d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_20f8313709e43d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
