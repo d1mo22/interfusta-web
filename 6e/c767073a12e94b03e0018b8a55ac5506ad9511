@@ -1,0 +1,23 @@
+app/actions/project.ts
+  s_4414d6d8fdce68::t_c711576f898129 57-61,91,145,163
+app/global-error.tsx
+  s_4414d6d8fdce68::t_fb372fce0816c4 11-13
+proxy.ts
+  s_4414d6d8fdce68::t_4393d5b13119d4 10-11,59-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "6ec767073a12e94b03e0018b8a55ac5506ad9511",
+  "prompts": {},
+  "sessions": {
+    "s_4414d6d8fdce68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_4414d6d8fdce68",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
