@@ -1,0 +1,25 @@
+messages/en.json
+  s_31cd5d2f4c6592::t_4864ecea360f0e 4
+messages/es.json
+  s_31cd5d2f4c6592::t_ce7c908d8ef235 4
+messages/fr.json
+  s_31cd5d2f4c6592::t_4fbdf01f796644 4,384
+messages/pt.json
+  s_31cd5d2f4c6592::t_8a124b76fcebff 4,384
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "b84aaab930c98d03fc0685e41fe68617475e6533",
+  "prompts": {},
+  "sessions": {
+    "s_31cd5d2f4c6592": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_31cd5d2f4c6592",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
