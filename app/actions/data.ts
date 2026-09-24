@@ -42,16 +42,19 @@ export async function getPortfolioData(lang: Locale = "ca") {
         ),
         'last_update', p.last_update,
         'updated_by', p.updated_by,
-        -- For the admin badge: some field or feature lacks a translation in some language.
+        -- For the admin badge: some field or feature lacks a translation in some
+        -- language. A blank Catalan has nothing to translate, so it never counts.
         'translation_pending', (
           EXISTS (
             SELECT 1
             FROM unnest(${[...TARGETS]}::text[]) l, unnest(${[...PROJECT_FIELDS]}::text[]) f
             WHERE NULLIF(btrim(p.translations -> l ->> f), '') IS NULL
+              AND btrim(to_jsonb(p) ->> f) <> ''
           ) OR EXISTS (
             SELECT 1
             FROM feature fe, unnest(${[...TARGETS]}::text[]) l
             WHERE fe.project_id = p.id AND NULLIF(btrim(fe.translations -> l ->> 'description'), '') IS NULL
+              AND btrim(fe.description) <> ''
           )
         )
         )

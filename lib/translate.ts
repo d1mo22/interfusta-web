@@ -108,6 +108,53 @@ export const missingFields = <K extends string>(
 	fields: readonly K[],
 ): K[] => fields.filter((f) => TARGETS.some((l) => !t?.[l]?.[f]?.trim()));
 
+// A stored row: its Catalan columns plus the `translations` jsonb.
+export type TranslatedRow<K extends string> = Partial<Record<K, string | null>> & {
+	translations: FieldTranslations<K> | null;
+};
+
+const text = (v: string | null | undefined) => v?.trim() ?? "";
+
+// What saving `fields` over `old` (undefined when new) needs from Azure.
+// `changed`: the Catalan differs from the stored one (compared trimmed, so
+// whitespace-only edits don't count); these get fresh translations, or are
+// dropped if translating fails. `pending`: Catalan unchanged but untranslated
+// in some language; only the gaps are filled, so hand fixes stay. A blank
+// Catalan has nothing to translate: it is never pending, and it is changed
+// only when it used to have text (so the old translations are dropped).
+export function translationPlan<K extends string>(
+	fields: Record<K, string>,
+	old: TranslatedRow<K> | null | undefined,
+	keys: readonly K[],
+): { changed: K[]; pending: K[] } {
+	const changed = keys.filter((k) => text(fields[k]) !== text(old?.[k]));
+	const pending = keys.filter(
+		(k) =>
+			!changed.includes(k) &&
+			text(fields[k]) !== "" &&
+			missingFields(old?.translations, [k]).length > 0,
+	);
+	return { changed, pending };
+}
+
+// Translations after saving `fields` over `old`: plan, one Azure request for
+// the non-blank fields that need it, merge. Never throws; if translating
+// fails, changed fields are dropped and pending ones stay pending.
+export async function translationsAfterSave<K extends string>(
+	fields: Record<K, string>,
+	old: TranslatedRow<K> | null | undefined,
+	keys: readonly K[],
+): Promise<FieldTranslations<K>> {
+	const { changed, pending } = translationPlan(fields, old, keys);
+	const todo = [...changed, ...pending].filter((k) => text(fields[k]) !== "");
+	const fresh = todo.length
+		? await translateFields(
+				Object.fromEntries(todo.map((k) => [k, text(fields[k])])) as Partial<Record<K, string>>,
+			)
+		: null;
+	return mergeTranslations(old?.translations, fresh, changed, pending);
+}
+
 // For translations typed in the admin: keeps only known languages and fields
 // with non-blank string values (trimmed); everything else is dropped, and a
 // dropped field falls back to Catalan on the site.
