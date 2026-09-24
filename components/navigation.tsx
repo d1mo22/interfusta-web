@@ -36,15 +36,15 @@ export function Navigation({ lang, dict }: { lang: Locale; dict: Dictionary["nav
 					<Logo />
 				</Link>
 
-				<nav className="hidden lg:flex items-center gap-9">
+				<nav className="hidden lg:flex items-center gap-6 xl:gap-9">
 					{links.map((link) => (
 						<Link
 							key={link.href}
 							href={localeHref(lang, link.href)}
 							className={
 								isActive(link.href)
-									? "text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px]"
-									: "text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+									? "whitespace-nowrap text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px]"
+									: "whitespace-nowrap text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 							}
 						>
 							{link.label}
@@ -53,12 +53,12 @@ export function Navigation({ lang, dict }: { lang: Locale; dict: Dictionary["nav
 					<a
 						href={PHONE_HREF}
 						aria-label={callLabel}
-						className="hidden xl:flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+						className="hidden lg:flex items-center gap-1.5 whitespace-nowrap text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 					>
 						<Phone className="h-3.5 w-3.5" aria-hidden />
 						<span>{PHONE_NUMBER}</span>
 					</a>
-					<div className="ml-3 flex items-center gap-6">
+					<div className="ml-3 flex items-center gap-4 xl:gap-6">
 						<LanguageSwitcher lang={lang} label={dict.language} />
 						<ThemeToggle labels={themeLabels} />
 					</div>
