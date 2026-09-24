@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Grain } from "@/components/grain";
 import { ErrorSheet } from "@/components/error-sheet";
+import { ApplyTheme } from "@/components/apply-theme";
 import { localeHref, type Locale } from "@/lib/i18n-config";
 import type { Dictionary } from "@/lib/i18n";
 
@@ -18,6 +19,7 @@ export function NotFoundContent({
 	const s = dict.errorSheet;
 	return (
 		<div className="bg-paper text-ink">
+			<ApplyTheme />
 			<Grain />
 			<section className="pt-[104px] pb-[120px]">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
