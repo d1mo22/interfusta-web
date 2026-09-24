@@ -1,0 +1,23 @@
+app/(admin)/admin/admin-dashboard.tsx
+  s_b756c9758e668d::t_8167e9ef8443cf 212-219
+app/(admin)/admin/projects/[id]/edit/page.tsx
+  s_b756c9758e668d::t_68256e9233cdd1 1,5,7,10-15,18,21,25,27,30-42,44-104
+app/(admin)/admin/projects/[id]/edit/translations-editor.tsx
+  s_b756c9758e668d::t_0a1f7987bd92eb 1-215
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "7cc4a5cab2104c99b2decaa28cc9d6def7a8b262",
+  "prompts": {},
+  "sessions": {
+    "s_b756c9758e668d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_b756c9758e668d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
