@@ -4,13 +4,13 @@ import { sql } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./auth";
 import { deleteR2Urls } from "@/lib/r2Client";
-import { TARGETS } from "@/lib/i18n-config";
 import {
 	PROJECT_FIELDS,
-	mergeTranslations,
-	missingFields,
-	translateFields,
-	translateTexts,
+	featureTranslations,
+	sanitizeTranslations,
+	translationPlan,
+	translationsAfterSave,
+	type FeatureRow,
 	type FieldTranslations,
 	type ProjectField,
 } from "@/lib/translate";
@@ -79,78 +79,9 @@ const fieldsOf = (p: ProjectInput): Record<ProjectField, string> => ({
 	duration: p.duration.trim(),
 });
 
-const pick = <K extends string>(src: Record<K, string>, keys: readonly K[]) =>
-	Object.fromEntries(keys.map((k) => [k, src[k]])) as Partial<Record<K, string>>;
-
-type FeatureRow = {
-	description: string;
-	translations: FieldTranslations<"description"> | null;
-};
-
 type ProjectRow = Record<ProjectField, string> & {
 	translations: FieldTranslations<ProjectField> | null;
 };
-
-// What to send to Azure for one row. `changed`: the Catalan differs from the
-// stored row (or there is none); these get fresh translations, or are dropped
-// if translating fails. `pending`: Catalan unchanged but some language is
-// missing; only the gaps are filled, so hand fixes stay. See mergeTranslations.
-function translationPlan<K extends string>(
-	fields: Record<K, string>,
-	old: (Partial<Record<K, string>> & { translations: FieldTranslations<K> | null }) | undefined,
-	keys: readonly K[],
-) {
-	const changed = keys.filter((k) => !old || fields[k] !== old[k]);
-	const pending = keys.filter(
-		(k) => !changed.includes(k) && missingFields(old?.translations, [k]).length > 0,
-	);
-	return { changed, pending };
-}
-
-// Project translations after saving `fields` over `old` (undefined when new).
-// translate* never throw; a failure just leaves fields pending.
-async function projectTranslations(
-	fields: Record<ProjectField, string>,
-	old: ProjectRow | undefined,
-): Promise<FieldTranslations<ProjectField>> {
-	const { changed, pending } = translationPlan(fields, old, PROJECT_FIELDS);
-	const todo = [...changed, ...pending];
-	const fresh = todo.length ? await translateFields(pick(fields, todo)) : null;
-	return mergeTranslations(old?.translations, fresh, changed, pending);
-}
-
-// One translation object per feature, in order. Features are matched to the
-// stored ones by their Catalan text: a match keeps its translations (hand
-// edits included) and only fills missing languages; a new or edited text is
-// translated from scratch. Everything that needs Azure goes in one request.
-async function featureTranslations(
-	features: string[],
-	old: FeatureRow[],
-): Promise<FieldTranslations<"description">[]> {
-	const byText = new Map<string, FeatureRow>();
-	for (const f of old) {
-		const seen = byText.get(f.description);
-		// With duplicate texts, prefer the fully translated row.
-		if (!seen || missingFields(seen.translations, ["description"]).length > 0)
-			byText.set(f.description, f);
-	}
-	const plans = features.map((d) => {
-		const row = byText.get(d);
-		return { d, row, ...translationPlan({ description: d }, row, ["description"] as const) };
-	});
-	const todo = [
-		...new Set(plans.filter((p) => p.changed.length || p.pending.length).map((p) => p.d)),
-	];
-	const result = todo.length ? await translateTexts(todo) : null;
-	return plans.map(({ d, row, changed, pending }) => {
-		const i = todo.indexOf(d);
-		const fresh =
-			result && i >= 0
-				? Object.fromEntries(TARGETS.map((t) => [t, { description: result[t][i] }]))
-				: null;
-		return mergeTranslations(row?.translations, fresh, changed, pending);
-	});
-}
 
 export async function createProject(p: ProjectInput): Promise<Result> {
 	const user = await getCurrentUser();
@@ -163,7 +94,7 @@ export async function createProject(p: ProjectInput): Promise<Result> {
 
 	const fields = fieldsOf(p);
 	const [translations, featureTr] = await Promise.all([
-		projectTranslations(fields, undefined),
+		translationsAfterSave(fields, undefined, PROJECT_FIELDS),
 		featureTranslations(p.features, []),
 	]);
 
@@ -221,7 +152,7 @@ export async function updateProject(
 
 		const fields = fieldsOf(p);
 		const [translations, featureTr] = await Promise.all([
-			projectTranslations(fields, old),
+			translationsAfterSave(fields, old, PROJECT_FIELDS),
 			featureTranslations(p.features, oldFeatures as FeatureRow[]),
 		]);
 
@@ -281,5 +212,128 @@ export async function deleteProject(id: number): Promise<Result> {
 	} catch (e) {
 		console.error("Error deleting project:", e);
 		return { error: "No s'ha pogut eliminar el projecte" };
+	}
+}
+
+// Hand edits from the Traduccions tab. Stored as typed (sanitized); a field
+// left blank falls back to Catalan on the site and shows as pending.
+export async function updateProjectTranslations(
+	id: number,
+	input: { project: unknown; features: { id: number; translations: unknown }[] },
+): Promise<Result> {
+	const user = await getCurrentUser();
+	if (!user) return { error: "No autoritzat" };
+	if (!Number.isInteger(id)) return { error: "No s'ha trobat el projecte" };
+
+	const project = sanitizeTranslations(input?.project, PROJECT_FIELDS);
+	const features = (Array.isArray(input?.features) ? input.features : []).filter((f) =>
+		Number.isInteger(f?.id),
+	);
+
+	try {
+		const [updated, ...featureResults] = await sql.transaction([
+			sql`
+				UPDATE project
+				SET translations = ${JSON.stringify(project)}::jsonb, last_update = NOW(), updated_by = ${user.name}
+				WHERE id = ${id}
+				RETURNING id
+			`,
+			...features.map(
+				(f) => sql`
+					UPDATE feature
+					SET translations = ${JSON.stringify(sanitizeTranslations(f.translations, ["description"]))}::jsonb
+					WHERE id = ${f.id} AND project_id = ${id}
+					RETURNING id
+				`,
+			),
+		]);
+		if (!updated.length) return { error: "No s'ha trobat el projecte" };
+		revalidate();
+		// A feature id the browser was holding no longer exists (the Projecte
+		// wizard re-creates every feature row on save): that UPDATE matched
+		// nothing, so report it instead of a false "desat" for a discarded edit.
+		if (featureResults.some((rows) => !rows.length))
+			return {
+				error: "Algunes característiques han canviat. Recarrega la pàgina i torna-ho a provar.",
+			};
+		return { id };
+	} catch (e) {
+		console.error("Error saving translations:", e);
+		return { error: "No s'han pogut desar les traduccions. Torna-ho a provar." };
+	}
+}
+
+// The jsonb as read, for the compare-and-set below (SQL NULL stays NULL).
+const readBack = (t: unknown) => (t == null ? null : JSON.stringify(t));
+
+// "Retradueix el que falta": the Catalan is unchanged, so every field or
+// feature that needs work is pending and only its missing languages are
+// filled; hand edits stay. Saves only rows nobody changed while Azure was
+// answering, so a concurrent edit is never overwritten with stale text.
+export async function retranslateProject(id: number): Promise<Result> {
+	if (!(await getCurrentUser())) return { error: "No autoritzat" };
+	if (!Number.isInteger(id)) return { error: "No s'ha trobat el projecte" };
+
+	try {
+		const [row] = (await sql`
+			SELECT title, description, full_description, duration, translations
+			FROM project WHERE id = ${id}
+		`) as ProjectRow[];
+		if (!row) return { error: "No s'ha trobat el projecte" };
+		const features = (await sql`
+			SELECT id, description, translations FROM feature WHERE project_id = ${id} ORDER BY id
+		`) as (FeatureRow & { id: number })[];
+
+		const [translations, featureTr] = await Promise.all([
+			translationsAfterSave(row, row, PROJECT_FIELDS),
+			// Paired by position: each feature against its own row, so duplicate
+			// texts keep their own hand fixes.
+			featureTranslations(
+				features.map((f) => f.description),
+				features,
+				"position",
+			),
+		]);
+
+		const saved = await sql.transaction([
+			sql`
+				UPDATE project SET translations = ${JSON.stringify(translations)}::jsonb
+				WHERE id = ${id}
+					AND translations IS NOT DISTINCT FROM ${readBack(row.translations)}::jsonb
+					AND title IS NOT DISTINCT FROM ${row.title}
+					AND description IS NOT DISTINCT FROM ${row.description}
+					AND full_description IS NOT DISTINCT FROM ${row.full_description}
+					AND duration IS NOT DISTINCT FROM ${row.duration}
+				RETURNING id
+			`,
+			...features.map(
+				(f, i) => sql`
+					UPDATE feature SET translations = ${JSON.stringify(featureTr[i])}::jsonb
+					WHERE id = ${f.id}
+						AND translations IS NOT DISTINCT FROM ${readBack(f.translations)}::jsonb
+						AND description IS NOT DISTINCT FROM ${f.description}
+					RETURNING id
+				`,
+			),
+		]);
+		revalidate();
+		// A guarded UPDATE that matched nothing: someone edited meanwhile.
+		if (saved.some((rows) => !rows.length))
+			return { error: "El projecte ha canviat mentre es traduïa. Torna-ho a provar." };
+
+		// A blank Catalan has nothing to translate, so it never counts as missing.
+		const stillMissing =
+			translationPlan(row, { ...row, translations }, PROJECT_FIELDS).pending.length > 0 ||
+			features.some(
+				(f, i) =>
+					translationPlan(f, { ...f, translations: featureTr[i] }, ["description"] as const)
+						.pending.length > 0,
+			);
+		return stillMissing
+			? { error: "El traductor no respon. Torna-ho a provar més tard." }
+			: { id };
+	} catch (e) {
+		console.error("Error retranslating project:", e);
+		return { error: "No s'ha pogut traduir el projecte. Torna-ho a provar." };
 	}
 }

@@ -209,6 +209,14 @@ export default function AdminDashboard({
 												<span className="font-mono">
 													{new Date(project.completion_date).getFullYear()}
 												</span>
+												{project.translation_pending && (
+													<Link
+														href={`${editHref}?tab=traduccions`}
+														className="ml-2 font-mono text-brand-ink hover:underline"
+													>
+														Traducció pendent
+													</Link>
+												)}
 											</p>
 											<Link
 												href={editHref}

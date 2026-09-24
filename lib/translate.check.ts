@@ -1,6 +1,15 @@
 // Run: node --experimental-strip-types lib/translate.check.ts
 import assert from "node:assert";
-import { mergeTranslations, missingFields, sanitizeTranslations, translateFields, translateTexts } from "./translate.ts";
+import {
+	featureTranslations,
+	mergeTranslations,
+	missingFields,
+	sanitizeTranslations,
+	translateFields,
+	translateTexts,
+	translationPlan,
+	translationsAfterSave,
+} from "./translate.ts";
 
 process.env.AZURE_TRANSLATOR_KEY = "test-key";
 process.env.AZURE_TRANSLATOR_REGION = "westeurope";
@@ -130,6 +139,28 @@ assert.deepStrictEqual(missingFields({ es: { title: "x" } }, ["title"]), ["title
 assert.deepStrictEqual(missingFields(null, ["title"]), ["title"]);
 assert.deepStrictEqual(missingFields(every({ title: "x" }), ["title"]), []);
 
+// A hand SQL edit can put a non-string value in the stored jsonb; missingFields
+// must treat that as missing rather than throwing on `.trim()`
+assert.deepStrictEqual(
+	missingFields({ es: { title: 5 as unknown as string } }, ["title"]),
+	["title"],
+);
+assert.deepStrictEqual(
+	missingFields({ es: { title: null as unknown as string } }, ["title"]),
+	["title"],
+);
+// Same guard inside mergeTranslations: a non-string stored value is not
+// "already filled", so a pending fresh value overwrites it instead of being skipped
+assert.deepStrictEqual(
+	mergeTranslations(
+		{ es: { title: 5 as unknown as string }, fr: {}, en: {}, pt: {} },
+		every({ title: "Nuevo" }),
+		[],
+		["title"],
+	),
+	every({ title: "Nuevo" }),
+);
+
 // sanitizeTranslations: the admin's trust boundary
 assert.deepStrictEqual(
 	sanitizeTranslations(
@@ -144,5 +175,125 @@ assert.deepStrictEqual(
 	{ es: { title: "Hola" }, fr: {}, en: {}, pt: {} },
 );
 assert.deepStrictEqual(sanitizeTranslations(null, ["title"]), every({}));
+
+// translationPlan: what a save needs from Azure
+const F = ["title", "description", "duration"] as const;
+const cat = { title: "Cuina", description: "Nova", duration: "2 dies" };
+// No stored row: every non-blank field is changed, a blank one is skipped
+assert.deepStrictEqual(translationPlan({ ...cat, duration: " " }, undefined, F), {
+	changed: ["title", "description"],
+	pending: [],
+});
+// A changed field; whitespace-only edits don't count as changes
+assert.deepStrictEqual(
+	translationPlan(
+		{ title: "Cuina nova", description: " Nova\n", duration: "2 dies" },
+		{ ...cat, translations: every({ title: "a", description: "b", duration: "c" }) },
+		F,
+	),
+	{ changed: ["title"], pending: [] },
+);
+// A pending-only field: Catalan unchanged, one language missing
+assert.deepStrictEqual(
+	translationPlan(cat, { ...cat, translations: { ...every({ title: "a", description: "b", duration: "c" }), fr: { title: "a", duration: "c" } } }, F),
+	{ changed: [], pending: ["description"] },
+);
+// Changed and pending in one call; the lists never overlap (changed wins)
+assert.deepStrictEqual(
+	translationPlan({ ...cat, title: "Armari" }, { ...cat, translations: { es: { title: "a" } } }, F),
+	{ changed: ["title"], pending: ["description", "duration"] },
+);
+// A blank Catalan is never pending; it is changed only when it used to have text
+assert.deepStrictEqual(
+	translationPlan({ ...cat, duration: "" }, { ...cat, duration: " ", translations: null }, F),
+	{ changed: [], pending: ["title", "description"] },
+);
+assert.deepStrictEqual(
+	translationPlan({ ...cat, duration: "" }, { ...cat, translations: every({ title: "a", description: "b", duration: "c" }) }, F),
+	{ changed: ["duration"], pending: [] },
+);
+// A key in both lists of mergeTranslations is treated as changed (replaced, not gap-filled)
+assert.deepStrictEqual(
+	mergeTranslations(every({ title: "A mano" }), every({ title: "Máquina" }), ["title"], ["title"]),
+	every({ title: "Máquina" }),
+);
+assert.deepStrictEqual(
+	mergeTranslations(every({ title: "A mano" }), null, ["title"], ["title"]),
+	every({}),
+);
+
+// translationsAfterSave: plan -> one request for the non-blank fields -> merge
+process.env.AZURE_TRANSLATOR_KEY = "test-key";
+let sent: string[] = [];
+globalThis.fetch = (async (_url: string | URL | Request, init?: RequestInit) => {
+	calls++;
+	const body = JSON.parse(String(init?.body)) as { text: string }[];
+	sent = body.map((b) => b.text);
+	return new Response(
+		JSON.stringify(body.map((b) => ({ translations: ["es", "fr", "en", "pt"].map((t) => ({ text: `${t}:${b.text}` })) }))),
+		{ status: 200 },
+	);
+}) as typeof fetch;
+// Changed title and pending description in one call; the hand-fixed Spanish description stays
+calls = 0;
+assert.deepStrictEqual(
+	await translationsAfterSave(
+		{ title: " Armari ", description: "Nova", duration: "" },
+		{ title: "Cuina", description: "Nova", duration: "", translations: { es: { title: "Cocina", description: "A mano" } } },
+		F,
+	),
+	{
+		es: { title: "es:Armari", description: "A mano" },
+		fr: { title: "fr:Armari", description: "fr:Nova" },
+		en: { title: "en:Armari", description: "en:Nova" },
+		pt: { title: "pt:Armari", description: "pt:Nova" },
+	},
+);
+assert.equal(calls, 1);
+assert.deepStrictEqual(sent, ["Armari", "Nova"]);
+// Nothing to do (unchanged, fully translated, blank duration): no request
+calls = 0;
+const done = every({ title: "a", description: "b" });
+assert.deepStrictEqual(
+	await translationsAfterSave({ title: "Cuina", description: "Nova", duration: " " }, { title: "Cuina", description: "Nova", duration: "", translations: done }, F),
+	done,
+);
+assert.equal(calls, 0);
+// Changed field with translation failed (fresh = null): dropped so the new Catalan shows; pending stays
+globalThis.fetch = (async () => new Response("", { status: 403 })) as typeof fetch;
+assert.deepStrictEqual(
+	await translationsAfterSave(
+		{ title: "Armari", description: "Nova", duration: "" },
+		{ title: "Cuina", description: "Nova", duration: "", translations: { es: { title: "Cocina", description: "A mano" } } },
+		F,
+	),
+	{ es: { description: "A mano" }, fr: {}, en: {}, pt: {} },
+);
+
+// featureTranslations, "position" pairing (retranslate): two features with the
+// same Catalan each keep their own hand fix; only their gaps are filled
+globalThis.fetch = (async (_url: string | URL | Request, init?: RequestInit) => {
+	calls++;
+	const body = JSON.parse(String(init?.body)) as { text: string }[];
+	sent = body.map((b) => b.text);
+	return new Response(
+		JSON.stringify(body.map((b) => ({ translations: ["es", "fr", "en", "pt"].map((t) => ({ text: `${t}:${b.text}` })) }))),
+		{ status: 200 },
+	);
+}) as typeof fetch;
+const dup = [
+	{ description: "Porta", translations: { es: { description: "Puerta A" }, fr: { description: "Porte A" } } },
+	{ description: "Porta", translations: { es: { description: "Puerta B" } } },
+];
+calls = 0;
+assert.deepStrictEqual(await featureTranslations(["Porta", "Porta"], dup, "position"), [
+	{ es: { description: "Puerta A" }, fr: { description: "Porte A" }, en: { description: "en:Porta" }, pt: { description: "pt:Porta" } },
+	{ es: { description: "Puerta B" }, fr: { description: "fr:Porta" }, en: { description: "en:Porta" }, pt: { description: "pt:Porta" } },
+]);
+assert.equal(calls, 1);
+assert.deepStrictEqual(sent, ["Porta"]);
+// "text" pairing (project save) matches by text, so both take the same stored row
+const byText = await featureTranslations(["Porta", "Porta"], dup);
+assert.deepStrictEqual(byText[0], byText[1]);
 
 console.log("translate ok");
