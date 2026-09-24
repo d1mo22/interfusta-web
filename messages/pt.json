@@ -10,18 +10,18 @@
 		"about": "Sobre Nós",
 		"contact": "Contacto",
 		"call": "Ligue-nos para {phone}",
-		"openMenu": "Menu aberto",
+		"openMenu": "Abrir menu",
 		"closeMenu": "Fechar menu",
 		"language": "Língua",
 		"theme": "Mudar de tema",
-		"light": "Luz",
-		"dark": "Dark"
+		"light": "Claro",
+		"dark": "Escuro"
 	},
 	"footer": {
 		"title": "Fusteria *InterFusta*",
-		"tagline": "Serviços profissionais de carpintaria com anos de experiência na criação de soluções elegantes para madeira.",
+		"tagline": "Serviços profissionais de carpintaria com anos de experiência na criação de soluções elegantes em madeira.",
 		"contact": "Contacto",
-		"hours": "Calendário",
+		"hours": "Horário",
 		"schedule": [
 			"Segunda - sexta-feira 9:00 - 17:00",
 			"Sábado 10:00 - 13:00",
@@ -43,10 +43,10 @@
 				"Armários de cozinha desenhados à medida",
 				"Mesa e cadeiras de jantar feitas à mão",
 				"Armários de parede para todas as divisões",
-				"Vigas de teto e painéis de teto em madeira"
+				"Vigas de teto e painéis de parede em madeira"
 			],
 			"imageAlt": "Projeto em destaque",
-			"galleryAlt": "{n} Imagem do projeto em destaque",
+			"galleryAlt": "Imagem {n} do projeto em destaque",
 			"seeAll": "Ver todos os projetos"
 		},
 		"servicesTitle": "Os nossos *serviços*",
@@ -58,13 +58,13 @@
 			},
 			{
 				"title": "Instalação de cozinhas",
-				"description": "Instalação e Personalização Profissional de Armários de Cozinha",
+				"description": "Instalação e personalização profissional de armários de cozinha",
 				"alt": "Instalação de cozinhas"
 			},
 			{
-				"title": "Lacagem e verniz",
+				"title": "Lacagem e envernizamento",
 				"description": "Acabamentos profissionais para proteger e embelezar o seu mobiliário de madeira",
-				"alt": "Lacagem e verniz"
+				"alt": "Lacagem e envernizamento"
 			},
 			{
 				"title": "Medições e planeamento",
@@ -84,7 +84,7 @@
 		"title": "Sobre *InterFusta*",
 		"lead": "Desde a nossa criação, a Interfusta tem estado na vanguarda dos serviços de carpintaria de alta qualidade em Andorra. O nosso compromisso com a excelência e a atenção ao detalhe tornaram-nos um nome de confiança no setor.",
 		"body": "Combinamos técnicas tradicionais de marcenaria com tecnologia moderna para criar peças incríveis que resistem ao teste do tempo. A nossa equipa de artesãos especialistas traz décadas de experiência combinada a cada projeto.",
-		"imageAlt": "O nosso workshop",
+		"imageAlt": "A nossa oficina",
 		"stats": [
 			"Anos de experiência",
 			"Projetos concluídos",
@@ -114,7 +114,7 @@
 		"intro": "Oferecemos uma vasta gama de serviços de carpintaria, combinando o artesanato tradicional com técnicas modernas para resultados excecionais.",
 		"heroAlt": "Cozinha personalizada com ilha de madeira",
 		"howWeWork": "Como trabalhamos",
-		"ctaTitle": "Vamos falar sobre o teu projeto",
+		"ctaTitle": "Vamos falar sobre o seu projeto",
 		"ctaText": "Cada projeto é diferente. Diga-nos o que precisa e prepararemos uma proposta adaptada ao seu espaço e orçamento.",
 		"ctaButton": "Peça um orçamento",
 		"related": "Outros serviços relacionados",
@@ -129,11 +129,11 @@
 				"process": [
 					{
 						"title": "Medição e visita",
-						"text": "Mudamo-nos para o seu espaço para tirar medidas exatas e descobrir como planeia usá-lo. Desta forma, garantimos que o mobiliário se adapta perfeitamente, tanto em termos de dimensões como de funcionalidade."
+						"text": "Deslocamo-nos ao seu espaço para tirar medidas exatas e perceber como pensa utilizá-lo. Desta forma, garantimos que o mobiliário se adapta perfeitamente, tanto em termos de dimensões como de funcionalidade."
 					},
 					{
 						"title": "Conceção",
-						"text": "Traduzimos as suas ideias num design específico, ajustando proporções, acabamentos e layout interior. Revemos os detalhes consigo até que o resultado responda exatamente ao que precisa."
+						"text": "Traduzimos as suas ideias num design concreto, ajustando proporções, acabamentos e distribuição interior. Revemos os detalhes consigo até que o resultado responda exatamente ao que precisa."
 					},
 					{
 						"title": "Fabrico na oficina",
@@ -141,7 +141,7 @@
 					},
 					{
 						"title": "Instalação",
-						"text": "Quando estamos prontos, transportamos e instalamos os móveis no seu espaço. Verificamos que tudo encaixa, que as portas e gavetas funcionam corretamente e que o acabamento está conforme esperado."
+						"text": "Depois de concluídos, transportamos e instalamos os móveis no seu espaço. Verificamos que tudo encaixa, que as portas e gavetas funcionam corretamente e que o acabamento está conforme esperado."
 					}
 				]
 			},
@@ -149,13 +149,13 @@
 				"title": "Instalação de cozinhas",
 				"description": "Transforme a sua cozinha com os nossos serviços profissionais de instalação. Tratamos de tudo, desde a montagem dos armários até às soluções de arrumação personalizadas, garantindo funcionalidade e estética perfeitas.",
 				"extra": [
-					"Em muitas cozinhas, a bancada é um dos elementos que mais define o acabamento final. Se procura uma superfície lisa sem juntas visíveis, também colaboramos com a Corian para este tipo de projeto.",
-					"A instalação de uma cozinha envolve coordenar mobiliário, eletrodomésticos e acabamentos para que funcionem como um todo, e não como peças independentes. É por isso que valorizamos a distribuição do espaço desde o primeiro momento, antes de fabricar qualquer elemento."
+					"Em muitas cozinhas, a bancada é um dos elementos que mais define o acabamento final. Se procura uma superfície lisa sem juntas visíveis, também trabalhamos com Corian para este tipo de projeto.",
+					"A instalação de uma cozinha envolve coordenar mobiliário, eletrodomésticos e acabamentos para que funcionem como um todo, e não como peças independentes. É por isso que avaliamos a distribuição do espaço desde o primeiro momento, antes de fabricar qualquer elemento."
 				],
 				"process": [
 					{
 						"title": "Medição e visita",
-						"text": "Visitamos a cozinha para tirar medições precisas e avaliar a localização dos eletrodomésticos, água e eletricidade. Este passo é fundamental para evitar má coordenação assim que a montagem começa."
+						"text": "Visitamos a cozinha para tirar medidas precisas e avaliar a localização dos eletrodomésticos, da água e da eletricidade. Este passo é fundamental para evitar falhas de coordenação assim que a montagem começa."
 					},
 					{
 						"title": "Conceção",
@@ -167,16 +167,16 @@
 					},
 					{
 						"title": "Instalação",
-						"text": "Montamos e instalamos todos os elementos da sua cozinha, verificando os níveis e acessórios. Também verificamos o funcionamento correto das gavetas, portas e puxadores antes de entregar o trabalho como terminado."
+						"text": "Montamos e instalamos todos os elementos na sua cozinha, verificando os níveis e os encaixes. Também verificamos o funcionamento correto das gavetas, portas e puxadores antes de dar o trabalho por terminado."
 					}
 				]
 			},
 			"lacatge-i-vernissat": {
-				"title": "Lacagem e verniz",
+				"title": "Lacagem e envernizamento",
 				"description": "Oferecemos serviços profissionais de acabamento para todos os tipos de superfícies em madeira. Utilizamos técnicas especializadas de lacagem e verniz para proteger e realçar a beleza natural do seu mobiliário, garantindo um acabamento duradouro e elegante.",
 				"extra": [
-					"O verniz proporciona um acabamento opaco e uniforme, enquanto o verniz mantém visível o veio natural da madeira. A técnica é escolhida de acordo com a estética que procura e a proteção que a peça necessita contra o uso diário, humidade ou luz.",
-					"Este serviço aplica-se tanto a mobiliário novo como a peças existentes que precisam de ser renovadas, sendo geralmente combinado com outros serviços de carpintaria quando uma peça também necessita de algum reparo prévio."
+					"A lacagem proporciona um acabamento opaco e uniforme, enquanto o envernizamento mantém visível o veio natural da madeira. A técnica é escolhida de acordo com a estética que procura e a proteção que a peça necessita contra o uso diário, humidade ou luz.",
+					"Este serviço aplica-se tanto a mobiliário novo como a peças existentes que precisam de ser renovadas, sendo geralmente combinado com outros serviços de carpintaria quando uma peça também necessita de alguma reparação prévia."
 				],
 				"process": [
 					{
@@ -185,33 +185,33 @@
 					},
 					{
 						"title": "Conceção",
-						"text": "Definimos em conjunto a cor, a textura e o grau de brilho do verniz ou lacada. Temos em conta o uso que será dado à peça e o ambiente onde irá ser localizada."
+						"text": "Definimos em conjunto a cor, a textura e o grau de brilho da laca ou do verniz. Temos em conta o uso que será dado à peça e o ambiente onde vai ficar."
 					},
 					{
 						"title": "Fabrico na oficina",
-						"text": "Aplicamos o processo de lacagem ou verniz na oficina, em várias camadas. Cada camada precisa do seu tempo de secagem antes de aplicar a seguinte, para obter um acabamento uniforme e resistente."
+						"text": "Aplicamos o processo de lacagem ou envernizamento na oficina, em várias camadas. Cada camada precisa do seu tempo de secagem antes de aplicar a seguinte, para obter um acabamento uniforme e resistente."
 					},
 					{
 						"title": "Instalação",
-						"text": "Quando o acabamento está seco, devolvemos a peça e colocamos a peça no seu lugar, ou entregamo-la pronta para instalação. Verificamos se a cor e a textura correspondem ao acordado."
+						"text": "Quando o acabamento está seco, devolvemos e colocamos a peça no seu lugar, ou entregamo-la pronta para instalação. Verificamos se a cor e a textura correspondem ao acordado."
 					}
 				]
 			},
 			"disseny-amb-corian": {
 				"title": "Design com Corian",
-				"description": "Especialistas no design e fabrico de Corian, um material versátil e duradouro perfeito para bancadas, lava-loiças e superfícies decorativas. Criamos designs únicos e funcionais que se adaptam perfeitamente ao seu espaço.",
+				"description": "Especialistas no design e fabrico em Corian, um material versátil e duradouro perfeito para bancadas, lavatórios e superfícies decorativas. Criamos designs únicos e funcionais que se adaptam perfeitamente ao seu espaço.",
 				"extra": [
-					"O Corian é uma superfície sólida e não porosa que permite criar peças com juntas praticamente invisíveis, o que facilita mantê-la limpa. A sua flexibilidade permite que lhe dê formas curvas e integre pias ou torneiras na mesma peça contínua, algo que nem sempre é possível com outros materiais.",
-					"É uma escolha comum para bancadas de cozinha, lava-loiças de casa de banho e outras superfícies decorativas onde se procura um acabamento contínuo, sem as linhas de costura típicas de outros materiais."
+					"O Corian é uma superfície sólida e não porosa que permite criar peças com juntas praticamente invisíveis, o que facilita mantê-la limpa. A sua flexibilidade permite dar-lhe formas curvas e integrar lavatórios ou torneiras na mesma peça contínua, algo que nem sempre é possível com outros materiais.",
+					"É uma escolha comum para bancadas de cozinha, lavatórios de casa de banho e outras superfícies decorativas onde se procura um acabamento contínuo, sem as linhas de junta típicas de outros materiais."
 				],
 				"process": [
 					{
 						"title": "Medição e visita",
-						"text": "Fazemos medições exatas do espaço onde a peça Corian será instalada, tendo em conta torneiras, drenos e outros elementos que têm de caber nela."
+						"text": "Tiramos medidas exatas do espaço onde a peça de Corian será instalada, tendo em conta torneiras, escoamentos e outros elementos que tenham de encaixar nela."
 					},
 					{
 						"title": "Conceção",
-						"text": "Desenhamos a forma, cor e acabamento da peça, avaliando se precisa de juntas invisíveis, arrumadas ou elementos integrados como um lava-loiça. Definimos todos os detalhes antes de cortar o material."
+						"text": "Desenhamos a forma, a cor e o acabamento da peça, avaliando se precisa de juntas invisíveis, arestas arredondadas ou elementos integrados como um lavatório. Definimos todos os detalhes antes de cortar o material."
 					},
 					{
 						"title": "Fabrico na oficina",
@@ -219,7 +219,7 @@
 					},
 					{
 						"title": "Instalação",
-						"text": "Instalamos a peça no seu espaço, selando as juntas para que haja uma superfície uniforme e fácil de limpar, e verificamos se encaixa corretamente com torneiras e drenos."
+						"text": "Instalamos a peça no seu espaço, selando as juntas para que haja uma superfície uniforme e fácil de limpar, e verificamos se encaixa corretamente com torneiras e escoamentos."
 					}
 				]
 			},
@@ -227,17 +227,17 @@
 				"title": "Estruturas de madeira",
 				"description": "Crie espaços exteriores deslumbrantes com as nossas estruturas de madeira. Construímos pérgolas, telhados e elementos arquitetónicos que aumentam o valor da sua propriedade.",
 				"extra": [
-					"Como estes são elementos expostos aos elementos, a madeira utilizada recebe um tratamento protetor antes da montagem, para ajudar a resistir melhor à humidade e às variações de temperatura.",
+					"Como se trata de elementos expostos às intempéries, a madeira utilizada recebe um tratamento protetor antes da montagem, para ajudar a resistir melhor à humidade e às variações de temperatura.",
 					"Este tipo de estrutura permite-lhe obter um espaço exterior que pode ser utilizado durante grande parte do ano, seja como área sombreada, como telhado ou como elemento que complementa a arquitetura da propriedade."
 				],
 				"process": [
 					{
 						"title": "Medição e visita",
-						"text": "Visitamos o espaço exterior para avaliar o terreno, a orientação e os tamanhos disponíveis. Estes fatores condicionam diretamente o tipo de estrutura que faz sentido propor."
+						"text": "Visitamos o espaço exterior para avaliar o terreno, a orientação e as medidas disponíveis. Estes fatores condicionam diretamente o tipo de estrutura que faz sentido propor."
 					},
 					{
 						"title": "Conceção",
-						"text": "Projetamos a pérgola, o telhado ou o elemento arquitetónico tendo em conta o uso que queremos dar-lhe. Procuramos que se integre com o resto da propriedade, tanto na forma como no acabamento."
+						"text": "Projetamos a pérgola, o telhado ou o elemento arquitetónico tendo em conta o uso que se lhe pretende dar. Procuramos que se integre com o resto da propriedade, tanto na forma como no acabamento."
 					},
 					{
 						"title": "Fabrico na oficina",
@@ -253,8 +253,8 @@
 				"title": "Restauro",
 				"description": "Dê nova vida às suas preciosas peças de madeira com os nossos serviços de restauro. Reparamos e repintamos cuidadosamente os móveis, preservando o seu carácter original.",
 				"extra": [
-					"Restaurar uma peça de madeira permite-lhe preservar o seu valor sentimental ou histórico, em vez de o substituir por um novo. Muitas vezes, trata-se de mobiliário com valor familiar que vale a pena manter em uso.",
-					"O âmbito da restauração varia muito consoante o estado de cada peça: pode variar desde uma simples repintura até à reparação de estruturas ou elementos que já não funcionam corretamente."
+					"Restaurar uma peça de madeira permite-lhe preservar o seu valor sentimental ou histórico, em vez de a substituir por uma nova. Muitas vezes, trata-se de mobiliário com valor familiar que vale a pena manter em uso.",
+					"O âmbito do restauro varia muito consoante o estado de cada peça: pode ir desde uma simples repintura até à reparação de estruturas ou elementos que já não funcionam corretamente."
 				],
 				"process": [
 					{
@@ -267,7 +267,7 @@
 					},
 					{
 						"title": "Fabrico na oficina",
-						"text": "Levamos a peça para a oficina, onde reparamos a estrutura, substituimos as partes danificadas se necessário e aplicamos o acabamento correspondente. Trabalhamos cuidadosamente para respeitar a identidade original do mobiliário."
+						"text": "Levamos a peça para a oficina, onde reparamos a estrutura, substituímos as partes danificadas se necessário e aplicamos o acabamento correspondente. Trabalhamos cuidadosamente para respeitar a identidade original do mobiliário."
 					},
 					{
 						"title": "Instalação",
@@ -280,12 +280,12 @@
 				"description": "A nossa equipa de especialistas fornece medições precisas e serviços de planeamento detalhado para garantir o sucesso do seu projeto. Temos em conta todos os detalhes antes de iniciar a construção.",
 				"extra": [
 					"Um bom planeamento inicial permite detetar possíveis incompatibilidades antes da madeira chegar à oficina, o que poupa tempo e evita ter de refazer o trabalho mais tarde.",
-					"Este serviço é normalmente o ponto de partida de qualquer outro projeto de carpintaria: mobiliário, cozinhas, estruturas ou janelas, pois todos estes trabalhos dependem de ter os tamanhos e condições corretos desde o início."
+					"Este serviço é normalmente o ponto de partida de qualquer outro projeto de carpintaria: mobiliário, cozinhas, estruturas ou janelas, pois todos estes trabalhos dependem de ter as medidas e os condicionantes corretos desde o início."
 				],
 				"process": [
 					{
 						"title": "Medição e visita",
-						"text": "Este é o núcleo do serviço: visitamos o espaço, fazemos todas as medições necessárias e identificamos condições como tomadas elétricas, drenos ou paredes que não estão completamente quadradas."
+						"text": "Este é o núcleo do serviço: visitamos o espaço, tiramos todas as medidas necessárias e identificamos condicionantes como tomadas elétricas, escoamentos ou paredes que não estão totalmente em esquadria."
 					},
 					{
 						"title": "Conceção",
@@ -302,16 +302,16 @@
 				]
 			},
 			"finestres-i-balconeres": {
-				"title": "Janelas e varandas",
-				"description": "Projetamos e fabricamos janelas e armários de varanda em madeira feitos à medida, adaptados às suas necessidades e preferências. Utilizamos madeira de qualidade e técnicas artesanais para garantir um acabamento duradouro e elegante.",
+				"title": "Janelas e portas de varanda",
+				"description": "Projetamos e fabricamos janelas e portas de varanda em madeira feitas à medida, adaptadas às suas necessidades e preferências. Utilizamos madeira de qualidade e técnicas artesanais para garantir um acabamento duradouro e elegante.",
 				"extra": [
-					"Como estes são elementos externos, normalmente aplica-se um tratamento protetor antes da instalação, semelhante ao que utilizamos no nosso serviço de verniz e lacagem.",
-					"Uma janela ou varanda de madeira feita à medida permite-lhe adaptar-se a aberturas que não seguem os tamanhos padrão, o que é comum em edifícios antigos ou em renovações onde pretende manter a consistência com o resto da carpintaria da casa."
+					"Como se trata de elementos exteriores, normalmente aplica-se um tratamento protetor antes da instalação, semelhante ao que utilizamos no nosso serviço de lacagem e envernizamento.",
+					"Uma janela ou porta de varanda de madeira feita à medida permite adaptar-se a aberturas que não seguem os tamanhos padrão, o que é comum em edifícios antigos ou em renovações onde pretende manter a consistência com o resto da carpintaria da casa."
 				],
 				"process": [
 					{
 						"title": "Medição e visita",
-						"text": "Tomamos as dimensões exatas das aberturas onde as janelas ou varandas irão estar, tendo em conta a orientação e as condições da abertura existente."
+						"text": "Tiramos as medidas exatas dos vãos onde vão ficar as janelas ou portas de varanda, tendo em conta a orientação e as condições da abertura existente."
 					},
 					{
 						"title": "Conceção",
@@ -319,11 +319,11 @@
 					},
 					{
 						"title": "Fabrico na oficina",
-						"text": "Fabricamos cada janela ou janela de varanda na oficina, ajustando-a com precisão às medidas tomadas e aplicando o acabamento escolhido antes de a transferir para o estaleiro de construção."
+						"text": "Fabricamos cada janela ou porta de varanda na oficina, ajustando-a com precisão às medidas tiradas e aplicando o acabamento escolhido antes de a levar para a obra."
 					},
 					{
 						"title": "Instalação",
-						"text": "Instalamos as janelas e varandas no local deles, verificando se fecham corretamente e estão bem vedadas contra o ar e a humidade."
+						"text": "Instalamos as janelas e portas de varanda no seu local, verificando se fecham corretamente e ficam bem vedadas contra o ar e a humidade."
 					}
 				]
 			}
@@ -331,7 +331,7 @@
 	},
 	"contact": {
 		"metaTitle": "Contacto",
-		"metaDescription": "Contacte a Fusteria InterFusta em Santa Coloma, Andorra. Pede um orçamento para o seu projeto de carpintaria.",
+		"metaDescription": "Contacte a Fusteria InterFusta em Santa Coloma, Andorra. Peça um orçamento para o seu projeto de carpintaria.",
 		"title": "Contacte-*nos*",
 		"intro": "Contacte-nos para quaisquer questões sobre os nossos serviços ou sobre as necessidades do seu projeto.",
 		"labels": {
@@ -341,7 +341,7 @@
 			"phone": "Telefone",
 			"message": "Mensagem"
 		},
-		"emailPlaceholder": "o.teu@email.com",
+		"emailPlaceholder": "o.seu@email.com",
 		"messagePlaceholder": "Diga-nos como o podemos ajudar. Detalhe o seu projeto ou consulta...",
 		"errors": {
 			"firstName": "Insira o seu nome",
@@ -349,13 +349,13 @@
 			"email": "Insira um endereço de email válido",
 			"phone": "Introduza o seu número de telefone",
 			"phoneInvalid": "Introduza um número de telefone válido",
-			"message": "Escreve a tua mensagem",
-			"send": "Mensagem de envio de erro"
+			"message": "Escreva a sua mensagem",
+			"send": "Erro ao enviar a mensagem"
 		},
 		"sending": "A enviar...",
 		"submit": "Enviar mensagem",
-		"consent": "Ao submeter este formulário, concorda com o tratamento dos seus dados conforme descrito no nosso {link}.",
-		"consentLink": "Política de Privacidade",
+		"consent": "Ao submeter este formulário, concorda com o tratamento dos seus dados conforme descrito na nossa {link}.",
+		"consentLink": "política de privacidade",
 		"success": "Mensagem enviada com sucesso. Responderemos assim que possível.",
 		"mapTitle": "Localização da Fusteria InterFusta no Google Maps",
 		"workshop": {
@@ -379,7 +379,7 @@
 	"project": {
 		"back": "Voltar aos projetos",
 		"category": "Categoria",
-		"completed": "Data de fim",
+		"completed": "Data de conclusão",
 		"duration": "Duração",
 		"openImage": "Abrir a imagem {n} de {title}",
 		"imageAlt": "{title} - imagem {n}"
@@ -394,11 +394,11 @@
 	"privacy": {
 		"metaTitle": "Política de Privacidade",
 		"metaDescription": "Como a Fusteria InterFusta recolhe, utiliza e protege os dados pessoais que nos fornece através deste site.",
-		"title": "*Política de Privacidade*",
+		"title": "Política de *privacidade*",
 		"intro": "Como recolhemos, utilizamos e protegemos os dados pessoais que nos fornece através deste site.",
 		"sections": [
 			{
-				"title": "1. Controlador de dados",
+				"title": "1. Responsável pelo tratamento",
 				"paragraphs": [
 					"O responsável pelo tratamento dos dados recolhidos através deste site é a {company} (NRT: L-715485-U), com sede registada em Passatge d'Enclar S/N, Santa Coloma, AD500, Andorra.",
 					"Para qualquer questão relacionada com a privacidade dos seus dados, pode contactar-nos através de {email} ou por telefone {phone}."
@@ -407,7 +407,7 @@
 			{
 				"title": "2. Que dados recolhemos",
 				"paragraphs": [
-					"Através do formulário de contacto neste site, pedimos-lhe o seu nome, apelido(s), endereço de email, número de telefone e a mensagem que pretende enviar-nos. Fornecer estes dados é voluntário, mas necessário, para que possamos responder à sua questão."
+					"Através do formulário de contacto neste site, pedimos-lhe o seu nome, apelido(s), endereço de email, número de telefone e a mensagem que pretende enviar-nos. Fornecer estes dados é voluntário, mas necessário para que possamos responder à sua questão."
 				]
 			},
 			{
@@ -432,7 +432,7 @@
 			{
 				"title": "6. Durante quanto tempo guardamos os dados",
 				"paragraphs": [
-					"Guardamos os dados que nos fornece através do formulário apenas pelo tempo necessário para responder à sua consulta e, quando apropriado, gerir o projeto que dela deriva. Se nenhum projeto for formalizado, apagaremos o email no prazo máximo de 2 anos a contar da última comunicação. Se uma ordem for formalizada, guardaremos os dados pelo tempo exigido por obrigações legais (por exemplo, fiscalidade e contabilidade)."
+					"Guardamos os dados que nos fornece através do formulário apenas pelo tempo necessário para responder à sua consulta e, quando apropriado, gerir o projeto que dela deriva. Se nenhum projeto for formalizado, apagaremos o email no prazo máximo de 2 anos a contar da última comunicação. Se uma encomenda for formalizada, guardaremos os dados pelo tempo exigido por obrigações legais (por exemplo, fiscalidade e contabilidade)."
 				]
 			},
 			{
@@ -459,18 +459,18 @@
 	},
 	"notFound": {
 		"metaTitle": "Página não encontrada",
-		"sheetTitle": "Mapa não encontrado",
-		"title": "Esta página não está no mapa",
-		"text": "Talvez tenha mudado ou a ligação não esteja correta.",
-		"home": "Voltar ao topo",
+		"sheetTitle": "Planta não encontrada",
+		"title": "Esta página não está na planta",
+		"text": "Talvez tenha sido movida ou a ligação não esteja correta.",
+		"home": "Voltar ao início",
 		"projects": "Ver projetos"
 	},
 	"error": {
-		"sheetTitle": "Parte do lado esquerdo",
+		"sheetTitle": "Peça rachada",
 		"status": "Em reparação",
 		"title": "Algo partiu-se",
 		"text": "Houve um erro da nossa parte. Por favor, tente novamente daqui a pouco.",
-		"retry": "Tenta outra vez",
-		"home": "Voltar ao topo"
+		"retry": "Tentar novamente",
+		"home": "Voltar ao início"
 	}
 }
