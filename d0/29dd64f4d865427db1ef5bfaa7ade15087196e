@@ -1,0 +1,21 @@
+app/[lang]/contact/client-contact.tsx
+  s_87987dbbe0205f::t_45fc56b6baa2d5 1-363
+app/[lang]/contact/page.tsx
+  s_87987dbbe0205f::t_1f70378595690e 1-8,11-12,14-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "d029dd64f4d865427db1ef5bfaa7ade15087196e",
+  "prompts": {},
+  "sessions": {
+    "s_87987dbbe0205f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_87987dbbe0205f",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
