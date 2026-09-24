@@ -23,6 +23,12 @@ const nextConfig = {
 		return config;
 	},
 	turbopack: {},
+	experimental: {
+		// app/global-not-found.tsx: a styled 404 for URLs that match no route
+		// at all (junk paths), since the multiple root layouts (app/[lang],
+		// app/(admin)) mean there's no single app/not-found.tsx above them.
+		globalNotFound: true,
+	},
 	async headers() {
 		return [
 			{
