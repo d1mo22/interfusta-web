@@ -1,0 +1,23 @@
+lib/i18n-config.check.ts
+  s_184eaa4201ee11::t_4ccb0f31d1953d 1-122
+lib/i18n-config.ts
+  s_184eaa4201ee11::t_02587d8406156c 1-132
+tsconfig.json
+  s_184eaa4201ee11::t_5ac55e2431044a 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4f388eedf5cc7650600bd5e67c4bef7c69409fa6",
+  "prompts": {},
+  "sessions": {
+    "s_184eaa4201ee11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_184eaa4201ee11",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
