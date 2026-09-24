@@ -44,14 +44,23 @@ export function LanguageSwitcher({
 		if (event.key === "Escape" && open) {
 			setOpen(false);
 			buttonRef.current?.focus();
-		} else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+		} else if (open && ["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
 			const items = [...(menuRef.current?.querySelectorAll("a") ?? [])];
 			const i = items.indexOf(document.activeElement as HTMLAnchorElement);
-			if (i === -1) return;
 			event.preventDefault();
-			const step = event.key === "ArrowDown" ? 1 : items.length - 1;
-			items[(i + step) % items.length].focus();
+			if (event.key === "Home") items[0].focus();
+			else if (event.key === "End") items[items.length - 1].focus();
+			// From the button, the arrows enter the list at the current language.
+			else if (i === -1) menuRef.current?.querySelector<HTMLAnchorElement>("a[aria-current]")?.focus();
+			else items[(i + (event.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
 		}
+	}
+
+	function onBlur(event: React.FocusEvent) {
+		// A null relatedTarget (a click on nothing focusable, or Safari not focusing
+		// links on mousedown) is left to the pointerdown listener.
+		const next = event.relatedTarget;
+		if (next && !rootRef.current?.contains(next)) setOpen(false);
 	}
 
 	function item(l: Locale, className: string) {
@@ -97,11 +106,12 @@ export function LanguageSwitcher({
 	}
 
 	return (
-		<div ref={rootRef} className="relative" onKeyDown={onKeyDown}>
+		<div ref={rootRef} className="relative" onKeyDown={onKeyDown} onBlur={onBlur}>
 			<button
 				ref={buttonRef}
 				type="button"
-				aria-label={`${label}: ${LANGUAGE_NAMES[lang]}`}
+				// Starts with the visible code so the name contains the label (WCAG 2.5.3).
+				aria-label={`${lang.toUpperCase()}, ${label}: ${LANGUAGE_NAMES[lang]}`}
 				aria-expanded={open}
 				aria-controls={id}
 				onClick={() => setOpen(!open)}
