@@ -62,3 +62,69 @@ export async function translateFields<K extends string>(
 		TARGETS.map((t) => [t, Object.fromEntries(keys.map((k, i) => [k, result[t][i]]))]),
 	) as FieldTranslations<K>;
 }
+
+// Catalan project columns that get translated (the jsonb keys use the same names).
+export const PROJECT_FIELDS = ["title", "description", "full_description", "duration"] as const;
+export type ProjectField = (typeof PROJECT_FIELDS)[number];
+
+// Fresh machine output replaces only the fields whose Catalan changed, so a
+// hand-corrected translation survives edits to other fields. If translating
+// failed (fresh = null), the changed fields are dropped instead: the site then
+// falls back to the new Catalan rather than showing a stale translation.
+// `pending` fields (Catalan unchanged, but untranslated in some languages) take
+// the fresh value only in languages where the stored one is missing or blank,
+// so hand fixes elsewhere survive; with fresh = null they are left as stored.
+// Fresh values for fields in neither list are ignored.
+export function mergeTranslations<K extends string>(
+	old: FieldTranslations<K> | null | undefined,
+	fresh: FieldTranslations<K> | null,
+	changed: readonly K[],
+	pending: readonly K[] = [],
+): FieldTranslations<K> {
+	return Object.fromEntries(
+		TARGETS.map((t) => {
+			const stored: Partial<Record<K, string>> = old?.[t] ?? {};
+			const kept = Object.fromEntries(
+				Object.entries(stored).filter(([k]) => !changed.includes(k as K)),
+			);
+			const applied = Object.fromEntries(
+				Object.entries(fresh?.[t] ?? {}).filter(
+					([k]) =>
+						changed.includes(k as K) ||
+						(pending.includes(k as K) && !stored[k as K]?.trim()),
+				),
+			);
+			return [t, { ...kept, ...applied }];
+		}),
+	) as FieldTranslations<K>;
+}
+
+// Fields that lack a non-blank translation in at least one language.
+export const missingFields = <K extends string>(
+	t: FieldTranslations<K> | null | undefined,
+	fields: readonly K[],
+): K[] => fields.filter((f) => TARGETS.some((l) => !t?.[l]?.[f]?.trim()));
+
+// For translations typed in the admin: keeps only known languages and fields
+// with non-blank string values (trimmed); everything else is dropped, and a
+// dropped field falls back to Catalan on the site.
+export function sanitizeTranslations<K extends string>(
+	input: unknown,
+	fields: readonly K[],
+): FieldTranslations<K> {
+	const src = (input && typeof input === "object" ? input : {}) as Record<string, unknown>;
+	return Object.fromEntries(
+		TARGETS.map((t) => {
+			const row = (src[t] && typeof src[t] === "object" ? src[t] : {}) as Record<string, unknown>;
+			return [
+				t,
+				Object.fromEntries(
+					fields.flatMap((f) => {
+						const value = row[f];
+						return typeof value === "string" && value.trim() ? [[f, value.trim()]] : [];
+					}),
+				),
+			];
+		}),
+	) as FieldTranslations<K>;
+}
