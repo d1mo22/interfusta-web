@@ -103,7 +103,7 @@ export function Navigation({ lang, dict }: { lang: Locale; dict: Dictionary["nav
 						<ThemeToggle labels={themeLabels} />
 					</div>
 					<div className="px-6 py-4">
-						<LanguageSwitcher lang={lang} label={dict.language} />
+						<LanguageSwitcher lang={lang} label={dict.language} variant="list" />
 					</div>
 				</div>
 			)}
