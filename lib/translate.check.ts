@@ -1,6 +1,6 @@
 // Run: node --experimental-strip-types lib/translate.check.ts
 import assert from "node:assert";
-import { translateFields, translateTexts } from "./translate.ts";
+import { mergeTranslations, missingFields, sanitizeTranslations, translateFields, translateTexts } from "./translate.ts";
 
 process.env.AZURE_TRANSLATOR_KEY = "test-key";
 process.env.AZURE_TRANSLATOR_REGION = "westeurope";
@@ -55,5 +55,94 @@ assert.equal(await translateTexts(["x"]), null);
 // Not configured -> null
 delete process.env.AZURE_TRANSLATOR_KEY;
 assert.equal(await translateTexts(["x"]), null);
+
+// Every field blank or undefined: no request, an empty object per language
+// (and no Azure config needed, since the key was deleted above)
+assert.deepStrictEqual(await translateFields<"title" | "duration">({ title: " ", duration: undefined }), {
+	es: {},
+	fr: {},
+	en: {},
+	pt: {},
+});
+
+const every = (v: Record<string, string>) => ({ es: v, fr: v, en: v, pt: v });
+
+// Only changed fields are replaced; a hand-fixed description survives a title edit
+assert.deepStrictEqual(
+	mergeTranslations(
+		every({ title: "Cocina vieja", description: "Arreglado a mano" }),
+		every({ title: "Cocina nueva" }),
+		["title"],
+	),
+	every({ title: "Cocina nueva", description: "Arreglado a mano" }),
+);
+// Translation failed: the changed field is dropped so the site shows the new Catalan, not stale text
+assert.deepStrictEqual(
+	mergeTranslations(every({ title: "Cocina vieja", description: "Arreglado a mano" }), null, ["title"]),
+	every({ description: "Arreglado a mano" }),
+);
+// Nothing stored and nothing translated
+assert.deepStrictEqual(mergeTranslations(null, null, ["title"]), every({}));
+
+// Pending field (Catalan unchanged, some languages untranslated): only the blank languages are filled
+assert.deepStrictEqual(
+	mergeTranslations(
+		{ es: { title: "Arreglado a mano" }, fr: { title: " " }, en: { title: "Kitchen" }, pt: {} },
+		every({ title: "Nuevo" }),
+		[],
+		["title"],
+	),
+	{ es: { title: "Arreglado a mano" }, fr: { title: "Nuevo" }, en: { title: "Kitchen" }, pt: { title: "Nuevo" } },
+);
+// Pending field and translation failed: stored values are left as they were
+assert.deepStrictEqual(
+	mergeTranslations(every({ title: "Arreglado a mano" }), null, [], ["title"]),
+	every({ title: "Arreglado a mano" }),
+);
+// A fresh field in neither list is ignored
+assert.deepStrictEqual(
+	mergeTranslations(
+		every({ title: "Viejo", description: "Arreglado a mano" }),
+		every({ title: "Nuevo", description: "Máquina", duration: "3 días" }),
+		["title"],
+	),
+	every({ title: "Nuevo", description: "Arreglado a mano" }),
+);
+
+// Blank or whitespace-only fresh values are never stored: a changed field is
+// dropped (Catalan shows) and a pending blank language stays unfilled
+assert.deepStrictEqual(
+	mergeTranslations(
+		{ es: { title: "Viejo", description: "" }, fr: {}, en: {}, pt: {} },
+		{ es: { title: "  ", description: "" }, fr: { title: "" }, en: { title: "New" }, pt: { title: " \n" } },
+		["title"],
+		["description"],
+	),
+	{ es: { description: "" }, fr: {}, en: { title: "New" }, pt: {} },
+);
+
+// missingFields treats blanks and absent languages as missing
+assert.deepStrictEqual(
+	missingFields(every({ title: "x", description: " " }), ["title", "description"]),
+	["description"],
+);
+assert.deepStrictEqual(missingFields({ es: { title: "x" } }, ["title"]), ["title"]);
+assert.deepStrictEqual(missingFields(null, ["title"]), ["title"]);
+assert.deepStrictEqual(missingFields(every({ title: "x" }), ["title"]), []);
+
+// sanitizeTranslations: the admin's trust boundary
+assert.deepStrictEqual(
+	sanitizeTranslations(
+		{
+			es: { title: " Hola ", evil: "x", description: 5 },
+			de: { title: "Hallo" },
+			fr: "nope",
+			en: { title: "   " },
+		},
+		["title", "description"],
+	),
+	{ es: { title: "Hola" }, fr: {}, en: {}, pt: {} },
+);
+assert.deepStrictEqual(sanitizeTranslations(null, ["title"]), every({}));
 
 console.log("translate ok");

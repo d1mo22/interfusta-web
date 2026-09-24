@@ -10,11 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PortfolioPage() {
-	const [lang, dict, { projects, categories }] = await Promise.all([
-		getLocale(),
-		getDictionary(),
-		getPortfolioData(),
-	]);
+	const [lang, dict] = await Promise.all([getLocale(), getDictionary()]);
+	const { projects, categories } = await getPortfolioData(lang);
 	return (
 		<ClientPage initialProjects={projects} categories={categories} lang={lang} dict={dict.portfolio} />
 	);

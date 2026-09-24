@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n-config";
 import type { Dictionary } from "@/lib/i18n";
+import type { FieldTranslations, ProjectField } from "@/lib/translate";
 
 export interface Project {
 	id: number;
@@ -16,6 +17,8 @@ export interface Project {
 	last_update?: string;
 	updated_by?: string;
 	images?: ImageData[];
+	translations?: FieldTranslations<ProjectField> | null;
+	translation_pending?: boolean;
 }
 
 export interface User {
@@ -28,12 +31,14 @@ export interface User {
 export interface Category {
 	id: number;
 	name: string;
+	is_all?: boolean;
 }
 
 export interface Feature {
 	id: number;
 	project_id: number;
 	description: string;
+	translations?: FieldTranslations<"description"> | null;
 }
 
 export interface ImageData {
