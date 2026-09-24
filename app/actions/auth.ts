@@ -11,24 +11,37 @@ import {
 	verifySession,
 } from "@/lib/session";
 
+// Bcrypt hash of a random string (cost factor 10, matching the cost used for
+// real user passwords) with no known plaintext. Compared against on every
+// login attempt for an unknown/invalid user so the response takes about the
+// same time as a real password check, avoiding a timing side-channel that
+// would otherwise leak which usernames exist.
+const DUMMY_HASH = "$2b$10$Cn4/7nMuAb.MjVyE6MGLfucJOGLzmyQQiIoViW9mmoETjh5DVQNdm";
+
 export async function login(formData: FormData) {
 	const username = formData.get("username");
 	const password = formData.get("password");
 
 	try {
+		if (typeof username !== "string" || typeof password !== "string") {
+			await bcrypt.compare(
+				typeof password === "string" ? password : "",
+				DUMMY_HASH,
+			);
+			return { error: "Usuari o contrasenya incorrectes" };
+		}
+
 		const user = await sql`SELECT * FROM users WHERE username = ${username}`;
 
 		if (!user.length) {
-			return { error: "Usuari no trobat" };
+			await bcrypt.compare(password, DUMMY_HASH);
+			return { error: "Usuari o contrasenya incorrectes" };
 		}
 
-		const validPassword = await bcrypt.compare(
-			password as string,
-			user[0].password,
-		);
+		const validPassword = await bcrypt.compare(password, user[0].password);
 
 		if (!validPassword) {
-			return { error: "Contrasenya incorrecta" };
+			return { error: "Usuari o contrasenya incorrectes" };
 		}
 
 		(await cookies()).set(
