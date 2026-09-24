@@ -7,7 +7,8 @@ const ONE_YEAR = 60 * 60 * 24 * 365;
 
 export async function proxy(request: NextRequest) {
 	const { pathname } = request.nextUrl;
-	if (pathname.startsWith("/admin") || pathname.startsWith("/api")) return guard(request);
+	// Whole segments only: /administrator or /apiary are public paths.
+	if (/^\/(?:admin|api)(?:\/|$)/.test(pathname)) return guard(request);
 	return localize(request);
 }
 
@@ -55,9 +56,11 @@ export const config = {
 		"/admin",
 		"/admin/:path*",
 		"/api/:path*",
-		// Public pages: everything except Next internals, admin/auth/api and files
-		// with an extension (public/ assets, sitemap.xml, robots.txt, the Google
-		// verification .html files).
-		"/((?!_next|api|admin|auth|.*\\..*).*)",
+		// Public pages: everything except Next internals, Vercel's analytics beacons
+		// (/_vercel/insights, /_vercel/speed-insights), admin/auth/api and files with
+		// an extension (public/ assets, sitemap.xml, robots.txt, the Google
+		// verification .html files). The prefixes are whole segments, so
+		// /administrator or /authors still get locale handling and the site's 404.
+		"/((?!(?:_next|_vercel|api|admin|auth)(?:/|$)|.*\\..*).*)",
 	],
 };
