@@ -87,6 +87,9 @@ export async function getPortfolioData(lang: Locale = "ca") {
 }
 
 export async function getProjectDetails(id: number, lang: Locale = "ca") {
+	// project.id is a smallint: comparing it with a bare parameter makes
+	// Postgres parse the parameter as smallint, so an id above 32767 threw
+	// "out of range" instead of matching no row. ::bigint makes it just miss.
 	// json_agg over zero rows is NULL, not []. COALESCE keeps features and
 	// images arrays for a project with no features or photos, so the detail
 	// page's images[0] / images.slice(1) / features.map don't throw.
@@ -126,7 +129,7 @@ export async function getProjectDetails(id: number, lang: Locale = "ca") {
     FROM project p
     CROSS JOIN LATERAL (SELECT p.translations -> ${lang}::text AS t) tr
     LEFT JOIN category c ON p.category_id = c.id
-    WHERE p.id = ${id}
+    WHERE p.id = ${id}::bigint
   `;
 	return project;
 }

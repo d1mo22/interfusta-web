@@ -14,6 +14,13 @@ const getCachedProjectDetails = unstable_cache(
 	{ revalidate: 3600 },
 );
 
+// "/portfolio/abc" or "/portfolio/12abc" is not a project id: parseInt gave
+// NaN (or 12), and NaN reached Postgres as an invalid integer and threw.
+function parseId(raw: string): number | null {
+	const id = /^\d+$/.test(raw) ? Number(raw) : Number.NaN;
+	return Number.isSafeInteger(id) ? id : null;
+}
+
 // Memoised per-request so the page and generateMetadata share one lookup.
 // Trimmed here so a stray leading/trailing space in the stored title doesn't
 // leak into <title>, og:title, or the alt text derived from it downstream.
@@ -29,7 +36,8 @@ const getProject = cache(async (id: number, lang: Locale) => {
 export async function generateMetadata({
 	params,
 }: { params: Promise<{ id: string }> }): Promise<Metadata> {
-	const id = Number.parseInt((await params).id);
+	const id = parseId((await params).id);
+	if (id === null) return {};
 	const lang = await getLocale();
 	const project = await getProject(id, lang);
 
@@ -56,7 +64,8 @@ export async function generateMetadata({
 export default async function ProjectDetails({
 	params,
 }: { params: Promise<{ id: string }> }) {
-	const id = Number.parseInt((await params).id);
+	const id = parseId((await params).id);
+	if (id === null) notFound();
 
 	const [lang, dict] = await Promise.all([getLocale(), getDictionary()]);
 	const project = await getProject(id, lang);
