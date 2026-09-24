@@ -1,0 +1,19 @@
+app/actions/auth.ts
+  s_328cf46bc1515d::t_c5928b680fb355 14-20,26-33,37-38,41,44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "a21a4f6696bb05bdd2e8d638f6932e6177c4783c",
+  "prompts": {},
+  "sessions": {
+    "s_328cf46bc1515d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_328cf46bc1515d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
