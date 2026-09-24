@@ -1,0 +1,19 @@
+scripts/translate-messages.ts
+  s_a3ccfd50808035::t_dece45040131cc 62-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "fb0ea4ac69ca6215a474245b72a182a3bc6834be",
+  "prompts": {},
+  "sessions": {
+    "s_a3ccfd50808035": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_a3ccfd50808035",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
