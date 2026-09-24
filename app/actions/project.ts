@@ -54,11 +54,12 @@ function resolveUrls(
 	return urls.every(Boolean) ? (urls as string[]) : null;
 }
 
-function revalidate(id: number) {
-	revalidatePath("/");
+// Public pages live under app/[lang] (/ca/portfolio, /fr/portfolio, ...), so the
+// browser paths (/portfolio) no longer match any cache entry. The "/" layout tag
+// is on every page, so this refreshes every locale in one call.
+function revalidate() {
+	revalidatePath("/", "layout");
 	revalidatePath("/admin");
-	revalidatePath("/portfolio");
-	revalidatePath(`/portfolio/${id}`);
 }
 
 export async function createProject(p: ProjectInput): Promise<Result> {
@@ -87,7 +88,7 @@ export async function createProject(p: ProjectInput): Promise<Result> {
 			)
 			SELECT id FROM p
 		`;
-		revalidate(id);
+		revalidate();
 		return { id };
 	} catch (e) {
 		console.error("Error creating project:", e);
@@ -141,7 +142,7 @@ export async function updateProject(
 		await deleteR2Urls(
 			current.map((r) => r.url as string).filter((u) => !kept.has(u)),
 		);
-		revalidate(id);
+		revalidate();
 		return { id };
 	} catch (e) {
 		console.error("Error updating project:", e);
@@ -159,7 +160,7 @@ export async function deleteProject(id: number): Promise<Result> {
 			sql`DELETE FROM project WHERE id = ${id}`,
 		]);
 		await deleteR2Urls(images.map((r) => r.url as string));
-		revalidate(id);
+		revalidate();
 		return { id };
 	} catch (e) {
 		console.error("Error deleting project:", e);

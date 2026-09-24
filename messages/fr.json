@@ -1,0 +1,476 @@
+{
+	"meta": {
+		"title": "Fusteria InterFusta - Services d’experts en menuiserie",
+		"description": "Services professionnels de menuiserie et d’ébénisterie en Andorre"
+	},
+	"skipLink": "Passer au contenu",
+	"nav": {
+		"services": "Services",
+		"portfolio": "Projets",
+		"about": "À propos de nous",
+		"contact": "Contact",
+		"call": "Appelez-nous au {phone}",
+		"openMenu": "Ouvrir le menu",
+		"closeMenu": "Fermer le menu",
+		"language": "Langue",
+		"theme": "Changer de thème",
+		"light": "Clair",
+		"dark": "Sombre"
+	},
+	"footer": {
+		"title": "Fusteria *InterFusta*",
+		"tagline": "Des services professionnels de menuiserie avec des années d’expérience dans la création de solutions élégantes en bois.",
+		"contact": "Contact",
+		"hours": "Horaires",
+		"schedule": [
+			"Du lundi au vendredi de 9h00 à 17h00",
+			"Samedi 10h00 - 13h00",
+			"Dimanche fermé"
+		],
+		"rights": "Tous droits réservés.",
+		"privacy": "Politique de confidentialité"
+	},
+	"home": {
+		"eyebrow": "Fusteria InterFusta, Andorre",
+		"title": "Services de *menuiserie* experts en Andorre",
+		"subtitle": "Créer des solutions en bois élégantes et fonctionnelles pour votre maison et votre entreprise",
+		"cta": "Découvrez notre travail",
+		"featured": {
+			"label": "Projet à la une",
+			"title": "Rénovation d’une *villa* de luxe",
+			"description": "Nous avons entièrement transformé cette villa avec un mobilier sur mesure, une cuisine sur mesure et des détails en bois complexes sur tout le site. Notre équipe a travaillé en étroite collaboration avec le client pour donner vie à sa vision, offrant ainsi une démonstration saisissante de notre savoir-faire.",
+			"features": [
+				"Armoires de cuisine sur mesure",
+				"Table à manger et chaises faites main",
+				"Armoires murales pour toutes les pièces",
+				"Poutres de plafond en bois et panneaux muraux"
+			],
+			"imageAlt": "Projet à la une",
+			"galleryAlt": "Image {n} du projet à la une",
+			"seeAll": "Voir tous les projets"
+		},
+		"servicesTitle": "Nos *services*",
+		"services": [
+			{
+				"title": "Mobilier sur mesure",
+				"description": "Meubles sur mesure conçus et fabriqués selon vos spécifications",
+				"alt": "Meubles sur mesure dans l’atelier"
+			},
+			{
+				"title": "Installation de cuisines",
+				"description": "Installation et personnalisation professionnelle des armoires de cuisine",
+				"alt": "Installation de cuisines"
+			},
+			{
+				"title": "Laquage et vernissage",
+				"description": "Des finitions professionnelles pour protéger et embellir vos meubles en bois",
+				"alt": "Laquage et vernissage"
+			},
+			{
+				"title": "Mesures et planification",
+				"description": "Planification détaillée et mesures précises pour votre projet",
+				"alt": "Mesures et planification"
+			}
+		],
+		"ctaBand": {
+			"title": "Prêt à commencer votre projet ?",
+			"text": "Nous réalisons votre vision. Contactez-nous dès aujourd’hui pour une consultation gratuite et un devis.",
+			"button": "Contact"
+		}
+	},
+	"about": {
+		"metaTitle": "À propos de nous",
+		"metaDescription": "Découvrez l’équipe et le parcours de Fusteria InterFusta, spécialistes de la menuiserie et de l’ébénisterie en Andorre.",
+		"title": "À propos d'*InterFusta*",
+		"lead": "Depuis notre création, Interfusta est à la pointe des services de menuiserie de haute qualité en Andorre. Notre engagement envers l’excellence et notre souci du détail ont fait de nous un nom de confiance dans le secteur.",
+		"body": "Nous combinons des techniques traditionnelles d’ébénisterie avec des technologies modernes pour créer des pièces étonnantes qui résistent à l’épreuve du temps. Notre équipe d’artisans experts apporte des décennies d’expérience combinée à chaque projet.",
+		"imageAlt": "Notre atelier",
+		"stats": [
+			"Années d’expérience",
+			"Projets achevés",
+			"Clients satisfaits",
+			"Membres de l’équipe"
+		],
+		"valuesTitle": "Nos *valeurs*",
+		"values": [
+			{
+				"title": "Artisanat de qualité",
+				"description": "Nous sommes fiers d’offrir une qualité exceptionnelle dans chaque projet, en utilisant les meilleurs matériaux et techniques"
+			},
+			{
+				"title": "Satisfaction client",
+				"description": "Votre satisfaction est notre priorité. Nous travaillons en étroite collaboration avec vous pour que votre vision devienne réalité."
+			},
+			{
+				"title": "Durabilité",
+				"description": "Nous nous engageons à des pratiques durables, à utiliser des matériaux issus de manière responsable et à minimiser les déchets."
+			}
+		]
+	},
+	"services": {
+		"metaTitle": "Services",
+		"metaDescription": "Mobilier sur mesure, cuisines, laques, Corian et structures en bois. Découvrez tous les services de menuiserie de Fusteria InterFusta en Andorre.",
+		"title": "Nos *services*",
+		"intro": "Nous proposons une large gamme de services de menuiserie, alliant artisanat traditionnel à des techniques modernes pour des résultats exceptionnels.",
+		"heroAlt": "Cuisine sur mesure avec îlot en bois",
+		"howWeWork": "Comment nous travaillons",
+		"ctaTitle": "Parlons de votre projet",
+		"ctaText": "Chaque projet est différent. Dites-nous ce dont vous avez besoin et nous préparerons une proposition adaptée à votre espace et à votre budget.",
+		"ctaButton": "Demandez un devis",
+		"related": "Autres services connexes",
+		"items": {
+			"mobles-a-mesura": {
+				"title": "Mobilier sur mesure",
+				"description": "Nous concevons et fabriquons des meubles sur mesure, adaptés à vos besoins et préférences spécifiques. Des tables à manger élégantes aux armoires sur mesure, nos artisans experts concrétiseront votre vision.",
+				"extra": [
+					"Un meuble sur mesure vous permet de profiter de chaque recoin de l’espace disponible, des armoires encastrées aux meubles pour les espaces aux formes irrégulières, sans être limité aux tailles standard du marché.",
+					"Ce service est courant lorsqu’un espace a une forme non conventionnelle, lorsque vous souhaitez tirer le meilleur parti de la hauteur ou de la profondeur disponible, ou simplement lorsque vous cherchez un meuble qui ne figure dans aucun catalogue. Le point de départ n’est jamais un modèle fermé, mais l’espace réel et l’utilisation que vous souhaitez lui donner."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "Nous nous déplaçons chez vous pour prendre des mesures exactes et découvrir comment vous comptez utiliser l’espace. Ainsi, nous nous assurons que le mobilier s’adapte parfaitement, tant en termes de dimensions que de fonctionnalité."
+					},
+					{
+						"title": "Conception",
+						"text": "Nous traduisons vos idées en un design concret, en ajustant les proportions, les finitions et l’aménagement intérieur. Nous revoyons les détails avec vous jusqu’à ce que le résultat réponde exactement à vos besoins."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Chaque pièce est fabriquée dans notre atelier, où nous combinons des techniques artisanales avec des machines modernes. Ce procédé nous permet de contrôler la qualité de chaque élément avant qu’il ne parte vers votre espace."
+					},
+					{
+						"title": "Installation",
+						"text": "Une fois prêts, nous transportons et installons les meubles dans votre espace. Nous vérifions que tout s’ajuste, que les portes et tiroirs fonctionnent correctement et que la finition est conforme aux attentes."
+					}
+				]
+			},
+			"instal-lacio-de-cuines": {
+				"title": "Installation de cuisines",
+				"description": "Transformez votre cuisine grâce à nos services professionnels d’installation. Nous prenons en charge tout, de l’assemblage des meubles aux solutions de rangement sur mesure, garantissant une fonctionnalité et une esthétique parfaites.",
+				"extra": [
+					"Dans de nombreuses cuisines, le plan de travail est l’un des éléments qui définit le mieux la finition finale. Si vous recherchez une surface lisse sans joints visibles, nous travaillons également avec Corian pour ce type de projet.",
+					"L’installation d’une cuisine consiste à coordonner les meubles, les appareils électroménagers et les finitions afin qu’ils fonctionnent comme un ensemble, et non comme des pièces indépendantes. C’est pourquoi nous étudions l’agencement de l’espace dès le départ, avant de fabriquer le moindre élément."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "Nous visitons la cuisine pour prendre des mesures précises et évaluer l’emplacement des appareils électroménagers, de l’eau et de l’électricité. Cette étape est essentielle pour éviter les problèmes de coordination une fois l’assemblage commencé."
+					},
+					{
+						"title": "Conception",
+						"text": "Nous concevons la répartition des placards, tiroirs et espaces de rangement afin que la cuisine soit confortable à utiliser. Nous cherchons à ce que chaque élément ait une place cohérente avec la vie quotidienne de la cuisine."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Nous fabriquons les modules et les façades dans l’atelier, ajustant chaque pièce aux dimensions exactes de l’espace. Les finitions sont préparées selon le design convenu à l’avance."
+					},
+					{
+						"title": "Installation",
+						"text": "Nous assemblons et installons tous les éléments dans votre cuisine, en vérifiant les niveaux et les ajustements. Nous vérifions également le bon fonctionnement des tiroirs, portes et poignées avant de considérer le travail comme terminé."
+					}
+				]
+			},
+			"lacatge-i-vernissat": {
+				"title": "Laquage et vernissage",
+				"description": "Nous proposons des services professionnels de finition pour tous types de surfaces en bois. Nous utilisons des techniques spécialisées de laque et de vernis pour protéger et sublimer la beauté naturelle de vos meubles, garantissant ainsi une finition durable et élégante.",
+				"extra": [
+					"Le laquage offre une finition opaque et uniforme, tandis que le vernissage permet de garder visible le grain naturel du bois. La technique est choisie en fonction de l’esthétique recherchée et de la protection dont la pièce a besoin contre l’usage quotidien, l’humidité ou la lumière.",
+					"Ce service s’applique aussi bien aux meubles neufs qu’aux pièces existantes à renouveler, et il est généralement combiné avec d’autres services de menuiserie lorsqu’une pièce nécessite également une réparation préalable."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "Nous évaluons la pièce ou la surface dans votre espace ou dans notre atelier afin de déterminer l’état du bois. C’est ce qui nous permet de choisir le type de finition le plus approprié pour chaque cas."
+					},
+					{
+						"title": "Conception",
+						"text": "Nous définissons ensemble la couleur, la texture et le degré de brillance de la laque ou du vernis. Nous prenons en compte l’utilisation qui sera faite de la pièce et l’environnement dans lequel elle sera placée."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Nous appliquons le procédé de laquage ou de vernissage en atelier, en plusieurs couches. Chaque couche a besoin de son temps de séchage avant d’appliquer la suivante, afin d’obtenir une finition uniforme et résistante."
+					},
+					{
+						"title": "Installation",
+						"text": "Une fois la finition sèche, nous rapportons la pièce et la mettons en place, ou la livrons prête à être installée. Nous vérifions que la couleur et la texture correspondent à ce qui avait été convenu."
+					}
+				]
+			},
+			"disseny-amb-corian": {
+				"title": "Conception avec Corian",
+				"description": "Spécialistes de la conception et de la fabrication en Corian, un matériau polyvalent et durable, parfait pour les plans de travail, les lavabos et les surfaces décoratives. Nous créons des designs uniques et fonctionnels qui s’adaptent parfaitement à votre espace.",
+				"extra": [
+					"Le Corian est une surface solide et non poreuse qui permet de créer des pièces avec des joints pratiquement invisibles, ce qui facilite son entretien. Sa flexibilité permet de lui donner des formes courbes et d’intégrer des lavabos ou des robinets dans une même pièce continue, ce qui n’est pas toujours possible avec d’autres matériaux.",
+					"C’est un choix courant pour les plans de travail de cuisine, les lavabos de salle de bain et d’autres surfaces décoratives où l’on recherche une finition continue, sans les joints apparents typiques d’autres matériaux."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "Nous prenons des mesures exactes de l’espace où la pièce en Corian sera installée, en tenant compte des robinets, évacuations et autres éléments qui doivent s’y intégrer."
+					},
+					{
+						"title": "Conception",
+						"text": "Nous concevons la forme, la couleur et la finition de la pièce, en évaluant si elle nécessite des joints invisibles, des bords arrondis ou des éléments intégrés comme un lavabo. Nous définissons tous les détails avant de couper le matériau."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Nous découpons et façonnons le Corian dans l’atelier avec les outils spécifiques nécessaires à ce matériau. Nous travaillons à obtenir des surfaces continues, bien étanches et sans pores."
+					},
+					{
+						"title": "Installation",
+						"text": "Nous installons la pièce dans votre espace, en scellant les joints afin d’obtenir une surface uniforme facile à nettoyer, et nous vérifions qu’elle s’ajuste correctement aux robinets et aux évacuations."
+					}
+				]
+			},
+			"estructures-de-fusta": {
+				"title": "Structures en bois",
+				"description": "Créez des espaces extérieurs magnifiques avec nos structures en bois. Nous construisons des pergolas, des toits et des éléments architecturaux qui renforcent la valeur de votre propriété.",
+				"extra": [
+					"Comme il s’agit d’éléments exposés aux intempéries, le bois utilisé bénéficie d’un traitement protecteur avant l’assemblage, afin de mieux résister à l’humidité et aux variations de température.",
+					"Ce type de structure vous permet d’obtenir un espace extérieur pouvant être utilisé une grande partie de l’année, que ce soit comme espace ombragé, comme toit ou comme élément complétant l’architecture de la propriété."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "Nous visitons l’espace extérieur pour évaluer le terrain, l’orientation et les dimensions disponibles. Ces facteurs déterminent directement le type de structure qu’il est pertinent de proposer."
+					},
+					{
+						"title": "Conception",
+						"text": "Nous concevons la pergola, le toit ou l’élément architectural en tenant compte de l’usage auquel il est destiné. Nous cherchons à ce qu’il s’intègre au reste de la propriété, tant dans la forme que dans la finition."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Nous préparons les pièces de bois dans l’atelier, en les coupant et en les traitant selon la structure définie. Cette préparation préalable accélère l’assemblage ultérieur à l’extérieur."
+					},
+					{
+						"title": "Installation",
+						"text": "Nous assemblons la structure à son emplacement, la fixant solidement au sol ou à la construction existante. Nous vérifions la stabilité et la finition une fois l’assemblage terminé."
+					}
+				]
+			},
+			"restauracio": {
+				"title": "Restauration",
+				"description": "Redonnez vie à vos précieuses pièces de bois grâce à nos services de restauration. Nous réparons et repeignons soigneusement les meubles tout en préservant leur caractère d’origine.",
+				"extra": [
+					"Restaurer une pièce en bois vous permet de préserver sa valeur sentimentale ou historique, au lieu de la remplacer par une neuve. Souvent, il s’agit de meubles ayant une valeur familiale qui valent la peine d’être conservés.",
+					"L’étendue de la restauration varie considérablement selon l’état de chaque pièce : elle peut aller d’une simple repeinture à la réparation de structures ou d’éléments qui ne fonctionnent plus correctement."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "Nous examinons l’objet pour évaluer son état, identifier les dommages et comprendre comment il a été construit à l’origine. Ce diagnostic détermine l’ampleur réelle de l’intervention."
+					},
+					{
+						"title": "Conception",
+						"text": "Nous planifions l’intervention nécessaire, en décidant ce qui doit être réparé, renforcé ou repeint. L’objectif est de préserver le caractère original de la pièce en permanence."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Nous apportons la pièce à l’atelier, où nous réparons la structure, remplaçons les pièces endommagées si nécessaire et appliquons la finition correspondante. Nous travaillons soigneusement à respecter l’identité originale du mobilier."
+					},
+					{
+						"title": "Installation",
+						"text": "Une fois restaurée, nous vous rendons la pièce ou la remettons en place dans votre espace, en vérifiant qu’elle est stable et prête à être utilisée normalement."
+					}
+				]
+			},
+			"mesuraments-i-planificacio": {
+				"title": "Mesures et planification",
+				"description": "Notre équipe d’experts fournit des mesures précises et des services de planification détaillée pour garantir le succès de votre projet. Nous prenons en compte tous les détails avant de commencer la construction.",
+				"extra": [
+					"Une bonne planification initiale permet de détecter d’éventuelles incompatibilités avant que le bois n’atteigne l’atelier, ce qui fait gagner du temps et évite d’avoir à refaire le travail plus tard.",
+					"Ce service constitue généralement le point de départ de tout autre projet de menuiserie : meubles, cuisines, structures ou fenêtres, car tous ces travaux dépendent de mesures et de contraintes correctes dès le départ."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "C’est le cœur du service : nous visitons l’espace, prenons toutes les mesures nécessaires et identifions les contraintes telles que les prises électriques, les évacuations ou les murs qui ne sont pas tout à fait d’équerre."
+					},
+					{
+						"title": "Conception",
+						"text": "Avec les mesures recueillies, nous élaborons la planification détaillée du projet : distribution, ajustements et séquence de travail. Ce document guidera le reste du processus."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Cette planification est transmise à l’atelier, où elle sert de base pour que chaque pièce soit fabriquée exactement aux dimensions de l’espace mesuré, sans marges d’erreur à corriger ultérieurement."
+					},
+					{
+						"title": "Installation",
+						"text": "Le jour de l’installation, nous suivons le plan défini depuis le début, ce qui accélère l’assemblage et réduit les ajustements de dernière minute sur le terrain."
+					}
+				]
+			},
+			"finestres-i-balconeres": {
+				"title": "Fenêtres et portes-fenêtres",
+				"description": "Nous concevons et fabriquons des fenêtres et des portes-fenêtres en bois sur mesure, adaptées à vos besoins et préférences. Nous utilisons du bois de qualité et des techniques artisanales pour garantir une finition durable et élégante.",
+				"extra": [
+					"Comme il s’agit d’éléments extérieurs, un traitement protecteur est généralement appliqué avant l’installation, similaire à celui que nous utilisons dans notre service de laquage et de vernissage.",
+					"Une fenêtre ou une porte-fenêtre en bois sur mesure permet de s’adapter aux ouvertures qui ne respectent pas les tailles standard, ce qui est courant dans les bâtiments anciens ou dans les rénovations où l’on souhaite maintenir la cohérence avec le reste de la menuiserie de la maison."
+				],
+				"process": [
+					{
+						"title": "Mesure et visite",
+						"text": "Nous prenons les dimensions exactes des ouvertures où seront installées les fenêtres ou portes-fenêtres, en tenant compte de l’orientation et des conditions de l’ouverture existante."
+					},
+					{
+						"title": "Conception",
+						"text": "Nous définissons le type d’ouverture, l’épaisseur du profil et la finition du bois. Nous cherchons à respecter la cohérence avec le reste de la menuiserie de la maison."
+					},
+					{
+						"title": "Fabrication en atelier",
+						"text": "Nous fabriquons chaque fenêtre ou porte-fenêtre dans l’atelier, en l’ajustant précisément aux mesures prises et en appliquant la finition choisie avant de la transporter sur le chantier."
+					},
+					{
+						"title": "Installation",
+						"text": "Nous installons les fenêtres et portes-fenêtres à leur emplacement, en vérifiant qu’elles ferment correctement et sont bien étanches à l’air et à l’humidité."
+					}
+				]
+			}
+		}
+	},
+	"contact": {
+		"metaTitle": "Contact",
+		"metaDescription": "Contactez Fusteria InterFusta à Santa Coloma, Andorre. Demandez un devis pour votre projet de menuiserie.",
+		"title": "Contactez-*nous*",
+		"intro": "Contactez-nous pour toute question concernant nos services ou les besoins de votre projet.",
+		"labels": {
+			"firstName": "Prénom",
+			"lastName": "Nom de famille",
+			"email": "Email",
+			"phone": "Téléphone",
+			"message": "Message"
+		},
+		"emailPlaceholder": "votre@email.com",
+		"messagePlaceholder": "Dites-nous comment nous pouvons vous aider. Détaillez votre projet ou votre demande...",
+		"errors": {
+			"firstName": "Entrez votre nom",
+			"lastName": "Indiquez votre nom de famille",
+			"email": "Saisissez une adresse e-mail valide",
+			"phone": "Saisissez votre numéro de téléphone",
+			"phoneInvalid": "Saisissez un numéro de téléphone valide",
+			"message": "Écrivez votre message",
+			"send": "Erreur lors de l’envoi du message"
+		},
+		"sending": "Envoi...",
+		"submit": "Envoyer le message",
+		"consent": "En soumettant ce formulaire, vous acceptez le traitement de vos données tel que décrit dans notre {link}.",
+		"consentLink": "politique de confidentialité",
+		"success": "Message envoyé avec succès. Nous vous recontacterons dès que possible.",
+		"mapTitle": "Emplacement de Fusteria InterFusta sur Google Maps",
+		"workshop": {
+			"title": "L'*atelier*",
+			"imageAlt": "Andorra la Vella",
+			"address": "Adresse",
+			"map": "Ouvrir dans Google Maps"
+		}
+	},
+	"portfolio": {
+		"metaTitle": "Projets",
+		"metaDescription": "Découvrez notre collection de projets de menuiserie achevés en Andorre : cuisines, mobilier sur mesure, rénovations et bien plus encore.",
+		"title": "Nos *projets*",
+		"intro": "Découvrez notre collection de projets terminés, qui témoignent de notre engagement envers la qualité de l’artisanat et l’attention portée aux détails.",
+		"all": "Tous",
+		"empty": "Il n’y a aucun projet dans cette catégorie.",
+		"details": "Voir les détails",
+		"previous": "Précédent",
+		"next": "Suivant"
+	},
+	"project": {
+		"back": "Retour aux projets",
+		"category": "Catégorie",
+		"completed": "Date d’achèvement",
+		"duration": "Durée",
+		"openImage": "Ouvrir l’image {n} de {title}",
+		"imageAlt": "{title} - image {n}"
+	},
+	"gallery": {
+		"title": "Galerie d’images du projet",
+		"description": "Utilisez les flèches gauche et droite pour naviguer entre les images",
+		"previous": "Image précédente",
+		"next": "Image suivante",
+		"imageAlt": "Image {n}"
+	},
+	"privacy": {
+		"metaTitle": "Politique de confidentialité",
+		"metaDescription": "Comment Fusteria InterFusta collecte, utilise et protège les données personnelles que vous nous fournissez via ce site web.",
+		"title": "Politique de *confidentialité*",
+		"intro": "Comment nous collectons, utilisons et protégeons les données personnelles que vous nous fournissez via ce site web.",
+		"sections": [
+			{
+				"title": "1. Responsable du traitement",
+				"paragraphs": [
+					"Le responsable du traitement des données collectées via ce site est {company} (NRT : L-715485-U), dont le siège social est situé à Passatge d’Enclar S/N, Santa Coloma, AD500, Andorre.",
+					"Pour toute question concernant la confidentialité de vos données, vous pouvez nous contacter à {email} ou par téléphone {phone}."
+				]
+			},
+			{
+				"title": "2. Quelles données nous collectons",
+				"paragraphs": [
+					"Via le formulaire de contact sur ce site web, nous vous demandons votre nom, nom de famille, adresse e-mail, numéro de téléphone et le message que vous souhaitez nous envoyer. Fournir ces données est volontaire, mais nécessaire afin que nous puissions répondre à votre demande."
+				]
+			},
+			{
+				"title": "3. Dans quel but nous les utilisons",
+				"paragraphs": [
+					"Nous utilisons les données que vous nous fournissez uniquement pour répondre à votre demande ou demande de devis, et pour communiquer avec vous au sujet de votre projet. Nous n’utilisons pas ces données à d’autres fins commerciales ni ne les transférons à des tiers à des fins publicitaires."
+				]
+			},
+			{
+				"title": "4. Fondement juridique",
+				"paragraphs": [
+					"La base légale du traitement de vos données est le consentement que vous nous donnez lorsque vous remplissez et envoyez volontairement le formulaire de contact."
+				]
+			},
+			{
+				"title": "5. Avec qui nous partageons les données",
+				"paragraphs": [
+					"Lorsque vous envoyez le formulaire de contact, les données sont transmises via le service externe {resend}, qui est chargé de nous envoyer un e-mail contenant le contenu de votre message à {inbox}. Vos données ne sont stockées dans aucune base de données de ce site : elles ne résident que dans cet e-mail et dans les archives techniques du fournisseur d’expédition.",
+					"Ce site utilise également Vercel Analytics et Vercel Speed Insights pour comprendre, de manière agrégée et non identifiante, comment le site est utilisé et comment nous pouvons améliorer ses performances."
+				]
+			},
+			{
+				"title": "6. Combien de temps nous conservons les données",
+				"paragraphs": [
+					"Nous conservons les données que vous nous fournissez via le formulaire uniquement pour le temps nécessaire pour répondre à votre requête et, le cas échéant, gérer le projet qui en découle. Si aucun projet n’est formalisé, nous supprimerons l’e-mail dans un délai maximum de 2 ans à compter de la dernière communication. Si une commande est formalisée, nous conserverons les données pour le délai requis par des obligations légales (par exemple, fiscalité et comptabilité)."
+				]
+			},
+			{
+				"title": "7. Vos droits",
+				"paragraphs": [
+					"Vous avez le droit d’accéder à vos données personnelles, de les corriger si elles sont inexactes, de demander leur suppression et de vous opposer ou de demander la limitation de leur traitement. Vous pouvez exercer ces droits en nous envoyant un e-mail à {email}. Si vous estimez que nous n’avons pas traité correctement vos données, vous avez également le droit de déposer une plainte auprès de l’Agence andorrane de protection des données (APDA)."
+				]
+			},
+			{
+				"title": "8. Modifications de cette politique",
+				"paragraphs": [
+					"Nous pourrions mettre à jour cette politique de confidentialité pour refléter les changements dans notre traitement de vos données. Nous vous recommandons de la consulter périodiquement. Dernière mise à jour : 23 septembre 2026."
+				]
+			}
+		]
+	},
+	"errorSheet": {
+		"sheet": "Feuille",
+		"scale": "Échelle",
+		"material": "Matériau",
+		"oak": "Chêne",
+		"state": "Statut",
+		"crack": "Fissure"
+	},
+	"notFound": {
+		"metaTitle": "Page non trouvée",
+		"sheetTitle": "Plan introuvable",
+		"title": "Cette page ne figure pas sur le plan",
+		"text": "Elle a peut-être été déplacée ou le lien est incorrect.",
+		"home": "Retour à l’accueil",
+		"projects": "Voir les projets"
+	},
+	"error": {
+		"sheetTitle": "Pièce fissurée",
+		"status": "En réparation",
+		"title": "Quelque chose s’est fissuré",
+		"text": "Il y a eu une erreur de notre côté. Veuillez réessayer dans quelques instants.",
+		"retry": "Réessayer",
+		"home": "Retour à l’accueil"
+	}
+}

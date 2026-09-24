@@ -10,12 +10,15 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { Dictionary } from "@/lib/i18n";
+import { fill } from "@/lib/i18n-config";
 
 interface ImageGalleryModalProps {
 	images: string[];
 	initialIndex: number;
 	isOpen: boolean;
 	onClose: () => void;
+	dict: Dictionary["gallery"];
 }
 
 export function ImageGalleryModal({
@@ -23,6 +26,7 @@ export function ImageGalleryModal({
 	initialIndex,
 	isOpen,
 	onClose,
+	dict,
 }: ImageGalleryModalProps) {
 	const [currentIndex, setCurrentIndex] = useState(initialIndex);
 	const [prevInitialIndex, setPrevInitialIndex] = useState(initialIndex);
@@ -57,12 +61,9 @@ export function ImageGalleryModal({
 				className="max-w-4xl h-[80vh] flex items-center justify-center p-0 "
 				onKeyDown={handleKeyDown}
 			>
-				<DialogTitle className="sr-only">
-					Galeria d&apos;imatges del projecte
-				</DialogTitle>
+				<DialogTitle className="sr-only">{dict.title}</DialogTitle>
 				<DialogDescription className="sr-only">
-					Utilitzeu les fletxes esquerra i dreta per navegar entre les
-					imatges
+					{dict.description}
 				</DialogDescription>
 				<div className="relative w-full h-full">
 					<div className="flex items-center justify-center h-full">
@@ -71,13 +72,13 @@ export function ImageGalleryModal({
 							size="icon"
 							className="absolute left-2 z-10"
 							onClick={handlePrevious}
-							aria-label="Imatge anterior"
+							aria-label={dict.previous}
 						>
 							<ChevronLeft className="h-4 w-4" />
 						</Button>
 						<Image
 							src={images[currentIndex] || "/placeholder.svg"}
-							alt={`Project img ${currentIndex + 1}`}
+							alt={fill(dict.imageAlt, { n: currentIndex + 1 })}
 							width={1200}
 							height={800}
 							sizes="(min-width: 1024px) 900px, 100vw"
@@ -88,7 +89,7 @@ export function ImageGalleryModal({
 							size="icon"
 							className="absolute right-2 z-10"
 							onClick={handleNext}
-							aria-label="Imatge següent"
+							aria-label={dict.next}
 						>
 							<ChevronRight className="h-4 w-4" />
 						</Button>

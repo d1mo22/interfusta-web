@@ -1,3 +1,6 @@
+import type { Locale } from "@/lib/i18n-config";
+import type { Dictionary } from "@/lib/i18n";
+
 export interface Project {
 	id: number;
 	title: string;
@@ -50,4 +53,6 @@ export interface ProjectDetails {
 export interface ClientPortfolioProps {
 	initialProjects: Project[];
 	categories: Category[];
+	lang: Locale;
+	dict: Dictionary["portfolio"];
 }

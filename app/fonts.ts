@@ -1,8 +1,8 @@
 import localFont from "next/font/local";
 
-// Shared between app/layout.tsx (the normal root layout) and
-// app/global-error.tsx (which must render its own <html>/<body> and so
-// can't rely on the layout's font setup).
+// Shared between components/html-shell.tsx (used by both root layouts,
+// app/[lang] and app/(admin)) and app/global-error.tsx (which must render
+// its own <html>/<body> and so can't rely on a layout's font setup).
 //
 // All three are self-hosted: next/font/google's build-time fetch is flaky
 // under Turbopack. The .variable classes must sit on <html>, where Tailwind's
