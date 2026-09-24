@@ -1,90 +1,43 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Grain } from "@/components/grain";
 import { SectionHeading } from "@/components/section-heading";
+import { Accent } from "@/components/accent";
+import { getDictionary, getLocale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/i18n-config";
 
-export const metadata = {
-	title: "Sobre Nosaltres",
-	description:
-		"Coneix l'equip i la trajectòria de Fusteria InterFusta, especialistes en fusteria i ebenisteria a Andorra.",
-	alternates: {
-		canonical: "/about",
-	},
-	openGraph: {
-		title: "Sobre Nosaltres",
-		description:
-			"Coneix l'equip i la trajectòria de Fusteria InterFusta, especialistes en fusteria i ebenisteria a Andorra.",
-		images: [
-			{
-				url: "/thumbnail.webp",
-				width: 1280,
-				height: 720,
-			},
-		],
-	},
-};
+export async function generateMetadata(): Promise<Metadata> {
+	const [lang, dict] = await Promise.all([getLocale(), getDictionary()]);
+	return pageMetadata(lang, "/about", dict.about.metaTitle, dict.about.metaDescription);
+}
 
-const stats = [
-	{ label: "Anys d'experiència", value: "10+" },
-	{ label: "Projectes realitzats", value: "250+" },
-	{ label: "Clients satisfets", value: "100+" },
-	{ label: "Membres de l'equip", value: "6" },
-];
+// Same order as about.stats in messages/*.json.
+const STAT_VALUES = ["10+", "250+", "100+", "6"];
 
-const values = [
-	{
-		title: "Artesania de qualitat",
-		description:
-			"Ens enorgullim d'oferir una qualitat excepcional en cada projecte, utilitzant els millors materials i tècniques",
-	},
-	{
-		title: "Satisfacció del client",
-		description:
-			"La teva satisfacció és la nostra prioritat. Treballem estretament amb tu per a assegurar que la teva visió es faci realitat.",
-	},
-	{
-		title: "Sostenibilitat",
-		description:
-			"Estem compromesos amb pràctiques sostenibles, utilitzant materials d'origen responsable i minimitzant els residus.",
-	},
-];
+export default async function AboutPage() {
+	const dict = (await getDictionary()).about;
+	const stats = dict.stats.map((label, i) => ({ label, value: STAT_VALUES[i] }));
 
-export default function AboutPage() {
 	return (
 		<div className="bg-paper text-ink">
 			<Grain />
 
 			<section className="pt-[104px] pb-[72px]">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
-					<SectionHeading
-						title={
-							<>
-								Sobre <span className="text-brand">InterFusta</span>
-							</>
-						}
-					/>
+					<SectionHeading title={<Accent text={dict.title} />} />
 				</div>
 			</section>
 
 			<section className="pb-28">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 grid lg:grid-cols-[7fr_5fr] gap-16 items-start">
 					<div className="flex flex-col gap-6 text-ink-muted text-lg max-w-[60ch]">
-						<p className="text-xl text-ink">
-							Des de la nostra creació, Interfusta ha estat a l&apos;avantguarda
-							dels serveis de fusteria de primera qualitat a Andorra. El nostre
-							compromís amb l&apos;excel·lència i l&apos;atenció al detall ens
-							ha convertit en un nom de confiança en la indústria.
-						</p>
-						<p>
-							Combinem tècniques tradicionals d&apos;ebenisteria amb tecnologia
-							moderna per a crear peces sorprenents que superen la prova del
-							temps. El nostre equip d&apos;experts artesans aporta dècades
-							d&apos;experiència combinada a cada projecte.
-						</p>
+						<p className="text-xl text-ink">{dict.lead}</p>
+						<p>{dict.body}</p>
 					</div>
 					<div className="relative aspect-4/3 w-full">
 						<Image
 							src="/About.webp"
-							alt="El nostre taller"
+							alt={dict.imageAlt}
 							fill
 							className="object-cover"
 							sizes="(min-width: 1024px) 42vw, 100vw"
@@ -112,11 +65,11 @@ export default function AboutPage() {
 			<section className="pt-28 pb-[136px]">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col gap-6">
 					<h2 className="h-page text-[80px]">
-						Els nostres <span className="text-brand">valors</span>
+						<Accent text={dict.valuesTitle} />
 					</h2>
 					<span className="rule" />
 					<div className="flex flex-col border-b border-hairline">
-						{values.map((value, index) => (
+						{dict.values.map((value, index) => (
 							<div
 								key={value.title}
 								className="grid lg:grid-cols-[80px_5fr_6fr] gap-4 lg:gap-16 py-10 border-t border-hairline items-start"
