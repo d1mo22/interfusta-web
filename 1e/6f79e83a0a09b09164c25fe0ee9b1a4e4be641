@@ -1,0 +1,19 @@
+app/actions/auth.ts
+  s_575e08fa164bd9::t_d719c879e2acf7 14,19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "1e6f79e83a0a09b09164c25fe0ee9b1a4e4be641",
+  "prompts": {},
+  "sessions": {
+    "s_575e08fa164bd9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_575e08fa164bd9",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
