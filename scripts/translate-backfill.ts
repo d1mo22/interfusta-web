@@ -132,6 +132,7 @@ if (!write) {
 	process.exit(0);
 }
 
+const CACHE_HINT = "Public pages are cached: redeploy or save a category in /admin to refresh them.";
 let saved = 0;
 let skipped = 0;
 let blanks = 0;
@@ -152,6 +153,7 @@ for (let i = 0; i < batches.length; i++) {
 			`Azure Translator failed on request ${i + 1}/${batches.length} (status above: 429 = rate limit, 403 = monthly quota).\n` +
 				`${summary()}; ${jobs.length - saved - skipped} rows left untouched. Wait a few minutes and re-run; saved rows are skipped.`,
 		);
+		if (saved) console.log(CACHE_HINT);
 		process.exit(1);
 	}
 	for (const [n, { job, field }] of batches[i].entries()) {
@@ -182,3 +184,4 @@ for (let i = 0; i < batches.length; i++) {
 	}
 }
 console.log(`backfill done: ${summary()}`);
+console.log(CACHE_HINT);

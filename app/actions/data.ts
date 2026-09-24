@@ -30,11 +30,11 @@ export async function getPortfolioData(lang: Locale = "ca") {
       SELECT json_agg(
         json_build_object(
         'id', p.id,
-        'title', trim(COALESCE(tr.t ->> 'title', p.title)),
-        'description', COALESCE(tr.t ->> 'description', p.description),
-        'full_description', COALESCE(tr.t ->> 'full_description', p.full_description),
+        'title', trim(COALESCE(NULLIF(btrim(tr.t ->> 'title'), ''), p.title)),
+        'description', COALESCE(NULLIF(btrim(tr.t ->> 'description'), ''), p.description),
+        'full_description', COALESCE(NULLIF(btrim(tr.t ->> 'full_description'), ''), p.full_description),
         'completion_date', p.completion_date,
-        'duration', COALESCE(tr.t ->> 'duration', p.duration),
+        'duration', COALESCE(NULLIF(btrim(tr.t ->> 'duration'), ''), p.duration),
         'category_id', p.category_id,
         'first_image', json_build_object(
           'url', i.url,
@@ -47,11 +47,11 @@ export async function getPortfolioData(lang: Locale = "ca") {
           EXISTS (
             SELECT 1
             FROM unnest(${[...TARGETS]}::text[]) l, unnest(${[...PROJECT_FIELDS]}::text[]) f
-            WHERE COALESCE(p.translations -> l ->> f, '') = ''
+            WHERE NULLIF(btrim(p.translations -> l ->> f), '') IS NULL
           ) OR EXISTS (
             SELECT 1
             FROM feature fe, unnest(${[...TARGETS]}::text[]) l
-            WHERE fe.project_id = p.id AND COALESCE(fe.translations -> l ->> 'description', '') = ''
+            WHERE fe.project_id = p.id AND NULLIF(btrim(fe.translations -> l ->> 'description'), '') IS NULL
           )
         )
         )
@@ -69,7 +69,7 @@ export async function getPortfolioData(lang: Locale = "ca") {
       SELECT json_agg(
         json_build_object(
         'id', c.id,
-        'name', COALESCE(c.translations -> ${lang}::text ->> 'name', c.name),
+        'name', COALESCE(NULLIF(btrim(c.translations -> ${lang}::text ->> 'name'), ''), c.name),
         -- Matched on the Catalan column so the "all" filter works in every language.
         'is_all', lower(trim(c.name)) = 'tots els projectes'
         )
@@ -90,16 +90,16 @@ export async function getProjectDetails(id: number, lang: Locale = "ca") {
 	const [project] = await sql`
     SELECT
       p.id, p.completion_date, p.category_id, p.last_update, p.updated_by, p.translations,
-      COALESCE(tr.t ->> 'title', p.title) AS title,
-      COALESCE(tr.t ->> 'description', p.description) AS description,
-      COALESCE(tr.t ->> 'full_description', p.full_description) AS full_description,
-      COALESCE(tr.t ->> 'duration', p.duration) AS duration,
-      COALESCE(c.translations -> ${lang}::text ->> 'name', c.name) AS category_name,
+      COALESCE(NULLIF(btrim(tr.t ->> 'title'), ''), p.title) AS title,
+      COALESCE(NULLIF(btrim(tr.t ->> 'description'), ''), p.description) AS description,
+      COALESCE(NULLIF(btrim(tr.t ->> 'full_description'), ''), p.full_description) AS full_description,
+      COALESCE(NULLIF(btrim(tr.t ->> 'duration'), ''), p.duration) AS duration,
+      COALESCE(NULLIF(btrim(c.translations -> ${lang}::text ->> 'name'), ''), c.name) AS category_name,
       COALESCE((
         SELECT json_agg(
           json_build_object(
             'id', f.id,
-            'description', COALESCE(f.translations -> ${lang}::text ->> 'description', f.description),
+            'description', COALESCE(NULLIF(btrim(f.translations -> ${lang}::text ->> 'description'), ''), f.description),
             'project_id', f.project_id,
             'translations', f.translations
           ) ORDER BY f.id

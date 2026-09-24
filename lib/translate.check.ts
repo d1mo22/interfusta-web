@@ -109,6 +109,18 @@ assert.deepStrictEqual(
 	every({ title: "Nuevo", description: "Arreglado a mano" }),
 );
 
+// Blank or whitespace-only fresh values are never stored: a changed field is
+// dropped (Catalan shows) and a pending blank language stays unfilled
+assert.deepStrictEqual(
+	mergeTranslations(
+		{ es: { title: "Viejo", description: "" }, fr: {}, en: {}, pt: {} },
+		{ es: { title: "  ", description: "" }, fr: { title: "" }, en: { title: "New" }, pt: { title: " \n" } },
+		["title"],
+		["description"],
+	),
+	{ es: { description: "" }, fr: {}, en: { title: "New" }, pt: {} },
+);
+
 // missingFields treats blanks and absent languages as missing
 assert.deepStrictEqual(
 	missingFields(every({ title: "x", description: " " }), ["title", "description"]),

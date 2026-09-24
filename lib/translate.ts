@@ -74,7 +74,8 @@ export type ProjectField = (typeof PROJECT_FIELDS)[number];
 // `pending` fields (Catalan unchanged, but untranslated in some languages) take
 // the fresh value only in languages where the stored one is missing or blank,
 // so hand fixes elsewhere survive; with fresh = null they are left as stored.
-// Fresh values for fields in neither list are ignored.
+// Fresh values for fields in neither list, and blank fresh values, are ignored
+// (a changed field with a blank fresh value is dropped, so Catalan shows).
 export function mergeTranslations<K extends string>(
 	old: FieldTranslations<K> | null | undefined,
 	fresh: FieldTranslations<K> | null,
@@ -89,9 +90,11 @@ export function mergeTranslations<K extends string>(
 			);
 			const applied = Object.fromEntries(
 				Object.entries(fresh?.[t] ?? {}).filter(
-					([k]) =>
-						changed.includes(k as K) ||
-						(pending.includes(k as K) && !stored[k as K]?.trim()),
+					([k, v]) =>
+						typeof v === "string" &&
+						v.trim() !== "" &&
+						(changed.includes(k as K) ||
+							(pending.includes(k as K) && !stored[k as K]?.trim())),
 				),
 			);
 			return [t, { ...kept, ...applied }];
