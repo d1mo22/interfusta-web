@@ -11,12 +11,12 @@ import {
 	verifySession,
 } from "@/lib/session";
 
-// Bcrypt hash of a random string (cost factor 10, matching the cost used for
+// Bcrypt hash of a random string (cost factor 12, matching the cost used for
 // real user passwords) with no known plaintext. Compared against on every
 // login attempt for an unknown/invalid user so the response takes about the
 // same time as a real password check, avoiding a timing side-channel that
 // would otherwise leak which usernames exist.
-const DUMMY_HASH = "$2b$10$Cn4/7nMuAb.MjVyE6MGLfucJOGLzmyQQiIoViW9mmoETjh5DVQNdm";
+const DUMMY_HASH = "$2b$12$5m3uoy5tGH8rEKH1D987ru/ZJAUG6EAGVmKb7hErxWXAmR7sBykP6";
 
 export async function login(formData: FormData) {
 	const username = formData.get("username");
