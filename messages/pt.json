@@ -1,476 +1,476 @@
 {
 	"meta": {
-		"title": "Fusteria InterFusta - Serveis experts de fusteria",
-		"description": "Serveis professionals de fusteria i ebenisteria a Andorra"
+		"title": "Fusteria InterFusta - Serviços especializados de carpintaria",
+		"description": "Serviços profissionais de carpintaria e carpintaria em Andorra"
 	},
-	"skipLink": "Ves al contingut",
+	"skipLink": "Saltar para o conteúdo",
 	"nav": {
-		"services": "Serveis",
-		"portfolio": "Projectes",
-		"about": "Sobre Nosaltres",
-		"contact": "Contacte",
-		"call": "Truca'ns al {phone}",
-		"openMenu": "Obrir menú",
-		"closeMenu": "Tancar menú",
-		"language": "Idioma",
-		"theme": "Canviar tema",
-		"light": "Clar",
-		"dark": "Fosc"
+		"services": "Serviços",
+		"portfolio": "Projetos",
+		"about": "Sobre Nós",
+		"contact": "Contacto",
+		"call": "Ligue-nos para {phone}",
+		"openMenu": "Menu aberto",
+		"closeMenu": "Fechar menu",
+		"language": "Língua",
+		"theme": "Mudar de tema",
+		"light": "Luz",
+		"dark": "Dark"
 	},
 	"footer": {
 		"title": "Fusteria *InterFusta*",
-		"tagline": "Serveis professionals de fusteria amb anys d'experiència en la creació d'elegants solucions de fusta.",
-		"contact": "Contacte",
-		"hours": "Horari",
+		"tagline": "Serviços profissionais de carpintaria com anos de experiência na criação de soluções elegantes para madeira.",
+		"contact": "Contacto",
+		"hours": "Calendário",
 		"schedule": [
-			"Dilluns - Divendres 9:00 - 17:00",
-			"Dissabte 10:00 - 13:00",
-			"Diumenge tancat"
+			"Segunda - sexta-feira 9:00 - 17:00",
+			"Sábado 10:00 - 13:00",
+			"Domingo encerrado"
 		],
-		"rights": "Tots els drets reservats.",
-		"privacy": "Política de privacitat"
+		"rights": "Todos os direitos reservados.",
+		"privacy": "Política de Privacidade"
 	},
 	"home": {
 		"eyebrow": "Fusteria InterFusta, Andorra",
-		"title": "Serveis experts de *fusteria* a Andorra",
-		"subtitle": "Creant solucions de fusta elegants i funcionals per a la seva llar i negoci",
-		"cta": "Veure el nostre treball",
+		"title": "Serviços especializados de *carpintaria* em Andorra",
+		"subtitle": "Criar soluções de madeira elegantes e funcionais para a sua casa e negócio",
+		"cta": "Veja o nosso trabalho",
 		"featured": {
-			"label": "Projecte destacat",
-			"title": "Renovació d'una *vila* de luxe",
-			"description": "Transformem completament aquesta vila amb mobles fets a mida, una cuina personalitzada i detalls de fusta intricats en tot el lloc. El nostre equip va treballar estretament amb el client per a donar vida a la seva visió, resultant en una impressionant mostra de la nostra artesania.",
+			"label": "Projeto em destaque",
+			"title": "Renovação de uma *villa* de luxo",
+			"description": "Transformámos completamente esta vivenda com mobiliário personalizado, uma cozinha personalizada e detalhes intrincados em madeira por todo o local. A nossa equipa trabalhou em estreita colaboração com o cliente para dar vida à sua visão, resultando numa demonstração impressionante do nosso artesanato.",
 			"features": [
-				"Gabinets de cuina dissenyats a mesura",
-				"Taula de menjador i cadires fetes a mà",
-				"Armaris de paret per a totes les habitacions",
-				"Bigues de sostre de fusta i panells de paret"
+				"Armários de cozinha desenhados à medida",
+				"Mesa e cadeiras de jantar feitas à mão",
+				"Armários de parede para todas as divisões",
+				"Vigas de teto e painéis de teto em madeira"
 			],
-			"imageAlt": "Projecte destacat",
-			"galleryAlt": "Imatge {n} del projecte destacat",
-			"seeAll": "Veure tots els projectes"
+			"imageAlt": "Projeto em destaque",
+			"galleryAlt": "{n} Imagem do projeto em destaque",
+			"seeAll": "Ver todos os projetos"
 		},
-		"servicesTitle": "Els nostres *serveis*",
+		"servicesTitle": "Os nossos *serviços*",
 		"services": [
 			{
-				"title": "Mobles a mesura",
-				"description": "Mobles personalitzats dissenyats i fabricats segons les seves especificacions",
-				"alt": "Mobles a mesura al taller"
+				"title": "Mobiliário feito à medida",
+				"description": "Mobiliário personalizado desenhado e fabricado segundo as suas especificações",
+				"alt": "Mobiliário feito à medida na oficina"
 			},
 			{
-				"title": "Instal·lació de cuines",
-				"description": "Instal·lació professional de gabinets de cuina i personalització",
-				"alt": "Instal·lació de cuines"
+				"title": "Instalação de cozinhas",
+				"description": "Instalação e Personalização Profissional de Armários de Cozinha",
+				"alt": "Instalação de cozinhas"
 			},
 			{
-				"title": "Lacatge i vernissat",
-				"description": "Acabats professionals per a protegir i embellir els seus mobles de fusta",
-				"alt": "Lacatge i vernissat"
+				"title": "Lacagem e verniz",
+				"description": "Acabamentos profissionais para proteger e embelezar o seu mobiliário de madeira",
+				"alt": "Lacagem e verniz"
 			},
 			{
-				"title": "Mesuraments i planificació",
-				"description": "Planificació detallada i mesuraments precisos per al seu projecte",
-				"alt": "Mesuraments i planificació"
+				"title": "Medições e planeamento",
+				"description": "Planeamento detalhado e medições precisas para o seu projeto",
+				"alt": "Medições e planeamento"
 			}
 		],
 		"ctaBand": {
-			"title": "Llest per començar el teu projecte?",
-			"text": "Fem realitat la teva visió. Contacta'ns avui per a una consulta i pressupost gratuït.",
-			"button": "Contacte"
+			"title": "Pronto para começar o seu projeto?",
+			"text": "Tornamos a sua visão realidade. Contacte-nos hoje para uma consulta e orçamento gratuitos.",
+			"button": "Contacto"
 		}
 	},
 	"about": {
-		"metaTitle": "Sobre Nosaltres",
-		"metaDescription": "Coneix l'equip i la trajectòria de Fusteria InterFusta, especialistes en fusteria i ebenisteria a Andorra.",
+		"metaTitle": "Sobre Nós",
+		"metaDescription": "Conheça a equipa e o percurso da Fusteria InterFusta, especialistas em carpintaria e marcenaria em Andorra.",
 		"title": "Sobre *InterFusta*",
-		"lead": "Des de la nostra creació, Interfusta ha estat a l'avantguarda dels serveis de fusteria de primera qualitat a Andorra. El nostre compromís amb l'excel·lència i l'atenció al detall ens ha convertit en un nom de confiança en la indústria.",
-		"body": "Combinem tècniques tradicionals d'ebenisteria amb tecnologia moderna per a crear peces sorprenents que superen la prova del temps. El nostre equip d'experts artesans aporta dècades d'experiència combinada a cada projecte.",
-		"imageAlt": "El nostre taller",
+		"lead": "Desde a nossa criação, a Interfusta tem estado na vanguarda dos serviços de carpintaria de alta qualidade em Andorra. O nosso compromisso com a excelência e a atenção ao detalhe tornaram-nos um nome de confiança no setor.",
+		"body": "Combinamos técnicas tradicionais de marcenaria com tecnologia moderna para criar peças incríveis que resistem ao teste do tempo. A nossa equipa de artesãos especialistas traz décadas de experiência combinada a cada projeto.",
+		"imageAlt": "O nosso workshop",
 		"stats": [
-			"Anys d'experiència",
-			"Projectes realitzats",
-			"Clients satisfets",
-			"Membres de l'equip"
+			"Anos de experiência",
+			"Projetos concluídos",
+			"Clientes satisfeitos",
+			"Membros da equipa"
 		],
-		"valuesTitle": "Els nostres *valors*",
+		"valuesTitle": "Os nossos *valores*",
 		"values": [
 			{
-				"title": "Artesania de qualitat",
-				"description": "Ens enorgullim d'oferir una qualitat excepcional en cada projecte, utilitzant els millors materials i tècniques"
+				"title": "Artesanato de qualidade",
+				"description": "Orgulhamo-nos de entregar uma qualidade excecional em cada projeto, utilizando os melhores materiais e técnicas"
 			},
 			{
-				"title": "Satisfacció del client",
-				"description": "La teva satisfacció és la nostra prioritat. Treballem estretament amb tu per a assegurar que la teva visió es faci realitat."
+				"title": "Satisfação do cliente",
+				"description": "A sua satisfação é a nossa prioridade. Trabalhamos em estreita colaboração consigo para garantir que a sua visão se torne realidade."
 			},
 			{
-				"title": "Sostenibilitat",
-				"description": "Estem compromesos amb pràctiques sostenibles, utilitzant materials d'origen responsable i minimitzant els residus."
+				"title": "Sustentabilidade",
+				"description": "Estamos comprometidos com práticas sustentáveis, utilizando materiais de origem responsável e minimizando o desperdício."
 			}
 		]
 	},
 	"services": {
-		"metaTitle": "Serveis",
-		"metaDescription": "Mobles a mida, cuines, lacatge, Corian i estructures de fusta. Descobreix tots els serveis de fusteria de Fusteria InterFusta a Andorra.",
-		"title": "Els nostres *serveis*",
-		"intro": "Oferim una àmplia gamma de serveis de fusteria, combinant artesania tradicional amb tècniques modernes per a resultats excepcionals.",
-		"heroAlt": "Cuina a mida amb illa de fusta",
-		"howWeWork": "Com treballem",
-		"ctaTitle": "Parlem del seu projecte",
-		"ctaText": "Cada projecte és diferent. Expliqui'ns què necessita i li preparem una proposta adaptada al seu espai i al seu pressupost.",
-		"ctaButton": "Demana pressupost",
-		"related": "Altres serveis relacionats",
+		"metaTitle": "Serviços",
+		"metaDescription": "Mobiliário personalizado, cozinhas, lacado, Corian e estruturas em madeira. Descubra todos os serviços de carpintaria da Fusteria InterFusta em Andorra.",
+		"title": "Os nossos *serviços*",
+		"intro": "Oferecemos uma vasta gama de serviços de carpintaria, combinando o artesanato tradicional com técnicas modernas para resultados excecionais.",
+		"heroAlt": "Cozinha personalizada com ilha de madeira",
+		"howWeWork": "Como trabalhamos",
+		"ctaTitle": "Vamos falar sobre o teu projeto",
+		"ctaText": "Cada projeto é diferente. Diga-nos o que precisa e prepararemos uma proposta adaptada ao seu espaço e orçamento.",
+		"ctaButton": "Peça um orçamento",
+		"related": "Outros serviços relacionados",
 		"items": {
 			"mobles-a-mesura": {
-				"title": "Mobles a mesura",
-				"description": "Dissenyem i fabriquem mobles a mesura adaptats a les seves necessitats i preferències específiques. Des d'elegants taules de menjador fins a armaris a mesura, els nostres experts artesans faran realitat la seva visió.",
+				"title": "Mobiliário feito à medida",
+				"description": "Concebemos e fabricamos mobiliário personalizado adaptado às suas necessidades e preferências específicas. Desde elegantes mesas de jantar a armários personalizados, os nossos artesãos especialistas tornarão a sua visão realidade.",
 				"extra": [
-					"Un moble a mida permet aprofitar cada racó de l'espai disponible, des d'armaris encastats fins a mobiliari per a zones amb formes irregulars, sense limitar-se a les mides estàndard del mercat.",
-					"Aquest servei és habitual quan un espai té una forma poc convencional, quan es vol aprofitar al màxim l'alçada o la fondària disponible, o simplement quan es busca un moble que no es trobi en cap catàleg. El punt de partida no és mai un model tancat, sinó l'espai real i l'ús que se li vol donar."
+					"Uma peça de mobiliário feita à medida permite-lhe tirar partido de todos os cantos do espaço disponível, desde roupeiros embutidos a mobiliário para áreas de formas irregulares, sem se limitar aos tamanhos padrão do mercado.",
+					"Este serviço é comum quando um espaço tem uma forma pouco convencional, quando se quer tirar o máximo partido da altura ou profundidade disponível, ou simplesmente quando procura um móvel que não está em nenhum catálogo. O ponto de partida nunca é um modelo fechado, mas sim o espaço real e o uso que lhe quer dar."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Ens desplacem al seu espai per prendre mides exactes i conèixer com pensa utilitzar-lo. Així ens assegurem que el moble s'hi adapti a la perfecció, tant en dimensions com en funcionalitat."
+						"title": "Medição e visita",
+						"text": "Mudamo-nos para o seu espaço para tirar medidas exatas e descobrir como planeia usá-lo. Desta forma, garantimos que o mobiliário se adapta perfeitamente, tanto em termos de dimensões como de funcionalidade."
 					},
 					{
-						"title": "Disseny",
-						"text": "Traduïm les seves idees en un disseny concret, ajustant proporcions, acabats i distribució interior. Revisem els detalls amb vostè fins que el resultat respongui exactament al que necessita."
+						"title": "Conceção",
+						"text": "Traduzimos as suas ideias num design específico, ajustando proporções, acabamentos e layout interior. Revemos os detalhes consigo até que o resultado responda exatamente ao que precisa."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Cada peça es fabrica al nostre taller, on combinem tècniques artesanals amb maquinària moderna. Aquest procés ens permet controlar la qualitat de cada element abans que surti cap al seu espai."
+						"title": "Fabrico na oficina",
+						"text": "Cada peça é fabricada na nossa oficina, onde combinamos técnicas artesanais com maquinaria moderna. Este processo permite-nos controlar a qualidade de cada elemento antes de sair para o seu espaço."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "Un cop enllestit, transportem i instal·lem el moble al seu espai. Comprovem que tot encaixi, que portes i calaixos funcionin correctament i que l'acabat sigui l'esperat."
+						"title": "Instalação",
+						"text": "Quando estamos prontos, transportamos e instalamos os móveis no seu espaço. Verificamos que tudo encaixa, que as portas e gavetas funcionam corretamente e que o acabamento está conforme esperado."
 					}
 				]
 			},
 			"instal-lacio-de-cuines": {
-				"title": "Instal·lació de cuines",
-				"description": "Transformi la seva cuina amb els nostres serveis professionals d'instal·lació. Ens encarreguem de tot, des del muntatge d'armaris fins a les solucions d'emmagatzematge personalitzades, garantint una funcionalitat i estètica perfectes.",
+				"title": "Instalação de cozinhas",
+				"description": "Transforme a sua cozinha com os nossos serviços profissionais de instalação. Tratamos de tudo, desde a montagem dos armários até às soluções de arrumação personalizadas, garantindo funcionalidade e estética perfeitas.",
 				"extra": [
-					"En moltes cuines, l'encimera és un dels elements que més defineix l'acabat final. Si busca una superfície llisa i sense junts visibles, treballem també amb Corian per a aquest tipus de projectes.",
-					"La instal·lació d'una cuina implica coordinar mobiliari, electrodomèstics i acabats perquè funcionin com un conjunt, no com a peces independents. Per això valorem la distribució de l'espai des del primer moment, abans de fabricar cap element."
+					"Em muitas cozinhas, a bancada é um dos elementos que mais define o acabamento final. Se procura uma superfície lisa sem juntas visíveis, também colaboramos com a Corian para este tipo de projeto.",
+					"A instalação de uma cozinha envolve coordenar mobiliário, eletrodomésticos e acabamentos para que funcionem como um todo, e não como peças independentes. É por isso que valorizamos a distribuição do espaço desde o primeiro momento, antes de fabricar qualquer elemento."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Visitem la cuina per prendre mides precises i valorar la ubicació d'electrodomèstics, aigua i electricitat. Aquest pas és clau per evitar descoordinacions un cop comença el muntatge."
+						"title": "Medição e visita",
+						"text": "Visitamos a cozinha para tirar medições precisas e avaliar a localização dos eletrodomésticos, água e eletricidade. Este passo é fundamental para evitar má coordenação assim que a montagem começa."
 					},
 					{
-						"title": "Disseny",
-						"text": "Dissenyem la distribució d'armaris, calaixos i zones d'emmagatzematge perquè la cuina sigui còmoda d'utilitzar. Busquem que cada element tingui un lloc coherent amb el dia a dia de la cuina."
+						"title": "Conceção",
+						"text": "Desenhamos a distribuição dos armários, gavetas e áreas de arrumação para que a cozinha seja confortável de usar. Procuramos garantir que cada elemento tenha um lugar consistente com o dia a dia da cozinha."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Fabriquem els mòduls i els fronts al taller, ajustant cada peça a les mides exactes de l'espai. Els acabats es preparen seguint el disseny acordat prèviament."
+						"title": "Fabrico na oficina",
+						"text": "Fabricamos os módulos e as frentes na oficina, ajustando cada peça às dimensões exatas do espaço. Os acabamentos são preparados seguindo o design previamente acordado."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "Muntem i instal·lem tots els elements a la seva cuina, verificant nivells i encaixos. Comprovem també el funcionament correcte de calaixos, portes i tiradors abans de donar la feina per acabada."
+						"title": "Instalação",
+						"text": "Montamos e instalamos todos os elementos da sua cozinha, verificando os níveis e acessórios. Também verificamos o funcionamento correto das gavetas, portas e puxadores antes de entregar o trabalho como terminado."
 					}
 				]
 			},
 			"lacatge-i-vernissat": {
-				"title": "Lacatge i vernissat",
-				"description": "Oferim serveis professionals d'acabat per a tota mena de superfícies de fusta. Utilitzem tècniques especialitzades de lacatge i vernissat per a protegir i realçar la bellesa natural dels seus mobles, garantint un acabat durador i elegant.",
+				"title": "Lacagem e verniz",
+				"description": "Oferecemos serviços profissionais de acabamento para todos os tipos de superfícies em madeira. Utilizamos técnicas especializadas de lacagem e verniz para proteger e realçar a beleza natural do seu mobiliário, garantindo um acabamento duradouro e elegante.",
 				"extra": [
-					"El lacatge aporta un acabat opac i uniforme, mentre que el vernissat manté visible la veta natural de la fusta. La tècnica es tria en funció de l'estètica que busqui i de la protecció que necessiti la peça davant de l'ús diari, la humitat o la llum.",
-					"Aquest servei s'aplica tant a mobles nous com a peces ja existents que necessiten renovar el seu acabat, i sol combinar-se amb altres serveis de fusteria quan una peça requereix, a més, alguna reparació prèvia."
+					"O verniz proporciona um acabamento opaco e uniforme, enquanto o verniz mantém visível o veio natural da madeira. A técnica é escolhida de acordo com a estética que procura e a proteção que a peça necessita contra o uso diário, humidade ou luz.",
+					"Este serviço aplica-se tanto a mobiliário novo como a peças existentes que precisam de ser renovadas, sendo geralmente combinado com outros serviços de carpintaria quando uma peça também necessita de algum reparo prévio."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Valorem la peça o superfície al seu espai o al nostre taller per determinar l'estat de la fusta. D'aquí en surt el tipus d'acabat més adequat per a cada cas."
+						"title": "Medição e visita",
+						"text": "Avaliamos a peça ou superfície no seu espaço ou na nossa oficina para determinar o estado da madeira. É daqui que surge o tipo de acabamento mais adequado para cada caso."
 					},
 					{
-						"title": "Disseny",
-						"text": "Definim junts el color, la textura i el grau de brillantor del lacat o vernís. Tenim en compte l'ús que se li donarà a la peça i l'ambient on estarà situada."
+						"title": "Conceção",
+						"text": "Definimos em conjunto a cor, a textura e o grau de brilho do verniz ou lacada. Temos em conta o uso que será dado à peça e o ambiente onde irá ser localizada."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Apliquem el procés de lacatge o vernissat al taller, en diverses capes. Cada capa necessita el seu temps d'assecat abans d'aplicar la següent, per aconseguir un acabat uniforme i resistent."
+						"title": "Fabrico na oficina",
+						"text": "Aplicamos o processo de lacagem ou verniz na oficina, em várias camadas. Cada camada precisa do seu tempo de secagem antes de aplicar a seguinte, para obter um acabamento uniforme e resistente."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "Un cop sec l'acabat, retornem i col·loquem la peça al seu lloc, o la lliurem llesta per instal·lar. Revisem que el color i la textura coincideixin amb el que s'havia acordat."
+						"title": "Instalação",
+						"text": "Quando o acabamento está seco, devolvemos a peça e colocamos a peça no seu lugar, ou entregamo-la pronta para instalação. Verificamos se a cor e a textura correspondem ao acordado."
 					}
 				]
 			},
 			"disseny-amb-corian": {
-				"title": "Disseny amb Corian",
-				"description": "Especialistes en el disseny i fabricació amb Corian, un material versàtil i durador perfecte per a encimeres, lavabos i superfícies decoratives. Creem dissenys únics i funcionals que s'adapten perfectament al seu espai.",
+				"title": "Design com Corian",
+				"description": "Especialistas no design e fabrico de Corian, um material versátil e duradouro perfeito para bancadas, lava-loiças e superfícies decorativas. Criamos designs únicos e funcionais que se adaptam perfeitamente ao seu espaço.",
 				"extra": [
-					"Corian és una superfície sòlida i no porosa que permet crear peces amb junts pràcticament invisibles, fet que facilita mantenir-la neta. La seva flexibilitat permet donar-li formes corbes i integrar lavabos o aixetes en una mateixa peça contínua, cosa que no sempre és possible amb altres materials.",
-					"És una opció habitual per a encimeres de cuina, lavabos de bany i altres superfícies decoratives on es busca un acabat continu, sense les línies de junt típiques d'altres materials."
+					"O Corian é uma superfície sólida e não porosa que permite criar peças com juntas praticamente invisíveis, o que facilita mantê-la limpa. A sua flexibilidade permite que lhe dê formas curvas e integre pias ou torneiras na mesma peça contínua, algo que nem sempre é possível com outros materiais.",
+					"É uma escolha comum para bancadas de cozinha, lava-loiças de casa de banho e outras superfícies decorativas onde se procura um acabamento contínuo, sem as linhas de costura típicas de outros materiais."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Prenem mides exactes de l'espai on s'instal·larà la peça de Corian, tenint en compte aixetes, desguassos i altres elements que hi hagin d'encaixar."
+						"title": "Medição e visita",
+						"text": "Fazemos medições exatas do espaço onde a peça Corian será instalada, tendo em conta torneiras, drenos e outros elementos que têm de caber nela."
 					},
 					{
-						"title": "Disseny",
-						"text": "Dissenyem la forma, el color i l'acabat de la peça, valorant si necessita junts invisibles, vores arrodonides o elements integrats com un lavabo. Definim tots els detalls abans de tallar el material."
+						"title": "Conceção",
+						"text": "Desenhamos a forma, cor e acabamento da peça, avaliando se precisa de juntas invisíveis, arrumadas ou elementos integrados como um lava-loiça. Definimos todos os detalhes antes de cortar o material."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Tallem i modelem el Corian al taller amb les eines específiques que requereix aquest material. Treballem per aconseguir superfícies contínues, ben segellades i sense porus."
+						"title": "Fabrico na oficina",
+						"text": "Cortamos e moldamos o Corian na oficina com as ferramentas específicas necessárias para este material. Trabalhamos para obter superfícies contínuas, bem seladas e sem poros."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "Instal·lem la peça al seu espai, segellant els junts perquè quedi una superfície uniforme i fàcil de netejar, i comprovem que encaixi correctament amb aixetes i desguassos."
+						"title": "Instalação",
+						"text": "Instalamos a peça no seu espaço, selando as juntas para que haja uma superfície uniforme e fácil de limpar, e verificamos se encaixa corretamente com torneiras e drenos."
 					}
 				]
 			},
 			"estructures-de-fusta": {
-				"title": "Estructures de fusta",
-				"description": "Creï impressionants espais a l'aire lliure amb les nostres estructures de fusta. Construïm pèrgoles, cobertes i elements arquitectònics que realcen el valor de la seva propietat.",
+				"title": "Estruturas de madeira",
+				"description": "Crie espaços exteriores deslumbrantes com as nossas estruturas de madeira. Construímos pérgolas, telhados e elementos arquitetónicos que aumentam o valor da sua propriedade.",
 				"extra": [
-					"Com que es tracta d'elements exposats a la intempèrie, la fusta que s'hi destina rep un tractament protector abans del muntatge, per ajudar-la a resistir millor la humitat i els canvis de temperatura.",
-					"Aquest tipus d'estructura permet guanyar un espai exterior aprofitable durant gran part de l'any, ja sigui com a zona d'ombra, com a coberta o com a element que complementa l'arquitectura de la propietat."
+					"Como estes são elementos expostos aos elementos, a madeira utilizada recebe um tratamento protetor antes da montagem, para ajudar a resistir melhor à humidade e às variações de temperatura.",
+					"Este tipo de estrutura permite-lhe obter um espaço exterior que pode ser utilizado durante grande parte do ano, seja como área sombreada, como telhado ou como elemento que complementa a arquitetura da propriedade."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Visitem l'espai exterior per avaluar el terreny, l'orientació i les mides disponibles. Aquests factors condicionen directament el tipus d'estructura que té sentit plantejar."
+						"title": "Medição e visita",
+						"text": "Visitamos o espaço exterior para avaliar o terreno, a orientação e os tamanhos disponíveis. Estes fatores condicionam diretamente o tipo de estrutura que faz sentido propor."
 					},
 					{
-						"title": "Disseny",
-						"text": "Dissenyem la pèrgola, coberta o element arquitectònic tenint en compte l'ús que se li vol donar. Busquem que s'integri amb la resta de la propietat, tant en forma com en acabat."
+						"title": "Conceção",
+						"text": "Projetamos a pérgola, o telhado ou o elemento arquitetónico tendo em conta o uso que queremos dar-lhe. Procuramos que se integre com o resto da propriedade, tanto na forma como no acabamento."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Preparem les peces de fusta al taller, tallant-les i tractant-les segons l'estructura definida. Aquesta preparació prèvia agilitza el muntatge posterior a l'exterior."
+						"title": "Fabrico na oficina",
+						"text": "Preparamos as peças de madeira na oficina, cortando-as e tratando-as de acordo com a estrutura definida. Esta preparação prévia acelera a montagem subsequente no exterior."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "Muntem l'estructura al seu emplaçament, fixant-la de manera segura al terreny o a la construcció existent. Verifiquem l'estabilitat i l'acabat un cop finalitzat el muntatge."
+						"title": "Instalação",
+						"text": "Montamos a estrutura no seu local, fixando-a de forma segura ao solo ou à construção existente. Verificamos a estabilidade e o acabamento assim que a montagem está concluída."
 					}
 				]
 			},
 			"restauracio": {
-				"title": "Restauració",
-				"description": "Doni una nova vida a les seves preuades peces de fusta amb els nostres serveis de restauració. Reparem i repintem acuradament els mobles conservant el seu caràcter original.",
+				"title": "Restauro",
+				"description": "Dê nova vida às suas preciosas peças de madeira com os nossos serviços de restauro. Reparamos e repintamos cuidadosamente os móveis, preservando o seu carácter original.",
 				"extra": [
-					"Restaurar una peça de fusta permet conservar-ne el valor sentimental o històric, en lloc de substituir-la per una de nova. Sovint es tracta de mobles amb un valor familiar que val la pena mantenir en ús.",
-					"L'abast de la restauració varia molt segons l'estat de cada peça: pot anar des d'un simple repintat fins a la reparació d'estructures o elements que ja no funcionen correctament."
+					"Restaurar uma peça de madeira permite-lhe preservar o seu valor sentimental ou histórico, em vez de o substituir por um novo. Muitas vezes, trata-se de mobiliário com valor familiar que vale a pena manter em uso.",
+					"O âmbito da restauração varia muito consoante o estado de cada peça: pode variar desde uma simples repintura até à reparação de estruturas ou elementos que já não funcionam corretamente."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Examinem la peça per valorar el seu estat, identificar danys i entendre com estava construïda originalment. Aquest diagnòstic determina l'abast real de la intervenció."
+						"title": "Medição e visita",
+						"text": "Examinamos a peça para avaliar o seu estado, identificar danos e compreender como foi originalmente construída. Este diagnóstico determina o verdadeiro alcance da intervenção."
 					},
 					{
-						"title": "Disseny",
-						"text": "Planifiquem la intervenció necessària, decidint què cal reparar, reforçar o repintar. L'objectiu és conservar el caràcter original de la peça en tot moment."
+						"title": "Conceção",
+						"text": "Planeamos a intervenção necessária, decidindo o que precisa de ser reparado, reforçado ou repintado. O objetivo é preservar o carácter original da peça em todos os momentos."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Portem la peça al taller, on reparem l'estructura, substituïm les parts malmeses si cal i apliquem l'acabat corresponent. Treballem amb cura per respectar la identitat original del moble."
+						"title": "Fabrico na oficina",
+						"text": "Levamos a peça para a oficina, onde reparamos a estrutura, substituimos as partes danificadas se necessário e aplicamos o acabamento correspondente. Trabalhamos cuidadosamente para respeitar a identidade original do mobiliário."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "Un cop restaurada, li retornem la peça o la col·loquem de nou al seu espai, comprovant que quedi estable i llesta per tornar-se a utilitzar amb normalitat."
+						"title": "Instalação",
+						"text": "Depois de restaurada, devolvemos a peça ou colocamo-la de volta no seu espaço, verificando se está estável e pronta para ser usada normalmente novamente."
 					}
 				]
 			},
 			"mesuraments-i-planificacio": {
-				"title": "Mesuraments i planificació",
-				"description": "El nostre equip d'experts proporciona mesuraments precisos i serveis de planificació detallada per a garantir l'èxit del seu projecte. Tenim en compte tots els detalls abans de començar la construcció.",
+				"title": "Medições e planeamento",
+				"description": "A nossa equipa de especialistas fornece medições precisas e serviços de planeamento detalhado para garantir o sucesso do seu projeto. Temos em conta todos os detalhes antes de iniciar a construção.",
 				"extra": [
-					"Una bona planificació inicial permet detectar possibles incompatibilitats abans que la fusta arribi al taller, cosa que estalvia temps i evita haver de refer feina més endavant.",
-					"Aquest servei sol ser el punt de partida de qualsevol altre projecte de fusteria: mobles, cuines, estructures o finestres, ja que totes aquestes feines depenen de disposar de mides i condicionants correctes des del principi."
+					"Um bom planeamento inicial permite detetar possíveis incompatibilidades antes da madeira chegar à oficina, o que poupa tempo e evita ter de refazer o trabalho mais tarde.",
+					"Este serviço é normalmente o ponto de partida de qualquer outro projeto de carpintaria: mobiliário, cozinhas, estruturas ou janelas, pois todos estes trabalhos dependem de ter os tamanhos e condições corretos desde o início."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Aquest és el nucli del servei: visitem l'espai, prenem totes les mides necessàries i identifiquem condicionants com preses elèctriques, desguassos o parets no del tot escaires."
+						"title": "Medição e visita",
+						"text": "Este é o núcleo do serviço: visitamos o espaço, fazemos todas as medições necessárias e identificamos condições como tomadas elétricas, drenos ou paredes que não estão completamente quadradas."
 					},
 					{
-						"title": "Disseny",
-						"text": "Amb les mides recollides, elaborem la planificació detallada del projecte: distribució, encaixos i seqüència de treball. Aquest document és el que guiarà la resta del procés."
+						"title": "Conceção",
+						"text": "Com as medições recolhidas, elaboramos o planeamento detalhado do projeto: distribuição, ajustes e sequência de trabalho. Este documento é o que irá orientar o resto do processo."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Aquesta planificació es trasllada al taller, on serveix de base perquè cada peça es fabriqui ajustada exactament a l'espai mesurat, sense marges d'error que calgui corregir després."
+						"title": "Fabrico na oficina",
+						"text": "Este planeamento é transferido para a oficina, onde serve de base para que cada peça seja fabricada ajustada exatamente ao espaço medido, sem margens de erro que precisem de ser corrigidas posteriormente."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "El dia de la instal·lació, seguim el pla definit des de l'inici, cosa que agilitza el muntatge i redueix els ajustos d'última hora sobre el terreny."
+						"title": "Instalação",
+						"text": "No dia da instalação, seguimos o plano definido desde o início, o que acelera a montagem e reduz ajustes de última hora no terreno."
 					}
 				]
 			},
 			"finestres-i-balconeres": {
-				"title": "Finestres i balconeres",
-				"description": "Dissenyem i fabriquem finestres i balconeres de fusta a mida, adaptades a les seves necessitats i preferències. Utilitzem fusta de qualitat i tècniques artesanals per a garantir un acabat durador i elegant.",
+				"title": "Janelas e varandas",
+				"description": "Projetamos e fabricamos janelas e armários de varanda em madeira feitos à medida, adaptados às suas necessidades e preferências. Utilizamos madeira de qualidade e técnicas artesanais para garantir um acabamento duradouro e elegante.",
 				"extra": [
-					"Com que es tracta d'elements exteriors, sol aplicar-se un tractament protector abans de la instal·lació, semblant al que utilitzem en el nostre servei de lacatge i vernissat.",
-					"Una finestra o balconera de fusta a mida permet ajustar-se a obertures que no segueixen mides estàndard, cosa freqüent en edificis més antics o en reformes on es vol mantenir la coherència amb la resta de la fusteria de l'habitatge."
+					"Como estes são elementos externos, normalmente aplica-se um tratamento protetor antes da instalação, semelhante ao que utilizamos no nosso serviço de verniz e lacagem.",
+					"Uma janela ou varanda de madeira feita à medida permite-lhe adaptar-se a aberturas que não seguem os tamanhos padrão, o que é comum em edifícios antigos ou em renovações onde pretende manter a consistência com o resto da carpintaria da casa."
 				],
 				"process": [
 					{
-						"title": "Mesurament i visita",
-						"text": "Prenem les mides exactes dels buits on aniran les finestres o balconeres, tenint en compte l'orientació i les condicions de l'obertura existent."
+						"title": "Medição e visita",
+						"text": "Tomamos as dimensões exatas das aberturas onde as janelas ou varandas irão estar, tendo em conta a orientação e as condições da abertura existente."
 					},
 					{
-						"title": "Disseny",
-						"text": "Definim el tipus d'obertura, el gruix del perfil i l'acabat de la fusta. Busquem coherència amb l'estil de la resta de la fusteria de l'habitatge."
+						"title": "Conceção",
+						"text": "Definimos o tipo de abertura, a espessura do perfil e o acabamento da madeira. Procuramos consistência com o estilo do resto da carpintaria da casa."
 					},
 					{
-						"title": "Fabricació al taller",
-						"text": "Fabriquem cada finestra o balconera al taller, ajustant-la amb precisió a les mides preses i aplicant l'acabat escollit abans de traslladar-la a l'obra."
+						"title": "Fabrico na oficina",
+						"text": "Fabricamos cada janela ou janela de varanda na oficina, ajustando-a com precisão às medidas tomadas e aplicando o acabamento escolhido antes de a transferir para o estaleiro de construção."
 					},
 					{
-						"title": "Instal·lació",
-						"text": "Instal·lem les finestres i balconeres al seu emplaçament, comprovant que tanquin correctament i quedin ben segellades davant l'aire i la humitat."
+						"title": "Instalação",
+						"text": "Instalamos as janelas e varandas no local deles, verificando se fecham corretamente e estão bem vedadas contra o ar e a humidade."
 					}
 				]
 			}
 		}
 	},
 	"contact": {
-		"metaTitle": "Contacte",
-		"metaDescription": "Contacta amb Fusteria InterFusta a Santa Coloma, Andorra. Demana pressupost per al teu projecte de fusteria.",
-		"title": "Contacta'*ns*",
-		"intro": "Posi's en contacte amb nosaltres per a qualsevol consulta sobre els nostres serveis o per a sobre les necessitats del seu projecte.",
+		"metaTitle": "Contacto",
+		"metaDescription": "Contacte a Fusteria InterFusta em Santa Coloma, Andorra. Pede um orçamento para o seu projeto de carpintaria.",
+		"title": "Contacte-*nos*",
+		"intro": "Contacte-nos para quaisquer questões sobre os nossos serviços ou sobre as necessidades do seu projeto.",
 		"labels": {
-			"firstName": "Nom",
-			"lastName": "Cognom",
+			"firstName": "Nome",
+			"lastName": "Apelido",
 			"email": "Email",
-			"phone": "Telèfon",
-			"message": "Missatge"
+			"phone": "Telefone",
+			"message": "Mensagem"
 		},
 		"emailPlaceholder": "el.teu@email.com",
-		"messagePlaceholder": "Expliqui'ns en què podem ajudar-lo. Detalli el seu projecte o consulta...",
+		"messagePlaceholder": "Diga-nos como o podemos ajudar. Detalhe o seu projeto ou consulta...",
 		"errors": {
-			"firstName": "Indica el teu nom",
-			"lastName": "Indica el teu cognom",
-			"email": "Introdueix un correu vàlid",
-			"phone": "Indica el teu telèfon",
-			"phoneInvalid": "Introdueix un telèfon vàlid",
-			"message": "Escriu el teu missatge",
-			"send": "Error al enviar el missatge"
+			"firstName": "Insira o seu nome",
+			"lastName": "Indique o seu apelido",
+			"email": "Insira um endereço de email válido",
+			"phone": "Introduza o seu número de telefone",
+			"phoneInvalid": "Introduza um número de telefone válido",
+			"message": "Escreve a tua mensagem",
+			"send": "Mensagem de envio de erro"
 		},
-		"sending": "Enviant...",
-		"submit": "Enviar missatge",
-		"consent": "En enviar aquest formulari, accepta el tractament de les seves dades tal com es descriu a la nostra {link}.",
-		"consentLink": "política de privacitat",
-		"success": "Missatge enviat correctament. Ens posarem en contacte amb vostè el més aviat possible.",
-		"mapTitle": "Ubicació de Fusteria InterFusta a Google Maps",
+		"sending": "A enviar...",
+		"submit": "Enviar mensagem",
+		"consent": "Ao submeter este formulário, concorda com o tratamento dos seus dados conforme descrito no nosso {link}.",
+		"consentLink": "Política de Privacidade",
+		"success": "Mensagem enviada com sucesso. Responderemos assim que possível.",
+		"mapTitle": "Localização da Fusteria InterFusta no Google Maps",
 		"workshop": {
-			"title": "El *taller*",
+			"title": "A *oficina*",
 			"imageAlt": "Andorra la Vella",
-			"address": "Adreça",
-			"map": "Obrir a Google Maps"
+			"address": "Endereço",
+			"map": "Abrir no Google Maps"
 		}
 	},
 	"portfolio": {
-		"metaTitle": "Projectes",
-		"metaDescription": "Explora la nostra col·lecció de projectes de fusteria acabats a Andorra: cuines, mobles a mida, reformes i molt més.",
-		"title": "Els nostres *projectes*",
-		"intro": "Explori la nostra col·lecció de projectes acabats, que mostren el nostre compromís amb la qualitat artesanal i l'atenció al detall.",
-		"all": "Tots",
-		"empty": "No hi ha projectes en aquesta categoria.",
-		"details": "Veure detalls",
+		"metaTitle": "Projetos",
+		"metaDescription": "Explore a nossa coleção de projetos de carpintaria finalizados em Andorra: cozinhas, mobiliário personalizado, renovações e muito mais.",
+		"title": "Os nossos *projetos*",
+		"intro": "Explore a nossa coleção de projetos finalizados, que demonstram o nosso compromisso com o artesanato de qualidade e a atenção ao detalhe.",
+		"all": "Todos",
+		"empty": "Não existem projetos nesta categoria.",
+		"details": "Ver detalhes",
 		"previous": "Anterior",
-		"next": "Següent"
+		"next": "Próximo"
 	},
 	"project": {
-		"back": "Torna als projectes",
+		"back": "Voltar aos projetos",
 		"category": "Categoria",
-		"completed": "Data de finalització",
-		"duration": "Durada",
-		"openImage": "Obre la imatge {n} de {title}",
-		"imageAlt": "{title} - imatge {n}"
+		"completed": "Data de fim",
+		"duration": "Duração",
+		"openImage": "Open {title} image {n}",
+		"imageAlt": "{title} - imagem {n}"
 	},
 	"gallery": {
-		"title": "Galeria d'imatges del projecte",
-		"description": "Utilitzeu les fletxes esquerra i dreta per navegar entre les imatges",
-		"previous": "Imatge anterior",
-		"next": "Imatge següent",
-		"imageAlt": "Imatge {n}"
+		"title": "Galeria de imagens do projeto",
+		"description": "Use as setas esquerda e direita para navegar entre imagens",
+		"previous": "Imagem anterior",
+		"next": "Imagem seguinte",
+		"imageAlt": "Imagem {n}"
 	},
 	"privacy": {
-		"metaTitle": "Política de Privacitat",
-		"metaDescription": "Com Fusteria InterFusta recull, utilitza i protegeix les dades personals que ens facilita a través d'aquest lloc web.",
-		"title": "Política de *privacitat*",
-		"intro": "Com recollim, utilitzem i protegim les dades personals que ens facilita a través d'aquest lloc web.",
+		"metaTitle": "Política de Privacidade",
+		"metaDescription": "Como a Fusteria InterFusta recolhe, utiliza e protege os dados pessoais que nos fornece através deste site.",
+		"title": "*Política de Privacidade*",
+		"intro": "Como recolhemos, utilizamos e protegemos os dados pessoais que nos fornece através deste site.",
 		"sections": [
 			{
-				"title": "1. Responsable del tractament",
+				"title": "1. Controlador de dados",
 				"paragraphs": [
-					"El responsable del tractament de les dades recollides a través d'aquest lloc web és {company} (NRT: L-715485-U), amb domicili a Passatge d'Enclar S/N, Santa Coloma, AD500, Andorra.",
-					"Per a qualsevol qüestió relacionada amb la privacitat de les seves dades, pot contactar-nos a {email} o al telèfon {phone}."
+					"O responsável pelo tratamento dos dados recolhidos através deste site é a {company} (NRT: L-715485-U), com sede registada em Passatge d'Enclar S/N, Santa Coloma, AD500, Andorra.",
+					"Para qualquer questão relacionada com a privacidade dos seus dados, pode contactar-nos através de {email} ou por telefone {phone}."
 				]
 			},
 			{
-				"title": "2. Quines dades recollim",
+				"title": "2. Que dados recolhemos",
 				"paragraphs": [
-					"A través del formulari de contacte d'aquest lloc web li demanem el nom, els cognoms, l'adreça electrònica, el telèfon i el missatge que vulgui fer-nos arribar. Facilitar aquestes dades és voluntari, però necessari perquè puguem respondre a la seva consulta."
+					"Através do formulário de contacto neste site, pedimos-lhe o seu nome, apelido(s), endereço de email, número de telefone e a mensagem que pretende enviar-nos. Fornecer estes dados é voluntário, mas necessário, para que possamos responder à sua questão."
 				]
 			},
 			{
-				"title": "3. Amb quina finalitat les utilitzem",
+				"title": "3. Para que fim os utilizamos",
 				"paragraphs": [
-					"Utilitzem les dades que ens facilita únicament per a respondre a la seva consulta o sol·licitud de pressupost, i per a comunicar-nos amb vostè sobre el seu projecte. No utilitzem aquestes dades amb finalitats comercials diferents ni les cedim a tercers per a fins publicitaris."
+					"Utilizamos os dados que nos fornece apenas para responder à sua consulta ou pedido de orçamento, e para comunicar consigo sobre o seu projeto. Não utilizamos estes dados para outros fins comerciais nem os transferimos para terceiros para fins publicitários."
 				]
 			},
 			{
-				"title": "4. Base legal",
+				"title": "4. Base jurídica",
 				"paragraphs": [
-					"La base legal per al tractament de les seves dades és el consentiment que ens dona en omplir i enviar voluntàriament el formulari de contacte."
+					"A base legal para o tratamento dos seus dados é o consentimento que nos dá quando preenche e envia voluntariamente o formulário de contacto."
 				]
 			},
 			{
-				"title": "5. Amb qui compartim les dades",
+				"title": "5. Com quem partilhamos dados",
 				"paragraphs": [
-					"Quan envia el formulari de contacte, les dades es transmeten a través del servei extern {resend}, que s'encarrega d'enviar-nos un correu electrònic amb el contingut del seu missatge a {inbox}. Les seves dades no queden emmagatzemades en cap base de dades pròpia d'aquest lloc web: viuen únicament en aquest correu electrònic i en els registres tècnics del proveïdor d'enviament.",
-					"Aquest lloc web utilitza també Vercel Analytics i Vercel Speed Insights per a entendre, de manera agregada i no identificativa, com s'utilitza el lloc web i com podem millorar-ne el rendiment."
+					"Quando envia o formulário de contacto, os dados são transmitidos através do serviço externo {resend}, que é responsável por nos enviar um email com o conteúdo da sua mensagem para {inbox}. Os seus dados não estão armazenados em nenhuma base de dados deste site: estão apenas neste email e nos registos técnicos do fornecedor de envio.",
+					"Este site também utiliza a Vercel Analytics e o Vercel Speed Insights para compreender, de forma agregada e não identificativa, como o site é utilizado e como podemos melhorar o seu desempenho."
 				]
 			},
 			{
-				"title": "6. Durant quant de temps conservem les dades",
+				"title": "6. Durante quanto tempo guardamos os dados",
 				"paragraphs": [
-					"Conservem les dades que ens facilita a través del formulari només el temps necessari per a respondre a la seva consulta i, si escau, gestionar el projecte que en derivi. Si no es formalitza cap projecte, suprimim el correu en un termini màxim de 2 anys des de l'última comunicació. Si es formalitza un encàrrec, conservarem les dades durant el temps que exigeixin les obligacions legals (per exemple, les fiscals i comptables)."
+					"Guardamos os dados que nos fornece através do formulário apenas pelo tempo necessário para responder à sua consulta e, quando apropriado, gerir o projeto que dela deriva. Se nenhum projeto for formalizado, apagaremos o email no prazo máximo de 2 anos a contar da última comunicação. Se uma ordem for formalizada, guardaremos os dados pelo tempo exigido por obrigações legais (por exemplo, fiscalidade e contabilidade)."
 				]
 			},
 			{
-				"title": "7. Els seus drets",
+				"title": "7. Os seus direitos",
 				"paragraphs": [
-					"Vostè té dret a accedir a les seves dades personals, rectificar-les si són inexactes, sol·licitar-ne la supressió, i oposar-se o sol·licitar la limitació del seu tractament. Pot exercir aquests drets enviant-nos un correu a {email}. Si considera que no hem tractat les seves dades correctament, també té dret a presentar una reclamació davant l'Agència Andorrana de Protecció de Dades (APDA)."
+					"Tem o direito de aceder aos seus dados pessoais, corrigi-los se estiverem incorretos, solicitar a sua eliminação e opor-se ou solicitar a limitação do seu tratamento. Pode exercer estes direitos enviando-nos um email para {email}. Se considerar que não processámos corretamente os seus dados, tem também o direito de apresentar uma queixa à Agência de Proteção de Dados de Andorra (APDA)."
 				]
 			},
 			{
-				"title": "8. Canvis en aquesta política",
+				"title": "8. Alterações a esta política",
 				"paragraphs": [
-					"Podem actualitzar aquesta política de privacitat per a reflectir canvis en com tractem les seves dades. Li recomanem revisar-la periòdicament. Darrera actualització: 23 de setembre de 2026."
+					"Podemos atualizar esta política de privacidade para refletir alterações na forma como tratamos os seus dados. Recomendamos que a reveja periodicamente. Última atualização: 23 de setembro de 2026."
 				]
 			}
 		]
 	},
 	"errorSheet": {
-		"sheet": "Full",
+		"sheet": "Folha",
 		"scale": "Escala",
 		"material": "Material",
-		"oak": "Roure",
-		"state": "Estat",
+		"oak": "Carvalho",
+		"state": "Estado",
 		"crack": "Esquerda"
 	},
 	"notFound": {
-		"metaTitle": "Pàgina no trobada",
-		"sheetTitle": "Plànol no trobat",
-		"title": "Aquesta pàgina no és al plànol",
-		"text": "Potser s'ha mogut o l'enllaç no és correcte.",
-		"home": "Torna a l'inici",
-		"projects": "Veure projectes"
+		"metaTitle": "Página não encontrada",
+		"sheetTitle": "Mapa não encontrado",
+		"title": "Esta página não está no mapa",
+		"text": "Talvez tenha mudado ou a ligação não esteja correta.",
+		"home": "Voltar ao topo",
+		"projects": "Ver projetos"
 	},
 	"error": {
-		"sheetTitle": "Peça esquerdada",
-		"status": "En reparació",
-		"title": "Alguna cosa s'ha esquerdat",
-		"text": "Hi ha hagut un error al nostre costat. Torna-ho a provar d'aquí a uns moments.",
-		"retry": "Torna-ho a provar",
-		"home": "Torna a l'inici"
+		"sheetTitle": "Parte do lado esquerdo",
+		"status": "Em reparação",
+		"title": "Algo partiu-se",
+		"text": "Houve um erro da nossa parte. Por favor, tente novamente daqui a pouco.",
+		"retry": "Tenta outra vez",
+		"home": "Voltar ao topo"
 	}
 }
