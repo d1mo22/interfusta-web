@@ -59,8 +59,14 @@ for (const [, text] of missing) {
 if (batch.length) batches.push(batch);
 
 const fresh = Object.fromEntries(TARGETS.map((l) => [l, [] as string[]]));
-for (const texts of batches) {
-	const result = await translateTexts(texts);
+for (let i = 0; i < batches.length; i++) {
+	if (i > 0) {
+		// ponytail: Azure F0 allows ~33.3k billed characters/min on a sliding
+		// window; spacing batches 45s apart keeps a burst of requests from
+		// tripping the 429001 rate limit.
+		await new Promise((r) => setTimeout(r, 45_000));
+	}
+	const result = await translateTexts(batches[i]);
 	if (!result) throw new Error("Azure Translator failed; no file was written");
 	for (const l of TARGETS) fresh[l].push(...result[l]);
 }
