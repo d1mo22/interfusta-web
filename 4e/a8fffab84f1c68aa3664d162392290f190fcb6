@@ -1,0 +1,27 @@
+app/actions/categories.ts
+  s_853c1b61d664b6::t_8f03dc5db4f478 5,12,36-38,43
+app/actions/data.ts
+  s_853c1b61d664b6::t_ef7281ee97a083 45-46,52,57
+app/actions/project.ts
+  s_853c1b61d664b6::t_3d8d73b041eae8 12,14-15,137,195,257-361
+lib/translate.check.ts
+  s_853c1b61d664b6::t_23a419d8267057 3-11,156-249
+lib/translate.ts
+  s_853c1b61d664b6::t_97f5e9507fa2c0 111-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4ea8fffab84f1c68aa3664d162392290f190fcb6",
+  "prompts": {},
+  "sessions": {
+    "s_853c1b61d664b6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_853c1b61d664b6",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
