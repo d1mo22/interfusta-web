@@ -1,0 +1,19 @@
+components/navigation.tsx
+  s_fac1643c9e4135::t_f7864f06b03626 39,46-47,56,61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "2cd98dec40240e5b4d89bca4cdd2a292d2692e84",
+  "prompts": {},
+  "sessions": {
+    "s_fac1643c9e4135": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_fac1643c9e4135",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
