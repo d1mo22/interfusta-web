@@ -1,0 +1,21 @@
+lib/translate.check.ts
+  s_14de82893d6f2d::t_c928b79895976c 1-59
+lib/translate.ts
+  s_14de82893d6f2d::t_46be20597c0d14 1-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "59c85e8c0dc187d31df6ad0daa2e715f8bb56061",
+  "prompts": {},
+  "sessions": {
+    "s_14de82893d6f2d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_14de82893d6f2d",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
