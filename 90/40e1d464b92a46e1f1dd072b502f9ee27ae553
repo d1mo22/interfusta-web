@@ -1,0 +1,25 @@
+messages/en.json
+  s_e5918a52086266::t_2cb1e6132956a8 344,458
+messages/es.json
+  s_e5918a52086266::t_fc8d47a9537764 344,458
+messages/fr.json
+  s_e5918a52086266::t_9343aef9e481ff 344,458
+messages/pt.json
+  s_e5918a52086266::t_49ac208c5df38e 344,458
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "9040e1d464b92a46e1f1dd072b502f9ee27ae553",
+  "prompts": {},
+  "sessions": {
+    "s_e5918a52086266": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_e5918a52086266",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
