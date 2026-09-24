@@ -8,12 +8,14 @@ import { ImageGalleryModal } from "@/components/image-gallery-modal";
 import { Grain } from "@/components/grain";
 import { formatDate } from "@/lib/utils";
 import type { Project, ImageData, Feature } from "@/types/types";
+import type { Dictionary } from "@/lib/i18n";
 
 interface ClientPageProps {
 	project: Project;
 	images: ImageData[];
 	features: Feature[];
 	category_name: string;
+	galleryDict: Dictionary["gallery"];
 }
 
 export default function ClientPage({
@@ -21,6 +23,7 @@ export default function ClientPage({
 	images,
 	features,
 	category_name,
+	galleryDict,
 }: ClientPageProps) {
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -123,6 +126,7 @@ export default function ClientPage({
 						initialIndex={selectedImageIndex}
 						isOpen={isGalleryOpen}
 						onClose={() => setIsGalleryOpen(false)}
+						dict={galleryDict}
 					/>
 				</div>
 			</section>

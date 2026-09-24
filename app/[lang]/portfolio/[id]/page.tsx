@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { unstable_cache } from "next/cache";
 import ClientPage from "./client-page";
 import { getProjectDetails } from "@/app/actions/data";
+import { getDictionary } from "@/lib/i18n";
 import type { Project, ImageData, Feature } from "@/types/types";
 
 const getCachedProjectDetails = unstable_cache(
@@ -51,7 +52,7 @@ export default async function ProjectDetails({
 }: { params: Promise<{ id: string }> }) {
 	const id = Number.parseInt((await params).id);
 
-	const project = await getProject(id);
+	const [project, dict] = await Promise.all([getProject(id), getDictionary()]);
 
 	if (!project) {
 		notFound();
@@ -63,6 +64,7 @@ export default async function ProjectDetails({
 			images={project.images as ImageData[]}
 			features={project.features as Feature[]}
 			category_name={project.category_name}
+			galleryDict={dict.gallery}
 		/>
 	);
 }
