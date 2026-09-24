@@ -1,0 +1,19 @@
+app/actions/project.ts
+  s_670077d3e59b70::t_63abaae33318c7 7-16,75-154,164-169,174-175,178-180,183,207-215,222-227,231-233,235,237,243-247,251
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "cd5e2bc72c6afb3ce095f9d37d843c5cd046b781",
+  "prompts": {},
+  "sessions": {
+    "s_670077d3e59b70": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_670077d3e59b70",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
