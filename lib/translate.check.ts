@@ -1,6 +1,7 @@
 // Run: node --experimental-strip-types lib/translate.check.ts
 import assert from "node:assert";
 import {
+	featureTranslations,
 	mergeTranslations,
 	missingFields,
 	sanitizeTranslations,
@@ -246,5 +247,31 @@ assert.deepStrictEqual(
 	),
 	{ es: { description: "A mano" }, fr: {}, en: {}, pt: {} },
 );
+
+// featureTranslations, "position" pairing (retranslate): two features with the
+// same Catalan each keep their own hand fix; only their gaps are filled
+globalThis.fetch = (async (_url: string | URL | Request, init?: RequestInit) => {
+	calls++;
+	const body = JSON.parse(String(init?.body)) as { text: string }[];
+	sent = body.map((b) => b.text);
+	return new Response(
+		JSON.stringify(body.map((b) => ({ translations: ["es", "fr", "en", "pt"].map((t) => ({ text: `${t}:${b.text}` })) }))),
+		{ status: 200 },
+	);
+}) as typeof fetch;
+const dup = [
+	{ description: "Porta", translations: { es: { description: "Puerta A" }, fr: { description: "Porte A" } } },
+	{ description: "Porta", translations: { es: { description: "Puerta B" } } },
+];
+calls = 0;
+assert.deepStrictEqual(await featureTranslations(["Porta", "Porta"], dup, "position"), [
+	{ es: { description: "Puerta A" }, fr: { description: "Porte A" }, en: { description: "en:Porta" }, pt: { description: "pt:Porta" } },
+	{ es: { description: "Puerta B" }, fr: { description: "fr:Porta" }, en: { description: "en:Porta" }, pt: { description: "pt:Porta" } },
+]);
+assert.equal(calls, 1);
+assert.deepStrictEqual(sent, ["Porta"]);
+// "text" pairing (project save) matches by text, so both take the same stored row
+const byText = await featureTranslations(["Porta", "Porta"], dup);
+assert.deepStrictEqual(byText[0], byText[1]);
 
 console.log("translate ok");

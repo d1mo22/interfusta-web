@@ -4,15 +4,13 @@ import { sql } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./auth";
 import { deleteR2Urls } from "@/lib/r2Client";
-import { TARGETS } from "@/lib/i18n-config";
 import {
 	PROJECT_FIELDS,
-	mergeTranslations,
-	missingFields,
+	featureTranslations,
 	sanitizeTranslations,
-	translateTexts,
 	translationPlan,
 	translationsAfterSave,
+	type FeatureRow,
 	type FieldTranslations,
 	type ProjectField,
 } from "@/lib/translate";
@@ -81,47 +79,9 @@ const fieldsOf = (p: ProjectInput): Record<ProjectField, string> => ({
 	duration: p.duration.trim(),
 });
 
-type FeatureRow = {
-	description: string;
-	translations: FieldTranslations<"description"> | null;
-};
-
 type ProjectRow = Record<ProjectField, string> & {
 	translations: FieldTranslations<ProjectField> | null;
 };
-
-// One translation object per feature, in order. Features are matched to the
-// stored ones by their Catalan text: a match keeps its translations (hand
-// edits included) and only fills missing languages; a new or edited text is
-// translated from scratch. Everything that needs Azure goes in one request.
-async function featureTranslations(
-	features: string[],
-	old: FeatureRow[],
-): Promise<FieldTranslations<"description">[]> {
-	const byText = new Map<string, FeatureRow>();
-	for (const f of old) {
-		const seen = byText.get(f.description);
-		// With duplicate texts, prefer the fully translated row.
-		if (!seen || missingFields(seen.translations, ["description"]).length > 0)
-			byText.set(f.description, f);
-	}
-	const plans = features.map((d) => {
-		const row = byText.get(d);
-		return { d, row, ...translationPlan({ description: d }, row, ["description"] as const) };
-	});
-	const todo = [
-		...new Set(plans.filter((p) => p.changed.length || p.pending.length).map((p) => p.d)),
-	];
-	const result = todo.length ? await translateTexts(todo) : null;
-	return plans.map(({ d, row, changed, pending }) => {
-		const i = todo.indexOf(d);
-		const fresh =
-			result && i >= 0
-				? Object.fromEntries(TARGETS.map((t) => [t, { description: result[t][i] }]))
-				: null;
-		return mergeTranslations(row?.translations, fresh, changed, pending);
-	});
-}
 
 export async function createProject(p: ProjectInput): Promise<Result> {
 	const user = await getCurrentUser();
@@ -263,6 +223,7 @@ export async function updateProjectTranslations(
 ): Promise<Result> {
 	const user = await getCurrentUser();
 	if (!user) return { error: "No autoritzat" };
+	if (!Number.isInteger(id)) return { error: "No s'ha trobat el projecte" };
 
 	const project = sanitizeTranslations(input?.project, PROJECT_FIELDS);
 	const features = (Array.isArray(input?.features) ? input.features : []).filter((f) =>
@@ -303,6 +264,7 @@ const readBack = (t: unknown) => (t == null ? null : JSON.stringify(t));
 // answering, so a concurrent edit is never overwritten with stale text.
 export async function retranslateProject(id: number): Promise<Result> {
 	if (!(await getCurrentUser())) return { error: "No autoritzat" };
+	if (!Number.isInteger(id)) return { error: "No s'ha trobat el projecte" };
 
 	try {
 		const [row] = (await sql`
@@ -316,13 +278,16 @@ export async function retranslateProject(id: number): Promise<Result> {
 
 		const [translations, featureTr] = await Promise.all([
 			translationsAfterSave(row, row, PROJECT_FIELDS),
+			// Paired by position: each feature against its own row, so duplicate
+			// texts keep their own hand fixes.
 			featureTranslations(
 				features.map((f) => f.description),
 				features,
+				"position",
 			),
 		]);
 
-		await sql.transaction([
+		const saved = await sql.transaction([
 			sql`
 				UPDATE project SET translations = ${JSON.stringify(translations)}::jsonb
 				WHERE id = ${id}
@@ -331,6 +296,7 @@ export async function retranslateProject(id: number): Promise<Result> {
 					AND description IS NOT DISTINCT FROM ${row.description}
 					AND full_description IS NOT DISTINCT FROM ${row.full_description}
 					AND duration IS NOT DISTINCT FROM ${row.duration}
+				RETURNING id
 			`,
 			...features.map(
 				(f, i) => sql`
@@ -338,10 +304,14 @@ export async function retranslateProject(id: number): Promise<Result> {
 					WHERE id = ${f.id}
 						AND translations IS NOT DISTINCT FROM ${readBack(f.translations)}::jsonb
 						AND description IS NOT DISTINCT FROM ${f.description}
+					RETURNING id
 				`,
 			),
 		]);
 		revalidate();
+		// A guarded UPDATE that matched nothing: someone edited meanwhile.
+		if (saved.some((rows) => !rows.length))
+			return { error: "El projecte ha canviat mentre es traduïa. Torna-ho a provar." };
 
 		// A blank Catalan has nothing to translate, so it never counts as missing.
 		const stillMissing =

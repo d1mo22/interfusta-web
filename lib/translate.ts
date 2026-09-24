@@ -178,3 +178,48 @@ export function sanitizeTranslations<K extends string>(
 		}),
 	) as FieldTranslations<K>;
 }
+
+// A stored feature row.
+export type FeatureRow = {
+	description: string;
+	translations: FieldTranslations<"description"> | null;
+};
+
+// One translation object per feature, in order; everything that needs Azure
+// goes in one request. "text" pairing (saving the project, which re-creates
+// the feature rows) matches each feature to a stored row by its Catalan text:
+// a match keeps its translations (hand edits included) and only fills missing
+// languages; a new or edited text is translated from scratch. "position"
+// pairing (`old` aligned with `features`) plans each feature against its own
+// row, so features sharing a text each keep their own hand fixes.
+export async function featureTranslations(
+	features: string[],
+	old: FeatureRow[],
+	pairing: "text" | "position" = "text",
+): Promise<FieldTranslations<"description">[]> {
+	const byText = new Map<string, FeatureRow>();
+	for (const f of old) {
+		const seen = byText.get(f.description);
+		// With duplicate texts, prefer the fully translated row.
+		if (!seen || missingFields(seen.translations, ["description"]).length > 0)
+			byText.set(f.description, f);
+	}
+	const plans = features.map((d, i) => {
+		const row = pairing === "position" ? old[i] : byText.get(d);
+		return { d, row, ...translationPlan({ description: d }, row, ["description"] as const) };
+	});
+	const todo = [
+		...new Set(plans.filter((p) => p.changed.length || p.pending.length).map((p) => p.d)),
+	];
+	const result = todo.length ? await translateTexts(todo) : null;
+	return plans.map(({ d, row, changed, pending }) => {
+		const i = todo.indexOf(d);
+		const fresh =
+			result && i >= 0
+				? (Object.fromEntries(
+						TARGETS.map((t) => [t, { description: result[t][i] }]),
+					) as FieldTranslations<"description">)
+				: null;
+		return mergeTranslations(row?.translations, fresh, changed, pending);
+	});
+}
