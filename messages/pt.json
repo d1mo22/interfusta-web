@@ -341,7 +341,7 @@
 			"phone": "Telefone",
 			"message": "Mensagem"
 		},
-		"emailPlaceholder": "el.teu@email.com",
+		"emailPlaceholder": "o.teu@email.com",
 		"messagePlaceholder": "Diga-nos como o podemos ajudar. Detalhe o seu projeto ou consulta...",
 		"errors": {
 			"firstName": "Insira o seu nome",
@@ -455,7 +455,7 @@
 		"material": "Material",
 		"oak": "Carvalho",
 		"state": "Estado",
-		"crack": "Esquerda"
+		"crack": "Fenda"
 	},
 	"notFound": {
 		"metaTitle": "Página não encontrada",

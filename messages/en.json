@@ -341,7 +341,7 @@
 			"phone": "Telephone",
 			"message": "Message"
 		},
-		"emailPlaceholder": "el.teu@email.com",
+		"emailPlaceholder": "your@email.com",
 		"messagePlaceholder": "Tell us how we can help you. Detail your project or query...",
 		"errors": {
 			"firstName": "Enter your name",
@@ -455,7 +455,7 @@
 		"material": "Material",
 		"oak": "Oak",
 		"state": "Status",
-		"crack": "Left"
+		"crack": "Crack"
 	},
 	"notFound": {
 		"metaTitle": "Page not found",
