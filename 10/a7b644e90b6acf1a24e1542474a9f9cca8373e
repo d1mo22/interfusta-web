@@ -1,0 +1,19 @@
+app/actions/categories.ts
+  s_710ce711396187::t_d93c35ace86af9 5,12-16,18-19,25,40-54,56-57,68,103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "10a7b644e90b6acf1a24e1542474a9f9cca8373e",
+  "prompts": {},
+  "sessions": {
+    "s_710ce711396187": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_710ce711396187",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
