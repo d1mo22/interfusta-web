@@ -1,0 +1,19 @@
+components/theme-script.tsx
+  s_b8e5b8679d211b::t_c9326e4751d73e 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "eec1c22d5c76e3e156808a3e306e61fdd02f6ac3",
+  "prompts": {},
+  "sessions": {
+    "s_b8e5b8679d211b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_b8e5b8679d211b",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
