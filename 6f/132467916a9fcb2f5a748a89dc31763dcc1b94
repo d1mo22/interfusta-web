@@ -1,0 +1,29 @@
+app/[lang]/home-client.tsx
+  s_eed23c65ce3a26::t_6c5332b96f5493 9-11,13-14,18-27,72,75,78,82,85,96-97,104,106,108,110,120,123,128-129,138,141,146,150,159,255,257,260,263
+app/[lang]/page.tsx
+  s_eed23c65ce3a26::t_03164742dea936 1,3-4,6-10,12-14
+app/[lang]/portfolio/[id]/client-page.tsx
+  s_eed23c65ce3a26::t_ea12b932a8983f 11,18,26,129
+app/[lang]/portfolio/[id]/page.tsx
+  s_eed23c65ce3a26::t_ed6260cabf23dc 6,55,67
+components/image-gallery-modal.tsx
+  s_eed23c65ce3a26::t_18b62f930365fd 13-14,21,29,64,66,75,81,92
+data/featured-project.json
+  s_eed23c65ce3a26::t_dd8555f0333fc7 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "6f132467916a9fcb2f5a748a89dc31763dcc1b94",
+  "prompts": {},
+  "sessions": {
+    "s_eed23c65ce3a26": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_eed23c65ce3a26",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
