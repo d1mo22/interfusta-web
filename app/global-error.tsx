@@ -32,7 +32,7 @@ export default function GlobalError({
 				<ThemeScript />
 			</head>
 			<body className="font-sans bg-paper text-ink">
-				<section className="pt-[104px] pb-[120px] min-h-dvh flex items-center">
+				<section className="pt-[72px] md:pt-[104px] pb-[120px] min-h-dvh flex items-center">
 					<div className="max-w-[1280px] mx-auto px-6 lg:px-20 w-full">
 						<ServerError reset={reset} />
 					</div>

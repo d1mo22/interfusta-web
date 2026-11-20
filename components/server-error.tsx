@@ -53,14 +53,14 @@ export function ServerError({
 				crackedRingIndex={1}
 				dimsDelayS={1.8}
 			/>
-			<div className="grid gap-12 mt-11 items-end lg:grid-cols-[8fr_4fr]">
+			<div className="grid gap-6 lg:gap-12 mt-6 md:mt-11 items-end lg:grid-cols-[8fr_4fr]">
 				<div className="flex flex-col gap-5">
 					<h1 className="h-page">{labels.title}</h1>
 					<span className="rule" />
 				</div>
 				<div className="flex flex-col gap-5">
 					<p className="text-ink-muted text-[17px] max-w-[44ch] leading-relaxed">{labels.text}</p>
-					<div className="flex flex-wrap items-center gap-7 pt-2">
+					<div className="flex flex-wrap items-center gap-x-7 gap-y-3 pt-2">
 						<button
 							type="button"
 							onClick={() => reset()}

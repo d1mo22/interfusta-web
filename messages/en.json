@@ -472,5 +472,8 @@
 		"text": "There was an error on our side. Please try again in a few moments.",
 		"retry": "Try again",
 		"home": "Back to home"
+	},
+	"login": {
+		"required": "Please fill in this field."
 	}
 }

@@ -472,5 +472,8 @@
 		"text": "Il y a eu une erreur de notre côté. Veuillez réessayer dans quelques instants.",
 		"retry": "Réessayer",
 		"home": "Retour à l’accueil"
+	},
+	"login": {
+		"required": "Veuillez remplir ce champ."
 	}
 }

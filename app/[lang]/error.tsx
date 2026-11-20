@@ -21,7 +21,7 @@ export default function ErrorPage({
 	return (
 		<div className="bg-paper text-ink">
 			<Grain />
-			<section className="pt-[104px] pb-[120px]">
+			<section className="pt-[72px] md:pt-[104px] pb-[120px]">
 				<div className="max-w-[1280px] mx-auto px-6 lg:px-20">
 					<ServerError reset={reset} labels={labels} homeHref={localeHref(lang, "/")} />
 				</div>

@@ -472,5 +472,8 @@
 		"text": "Hubo un error de nuestra parte. Por favor, inténtalo de nuevo en unos momentos.",
 		"retry": "Inténtalo de nuevo",
 		"home": "Volver al inicio"
+	},
+	"login": {
+		"required": "Rellena este campo."
 	}
 }

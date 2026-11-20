@@ -6,7 +6,7 @@ import type ca from "@/messages/ca.json";
 export type Dictionary = typeof ca;
 
 // Typed against the Catalan shape: if a language file misses a key, tsc fails.
-const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
+export const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
 	ca: () => import("@/messages/ca.json").then((m) => m.default),
 	es: () => import("@/messages/es.json").then((m) => m.default),
 	fr: () => import("@/messages/fr.json").then((m) => m.default),
