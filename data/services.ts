@@ -1,71 +1,57 @@
+import type ca from "@/messages/ca.json";
+
+export type ServiceSlug = keyof typeof ca.services.items;
+
+// Language-neutral facts about each service, in display order. The copy
+// (title, description, landing-page text) lives in messages/*.json under
+// services.items.<slug>. Slugs are Catalan in every language, like /privacitat.
 export type Service = {
-	title: string;
-	description: string;
+	slug: ServiceSlug;
 	imageUrl: string;
-	slug: string;
+	related: ServiceSlug[];
 };
 
-function slugify(title: string): string {
-	return title
-		.normalize("NFD")
-		.replace(/[̀-ͯ]/g, "")
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, "-")
-		.replace(/^-+|-+$/g, "");
-}
-
-const rawServices: Omit<Service, "slug">[] = [
+export const services: Service[] = [
 	{
-		title: "Mobles a mesura",
-		description:
-			"Dissenyem i fabriquem mobles a mesura adaptats a les seves necessitats i preferències específiques. Des d'elegants taules de menjador fins a armaris a mesura, els nostres experts artesans faran realitat la seva visió.",
+		slug: "mobles-a-mesura",
 		imageUrl: "/Medida-1.webp",
+		related: ["restauracio", "mesuraments-i-planificacio", "lacatge-i-vernissat"],
 	},
 	{
-		title: "Instal·lació de cuines",
-		description:
-			"Transformi la seva cuina amb els nostres serveis professionals d'instal·lació. Ens encarreguem de tot, des del muntatge d'armaris fins a les solucions d'emmagatzematge personalitzades, garantint una funcionalitat i estètica perfectes.",
+		slug: "instal-lacio-de-cuines",
 		imageUrl: "/Cuina-2.webp",
+		related: ["mobles-a-mesura", "disseny-amb-corian", "mesuraments-i-planificacio"],
 	},
 	{
-		title: "Lacatge i vernissat",
-		description:
-			"Oferim serveis professionals d'acabat per a tota mena de superfícies de fusta. Utilitzem tècniques especialitzades de lacatge i vernissat per a protegir i realçar la bellesa natural dels seus mobles, garantint un acabat durador i elegant.",
+		slug: "lacatge-i-vernissat",
 		imageUrl: "/Laca-1.webp",
+		related: ["mobles-a-mesura", "restauracio", "finestres-i-balconeres"],
 	},
 	{
-		title: "Disseny amb Corian",
-		description:
-			"Especialistes en el disseny i fabricació amb Corian, un material versàtil i durador perfecte per a encimeres, lavabos i superfícies decoratives. Creem dissenys únics i funcionals que s'adapten perfectament al seu espai.",
+		slug: "disseny-amb-corian",
 		imageUrl: "/Corian.webp",
+		related: ["instal-lacio-de-cuines", "mobles-a-mesura", "lacatge-i-vernissat"],
 	},
 	{
-		title: "Estructures de fusta",
-		description:
-			"Creï impressionants espais a l'aire lliure amb les nostres estructures de fusta. Construïm pèrgoles, cobertes i elements arquitectònics que realcen el valor de la seva propietat.",
+		slug: "estructures-de-fusta",
 		imageUrl: "/Estructura-2.webp",
+		related: ["finestres-i-balconeres", "mesuraments-i-planificacio", "restauracio"],
 	},
 	{
-		title: "Restauració",
-		description:
-			"Doni una nova vida a les seves preuades peces de fusta amb els nostres serveis de restauració. Reparem i repintem acuradament els mobles conservant el seu caràcter original.",
+		slug: "restauracio",
 		imageUrl: "/Reforma-2.webp",
+		related: ["lacatge-i-vernissat", "mobles-a-mesura", "mesuraments-i-planificacio"],
 	},
 	{
-		title: "Mesuraments i planificació",
-		description:
-			"El nostre equip d'experts proporciona mesuraments precisos i serveis de planificació detallada per a garantir l'èxit del seu projecte. Tenim en compte tots els detalls abans de començar la construcció.",
+		slug: "mesuraments-i-planificacio",
 		imageUrl: "/Planificacio-2.webp",
+		related: ["mobles-a-mesura", "instal-lacio-de-cuines", "estructures-de-fusta"],
 	},
 	{
-		title: "Finestres i balconeres",
-		description:
-			"Dissenyem i fabriquem finestres i balconeres de fusta a mida, adaptades a les seves necessitats i preferències. Utilitzem fusta de qualitat i tècniques artesanals per a garantir un acabat durador i elegant.",
+		slug: "finestres-i-balconeres",
 		imageUrl: "/Finestra.webp",
+		related: ["estructures-de-fusta", "lacatge-i-vernissat", "mesuraments-i-planificacio"],
 	},
 ];
 
-export const services: Service[] = rawServices.map((service) => ({
-	...service,
-	slug: slugify(service.title),
-}));
+export const findService = (slug: string) => services.find((s) => s.slug === slug);

@@ -1,0 +1,88 @@
+import type { Metadata } from "next";
+import { cache } from "react";
+import { notFound } from "next/navigation";
+import { unstable_cache } from "next/cache";
+import ClientPage from "./client-page";
+import { getProjectDetails } from "@/app/actions/data";
+import { getDictionary, getLocale } from "@/lib/i18n";
+import { alternates, OG_IMAGE, ogLocale, type Locale } from "@/lib/i18n-config";
+import type { Project, ImageData, Feature } from "@/types/types";
+
+const getCachedProjectDetails = unstable_cache(
+	async (id: number, lang: Locale) => getProjectDetails(id, lang),
+	["project-details"],
+	{ revalidate: 3600 },
+);
+
+// "/portfolio/abc" or "/portfolio/12abc" is not a project id: parseInt gave
+// NaN (or 12), and NaN reached Postgres as an invalid integer and threw.
+function parseId(raw: string): number | null {
+	const id = /^\d+$/.test(raw) ? Number(raw) : Number.NaN;
+	return Number.isSafeInteger(id) ? id : null;
+}
+
+// Memoised per-request so the page and generateMetadata share one lookup.
+// Trimmed here so a stray leading/trailing space in the stored title doesn't
+// leak into <title>, og:title, or the alt text derived from it downstream.
+const getProject = cache(async (id: number, lang: Locale) => {
+	const project = await getCachedProjectDetails(id, lang);
+	if (!project) return project;
+	// Spreading an `any`-typed value narrows the inferred object literal type
+	// to just the explicit keys, so cast back to keep the rest of `project`'s
+	// (implicitly `any`) shape visible to callers below.
+	return { ...project, title: project.title.trim() } as typeof project;
+});
+
+export async function generateMetadata({
+	params,
+}: { params: Promise<{ id: string }> }): Promise<Metadata> {
+	const id = parseId((await params).id);
+	if (id === null) return {};
+	const lang = await getLocale();
+	const project = await getProject(id, lang);
+
+	if (!project) {
+		return {};
+	}
+
+	const image = (project.images as ImageData[] | undefined)?.[0];
+
+	return {
+		title: project.title,
+		description: project.description,
+		alternates: alternates(lang, `/portfolio/${id}`),
+		openGraph: {
+			title: project.title,
+			description: project.description,
+			locale: ogLocale(lang),
+			// Projects without photos still carry the site share image.
+			images: image ? [{ url: image.url }] : [OG_IMAGE],
+		},
+	};
+}
+
+export default async function ProjectDetails({
+	params,
+}: { params: Promise<{ id: string }> }) {
+	const id = parseId((await params).id);
+	if (id === null) notFound();
+
+	const [lang, dict] = await Promise.all([getLocale(), getDictionary()]);
+	const project = await getProject(id, lang);
+
+	if (!project) {
+		notFound();
+	}
+
+	return (
+		<ClientPage
+			project={project as Project}
+			images={project.images as ImageData[]}
+			features={project.features as Feature[]}
+			category_name={project.category_name}
+			lang={lang}
+			dict={dict.project}
+			galleryDict={dict.gallery}
+		/>
+	);
+}

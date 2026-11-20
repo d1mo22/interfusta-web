@@ -6,41 +6,45 @@ import { usePathname } from "next/navigation";
 import { Menu, Phone, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
-
-const links = [
-	{ href: "/services", label: "Serveis" },
-	{ href: "/portfolio", label: "Projectes" },
-	{ href: "/about", label: "Sobre Nosaltres" },
-	{ href: "/contact", label: "Contacte" },
-];
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { fill, localeHref, stripLocale, type Locale } from "@/lib/i18n-config";
+import type { Dictionary } from "@/lib/i18n";
 
 const PHONE_NUMBER = "+376 804 440";
 const PHONE_HREF = "tel:+376804440";
 
-export function Navigation() {
+export function Navigation({ lang, dict }: { lang: Locale; dict: Dictionary["nav"] }) {
 	const [isOpen, setIsOpen] = useState(false);
-	const pathname = usePathname();
+	const path = stripLocale(usePathname());
+	const links = [
+		{ href: "/services", label: dict.services },
+		{ href: "/portfolio", label: dict.portfolio },
+		{ href: "/about", label: dict.about },
+		{ href: "/contact", label: dict.contact },
+	];
+	const themeLabels = { toggle: dict.theme, light: dict.light, dark: dict.dark };
+	const callLabel = fill(dict.call, { phone: PHONE_NUMBER });
 
 	function isActive(href: string) {
-		return pathname === href || pathname.startsWith(`${href}/`);
+		return path === href || path.startsWith(`${href}/`);
 	}
 
 	return (
 		<header className="fixed inset-x-0 top-0 z-40 h-16 bg-paper border-b border-hairline">
 			<div className="max-w-[1280px] mx-auto px-6 lg:px-20 flex items-center justify-between h-full">
-				<Link href="/" aria-label="Fusteria InterFusta" className="text-ink">
+				<Link href={localeHref(lang, "/")} aria-label="Fusteria InterFusta" className="text-ink">
 					<Logo />
 				</Link>
 
-				<nav className="hidden lg:flex items-center gap-9">
+				<nav className="hidden lg:flex items-center gap-6 xl:gap-9">
 					{links.map((link) => (
 						<Link
 							key={link.href}
-							href={link.href}
+							href={localeHref(lang, link.href)}
 							className={
 								isActive(link.href)
-									? "text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px]"
-									: "text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+									? "whitespace-nowrap text-[15px] text-ink underline decoration-brand decoration-2 underline-offset-[7px]"
+									: "whitespace-nowrap text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 							}
 						>
 							{link.label}
@@ -48,14 +52,15 @@ export function Navigation() {
 					))}
 					<a
 						href={PHONE_HREF}
-						aria-label={`Truca'ns al ${PHONE_NUMBER}`}
-						className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
+						aria-label={callLabel}
+						className="hidden lg:flex items-center gap-1.5 whitespace-nowrap text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 					>
 						<Phone className="h-3.5 w-3.5" aria-hidden />
 						<span>{PHONE_NUMBER}</span>
 					</a>
-					<div className="ml-3">
-						<ThemeToggle />
+					<div className="ml-3 flex items-center gap-4 xl:gap-6">
+						<LanguageSwitcher lang={lang} label={dict.language} />
+						<ThemeToggle labels={themeLabels} />
 					</div>
 				</nav>
 
@@ -63,7 +68,7 @@ export function Navigation() {
 					type="button"
 					onClick={() => setIsOpen(!isOpen)}
 					className="lg:hidden inline-flex items-center justify-center p-2 text-ink"
-					aria-label={isOpen ? "Tancar menú" : "Obrir menú"}
+					aria-label={isOpen ? dict.closeMenu : dict.openMenu}
 					aria-expanded={isOpen}
 				>
 					{isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -75,7 +80,7 @@ export function Navigation() {
 					{links.map((link) => (
 						<Link
 							key={link.href}
-							href={link.href}
+							href={localeHref(lang, link.href)}
 							onClick={() => setIsOpen(false)}
 							className={
 								isActive(link.href)
@@ -89,13 +94,16 @@ export function Navigation() {
 					<div className="px-6 py-4 flex items-center justify-between">
 						<a
 							href={PHONE_HREF}
-							aria-label={`Truca'ns al ${PHONE_NUMBER}`}
+							aria-label={callLabel}
 							className="flex items-center gap-1.5 text-[15px] text-ink-muted hover:text-ink transition-colors duration-150"
 						>
 							<Phone className="h-3.5 w-3.5" aria-hidden />
 							<span>{PHONE_NUMBER}</span>
 						</a>
-						<ThemeToggle />
+						<ThemeToggle labels={themeLabels} />
+					</div>
+					<div className="px-6 py-4">
+						<LanguageSwitcher lang={lang} label={dict.language} variant="list" />
 					</div>
 				</div>
 			)}

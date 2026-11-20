@@ -8,8 +8,9 @@ import "./globals.css";
 
 // Next.js requires global-error.tsx to render its own <html>/<body>: it
 // replaces the root layout entirely when a render error escapes every
-// nested error boundary, so it can't rely on app/layout.tsx for fonts,
-// tokens, Navigation or Footer.
+// nested error boundary, so it can't rely on the root layouts
+// (app/[lang]/layout.tsx, app/(admin)/layout.tsx) for fonts, tokens,
+// Navigation or Footer.
 export default function GlobalError({
 	error,
 	reset,

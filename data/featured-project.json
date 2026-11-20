@@ -1,32 +1,4 @@
 {
-	"title": "Renovació d'una Vila de Luxe",
-	"description": "Transformem completament aquesta vila amb mobles fets a mida, una cuina personalitzada i detalls de fusta intricats en tot el lloc. El nostre equip va treballar estretament amb el client per a donar vida a la seva visió, resultant en una impressionant mostra de la nostra artesania.",
-	"features": [
-		"Gabinets de cuina dissenyats a mesura",
-		"Taula de menjador i cadires fetes a mà",
-		"Armaris de paret per a totes les habitacions",
-		"Bigues de sostre de fusta i panells de paret"
-	],
-	"image": {
-		"url": "/Projecte.webp",
-		"alt": "Projecte destacat"
-	},
-	"gallery": [
-		{
-			"url": "/Projecte-1.webp",
-			"alt": "Imagen 1 del proyecto destacado"
-		},
-		{
-			"url": "/Projecte-2.webp",
-			"alt": "Imagen 2 del proyecto destacado"
-		},
-		{
-			"url": "/Projecte-3.webp",
-			"alt": "Imagen 3 del proyecto destacado"
-		},
-		{
-			"url": "/Projecte-4.webp",
-			"alt": "Imagen 4 del proyecto destacado"
-		}
-	]
+	"image": "/Projecte.webp",
+	"gallery": ["/Projecte-1.webp", "/Projecte-2.webp", "/Projecte-3.webp", "/Projecte-4.webp"]
 }

@@ -1,10 +1,10 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { intlLocale, type Locale } from "@/lib/i18n-config";
 
-export const formatDate = (date: string) => {
+export const formatDate = (date: string, lang: Locale) => {
 	if (!date) return "";
-	const d = new Date(date);
-	return d.toLocaleDateString("ca-ES", {
+	return new Date(date).toLocaleDateString(intlLocale[lang], {
 		year: "numeric",
 		month: "long",
 		day: "numeric",

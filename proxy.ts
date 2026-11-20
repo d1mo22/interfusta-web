@@ -1,11 +1,20 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { SESSION_COOKIE, verifySession } from "@/lib/session";
+import { LOCALE_COOKIE, resolveLocale } from "@/lib/i18n-config";
+
+const ONE_YEAR = 60 * 60 * 24 * 365;
 
 export async function proxy(request: NextRequest) {
-	const user = await verifySession(
-		request.cookies.get(SESSION_COOKIE)?.value,
-	);
+	const { pathname } = request.nextUrl;
+	// Whole segments only: /administrator or /apiary are public paths.
+	if (/^\/(?:admin|api)(?:\/|$)/.test(pathname)) return guard(request);
+	return localize(request);
+}
+
+// Admin pages and write APIs need a valid session (unchanged behaviour).
+async function guard(request: NextRequest) {
+	const user = await verifySession(request.cookies.get(SESSION_COOKIE)?.value);
 	if (user) return NextResponse.next();
 
 	// Las rutas /api solo exigen sesión para operaciones de escritura
@@ -17,6 +26,41 @@ export async function proxy(request: NextRequest) {
 	return NextResponse.redirect(new URL("/auth/login", request.url));
 }
 
+// Public pages: Catalan is served unprefixed (rewritten to app/[lang]=ca), other
+// languages live under /xx. The decision logic lives in lib/i18n-config.ts.
+function localize(request: NextRequest) {
+	const decision = resolveLocale(
+		request.nextUrl.pathname,
+		request.cookies.get(LOCALE_COOKIE)?.value,
+		request.headers.get("accept-language"),
+	);
+	if (decision.action === "next") return NextResponse.next();
+
+	const url = request.nextUrl.clone(); // keeps the query string
+	url.pathname = decision.pathname;
+	const response =
+		decision.action === "rewrite"
+			? NextResponse.rewrite(url)
+			: NextResponse.redirect(url, decision.permanent ? 308 : 307);
+	if (decision.setCookie)
+		response.cookies.set(LOCALE_COOKIE, decision.setCookie, {
+			path: "/",
+			maxAge: ONE_YEAR,
+			sameSite: "lax",
+		});
+	return response;
+}
+
 export const config = {
-	matcher: ["/admin", "/admin/:path*", "/api/:path*"],
+	matcher: [
+		"/admin",
+		"/admin/:path*",
+		"/api/:path*",
+		// Public pages: everything except Next internals, Vercel's analytics beacons
+		// (/_vercel/insights, /_vercel/speed-insights), admin/auth/api and files with
+		// an extension (public/ assets, sitemap.xml, robots.txt, the Google
+		// verification .html files). The prefixes are whole segments, so
+		// /administrator or /authors still get locale handling and the site's 404.
+		"/((?!(?:_next|_vercel|api|admin|auth)(?:/|$)|.*\\..*).*)",
+	],
 };

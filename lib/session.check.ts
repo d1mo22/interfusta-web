@@ -1,6 +1,5 @@
 // Run: SESSION_SECRET=$(openssl rand -hex 32) node --experimental-strip-types lib/session.check.ts
 import assert from "node:assert";
-// @ts-expect-error .ts extension needed for node strip-types
 import { signSession, verifySession } from "./session.ts";
 
 const user = { id: 1, username: "admin", name: "Admin" };
