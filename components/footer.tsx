@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const MAPS_URL =
-	"https://www.google.com/maps?q=Fusteria+InterFusta+SL&ftid=0x12a5f58f12d8ead7:0x4b992abc827fc509";
+	"https://www.google.com/maps?q=Fusteria+InterFusta+SL,+Passatge+d%27Enclar,+Santa+Coloma,+AD500,+Andorra&ftid=0x12a5f58f12d8ead7:0x4b992abc827fc509";
 
 export function Footer() {
 	return (
