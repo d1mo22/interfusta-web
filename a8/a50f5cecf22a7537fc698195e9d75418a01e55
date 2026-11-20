@@ -1,0 +1,43 @@
+app/(admin)/auth/login/login-form.tsx
+  s_5da034665cb7f5::t_5afc81e3d47b8a 1-91
+app/(admin)/auth/login/page.tsx
+  s_5da034665cb7f5::t_553b3cdb54e1c3 1-13
+app/[lang]/error.tsx
+  s_5da034665cb7f5::t_45bead0f02d984 24
+app/global-error.tsx
+  s_5da034665cb7f5::t_78f97db8759deb 35
+components/error-sheet.tsx
+  s_5da034665cb7f5::t_01c6c64078bc0e 163,174-176,296
+components/not-found-content.tsx
+  s_5da034665cb7f5::t_4e2af25f46e884 24,37,44
+components/server-error.tsx
+  s_5da034665cb7f5::t_ecec7b5a6fe997 56,63
+lib/i18n.ts
+  s_5da034665cb7f5::t_bcd18b9248a204 9
+messages/ca.json
+  s_5da034665cb7f5::t_3b5d37bdfcc237 475-477
+messages/en.json
+  s_5da034665cb7f5::t_036d2b019c953e 475-477
+messages/es.json
+  s_5da034665cb7f5::t_45fdd3cd2def82 475-477
+messages/fr.json
+  s_5da034665cb7f5::t_3cfbba87864818 475-477
+messages/pt.json
+  s_5da034665cb7f5::t_40c19dbd8800e6 475-477
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "a8a50f5cecf22a7537fc698195e9d75418a01e55",
+  "prompts": {},
+  "sessions": {
+    "s_5da034665cb7f5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_5da034665cb7f5",
+        "model": "unknown"
+      },
+      "human_author": "David Morais <118942054+d1mo22@users.noreply.github.com>"
+    }
+  }
+}
