@@ -160,7 +160,7 @@ export function ErrorSheet({
 
 	return (
 		<div
-			className="relative border border-ink bg-paper px-5 pb-14 pt-10 md:px-12 md:pb-14 md:pt-10"
+			className="relative border border-ink bg-paper px-5 pb-4 pt-4 md:px-12 md:pb-14 md:pt-10"
 			style={{
 				backgroundImage:
 					"linear-gradient(var(--hairline) 1px, transparent 1px), linear-gradient(90deg, var(--hairline) 1px, transparent 1px)",
@@ -171,7 +171,9 @@ export function ErrorSheet({
 			<svg
 				viewBox={`${VIEW_MIN_X} 0 ${viewBoxWidth} 450`}
 				aria-hidden="true"
-				className="block h-auto w-full max-w-[720px] overflow-visible"
+				preserveAspectRatio="xMinYMid meet"
+				// ponytail: 470px ≈ nav offset + sheet padding + heading/buttons below; keeps them above the fold on laptop heights.
+				className="block h-auto w-full max-w-[720px] max-h-[max(180px,calc(100dvh-470px))] overflow-visible"
 			>
 				{slots.map((slot, i) =>
 					slot.type === "digit" ? (
@@ -291,7 +293,7 @@ export function ErrorSheet({
 			</svg>
 
 			<div
-				className="mt-8 grid grid-cols-2 border border-ink bg-paper font-mono text-xs md:absolute md:bottom-0 md:right-0 md:mt-0 [&>div]:border-[0.5px] [&>div]:border-ink [&>div]:px-3.5 [&>div]:py-2"
+				className="mt-8 hidden md:grid grid-cols-2 border border-ink bg-paper font-mono text-xs md:absolute md:bottom-0 md:right-0 md:mt-0 [&>div]:border-[0.5px] [&>div]:border-ink [&>div]:px-3.5 [&>div]:py-2"
 			>
 				<div className="col-span-2 font-display text-xl font-semibold tracking-[-0.02em]">
 					{titleBlock.title}

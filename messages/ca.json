@@ -472,5 +472,8 @@
 		"text": "Hi ha hagut un error al nostre costat. Torna-ho a provar d'aquí a uns moments.",
 		"retry": "Torna-ho a provar",
 		"home": "Torna a l'inici"
+	},
+	"login": {
+		"required": "Omple aquest camp."
 	}
 }

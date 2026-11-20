@@ -472,5 +472,8 @@
 		"text": "Houve um erro da nossa parte. Por favor, tente novamente daqui a pouco.",
 		"retry": "Tentar novamente",
 		"home": "Voltar ao início"
+	},
+	"login": {
+		"required": "Preencha este campo."
 	}
 }
